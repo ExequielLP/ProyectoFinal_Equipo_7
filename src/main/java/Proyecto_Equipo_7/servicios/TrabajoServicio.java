@@ -23,15 +23,7 @@ public class TrabajoServicio {
         return trabajo;
     }
 
-    public void marcarTrabajoComoTerminado(Trabajo trabajo) {
 
-        trabajo.marcarComoTerminado();
 
-    }
 
-    public void otorgarCalificacionAlTrabajo(Trabajo trabajo, Integer calificacion) {
-
-        trabajo.otorgarCalificacion(calificacion);
-
-    }
 }
