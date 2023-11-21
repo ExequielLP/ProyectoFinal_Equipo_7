@@ -21,14 +21,9 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Proveedor extends Usuario{
 
-   
-
-   
-
-    
+      
 
     private Integer honorario;
 
@@ -37,5 +32,9 @@ public class Proveedor extends Usuario{
 
     @Enumerated(EnumType.STRING)
     private Servicio servicio;
+    
+    
+    
+    
 
 }
