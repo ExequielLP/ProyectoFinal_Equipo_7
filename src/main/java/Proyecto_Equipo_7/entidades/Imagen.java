@@ -16,6 +16,7 @@ public class Imagen {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
+     
     private String mime;
     
     private String nombre;

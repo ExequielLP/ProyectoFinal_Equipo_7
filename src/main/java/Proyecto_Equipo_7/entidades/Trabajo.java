@@ -5,11 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "trabajo")
+
 public class Trabajo {
 
     @Id
@@ -18,11 +19,11 @@ public class Trabajo {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "proveedor_id")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
 
     private Integer calificacion;

@@ -21,22 +21,14 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(referencedColumnName = "id")
-public class Proveedor {
 
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    protected String id;
+public class Proveedor extends Usuario{
 
-    private String nombre;
-    private String domicilio;
-    private String telefono;
-    private String email;
-    private String password;
+   
 
-    @Enumerated(EnumType.STRING)
-    protected Rol rol;
+   
+
+    
 
     private Integer honorario;
 
