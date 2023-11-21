@@ -1,59 +1,27 @@
-<nav class="navbar navbar-expand-lg navBar">
-
-    <div class="containerImg">
-        <a href="/" class="navbar-brand d-flex align-items-center">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" aria-current="page" href="#">
             <img class="logo" src="/img/olicem.png" alt="Img logo olicem"></a>
-    </div>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
-        <ul class="navbar-nav ms-auto elementos">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Servicios</a>
-
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li sec:authorize="hasAnyRole('ADMIN')" ><a class="dropdown-item"   th:href="/">Crear Servicio</a></li>                    
-                    <li sec:authorize="hasAnyRole('ADMIN')" ><hr class="dropdown-divider" ></li>
-                    <li sec:authorize="hasAnyRole('ADMIN')" ><a class="dropdown-item"   th:href="/">Modificar Servicio</a></li>
-                    <li sec:authorize="hasAnyRole('ADMIN')" ><hr class="dropdown-divider" ></li>
-                    <li sec:authorize="hasAnyRole('ADMIN')" ><a class="dropdown-item"   th:href="/">Eliminar Servicio</a></li>
-                    <li sec:authorize="hasAnyRole('ADMIN')" ><hr class="dropdown-divider" ></li>
-                    <li ><a class="dropdown-item" th:href="/">Listar Servicio</a></li>
-                </ul>
-
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Usuario '+${session.usuarioSession.nombre}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                <ul sec:authorize="hasRole('ADMIN')" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li sec:authorize="hasRole('ADMIN')" ><a class="dropdown-item" th:href="/">Listar Usuarios</a></li>
-                    <li sec:authorize="hasRole('ADMIN')" ><hr class="dropdown-divider"></li>
-                    <li sec:authorize="hasRole('ADMIN')" ><a class="dropdown-item" th >Crear Usuario</a></li>
-                    <li sec:authorize="hasRole('ADMIN')" ><hr class="dropdown-divider"></li>
-                    <li sec:authorize="hasRole('ADMIN')" ><a class="dropdown-item" >Editar Usuario</a></li>
-                </ul>
-            </li>
-            <div th:if="${session.usuarioSession == null}">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="modalRegistro">
-                    Registro
-                </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="modalSigin">
-                    Login
-                </button> 
-            </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Perfil
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="/perfil">Editar Perfil</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/logout">Cerrar Secion</a></li>
-                </ul>
-            </li>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:if="${session.usuarioSession != null}" href="#">Precios</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+        </div>
     </div>
 </nav>
 
