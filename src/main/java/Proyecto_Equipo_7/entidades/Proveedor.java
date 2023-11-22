@@ -10,11 +10,9 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 @Getter
