@@ -1,10 +1,10 @@
+
 package Proyecto_Equipo_7.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,23 +16,21 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trabajo {
+public class Calificacion {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
+    
+    @OneToOne
+    private Trabajo Trabajo;
 
-    @ManyToOne
-    @JoinColumn(name = "proveedor_id")
-    private Usuario usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @OneToOne
     private Proveedor proveedor;
 
-    private boolean terminado;
+    private Integer calificacion;
 
-   
+    private String comentario;
 
 }
