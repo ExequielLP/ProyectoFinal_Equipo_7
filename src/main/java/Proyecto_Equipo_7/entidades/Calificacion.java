@@ -30,7 +30,7 @@ public class Calificacion {
     private String id;
     
     @OneToOne
-    private Trabajo Trabajo;
+    private Trabajo trabajo;
 
     @OneToOne
     private Proveedor proveedor;
