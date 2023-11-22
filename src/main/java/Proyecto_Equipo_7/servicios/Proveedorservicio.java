@@ -94,7 +94,7 @@ public class Proveedorservicio implements UserDetailsService {
 
         if (proveedor != null) {
 
-            List<GrantedAuthority> permisos = new ArrayList();
+            List<GrantedAuthority> permisos = new ArrayList<>();
 
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + proveedor.getRol().toString());
 

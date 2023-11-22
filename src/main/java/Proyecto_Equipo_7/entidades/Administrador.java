@@ -6,12 +6,12 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
-import lombok.NoArgsConstructor;
 
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @PrimaryKeyJoinColumn(name = "usuario_id")
 public class Administrador extends Usuario {
    
