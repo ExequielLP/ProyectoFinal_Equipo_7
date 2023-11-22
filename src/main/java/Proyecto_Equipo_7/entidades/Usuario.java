@@ -27,15 +27,17 @@ public class Usuario {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    protected String id;
+    private String id;
 
-    protected String nombre;
-    protected String domicilio;
-    protected String telefono;
-    protected String email;
-    protected String password;
+    private String nombre;
+    private String domicilio;
+    private String telefono;
+    private String email;
+    private String password;
+    private boolean alta;
+    
 
     @Enumerated(EnumType.STRING)
-    protected Rol rol;
+    private Rol rol;
 
 }

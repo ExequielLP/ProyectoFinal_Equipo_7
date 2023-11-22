@@ -33,7 +33,7 @@ public class Proveedor extends Usuario{
     @Enumerated(EnumType.STRING)
     private Servicio servicio;
     
-    
+ 
     
     
 
