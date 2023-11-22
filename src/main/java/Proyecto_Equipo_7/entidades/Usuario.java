@@ -37,5 +37,7 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     protected Rol rol;
+    
+    
 
 }
