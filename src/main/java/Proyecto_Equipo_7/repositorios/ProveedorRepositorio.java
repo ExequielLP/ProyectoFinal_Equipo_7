@@ -17,10 +17,10 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
     @Query("SELECT p FROM Proveedor p WHERE p.servicio = :servicio")
     public Proveedor buscarPorServicio(@Param("servicio") Servicio servicio);
 
-    @Query("SELECT p FROM Proveedor p INNER JOIN Trabajo t ON p.id = t.proveedor.id WHERE t.calificacion = :calificacion ORDER BY t.calificacion DESC")
+    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id WHERE c.calificacion = :calificacion")
     public List<Proveedor> buscarPorCalificacionEspecifica(@Param("calificacion") int calificacion);
 
-    @Query("SELECT p FROM Proveedor p INNER JOIN Trabajo t ON p.id = t.proveedor.id ORDER BY t.calificacion DESC")
+    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id ORDER BY c.calificacion DESC")
     public List<Proveedor> buscarPorCalificacionGeneral();
     
     

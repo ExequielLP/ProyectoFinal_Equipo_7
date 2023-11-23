@@ -1,11 +1,12 @@
 package Proyecto_Equipo_7.entidades;
 
 import Proyecto_Equipo_7.enumeradores.Rol;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -39,5 +39,7 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+
 
 }

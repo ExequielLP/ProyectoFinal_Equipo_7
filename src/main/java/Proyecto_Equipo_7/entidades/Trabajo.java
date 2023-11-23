@@ -5,9 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,14 +24,13 @@ public class Trabajo {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "proveedor_id")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "proveedor_id")
+    @JoinColumn(name = "usuario_id")
     private Proveedor proveedor;
-    @OneToOne
-    private Calificacion calificacion;
+
 
     private boolean terminado;
 
