@@ -24,7 +24,7 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
     public List<Proveedor> buscarPorCalificacionGeneral();
     
     
-    @Query(" SELECT avg(calificacion) FROM calificacion JOIN proveedor p ON c.proveedor_id =:id")
-    public Double buscarProvedorCalificacionMasAlta(@Param("id")String id);
+//    @Query(" SELECT avg(calificacion) FROM calificacion JOIN proveedor p ON c.proveedor_id =:id")
+//    public Double buscarProvedorCalificacionMasAlta(@Param("id")String id);
     
 }
