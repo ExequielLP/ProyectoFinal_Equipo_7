@@ -19,8 +19,7 @@ import javax.persistence.OneToOne;
 @NoArgsConstructor
 public class Proveedor extends Usuario{
 
-      
-
+    
 
     private Integer honorario;
 

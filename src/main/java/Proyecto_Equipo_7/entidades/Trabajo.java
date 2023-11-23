@@ -31,8 +31,7 @@ public class Trabajo {
     @JoinColumn(name = "usuario_id")
     private Proveedor proveedor;
 
-    private boolean terminado;
 
-   
+    private boolean terminado;
 
 }
