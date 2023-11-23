@@ -1,4 +1,4 @@
-/*.navBar{
+.navBar{
     background-color: #fff !important;
 }
 
@@ -73,7 +73,7 @@
 
 a.link{
    color: white; 
-}*/
+}
 
 .bd-placeholder-img {
     font-size: 1.125rem;
