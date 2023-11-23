@@ -13,5 +13,6 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {
     public Usuario buscarPorEmail(@Param("email")String email);
     
     
+    
 }
 
