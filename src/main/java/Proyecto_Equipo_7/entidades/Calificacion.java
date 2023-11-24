@@ -1,4 +1,3 @@
-
 package Proyecto_Equipo_7.entidades;
 
 import javax.persistence.Entity;
