@@ -115,4 +115,14 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
+    
+      @Transactional(readOnly = true)
+    public List<Usuario> listarusuarios() {
+
+        List<Usuario> usuarios = new ArrayList();
+
+        usuarios = usuarioRepositorio.findAll();
+
+        return usuarios;
+    }
 }

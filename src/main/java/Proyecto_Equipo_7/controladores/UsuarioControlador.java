@@ -3,6 +3,7 @@ package Proyecto_Equipo_7.controladores;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+
 
 @Controller
 @RequestMapping("/usuario")
@@ -80,5 +81,16 @@ public class UsuarioControlador {
             return "usuario_modificar.html";
         }
 
+    }
+    
+      @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/lista_usuarioCompleta")
+    public String listarProfesionales(ModelMap modelo) {
+
+        List<Usuario> usuarios = usuarioServicio.listarusuarios();
+
+        modelo.addAttribute("usuarios", usuarios);
+
+        return "usuario_listaCompleta.html";
     }
 }
