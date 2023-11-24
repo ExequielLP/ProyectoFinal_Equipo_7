@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 991aab586c569c2e7b79ce226a379f77d9ebd63e
 package Proyecto_Equipo_7.entidades;
 
 import javax.persistence.Entity;
@@ -27,7 +31,7 @@ public class Calificacion {
     private String id;
     
     @OneToOne
-    private Trabajo Trabajo;
+    private Trabajo trabajo;
 
     @OneToOne
     private Proveedor proveedor;

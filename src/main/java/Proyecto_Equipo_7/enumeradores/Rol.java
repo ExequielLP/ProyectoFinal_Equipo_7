@@ -5,5 +5,5 @@ public enum Rol {
     USER,
     ADMIN,
     PROVEEDOR,
-    GUEST
+    GUEST;
 }

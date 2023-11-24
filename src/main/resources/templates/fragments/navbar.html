@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" aria-current="page" href="#">
-            <img class="logo" src="/img/olicem.png" alt="Img logo olicem"></a>
+            <img class="logo" width="60px" height="60px" src="/img/olicemModificado.png" alt="Img logo olicem"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,14 +13,39 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Servicios</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" th:if="${session.usuarioSession != null}" href="#">Precios</a>
+                <li class="nav-item dropdown">
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/login">Ingresar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/usuario/registrar">Registrarse</a></li>
+                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
+                        <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/registro">Editar Perfil</a></li>
+                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
+                        <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/registro">Calificacion</a></li>
+                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
+                        <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/registro">Cerrar Secion</a></li>
+                    </ul>
+                </li>   
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Tus Pendientes '+${session.usuarioSession.nombre}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Servicios en curso</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Servicios finalizados</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">A designar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/trabajo/contratoTrabajo">Cargar un trabajo</a></li>
+                    </ul>
+                </li>                
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
+            </form>            
         </div>
     </div>
 </nav>
