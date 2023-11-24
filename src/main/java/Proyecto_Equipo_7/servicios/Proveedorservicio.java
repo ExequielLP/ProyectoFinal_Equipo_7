@@ -49,7 +49,7 @@ public class Proveedorservicio implements UserDetailsService {
         proveedor.setServicio(servicio);
 
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
-        
+
         Imagen imagen = imagenServicio.guardar(archivo);
 
         proveedor.setImagen(imagen);
@@ -87,7 +87,7 @@ public class Proveedorservicio implements UserDetailsService {
 
     }
 
-       @Override
+    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         Proveedor proveedor = proveedorRepositorio.buscarPorEmail(email);

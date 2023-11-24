@@ -6,6 +6,7 @@ import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,14 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-
 @Service
 public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
-
-    
 
     @Transactional
     public void registrarusuario(String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
@@ -69,8 +67,8 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
-    
-        @Override
+
+    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
@@ -95,4 +93,52 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
+
+
+    public void Eliminar(String id) throws MiException {
+        if (id.isEmpty() || id == null) {
+            new Exception("Esta el id null");
+        }
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setAlta(true);
+            usuarioRepositorio.save(usuario);
+
+        }
+    }
+            
+    @Transactional
+    public void actualizar(String id, String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
+
+        validar(nombre, domicilio, telefono, email, password, password2);
+
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+            usuario.setDomicilio(domicilio);
+            usuario.setTelefono(telefono);
+            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+
+            usuario.setRol(Rol.USER);
+
+            usuarioRepositorio.save(usuario);
+
+        }
+
+    }
+    @Transactional(readOnly = true)
+    public List<Usuario> listarusuarios() {
+
+        List<Usuario> usuarios = new ArrayList();
+
+        usuarios = usuarioRepositorio.findAll();
+
+        return usuarios;
+    }
+    
 }
+    
