@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,10 +33,9 @@ public class Trabajo {
     @ManyToOne
     @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
-
+    @OneToOne
     private Calificacion calificacion;
 
     private boolean terminado;
-
 
 }

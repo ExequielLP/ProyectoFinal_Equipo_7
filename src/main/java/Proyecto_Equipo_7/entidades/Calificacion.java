@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Proyecto_Equipo_7.entidades;
 
 import javax.persistence.Entity;
@@ -33,7 +30,7 @@ public class Calificacion {
     private String id;
     
     @OneToOne
-    private Trabajo Trabajo;
+    private Trabajo trabajo;
 
     @OneToOne
     private Proveedor proveedor;
