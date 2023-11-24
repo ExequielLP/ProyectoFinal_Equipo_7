@@ -22,6 +22,8 @@
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
                         <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/usuario/registrar">Registrarse</a></li>
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
+                        <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/proveedor/registrar">Registrar Proveedor</a></li>
+                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
                         <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Editar Perfil</a></li>
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>

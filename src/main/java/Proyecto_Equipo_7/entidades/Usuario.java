@@ -34,7 +34,7 @@ public class Usuario {
     private String telefono;
     private String email;
     private String password;
-    private boolean alta;
+    private boolean alta=true;
     
 
     @Enumerated(EnumType.STRING)
