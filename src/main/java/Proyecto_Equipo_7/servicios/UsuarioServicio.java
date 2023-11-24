@@ -94,6 +94,19 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
+    
+    public void Eliminar(String id) throws MiException {
+        if (id.isEmpty() || id == null) {
+            new Exception("Esta el id null");
+        }
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setAlta(true);
+            usuarioRepositorio.save(usuario);
+
+        }
+    }
 
     @Transactional
     public void actualizar(String nombre, String domicilio, String telefono, String email, String password, String password2, String id) throws MiException {
@@ -115,5 +128,13 @@ public class UsuarioServicio implements UserDetailsService {
             usuarioRepositorio.save(usuario);
         }
     }
+ @Transactional(readOnly = true)
+    public List<Usuario> listarusuarios() {
 
+        List<Usuario> usuarios = new ArrayList();
+
+        usuarios = usuarioRepositorio.findAll();
+
+        return usuarios;
+    }
 }

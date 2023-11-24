@@ -3,6 +3,7 @@ package Proyecto_Equipo_7.controladores;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -51,6 +52,17 @@ public class UsuarioControlador {
 
     }
     
+    @PostMapping("/eliminarUsuario/{id}")
+    public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
+        try {
+            usuarioServicio.Eliminar(id);
+        } catch (MiException ex) {
+          modelo.put("error",ex.getMessage() );
+        }
+
+       return "redirec:/usuario/listarUsuario";
+    }
+    
     @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
@@ -81,5 +93,15 @@ public class UsuarioControlador {
             return "usuario_modificar.html";
         }
 
+    }
+     @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/lista_usuarioCompleta")
+    public String listarProfesionales(ModelMap modelo) {
+
+        List<Usuario> usuarios = usuarioServicio.listarusuarios();
+
+        modelo.addAttribute("usuarios", usuarios);
+
+        return "usuario_listaCompleta.html";
     }
 }
