@@ -29,7 +29,7 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
@@ -37,9 +37,7 @@ public class PortalControlador {
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
         }
-        if (logueado.getRol().toString().equals("USER")) {
-            return "inicio.html";
-        }
+       
         return "inicio.html";
     }
 
