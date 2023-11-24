@@ -14,17 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/trabajo")
 public class TrabajoControlador {
-
+    
     @Autowired
     private TrabajoServicio trabajoServicio;
 
+  
     @GetMapping("/crearTrabajo")
-    public String registrar() {
+    public String crearTrabajo() {
         return "contratoTrabajo.html";
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam Proveedor proveedor, @RequestParam Usuario usuario, ModelMap modelo) {
+    public String registroTrabajo(@RequestParam Proveedor proveedor, @RequestParam Usuario usuario, ModelMap modelo) {
 
         trabajoServicio.darDeAltaTrabajo(proveedor, usuario);
         modelo.put("exito", "Proveedor registrado correctamente!");

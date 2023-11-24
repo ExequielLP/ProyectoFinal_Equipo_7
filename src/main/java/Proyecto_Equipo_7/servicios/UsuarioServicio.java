@@ -85,7 +85,7 @@ public class UsuarioServicio implements UserDetailsService {
 
             HttpSession session = attr.getRequest().getSession(true);
 
-            session.setAttribute("usuariosession", usuario);
+            session.setAttribute("usuarioSession", usuario);
 
             return new User(usuario.getEmail(), usuario.getPassword(), permisos);
         } else {

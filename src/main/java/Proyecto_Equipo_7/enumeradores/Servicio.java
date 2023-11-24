@@ -4,6 +4,6 @@ public enum Servicio {
 
     PLOMERO,
     GASISTA,
-    ELECTRISISTA
+    ELECTRISISTA;
 
 }
