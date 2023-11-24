@@ -22,7 +22,9 @@ public class ProveedorControlador {
    
     @GetMapping("/registrar")
     public String registrar() {
+
         return "registroProv.html";
+
     }
 
     @PostMapping("/registro")
@@ -47,6 +49,7 @@ public class ProveedorControlador {
             modelo.put("honorario", honorario);
 
             return "registroProv.html";
+
         }
 
     }

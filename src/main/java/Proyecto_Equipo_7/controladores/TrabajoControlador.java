@@ -18,16 +18,17 @@ public class TrabajoControlador {
     @Autowired
     private TrabajoServicio trabajoServicio;
 
-    @GetMapping("/contratoTrabajo")
-    public String registrar() {
+  
+    @GetMapping("/crearTrabajo")
+    public String crearTrabajo() {
         return "contratoTrabajo.html";
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam Proveedor proveedor, @RequestParam Usuario usuario, ModelMap modelo) {
+    public String registroTrabajo(@RequestParam Proveedor proveedor, @RequestParam Usuario usuario, ModelMap modelo) {
 
         trabajoServicio.darDeAltaTrabajo(proveedor, usuario);
-        modelo.put("exito", "Proveedor registrado correctamente!");
+        modelo.put("exito", "Trabajo registrado correctamente!");
 
         return "index.html";
 
