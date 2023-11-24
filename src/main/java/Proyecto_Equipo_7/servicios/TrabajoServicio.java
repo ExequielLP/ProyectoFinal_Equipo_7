@@ -21,7 +21,7 @@ public class TrabajoServicio {
 
         trabajo.setProveedor(proveedor);
         trabajo.setUsuario(usuario);
-
+        
         trabajo = trabajoRepositorio.save(trabajo);
 
         return trabajo;
