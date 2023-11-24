@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 991aab586c569c2e7b79ce226a379f77d9ebd63e
 package Proyecto_Equipo_7.entidades;
 
 import javax.persistence.Entity;

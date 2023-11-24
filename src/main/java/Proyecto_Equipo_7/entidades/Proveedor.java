@@ -1,8 +1,5 @@
 package Proyecto_Equipo_7.entidades;
-<<<<<<< HEAD
 
-=======
->>>>>>> 991aab586c569c2e7b79ce226a379f77d9ebd63e
 import Proyecto_Equipo_7.enumeradores.Servicio;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,10 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
-<<<<<<< HEAD
-=======
-
->>>>>>> 991aab586c569c2e7b79ce226a379f77d9ebd63e
 
 @Entity
 @Getter
