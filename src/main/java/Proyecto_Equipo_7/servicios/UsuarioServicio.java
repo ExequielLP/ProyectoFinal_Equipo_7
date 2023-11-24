@@ -75,7 +75,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         if (usuario != null) {
 
-            List<GrantedAuthority> permisos = new ArrayList();
+            List<GrantedAuthority> permisos = new ArrayList<>();
 
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
 
@@ -94,6 +94,20 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
+
+    public void Eliminar(String id) throws MiException {
+        if (id.isEmpty() || id == null) {
+            new Exception("Esta el id null");
+        }
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setAlta(true);
+            usuarioRepositorio.save(usuario);
+
+        }
+    }
+            
     @Transactional
     public void actualizar(String id, String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
 
@@ -112,11 +126,14 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setRol(Rol.USER);
 
             usuarioRepositorio.save(usuario);
+
         }
 
     }
-    
-      @Transactional(readOnly = true)
+
+ 
+    @Transactional(readOnly = true)
+
     public List<Usuario> listarusuarios() {
 
         List<Usuario> usuarios = new ArrayList();
@@ -125,4 +142,6 @@ public class UsuarioServicio implements UserDetailsService {
 
         return usuarios;
     }
+
 }
+    

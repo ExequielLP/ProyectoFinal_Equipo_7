@@ -4,17 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import org.hibernate.annotations.GenericGenerator;
 
+
+
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import org.hibernate.annotations.GenericGenerator;
 
 
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "usuario_id")
 public class Administrador extends Usuario  {
 

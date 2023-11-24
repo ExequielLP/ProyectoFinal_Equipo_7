@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+
+
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioControlador {
@@ -51,6 +53,19 @@ public class UsuarioControlador {
 
     }
 
+
+    @PostMapping("/eliminarUsuario/{id}")
+    public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
+        try {
+            usuarioServicio.Eliminar(id);
+        } catch (MiException ex) {
+          modelo.put("error",ex.getMessage() );
+        }
+
+       return "redirec:/usuario/listarUsuario";
+    }
+
+
     @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
@@ -83,7 +98,10 @@ public class UsuarioControlador {
 
     }
     
-      @PreAuthorize("hasRole('ROLE_ADMIN')")
+
+ 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/lista_usuarioCompleta")
     public String listarProfesionales(ModelMap modelo) {
 
@@ -93,4 +111,5 @@ public class UsuarioControlador {
 
         return "usuario_listaCompleta.html";
     }
+
 }

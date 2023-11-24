@@ -29,7 +29,7 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/admin/*").hasRole("ADMIN")
-                    .antMatchers("/proveedor/*").hasRole("PROVEEDOR")
+                    //.antMatchers("/proveedor/*").hasRole("PROVEEDOR") no dejo entrar al controlador
                     .antMatchers("/user/*").hasRole("USER")
                     .antMatchers( "/**")
                     .permitAll()

@@ -11,7 +11,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
-
 @Entity
 @Getter
 @Setter
@@ -28,5 +27,6 @@ public class Proveedor extends Usuario{
 
     @Enumerated(EnumType.STRING)
     private Servicio servicio;
+
 
 }
