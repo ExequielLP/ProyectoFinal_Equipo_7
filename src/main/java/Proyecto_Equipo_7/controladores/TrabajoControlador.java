@@ -28,7 +28,7 @@ public class TrabajoControlador {
     public String registroTrabajo(@RequestParam Proveedor proveedor, @RequestParam Usuario usuario, ModelMap modelo) {
 
         trabajoServicio.darDeAltaTrabajo(proveedor, usuario);
-        modelo.put("exito", "Proveedor registrado correctamente!");
+        modelo.put("exito", "Trabajo registrado correctamente!");
 
         return "index.html";
 
