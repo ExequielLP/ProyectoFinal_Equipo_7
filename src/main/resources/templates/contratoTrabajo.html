@@ -17,7 +17,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content rounded-4 shadow">
                         <div class="modal-header p-5 pb-4 border-bottom-0">
-                            <h1 class="fw-bold mb-0 fs-2">Registrese gratis!!</h1>
+                            <h1 class="fw-bold mb-0 fs-2">CONTRATAR UN SERVICIO</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
@@ -25,18 +25,23 @@
 
                             <form class="formulario" th:action="@{/trabajo/registro}" method="POST" >
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Usuario
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Proveedor
-                                    </label>
-                                </div>
+                                <input hidden th:value="${session.usuarioSession.id}" name="id" >
+                                
+                                <div class="form-group my-3">            
+                                    <select name="servicio" id="" >
+                                        <option selected th:if="${proveedor.servicio == servicio}" 
+                                                th:each="servicios : ${servicio}"
+                                                th:value="${servicio}"
+                                                th:text="${servicio}">
+                                        </option>
+                                        <option selected th:if="${proveedor.servicio != servicio}" 
+                                                th:each="servicios : ${servicio}"
+                                                th:value="${servicio}"
+                                                th:text="${servicio}">
+                                        </option>
+                                    </select>
+                                </div> 
+
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nombre usuario">
                                     <label for="floatingInput">Nombre Completo</label>
