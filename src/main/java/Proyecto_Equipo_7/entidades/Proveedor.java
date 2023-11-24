@@ -1,5 +1,7 @@
 package Proyecto_Equipo_7.entidades;
+
 import Proyecto_Equipo_7.enumeradores.Servicio;
+import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
-
 @Entity
 @Getter
 @Setter
@@ -17,7 +18,7 @@ import javax.persistence.OneToOne;
 @NoArgsConstructor
 public class Proveedor extends Usuario{
 
-      
+    
 
     private Integer honorario;
 
@@ -26,9 +27,6 @@ public class Proveedor extends Usuario{
 
     @Enumerated(EnumType.STRING)
     private Servicio servicio;
-    
-    
-    
-    
+
 
 }
