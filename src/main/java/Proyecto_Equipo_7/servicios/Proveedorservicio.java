@@ -8,6 +8,8 @@ import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -109,6 +111,26 @@ public class Proveedorservicio implements UserDetailsService {
             return new User(proveedor.getEmail(), proveedor.getPassword(), permisos);
         } else {
             return null;
+        }
+
+    }
+
+    @Transactional(readOnly = true)
+    public List<Proveedor> listarProveedores(){
+        List<Proveedor> proveedores = new ArrayList<>();
+        proveedores = proveedorRepositorio.findAll();
+        return proveedores;
+    }
+
+    public void eliminar(String id) throws MiException {
+        if (id.isEmpty() || id == null){
+            new Exception("El id es null");
+        }
+        Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
+        if (respuesta.isPresent()){
+            Proveedor proveedor = respuesta.get();
+            proveedor.setAlta(true);
+            proveedorRepositorio.save(proveedor);
         }
 
     }
