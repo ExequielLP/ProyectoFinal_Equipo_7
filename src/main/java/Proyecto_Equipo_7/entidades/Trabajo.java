@@ -33,5 +33,5 @@ public class Trabajo {
     private Proveedor proveedor;
     
     private boolean terminado;
-
+   
 }
