@@ -57,7 +57,7 @@ public class UsuarioControlador {
     @PostMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
         try {
-            usuarioServicio.Eliminar(id);
+            usuarioServicio.eliminar(id);
         } catch (MiException ex) {
           modelo.put("error",ex.getMessage() );
         }
