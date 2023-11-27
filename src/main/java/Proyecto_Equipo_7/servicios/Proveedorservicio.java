@@ -104,7 +104,7 @@ public class Proveedorservicio implements UserDetailsService {
 
             HttpSession session = attr.getRequest().getSession(true);
 
-            session.setAttribute("usuariosession", proveedor);
+            session.setAttribute("usuarioSession", proveedor);
 
             return new User(proveedor.getEmail(), proveedor.getPassword(), permisos);
         } else {

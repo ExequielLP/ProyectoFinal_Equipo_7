@@ -54,9 +54,20 @@
                                 <label for="floatingInput">Honorarios a facturar</label>
                             </div>
                             <div class="form-floating mb-3">                    
-                            <input type="file" th:value="${contenido}"  name="contenido" id="floatingInput" placeholder="Seleccione nueva imagen">
+                            <input type="file" name="archivo" id="floatingInput" placeholder="Seleccione nueva imagen">
                         </div>
-                            
+                             <br>
+                            <div class="form-group">
+                                <label for="servicio">servicio:</label>
+                                <select name="servicio" class="form-control">
+                                    <option value="PLOMERO">Plomero</option>
+                                    <option value="GASISTA">gasista</option>
+                                    <option value="ELECTRISISTA">electrisista</option>
+
+                                </select>
+                            </div>
+                            <br>
+
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control rounded-3" name="password" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
