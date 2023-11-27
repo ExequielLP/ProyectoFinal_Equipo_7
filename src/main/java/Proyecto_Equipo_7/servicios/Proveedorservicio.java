@@ -112,5 +112,10 @@ public class Proveedorservicio implements UserDetailsService {
         }
 
     }
+    
+    public Proveedor getone(String id){
+    return proveedorRepositorio.getOne(id);
+    }
+
 
 }

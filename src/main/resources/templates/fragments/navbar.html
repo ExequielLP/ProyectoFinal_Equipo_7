@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark  bg-dark mb-3" >
     <div class="container-fluid">
         <a class="navbar-brand" aria-current="page" href="#">
             <img class="logo" width="60px" height="60px" src="/img/olicemModificado.png" alt="Img logo olicem"></a>
@@ -20,7 +20,10 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/login">Ingresar</a></li>
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
-                        <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/usuario/registrar">Registrarse</a></li>
+                        <li th:if="${session.usuarioSession == null}" ><button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalRegistro">
+                               Registrar
+                            </button></li>
+                       
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
                         <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/proveedor/registrar">Registrar Proveedor</a></li>
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
