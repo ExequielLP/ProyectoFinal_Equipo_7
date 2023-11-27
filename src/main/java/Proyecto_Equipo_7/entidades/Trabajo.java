@@ -31,8 +31,7 @@ public class Trabajo {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Proveedor proveedor;
-
-
+    
     private boolean terminado;
 
 }
