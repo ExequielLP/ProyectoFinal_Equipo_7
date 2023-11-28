@@ -34,10 +34,10 @@
                     <div class="form-group">
                         <label for="servicio">Servicios</label>
                         <select name="rubro" class="form-control">
-                            <option th:each="rubros : ${rubro}"
-                                    th:value="${rubros}" 
-                                    th:text="${rubros}"
-                                    th:selected="false"
+                            <option th:each="listaRubro : ${listaRubro}"
+                                    th:value="${listaRubro.id}" 
+                                    th:text="${listaRubro.rubro}"
+                                   
                                     />
                         </select>
                     </div>
