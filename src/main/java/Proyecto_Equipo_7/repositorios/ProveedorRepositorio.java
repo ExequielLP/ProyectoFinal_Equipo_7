@@ -24,7 +24,6 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
     @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id ORDER BY c.calificacion DESC")
     public List<Proveedor> buscarPorCalificacionGeneral();
 
-  
 
     @Query("SELECT count(*) FROM Proveedor")
     public Integer cantidadProveedores();
