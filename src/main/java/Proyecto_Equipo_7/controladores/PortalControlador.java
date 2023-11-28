@@ -56,7 +56,7 @@ public class PortalControlador {
     public String inicio(HttpSession session, ModelMap modelo) {
 
          modelo.put("listaRubros", rubroServicio.listaRubros());
-         modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
+//         modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         System.out.println(logueado.toString());
         if (logueado.getRol().toString().equals("ADMIN")) {

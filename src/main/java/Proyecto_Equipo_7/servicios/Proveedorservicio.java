@@ -176,10 +176,10 @@ public class Proveedorservicio implements UserDetailsService {
         
     }
      
-     @Transactional(readOnly = true)
-    public List<Proveedor> seisMejoresProveedores(){
-        List<Proveedor> proveedores = new ArrayList<>();
-        proveedores = proveedorRepositorio.seisMejoresProveedores();
-        return proveedores;
-    }
+//     @Transactional(readOnly = true)
+//    public List<Proveedor> seisMejoresProveedores(){
+//        List<Proveedor> proveedores = new ArrayList<>();
+//        proveedores = proveedorRepositorio.seisMejoresProveedores();
+//        return proveedores;
+//    }
 }

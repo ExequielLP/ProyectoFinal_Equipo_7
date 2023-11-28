@@ -103,7 +103,7 @@ public class UsuarioControlador {
     @GetMapping("/lista_usuarioCompleta")
     public String listarUsuarios(ModelMap modelo) {
 
-        List<Usuario> usuarios = usuarioServicio.listarusuarios();
+        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
 
         modelo.addAttribute("usuarios", usuarios);
 

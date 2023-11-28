@@ -29,7 +29,6 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
     @Query("SELECT count(*) FROM Proveedor")
     public Integer cantidadProveedores();
 
-    @Query("SELECT p.nombre, c.calificacion FROM Calificacion c JOIN proveedor p ON c.proveedor_id = p.id ORDER BY c.calificacion DESC LIMIT 6")
-
-    public List<Proveedor> seisMejoresProveedores();
+//    @Query("SELECT p.nombre, c.calificacion FROM Calificacion c JOIN proveedor p ON c.proveedor_id = p.id ORDER BY c.calificacion DESC")
+//    public List<Proveedor> seisMejoresProveedores();
 }
