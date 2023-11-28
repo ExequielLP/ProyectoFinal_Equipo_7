@@ -1,7 +1,9 @@
 package Proyecto_Equipo_7.controladores;
 
 import Proyecto_Equipo_7.entidades.Usuario;
+import Proyecto_Equipo_7.servicios.Proveedorservicio;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/")
 public class PortalControlador {
+    @Autowired
+    private Proveedorservicio proveedorservicio;
+    
 
     @GetMapping("/")
     public String index() {
@@ -31,7 +36,9 @@ public class PortalControlador {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
-    public String inicio(HttpSession session) {
+    public String inicio(HttpSession session,ModelMap modelo) {
+         
+       // modelo.put("proovedor", proveedorservicio.);
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         System.out.println(logueado.toString());
         if (logueado.getRol().toString().equals("ADMIN")) {
