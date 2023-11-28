@@ -69,7 +69,7 @@ public class UsuarioControlador {
     @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
-        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
         modelo.put("usuario", usuario);
         return "usuario_modificar.html";
     }

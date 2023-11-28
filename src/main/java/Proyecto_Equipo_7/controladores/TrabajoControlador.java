@@ -40,6 +40,9 @@ public class TrabajoControlador {
 
     }
 
+
+    
+
     @GetMapping("/cargarTrabajo/{id}")
     public String cargarTrabajo(@PathVariable String id,ModelMap modelo){
        
@@ -72,4 +75,5 @@ public class TrabajoControlador {
     // aca va un redirect:/ y la misma donde estaba
         return null;
     }
+
 }
