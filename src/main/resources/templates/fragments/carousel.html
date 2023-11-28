@@ -1,92 +1,98 @@
- <section class="container contenedorCarusel  mt-3 carousel-fade   ">
-    
-  <div class="row justify-content-center">
-    
-      <div id="carouselExampleSlidesOnly" class="carousel slide col-4" data-bs-ride="carousel"  data-bs-interval="3000" >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/img/imag1.jpg" class="d-block w-100" alt="..."/>
-              <div class="carousel-caption d-none d-md-block">
-              <h3>Registrate!!</h3>
-              <p class="opacity-75">Puedes contratar servicios, ver precios, verificar calificaciones...</p>
-              <p><a class="btn btn-dark" href="/usuario/registrar">USUARIO</a></p>
+<section class="container contenedorCarusel  mt-3 carousel-fade   ">
+
+    <div class="row justify-content-center">
+
+        <div id="carouselExampleSlidesOnly" class="carousel slide col-4" data-bs-ride="carousel"  data-bs-interval="5000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/user-img1.jpg" class="d-block w-100" alt="..."/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Registrate!!</h3>
+                        <p class="opacity-75"></p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalRegistro" 
+                              th:if="${session.usuarioSession == null}">USUARIO</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/user-img2.jpg" class="d-block w-100" alt="..."/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Free User</h3>
+                        <p class="opacity-75">Simple, Facil, Comodo, Probalo....</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalRegistro" 
+                              th:if="${session.usuarioSession == null}">USUARIO</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/user-img3.jpg" class="d-block w-100" alt="..."/>            
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Registrate!!</h3>
+                        <p class="opacity-75">Solo te tomara unos minutos!</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalRegistro" 
+                              th:if="${session.usuarioSession == null}">USUARIO</a></p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="/img/imag2.jpg" class="d-block w-100" alt="..."/>
-             <div class="carousel-caption d-none d-md-block">
-              <h3>Free User</h3>
-              <p class="opacity-75">Simple, Facil, Comodo, Probalo....</p>
-              <p><a class="btn btn-dark" href="/usuario/registrar">USUARIO</a></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="/img/imag3.jpg" class="d-block w-100" alt="..."/>            
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Registrate!!</h3>
-              <p class="opacity-75">Solo te tomara unos minutos!</p>
-              <p><a class="btn btn-dark" href="/usuario/registrar">USUARIO</a></p>
-            </div>
-          </div>
         </div>
-      </div>
-    
-      <div id="carouselExampleSlidesOnly" class="carousel slide col-4" data-bs-ride="carousel"  data-bs-interval="3000" >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/img/imag3.jpg" class="d-block w-100" alt="..."/>
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Proveedor!</h3>
-              <p class="opacity-75">Queres ofrecer tus servicios, dale registrate</p>
-              <p><a class="btn btn-dark" href="/proveedor/registrar">PROVEEDOR</a></p>
+
+        <div id="carouselExampleSlidesOnly" class="carousel slide col-4" data-bs-ride="carousel"  data-bs-interval="5000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/prov-img1.jpg" class="d-block w-100" alt="..."/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Proveedor!</h3>
+                        <p class="opacity-75">Queres ofrecer tus servicios, dale registrate</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalReProveedor" 
+                              th:if="${session.usuarioSession == null}">PROVEEDOR</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/prov-img2.jpg" class="d-block w-100" alt="..."/>            
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Ofrece tus servicios!</h3>
+                        <p class="opacity-75">Busca tu oficio, tenemos mas de 100 servicios </p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalReProveedor" 
+                              th:if="${session.usuarioSession == null}">PROVEEDOR</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/prov-img3.jpg" class="d-block w-100" alt="..."/>            
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>No esperes mas!!</h3>
+                        <p class="opacity-75">Amplia cobertura, gran cartera de usuarios</p>                        
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalReProveedor" 
+                              th:if="${session.usuarioSession == null}">PROVEEDOR</a></p>                                                                       
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="/img/imag2.jpg" class="d-block w-100" alt="..."/>            
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Ofrece tus servicios!</h3>
-              <p class="opacity-75">Busca tu oficio, tenemos mas de 100 servicios </p>
-              <p><a class="btn btn-dark" href="proveedor/registrar">PROVEEDOR</a></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="/img/imag1.jpg" class="d-block w-100" alt="..."/>            
-            <div class="carousel-caption d-none d-md-block">
-              <h3>No esperes mas!!</h3>
-              <p class="opacity-75">Amplia cobertura, gran cartera de usuarios</p>
-              <p><a class="btn btn-dark" href="/proveedor/registrar">PROVEEDOR</a></p>
-            </div>
-          </div>
         </div>
-      </div>
-    
-      <div id="carouselExampleSlidesOnly" class="carousel slide col-4" data-bs-ride="carousel"  data-bs-interval="3000" >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/img/imag2.jpg" class="d-block w-100" alt="..."/>           
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Queres contratar!</h3>
-              <p class="opacity-75">Selecciona el servicio que necesitas y listo!</p>
-              <p><a class="btn btn-dark" href="/usuario/registrar">CONTRATA</a></p>
+
+        <div id="carouselExampleSlidesOnly" class="carousel slide col-4" data-bs-ride="carousel"  data-bs-interval="5000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/imag2.jpg" class="d-block w-100" alt="..."/>           
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Queres contratar!</h3>
+                        <p class="opacity-75">Selecciona el servicio que necesitas y listo!</p>
+                        <p><a class="btn btn-dark" href="/usuario/registrar">CONTRATA</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/imag3.jpg" class="d-block w-100" alt="..."/>            
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Mas de 100 proveedores</h3>
+                        <p class="opacity-75">Podes verificar calificacion de otros usuario</p>
+                        <p><a class="btn btn-dark" href="/usuario/registrar">CONTRATA</a></p>
+                    </div>
+                </div>  
+                <div class="carousel-item">
+                    <img src="/img/imag1.jpg" class="d-block w-100" alt="..."/>            
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Soluciona Ya!!</h3>
+                        <p class="opacity-75">Contacta a un proveedor, cotizacion gratis!!</p>
+                        <p><a class="btn btn-dark" href="/usuario/registrar">CONTRATA</a></p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="/img/imag3.jpg" class="d-block w-100" alt="..."/>            
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Mas de 100 proveedores</h3>
-              <p class="opacity-75">Podes verificar calificacion de otros usuario</p>
-              <p><a class="btn btn-dark" href="/usuario/registrar">CONTRATA</a></p>
-            </div>
-          </div>  
-          <div class="carousel-item">
-            <img src="/img/imag1.jpg" class="d-block w-100" alt="..."/>            
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Soluciona Ya!!</h3>
-              <p class="opacity-75">Contacta a un proveedor, cotizacion gratis!!</p>
-              <p><a class="btn btn-dark" href="/usuario/registrar">CONTRATA</a></p>
-            </div>
-          </div>
         </div>
-      </div>
-  </div>
- </section>
+    </div>
+</section>
