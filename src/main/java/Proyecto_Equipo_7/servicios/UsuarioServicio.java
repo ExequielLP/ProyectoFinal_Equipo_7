@@ -95,16 +95,15 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
 
-    public void Eliminar(String id) throws MiException {
+    public void eliminar(String id) throws MiException {
         if (id.isEmpty() || id == null) {
-            new Exception("Esta el id null");
+            new Exception("El id es null");
         }
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
             usuario.setAlta(true);
             usuarioRepositorio.save(usuario);
-
         }
     }
             
@@ -136,7 +135,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     public List<Usuario> listarusuarios() {
 
-        List<Usuario> usuarios = new ArrayList();
+        List<Usuario> usuarios = new ArrayList<>();
 
         usuarios = usuarioRepositorio.findAll();
 

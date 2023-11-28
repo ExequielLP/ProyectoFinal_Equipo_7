@@ -147,4 +147,24 @@ public class Proveedorservicio implements UserDetailsService {
         return proveedorRepositorio.getOne(id);
     }
 
+    @Transactional(readOnly = true)
+    public List<Proveedor> listarProveedores(){
+        List<Proveedor> proveedores = new ArrayList<>();
+        proveedores = proveedorRepositorio.findAll();
+        return proveedores;
+    }
+
+    public void eliminar(String id) throws MiException {
+        if (id.isEmpty() || id == null){
+            new Exception("El id es null");
+        }
+        Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
+        if (respuesta.isPresent()){
+            Proveedor proveedor = respuesta.get();
+            proveedor.setAlta(true);
+            proveedorRepositorio.save(proveedor);
+        }
+
+    }
+
 }
