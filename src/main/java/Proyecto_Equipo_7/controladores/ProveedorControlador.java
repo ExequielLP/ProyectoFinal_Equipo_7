@@ -56,7 +56,16 @@ public class ProveedorControlador {
             return "registroProv.html";
 
         }
+    }
 
+    @PostMapping("eliminarProveedor/{id}")
+    public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
+        try {
+            proveedorservicio.eliminar(id);
+        } catch (MiException ex){
+            modelo.put("error", ex.getMessage());
+        }
+        return "redirect:/proveedor/listarProveedor";
     }
 
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
