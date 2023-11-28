@@ -101,7 +101,7 @@ public class UsuarioControlador {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
 
     @GetMapping("/lista_usuarioCompleta")
-    public String listarProfesionales(ModelMap modelo) {
+    public String listarUsuarios(ModelMap modelo) {
 
         List<Usuario> usuarios = usuarioServicio.listarusuarios();
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+                   table {
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: 2px solid black; /* Cambia el valor del grosor del borde según tus necesidades */
+            padding: 8px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container m-5" >
+
+            <table class="table table-dark">
+                <thead class="align-items-center">
+                    <tr >
+                        <th scope="col">Id del Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Foto de Perfil</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Cambiar Rol</th>
+                     
+
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}"> 
+                    <tr>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td 
+                            <a>
+                    <img th:if="${usuario.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}" style="max-width: 50px; max-height: 50px;"/>
+                </a>
+                        </td>
+
+                        <td th:text="${usuario.rol}"></td>
+
+                        <td>
+                            <a th:href= "@{/admin/modificarRol/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar</a>
+                        </td>
+
+                       
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                <div class="card-body">
+                    <h5 class="card-title">Exito ð</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>
+            <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
+                <div class="card-body">
+                    <h5 class="card-title">Error ð</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <a th:href="@{/admin/dashboard }" class="btn btn-primary my-2">Volver</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        
+        
+    </body>
+</html>

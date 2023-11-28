@@ -48,7 +48,8 @@ public class Proveedorservicio implements UserDetailsService {
         proveedor.setRol(Rol.PROVEEDOR);
         proveedor.setHonorario(honorario);
         proveedor.setRubro(rubro);
-
+        proveedor.setAlta(true);
+        
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
 
         Imagen imagen = imagenServicio.guardar(archivo);
@@ -167,4 +168,18 @@ public class Proveedorservicio implements UserDetailsService {
 
     }
 
+    
+     public Integer cantidadProveedores(){
+        
+        
+        return proveedorRepositorio.cantidadProveedores();
+        
+    }
+     
+     @Transactional(readOnly = true)
+    public List<Proveedor> seisMejoresProveedores(){
+        List<Proveedor> proveedores = new ArrayList<>();
+        proveedores = proveedorRepositorio.seisMejoresProveedores();
+        return proveedores;
+    }
 }
