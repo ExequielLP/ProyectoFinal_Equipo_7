@@ -2,6 +2,7 @@ package Proyecto_Equipo_7.controladores;
 
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.servicios.Proveedorservicio;
+import Proyecto_Equipo_7.servicios.RubroServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/")
 public class PortalControlador {
+
     @Autowired
     private Proveedorservicio proveedorservicio;
+    @Autowired
+    private RubroServicio rubroServicio;
     
 
     @GetMapping("/")
-    public String index() {
+    public String index(ModelMap modelo) {
+        modelo.put("listaRubro", rubroServicio.listarubros());
 
         return "index.html";
 
@@ -36,15 +41,15 @@ public class PortalControlador {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
-    public String inicio(HttpSession session,ModelMap modelo) {
-         
-       // modelo.put("proovedor", proveedorservicio.);
+    public String inicio(HttpSession session, ModelMap modelo) {
+
+        // modelo.put("proovedor", proveedorservicio.);
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         System.out.println(logueado.toString());
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
         }
-       
+
         return "inicio.html";
     }
 
