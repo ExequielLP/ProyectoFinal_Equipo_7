@@ -114,12 +114,11 @@ public class Proveedorservicio implements UserDetailsService {
 
     }
 
- @Transactional
-    public void actualizar(String id,String nombre, String domicilio, String telefono, String email, String password,
+    @Transactional
+    public void actualizar(String id, String nombre, String domicilio, String telefono, String email, String password,
             String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
 
-        
-        validar(nombre, domicilio, telefono, email,honorario,rubro, password, password2);
+        validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -139,12 +138,13 @@ public class Proveedorservicio implements UserDetailsService {
         }
 
     }
-    
-      public Double obtenerPromedioCalificacionesProveedor(String proveedorId) {
+
+    public Double obtenerPromedioCalificacionesProveedor(String proveedorId) {
         return proveedorRepositorio.buscarPromedioCalificacionesPorProveedor(proveedorId);
     }
-  public Proveedor getone(String id){
-    return proveedorRepositorio.getOne(id);
+
+    public Proveedor getone(String id) {
+        return proveedorRepositorio.getOne(id);
     }
-    
+
 }
