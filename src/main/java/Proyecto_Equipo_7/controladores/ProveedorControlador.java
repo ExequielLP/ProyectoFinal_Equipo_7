@@ -103,14 +103,6 @@ public class ProveedorControlador {
 
     }
 
-    @GetMapping("/proveedor/{id}")
-    public String verPromedioDeProveedor(@PathVariable("id") String proveedorId, Model model) {
-        Double promedioCalificaciones = proveedorservicio.obtenerPromedioCalificacionesProveedor(proveedorId);
-
-        model.addAttribute("proveedorId", proveedorId);
-        model.addAttribute("promedioCalificaciones", promedioCalificaciones);
-
-        return "promedio_proveedor.html";
-    }
+ 
 
 }

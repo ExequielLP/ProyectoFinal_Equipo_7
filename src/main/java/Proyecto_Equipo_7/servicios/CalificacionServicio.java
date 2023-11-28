@@ -12,7 +12,7 @@ public class CalificacionServicio {
     @Autowired
     private CalificacionRepositorio calificacionRepositorio;
     
-    public Integer promedioCalificacionesTotales(){
+    public Double promedioCalificacionesTotales(){
         
         
         return calificacionRepositorio.promedioCalificacionesTotales();
