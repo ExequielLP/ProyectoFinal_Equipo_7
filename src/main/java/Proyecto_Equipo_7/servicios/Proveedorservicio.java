@@ -48,7 +48,8 @@ public class Proveedorservicio implements UserDetailsService {
         proveedor.setRol(Rol.PROVEEDOR);
         proveedor.setHonorario(honorario);
         proveedor.setRubro(rubro);
-
+        proveedor.setAlta(true);
+        
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
 
         Imagen imagen = imagenServicio.guardar(archivo);
@@ -147,4 +148,38 @@ public class Proveedorservicio implements UserDetailsService {
         return proveedorRepositorio.getOne(id);
     }
 
+    @Transactional(readOnly = true)
+    public List<Proveedor> listarProveedores(){
+        List<Proveedor> proveedores = new ArrayList<>();
+        proveedores = proveedorRepositorio.findAll();
+        return proveedores;
+    }
+
+    public void eliminar(String id) throws MiException {
+        if (id.isEmpty() || id == null){
+            new Exception("El id es null");
+        }
+        Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
+        if (respuesta.isPresent()){
+            Proveedor proveedor = respuesta.get();
+            proveedor.setAlta(true);
+            proveedorRepositorio.save(proveedor);
+        }
+
+    }
+
+    
+     public Integer cantidadProveedores(){
+        
+        
+        return proveedorRepositorio.cantidadProveedores();
+        
+    }
+     
+     @Transactional(readOnly = true)
+    public List<Proveedor> seisMejoresProveedores(){
+        List<Proveedor> proveedores = new ArrayList<>();
+        proveedores = proveedorRepositorio.seisMejoresProveedores();
+        return proveedores;
+    }
 }

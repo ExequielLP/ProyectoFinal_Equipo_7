@@ -23,6 +23,5 @@ public class Proveedor extends Usuario {
     @OneToOne
     private Rubro rubro;
     
-    
 
 }

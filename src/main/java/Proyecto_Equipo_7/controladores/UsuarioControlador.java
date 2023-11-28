@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
-
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioControlador {
@@ -57,7 +55,7 @@ public class UsuarioControlador {
     @PostMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
         try {
-            usuarioServicio.Eliminar(id);
+            usuarioServicio.eliminar(id);
         } catch (MiException ex) {
           modelo.put("error",ex.getMessage() );
         }
@@ -103,7 +101,7 @@ public class UsuarioControlador {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
 
     @GetMapping("/lista_usuarioCompleta")
-    public String listarProfesionales(ModelMap modelo) {
+    public String listarUsuarios(ModelMap modelo) {
 
         List<Usuario> usuarios = usuarioServicio.listarusuarios();
 
