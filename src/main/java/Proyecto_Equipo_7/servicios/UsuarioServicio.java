@@ -129,7 +129,10 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
+
+ 
     @Transactional(readOnly = true)
+
     public List<Usuario> listarusuarios() {
 
         List<Usuario> usuarios = new ArrayList<>();
@@ -138,6 +141,6 @@ public class UsuarioServicio implements UserDetailsService {
 
         return usuarios;
     }
-    
+
 }
     
