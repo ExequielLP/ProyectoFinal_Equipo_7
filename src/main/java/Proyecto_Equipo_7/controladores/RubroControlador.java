@@ -70,7 +70,7 @@ public class RubroControlador {
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id, ModelMap modelo, @RequestParam String nombreRubro) {
+    public String modificar(@PathVariable String id, ModelMap modelo, @RequestParam String nombreRubro){
         try {
             rubroServicio.actualizar(id, nombreRubro);
             modelo.addAttribute("exito", "editorial modificada exitosamente");
