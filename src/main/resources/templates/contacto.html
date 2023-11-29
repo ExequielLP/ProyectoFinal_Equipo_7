@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace= "/fragments/head :: head"> 
+    <link rel="stylesheet" href="../static/css/contacto.css"/>
+    </head>
+    <body>
+
+        <!-- NAVBAR -->
+        <header data-bs-theme="dark">
+            <nav th:replace="/fragments/navbar :: nav"></nav>
+            
+        </header>    
+
+        <main class="contacto-fondo">
+            <div class="padre">
+                <div class="hijo">
+                    <div class="mapa"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.8662193822997!2d-68.88124902483077!3d-32.980931173620014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e0af3bd53dfd5%3A0x6a376e58e7db3a8!2sBesares%201209%2C%20M5500%20Chacras%20de%20Coria%2C%20Mendoza!5e0!3m2!1ses-419!2sar!4v1701251598310!5m2!1ses-419!2sar" height="350" style="border-radius: 5px; margin-top: 10px; border:0;" width="45" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                    <hr> <br>
+                    <h4><i class="fa-solid fa-map-location-dot"></i></h4>
+                    <p>Besares 1209, M5500 Chacras de Coria, Mendoza</p> <hr>
+                    <h4><i class="fa-solid fa-phone"></i></h4>
+                    <p>0261 565-9234</p>
+
+                </div>
+
+                <div class="hijo">
+                    <h1 class="titulo" >Contactanos</h1>
+                    <form action="" class="form mt-4">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control prueba" placeholder="Ingrese su nombre"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control prueba" placeholder="Ingrese su apellido"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control prueba" placeholder="Ingrese su correo"> 
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control prueba" placeholder="Ingrese su telefono"> 
+                        </div> <br> <br>
+
+                        <div class="form-group">
+                            <h5 class="titulo">Comentenos su situacion</h5> <br>
+                            <textarea name="" id="" rows="6" class="form-control comentario"></textarea>
+                        </div> <br>
+
+                        <button class="btn-contacto  w-50" type="submit">
+                            Enviar
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </main>
+
+
+        <div class="container"><footer th:replace="/fragments/footer :: footer" </footer> </div>
+        <script src="https://kit.fontawesome.com/4d7920e24b.js" crossorigin="anonymous"></script>
+    </body>
+</html>
