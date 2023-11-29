@@ -32,7 +32,7 @@ public class PortalControlador {
     @GetMapping("/")
     public String index(ModelMap modelo) {
         
-        modelo.put("listaRubro", rubroServicio.listarubros());
+        modelo.put("listaRubro", rubroServicio.listaRubros());
         modelo.put("cantidadUsuarios",usuarioServicio.cantidadUsuarios());
         modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
         modelo.put("promedioCalificacionesTotales",calificacionServicio.promedioCalificacionesTotales() );
@@ -48,7 +48,7 @@ public class PortalControlador {
             modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
         }
 
-        return "login.html";
+        return "index.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
