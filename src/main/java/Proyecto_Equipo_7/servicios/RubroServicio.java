@@ -41,7 +41,7 @@ public class RubroServicio {
 
     public List<Rubro> listaRubros() {
 
-        List<Rubro> rubros = new ArrayList();
+        List<Rubro> rubros = new ArrayList<>();
 
         rubros = rubroRepositorio.findAll();
 
