@@ -36,16 +36,14 @@ public class TrabajoServicio {
             
             if (respuesta.isPresent()) {
                 Proveedor proveedor = respuesta.get();
-              
-                if (respuesta1.isPresent()) {
-                    Usuario usuario = respuesta1.get();
+                                           
                     Trabajo trabajo = new Trabajo();
                     trabajo.setProveedor(proveedor);
                     trabajo.setUsuario(usuario);
                     trabajo.setTerminado(false);
                     trabajo.setAlta(true);
                     trabajoRepositorio.save(trabajo);
-                }
+               
 
             }
         }

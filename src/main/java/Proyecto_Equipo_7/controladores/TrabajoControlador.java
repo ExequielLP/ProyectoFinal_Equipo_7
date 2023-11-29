@@ -47,7 +47,7 @@ public class TrabajoControlador {
         // este metodo permite al proveedor dar por terminado un trabajo
         return "list_trabajos.html";
 
-    
+    }
 
     @GetMapping("/cargarTrabajo/{id}")
     public String cargarTrabajo(@PathVariable String id,ModelMap modelo){
@@ -81,7 +81,7 @@ public class TrabajoControlador {
     
     @GetMapping("/eleminarTrabajo/{id}")
     public String eliminarTrabajo(@PathVariable String id,ModelMap modelo){
-        trabajoServicio.eliminarTrabajo(id);
+        trabajoServicio.finalizarTrabajo(id);
         
     // aca va un redirect:/ y la misma donde estaba
         return null;
