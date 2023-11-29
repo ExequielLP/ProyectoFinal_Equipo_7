@@ -53,18 +53,23 @@ public class TrabajoControlador {
     
     
     
-    @PostMapping("/persistirTrabajo/{id}")
+    @GetMapping("/persistirTrabajo/{id}")
     public String persistirTrabajo(@PathVariable String id,HttpSession session,ModelMap modelo){
         try {
+//            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+//            usuario.getId();
+            System.out.println(id);
+            System.out.println("session" + session);
             trabajoServicio.crearTrabajo(session, id);
             modelo.put("exito", "Servicio contratado exitosamente");
+            return "redirect:/inicio";
         } catch (Exception e) {
             modelo.put("error", "Error al contratar servicio");
             // aca retorna vista de error o index
             return null;
         }
     //aca va la vista dps de envien datos del form
-    return null;
+    
     }
     
     
