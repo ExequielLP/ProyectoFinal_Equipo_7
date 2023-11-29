@@ -169,5 +169,9 @@ public class UsuarioServicio implements UserDetailsService {
     		}
     	}
     }
+    
+     public Usuario getone(String id) {
+        return usuarioRepositorio.getOne(id);
+    }
 }
     
