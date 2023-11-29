@@ -32,6 +32,7 @@ public class Trabajo {
     private Proveedor proveedor;
 
 
-    private boolean terminado=false;
+    private boolean alta;
+    private boolean terminado;
 
 }

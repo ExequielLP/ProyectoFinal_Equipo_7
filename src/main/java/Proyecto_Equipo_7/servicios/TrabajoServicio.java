@@ -24,19 +24,6 @@ public class TrabajoServicio {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public Trabajo darDeAltaTrabajo(Proveedor proveedor, Usuario usuario) {
-
-        Trabajo trabajo = new Trabajo();
-
-        trabajo.setProveedor(proveedor);
-        trabajo.setUsuario(usuario);
-
-        trabajo = trabajoRepositorio.save(trabajo);
-
-        return trabajo;
-    }
-
-    @Transactional
     public void crearTrabajo(HttpSession session, String id) {
         System.err.println("CREAR TRABAJO DATOS");
         System.out.println(session.getId());
@@ -49,23 +36,27 @@ public class TrabajoServicio {
             
             if (respuesta.isPresent()) {
                 Proveedor proveedor = respuesta.get();
-
-                Trabajo trabajo = new Trabajo();
-                trabajo.setProveedor(proveedor);
-                trabajo.setUsuario(usuario);
-                
-                trabajoRepositorio.save(trabajo);
+              
+                if (respuesta1.isPresent()) {
+                    Usuario usuario = respuesta1.get();
+                    Trabajo trabajo = new Trabajo();
+                    trabajo.setProveedor(proveedor);
+                    trabajo.setUsuario(usuario);
+                    trabajo.setTerminado(false);
+                    trabajo.setAlta(true);
+                    trabajoRepositorio.save(trabajo);
+                }
 
             }
         }
     }
 
     @Transactional
-    public void eliminarTrabajo(String id) {
+    public void finalizarTrabajo(String id) {
         Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Trabajo trabajo = respuesta.get();
-            trabajo.setTerminado(false);
+            trabajo.setTerminado(true);
             trabajoRepositorio.save(trabajo);
         }
 
@@ -79,4 +70,14 @@ public class TrabajoServicio {
         return null;
     }
 
+    @Transactional
+    public void darDeBajaTrabajo(String id) {
+        Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Trabajo trabajo = respuesta.get();
+            trabajo.setAlta(false);
+            trabajoRepositorio.save(trabajo);
+        }
+
+    }
 }
