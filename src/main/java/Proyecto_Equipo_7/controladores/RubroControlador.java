@@ -50,7 +50,7 @@ public class RubroControlador {
     
       @GetMapping("/lista")
     public String listar(ModelMap modelo) {
-        List<Rubro> rubros = rubroServicio.listarubros();
+        List<Rubro> rubros = rubroServicio.listaRubros();
         modelo.addAttribute("rubros", rubros);
         if (modelo.containsAttribute("exito")) {
             String exito = (String) modelo.getAttribute("exito");
