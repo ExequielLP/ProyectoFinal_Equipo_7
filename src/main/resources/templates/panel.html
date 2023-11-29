@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                background-color: burlywood
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <h1>PANEL PARA ADMINISTRADOR</h1>
+                <div class="container-principal">
+                    <a class="navbar-brand area-titulo" href="#">ELIJA LA TAREA A REALIZAR</a><br>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a Style="color:blue" class="nav-link libros-lista" th:href="@{/libro/lista}"><strong>LISTAR LIBROS</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a Style="color:blue"   class="nav-link autores-lista" th:href="@{/autor/lista}"><strong>LISTAR AUTORES</strong></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a Style="color:blue" class="nav-link editoriales-lista" th:href="@{/editorial/lista}"><strong>LISTAR EDITORIALES</strong></a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a Style="color:blue" class="nav-link editoriales-lista" th:href="@{/admin/usuarios}"><strong>LISTAR USUARIOS</strong></a>
+                                 
+                            </li><br>
+                            <br>
+                            
+                            <h5>NOTA:en las listas encontrara la opcion para modificar</h5>
+                        </ul><br><!-- comment -->
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a Style="color:red" class="nav-link" th:href="@{/autor/registrar}"><strong>Registrar Autor</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a Style="color:red" class="nav-link" th:href="@{/libro/registrar}"><strong>Registrar Libro</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a Style="color:red" class="nav-link" th:href="@{/editorial/registrar}"><strong>Registrar Editorial</strong></a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <li class="nav-item">
+                <a Style="color:black" class="nav-link editoriales-lista" th:href="@{/logout}"><strong>CERRAR SESION</strong></a>
+            </li>
+        </nav>
+    </body>
+</html>
