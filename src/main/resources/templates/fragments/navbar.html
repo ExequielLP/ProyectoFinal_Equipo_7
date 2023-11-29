@@ -73,7 +73,7 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/trabajo/contratoTrabajo">Cargar un trabajo</a></li>                        
+                        <li><a class="dropdown-item" href="/trabajo/crear_Trabajo">Cargar un trabajo</a></li>                        
                     </ul>
                     <!-- PROVEEDOR -->    
                     <ul sec:authorize="hasRole('ROLE_PROVEEDOR')" class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -81,7 +81,13 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
                         <li><hr class="dropdown-divider"></li>
+
+                        <li><a class="dropdown-item" href="#">Proveedor</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/trabajo/crearTrabajo">Cargar un trabajo</a></li>
+
                         <li><a class="dropdown-item" href="#">Mis calificaciones</a></li>
+
                     </ul>
                     <!-- ADMINISTRADOR -->
                     <ul sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-menu" aria-labelledby="navbarDropdown">

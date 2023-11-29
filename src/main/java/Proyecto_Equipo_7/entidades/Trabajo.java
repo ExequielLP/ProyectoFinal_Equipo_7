@@ -24,14 +24,15 @@ public class Trabajo {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "proveedor_id")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
 
 
+    private boolean alta;
     private boolean terminado;
 
 }
