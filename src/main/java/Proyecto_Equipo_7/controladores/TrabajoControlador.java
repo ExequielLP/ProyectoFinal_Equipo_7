@@ -46,6 +46,46 @@ public class TrabajoControlador {
 
         // este metodo permite al proveedor dar por terminado un trabajo
         return "list_trabajos.html";
+
+    
+
+    @GetMapping("/cargarTrabajo/{id}")
+    public String cargarTrabajo(@PathVariable String id,ModelMap modelo){
+       
+        
+//aca va la vista para que aparesca el form
+    return  "contratoTrabajo.html" ;
+    }
+    
+    
+    
+    @GetMapping("/persistirTrabajo/{id}")
+    public String persistirTrabajo(@PathVariable String id,HttpSession session,ModelMap modelo){
+        try {
+//            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+//            usuario.getId();
+            System.out.println(id);
+            System.out.println("session" + session);
+            trabajoServicio.crearTrabajo(session, id);
+            modelo.put("exito", "Servicio contratado exitosamente");
+            return "redirect:/inicio";
+        } catch (Exception e) {
+            modelo.put("error", "Error al contratar servicio");
+            // aca retorna vista de error o index
+            return null;
+        }
+    //aca va la vista dps de envien datos del form
+    
+    }
+    
+    
+    @GetMapping("/eleminarTrabajo/{id}")
+    public String eliminarTrabajo(@PathVariable String id,ModelMap modelo){
+        trabajoServicio.eliminarTrabajo(id);
+        
+    // aca va un redirect:/ y la misma donde estaba
+        return null;
+
     }
 
     @PreAuthorize("AnyRole('ADMINISTRADOR')")

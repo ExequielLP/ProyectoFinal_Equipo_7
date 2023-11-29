@@ -25,13 +25,18 @@ public class TrabajoServicio {
 
     @Transactional
     public void crearTrabajo(HttpSession session, String id) {
-
+        System.err.println("CREAR TRABAJO DATOS");
+        System.out.println(session.getId());
+        Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
+        System.out.println("__________________USUARIO________"+usuario);        
         if (session != null) {
             Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
-            Optional<Usuario> respuesta1 = usuarioRepositorio.findById(session.getId());
+
+            System.out.println("PROVEEDOR_____________________________________" + respuesta);
+            
             if (respuesta.isPresent()) {
                 Proveedor proveedor = respuesta.get();
-
+              
                 if (respuesta1.isPresent()) {
                     Usuario usuario = respuesta1.get();
                     Trabajo trabajo = new Trabajo();
@@ -41,6 +46,7 @@ public class TrabajoServicio {
                     trabajo.setAlta(true);
                     trabajoRepositorio.save(trabajo);
                 }
+
             }
         }
     }
