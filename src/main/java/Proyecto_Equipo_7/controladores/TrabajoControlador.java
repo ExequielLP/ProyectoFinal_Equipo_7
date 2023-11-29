@@ -2,7 +2,6 @@ package Proyecto_Equipo_7.controladores;
 
 import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Usuario;
-import Proyecto_Equipo_7.servicios.Proveedorservicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,6 @@ public class TrabajoControlador {
     @Autowired
     private TrabajoServicio trabajoServicio;
     
-    @Autowired
-    private Proveedorservicio proveedorservicio;
-
   
     @GetMapping("/crearTrabajo")
     public String crearTrabajo() {
