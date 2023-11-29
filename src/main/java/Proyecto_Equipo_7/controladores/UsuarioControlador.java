@@ -4,13 +4,9 @@ import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
 import java.util.List;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -62,7 +56,7 @@ public class UsuarioControlador {
     @PostMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
         try {
-            usuarioServicio.Eliminar(id);
+            usuarioServicio.eliminar(id);
         } catch (MiException ex) {
           modelo.put("error",ex.getMessage() );
         }
@@ -74,7 +68,7 @@ public class UsuarioControlador {
     @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
-        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
         modelo.put("usuario", usuario);
         return "usuario_modificar.html";
     }
@@ -103,15 +97,20 @@ public class UsuarioControlador {
 
     }
     
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/lista_usuarioCompleta")
-    public String listarProfesionales(ModelMap modelo) {
 
-        List<Usuario> usuarios = usuarioServicio.listarusuarios();
+ 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
+    @GetMapping("/lista_usuarioCompleta")
+    public String listarUsuarios(ModelMap modelo) {
+
+        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
 
         modelo.addAttribute("usuarios", usuarios);
 
         return "usuario_listaCompleta.html";
     }
-
+   
+    
+  
 }

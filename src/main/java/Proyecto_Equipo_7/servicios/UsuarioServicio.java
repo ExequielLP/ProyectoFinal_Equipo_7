@@ -75,7 +75,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         if (usuario != null) {
 
-            List<GrantedAuthority> permisos = new ArrayList();
+            List<GrantedAuthority> permisos = new ArrayList<>();
 
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
 
@@ -85,7 +85,8 @@ public class UsuarioServicio implements UserDetailsService {
 
             HttpSession session = attr.getRequest().getSession(true);
 
-            session.setAttribute("usuariosession", usuario);
+            session.setAttribute("usuarioSession", usuario);
+            
 
             return new User(usuario.getEmail(), usuario.getPassword(), permisos);
         } else {
@@ -95,16 +96,15 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
 
-    public void Eliminar(String id) throws MiException {
+    public void eliminar(String id) throws MiException {
         if (id.isEmpty() || id == null) {
-            new Exception("Esta el id null");
+            new Exception("El id es null");
         }
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
             usuario.setAlta(true);
             usuarioRepositorio.save(usuario);
-
         }
     }
             
@@ -130,15 +130,48 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
-    @Transactional(readOnly = true)
-    public List<Usuario> listarusuarios() {
 
-        List<Usuario> usuarios = new ArrayList();
+ 
+    
+
+    public List<Usuario> listarUsuarios() {
+
+        List<Usuario> usuarios = new ArrayList<>();
 
         usuarios = usuarioRepositorio.findAll();
 
         return usuarios;
     }
     
+      public Integer cantidadUsuarios(){
+        
+        
+        return usuarioRepositorio.cantidadTotal();
+        
+    }
+
+         @Transactional
+    public void cambiarRol(String id){
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+    	
+    	if(respuesta.isPresent()) {
+    		
+    		Usuario usuario = respuesta.get();
+    		
+    		if(usuario.getRol().equals(Rol.USER)) {
+    			
+    		usuario.setRol(Rol.ADMIN);
+                
+                
+    		
+    		}else if(usuario.getRol().equals(Rol.ADMIN)) {
+    			usuario.setRol(Rol.USER);
+    		}
+    	}
+    }
+    
+     public Usuario getone(String id) {
+        return usuarioRepositorio.getOne(id);
+    }
 }
     

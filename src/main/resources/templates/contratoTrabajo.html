@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace= "/fragments/head :: head"> </head>
+
+    <body>
+
+        <header data-bs-theme="dark">
+            <nav th:replace="/fragments/navbar :: nav" </nav>
+        </header>
+
+
+
+        <div><div th:replace="/fragments/exitoError :: div"></div></div>
+        <div>
+            <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalContrato">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content rounded-4 shadow">
+                        <div class="modal-header p-5 pb-4 border-bottom-0">
+                            <h1 class="fw-bold mb-0 fs-2">CONTRATAR UN SERVICIO</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body p-5 pt-0">
+
+                            <form class="formulario" th:action="@{/trabajo/registro}" method="POST" >
+
+                                <input hidden th:value="${session.usuarioSession.id}" name="id" >
+                                
+                                <div class="form-group my-3">            
+                                    <select name="servicio" id="" >
+                                        <option selected th:if="${proveedor.servicio == servicio}" 
+                                                th:each="servicios : ${servicio}"
+                                                th:value="${servicio}"
+                                                th:text="${servicio}">
+                                        </option>
+                                        <option selected th:if="${proveedor.servicio != servicio}" 
+                                                th:each="servicios : ${servicio}"
+                                                th:value="${servicio}"
+                                                th:text="${servicio}">
+                                        </option>
+                                    </select>
+                                </div> 
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nombre usuario">
+                                    <label for="floatingInput">Nombre Completo</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio" id="floatingInput" placeholder="Domicilio">
+                                    <label for="floatingInput">Domicilio</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono" id="floatingInput" placeholder="Telefono o celular">
+                                    <label for="floatingInput">Telefono o celular</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput" placeholder="Email">
+                                    <label for="floatingInput">Email ejemplo@gmail.com</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control rounded-3" name="password" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control rounded-3" name="password2" id="floatingPassword2" placeholder="Confirme el Password">
+                                    <label for="floatingPassword">Debe ser idem al anterior</label>
+                                </div>
+                                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+                                <small class="text-body-secondary">Al unirte, aceptas los Términos de servicio de Servicio 7,
+                                    así como recibir correos electrónicos ocasionales de nuestra parte.
+                                    Lee nuestra Política de privacidad para saber cómo utilizamos tus datos personales.</small>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="container"><footer th:replace="/fragments/footer :: footer" </footer> </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    </body>
+</html>
+
