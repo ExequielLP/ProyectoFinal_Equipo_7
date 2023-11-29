@@ -53,12 +53,12 @@
                                         <td th:text="${usuario.domicilio}"></td>                        
                                         <td th:text="${usuario.telefono}" ></td>
                                         <td th:text="${usuario.email}" ></td>
-                                        <td th:text="${usuario.activo}" ></td>
+                                        <td th:text="${usuario.alta}" ></td>
                                         <td th:text="${usuario.rol}" ></td>
-                                        <td sec:authorize="hasRole('ADMIN')" >
+                                        <td  >
                                             <a th:href="@{/admin/modificarRol/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar Rol</a>
                                         </td>
-                                        <td  sec:authorize="hasRole('ADMIN')">
+                                        <td  >
                                             <a th:href="@{/perfil/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Modificar</a>
                                         </td>
                                     </tr>                    
