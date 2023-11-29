@@ -132,7 +132,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
  
-    @Transactional(readOnly = true)
+    
 
     public List<Usuario> listarUsuarios() {
 

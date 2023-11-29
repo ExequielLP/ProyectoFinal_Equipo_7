@@ -3,6 +3,7 @@ package Proyecto_Equipo_7.controladores;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +15,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminControlador {
 
+    @Autowired
       private UsuarioServicio usuarioServicio;
     
    @GetMapping("/dashboard")
-   public String panelAdministrativo(){
+   public String panelAdministrativo(ModelMap modelo){
+       List<Usuario> usuarios = usuarioServicio.listarUsuarios();
+        modelo.addAttribute("usuarios", usuarios);
        return "panel.html";
    }
    
    @GetMapping("/usuarios")
     public String listar(ModelMap modelo) {
-        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
-        modelo.addAttribute("usuarios", usuarios);
+        
 
-        return "usuario_list";
+        return "redirect:/admin/dashboard";
     }
     
     @GetMapping("/modificarRol/{id}")
