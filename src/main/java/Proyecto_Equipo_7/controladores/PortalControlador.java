@@ -48,12 +48,13 @@ public class PortalControlador {
             modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
         }
 
-        return "login.html";
+        return "index.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
+
 
          modelo.put("listaRubros", rubroServicio.listaRubros());
 //         modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());

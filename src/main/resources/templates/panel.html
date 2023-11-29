@@ -4,93 +4,82 @@
     <head th:replace= "/fragments/head :: head"> </head>
 
     <body>
-
+        <!-- NAVBAR -->
         <header data-bs-theme="dark">
-            <nav th:replace="/fragments/navbar :: nav" </nav>
-        </header>
-        
+            <nav th:replace="/fragments/navbar :: nav"></nav>
+        </header>       
+
 
         <main class="container justify-content-center "> 
-            
+            <!-- CARRUSEL -->
             <div class="container">
-            <div th:replace="/fragments/carousel :: section"></div>
+                <div th:replace="/fragments/carousel :: section"></div>
             </div>
-            
+            <!-- METRICAS -->
             <div class="container">
-            <div th:replace="/fragments/cardRubro :: div"></div>
+                <div th:replace="/fragments/cardRubro :: div"></div>
+            </div>
+
+
+
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            LISTAR USUARIOS
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            
+                            <table class="table table-secondary table-hover">                
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id Usuario</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Domicilio</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Activo</th>
+                                        <th scope="col">Rol</th>
+                                        <th scope="col" sec:authorize="hasRole('ADMIN')" >Cambiar Rol</th>
+                                        <th scope="col" sec:authorize="hasRole('ADMIN')" >Modificar</th>
+                                    </tr>
+                                </thead>
+                                <tbody th:each="usuario : ${usuarios}">
+                                    <tr>
+                                        <td th:text="${usuario.id}"></td>
+                                        <td th:text="${usuario.nombre}"></td>
+                                        <td th:text="${usuario.domicilio}"></td>                        
+                                        <td th:text="${usuario.telefono}" ></td>
+                                        <td th:text="${usuario.email}" ></td>
+                                        <td th:text="${usuario.activo}" ></td>
+                                        <td th:text="${usuario.rol}" ></td>
+                                        <td sec:authorize="hasRole('ADMIN')" >
+                                            <a th:href="@{/admin/modificarRol/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar Rol</a>
+                                        </td>
+                                        <td  sec:authorize="hasRole('ADMIN')">
+                                            <a th:href="@{/perfil/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Modificar</a>
+                                        </td>
+                                    </tr>                    
+                                </tbody>
+                            </table>
+                           
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
-        
-        
-        
+
+
+
 
 
 
         <div class="container"><footer th:replace="/fragments/footer :: footer" </footer> </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        
+
     </body>
 </html>
 
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            *{
-                background-color: burlywood
-            }
-        </style>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <h1>PANEL PARA ADMINISTRADOR</h1>
-                <div class="container-principal">
-                    <a class="navbar-brand area-titulo" href="#">ELIJA LA TAREA A REALIZAR</a><br>
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a Style="color:blue" class="nav-link libros-lista" th:href="@{/libro/lista}"><strong>LISTAR LIBROS</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a Style="color:blue"   class="nav-link autores-lista" th:href="@{/autor/lista}"><strong>LISTAR AUTORES</strong></a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a Style="color:blue" class="nav-link editoriales-lista" th:href="@{/editorial/lista}"><strong>LISTAR EDITORIALES</strong></a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a Style="color:blue" class="nav-link editoriales-lista" th:href="@{/admin/usuarios}"><strong>LISTAR USUARIOS</strong></a>
-                                 
-                            </li><br>
-                            <br>
-                            
-                            <h5>NOTA:en las listas encontrara la opcion para modificar</h5>
-                        </ul><br><!-- comment -->
-
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a Style="color:red" class="nav-link" th:href="@{/autor/registrar}"><strong>Registrar Autor</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a Style="color:red" class="nav-link" th:href="@{/libro/registrar}"><strong>Registrar Libro</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a Style="color:red" class="nav-link" th:href="@{/editorial/registrar}"><strong>Registrar Editorial</strong></a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-            <li class="nav-item">
-                <a Style="color:black" class="nav-link editoriales-lista" th:href="@{/logout}"><strong>CERRAR SESION</strong></a>
-            </li>
-        </nav>
-    </body>
-</html>
