@@ -148,7 +148,7 @@ public class Proveedorservicio implements UserDetailsService {
         return proveedorRepositorio.getOne(id);
     }
 
-    @Transactional(readOnly = true)
+    
     public List<Proveedor> listarProveedores(){
         List<Proveedor> proveedores = new ArrayList<>();
         proveedores = proveedorRepositorio.findAll();
