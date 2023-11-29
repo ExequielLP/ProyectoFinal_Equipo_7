@@ -32,9 +32,12 @@
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>
                 </li>
+
                 <!-- MENU REGISTRO/LOGIN/EDITAR PROVEEDOR -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Proveedor</a>
+                    <a th:if="${session.usuarioSession == null or session.usuarioSession?.rol eq 'PROVEEDOR'}"
+                       
+                       class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ProveedorDENTRO?</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignin" th:if="${session.usuarioSession == null}">
                                 Ingresar</button></li>                        
@@ -46,9 +49,10 @@
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
-                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/index">Cerrar Secion</a></li>
+                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>
                 </li> 
+
                 <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+${session.usuarioSession.rol}" 

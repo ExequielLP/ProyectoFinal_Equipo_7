@@ -55,6 +55,7 @@ public class PortalControlador {
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
 
+
          modelo.put("listaRubros", rubroServicio.listaRubros());
 //         modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
