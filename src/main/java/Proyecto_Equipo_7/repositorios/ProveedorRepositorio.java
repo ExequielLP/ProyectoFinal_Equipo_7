@@ -30,4 +30,8 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
 
     @Query("SELECT p.nombre, c.calificacion FROM Calificacion c JOIN c.proveedor p ORDER BY c.calificacion DESC")
     List<Proveedor> seisMejoresProveedores(Pageable pageable);
+
+//    @Query("SELECT p.nombre, c.calificacion FROM Calificacion c JOIN proveedor p ON c.proveedor_id = p.id ORDER BY c.calificacion DESC")
+//    public List<Proveedor> seisMejoresProveedores();
+
 }

@@ -176,10 +176,19 @@ public class Proveedorservicio implements UserDetailsService {
         
     }
      
+
   @Transactional(readOnly = true)
 public List<Proveedor> seisMejoresProveedores() {
     Pageable pageable = (Pageable) PageRequest.of(0, 6);
     List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
     return proveedores;
 }
+
+//     @Transactional(readOnly = true)
+//    public List<Proveedor> seisMejoresProveedores(){
+//        List<Proveedor> proveedores = new ArrayList<>();
+//        proveedores = proveedorRepositorio.seisMejoresProveedores();
+//        return proveedores;
+//    }
+
 }
