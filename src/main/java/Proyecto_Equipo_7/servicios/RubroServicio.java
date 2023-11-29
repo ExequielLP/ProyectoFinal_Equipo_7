@@ -39,7 +39,7 @@ public class RubroServicio {
 
     @Transactional(readOnly = true)
 
-    public List<Rubro> listarubros() {
+    public List<Rubro> listaRubros() {
 
         List<Rubro> rubros = new ArrayList<>();
 
@@ -70,11 +70,5 @@ public class RubroServicio {
         
     }
       
-      public List<Rubro> listaRubros(){
-          
-          
-        return rubroRepositorio.listaRubros();
-          
-          
-      }
+
 }
