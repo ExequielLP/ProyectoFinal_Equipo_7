@@ -37,6 +37,9 @@
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>
                 </li>
+                <li sec:authorize="hasRole('ROLE_USER')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
+                    <a sec:authorize="hasRole('ROLE_USER')" class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contrato</a>                    
+                </li>
 
                 <!-- MENU REGISTRO/LOGIN/EDITAR PROVEEDOR -->
                 <li th:if="${session.usuarioSession == null}" class="nav-item dropdown">
@@ -61,6 +64,7 @@
                 </li> 
 
                 <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
+                <!-- USUARIO -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+${session.usuarioSession.rol}" 
                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -69,16 +73,17 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
                         <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/trabajo/contratoTrabajo">Cargar un trabajo</a></li>                        
                     </ul>
+                    <!-- PROVEEDOR -->    
                     <ul sec:authorize="hasRole('ROLE_PROVEEDOR')" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Proveedor</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/trabajo/contratoTrabajo">Cargar un trabajo</a></li>
+                        <li><a class="dropdown-item" href="#">Mis calificaciones</a></li>
                     </ul>
+                    <!-- ADMINISTRADOR -->
                     <ul sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"  href="#">Listar Usuarios</a></li>
                         <li><hr class="dropdown-divider"></li>
@@ -87,6 +92,8 @@
                         <li><a class="dropdown-item" href="#">Listar Rubros</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Listar Trabajos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Cerrar</a></li>
                     </ul>
                 </li>                
             </ul>
