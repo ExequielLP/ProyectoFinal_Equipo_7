@@ -1,13 +1,11 @@
 package Proyecto_Equipo_7.entidades;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.Entity;
 import org.hibernate.annotations.GenericGenerator;
 
 

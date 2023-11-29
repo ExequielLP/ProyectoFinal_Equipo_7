@@ -69,4 +69,12 @@ public class RubroServicio {
         
         
     }
+      
+      public List<Rubro> listaRubros(){
+          
+          
+        return rubroRepositorio.listaRubros();
+          
+          
+      }
 }

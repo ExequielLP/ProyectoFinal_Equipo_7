@@ -29,7 +29,7 @@
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
-                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/index">Cerrar Secion</a></li>
                     </ul>
                 </li>
                 <!-- MENU REGISTRO/LOGIN/EDITAR PROVEEDOR -->
@@ -46,7 +46,7 @@
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
-                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
+                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/index">Cerrar Secion</a></li>
                     </ul>
                 </li> 
                 <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
@@ -58,9 +58,6 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">A designar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/trabajo/contratoTrabajo">Cargar un trabajo</a></li>
                     </ul>
                     <ul sec:authorize="hasRole('ROLE_PROVEEDOR')" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>
