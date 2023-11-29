@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -103,14 +102,6 @@ public class ProveedorControlador {
 
     }
 
-    @GetMapping("/proveedor/{id}")
-    public String verPromedioDeProveedor(@PathVariable("id") String proveedorId, Model model) {
-        Double promedioCalificaciones = proveedorservicio.obtenerPromedioCalificacionesProveedor(proveedorId);
-
-        model.addAttribute("proveedorId", proveedorId);
-        model.addAttribute("promedioCalificaciones", promedioCalificaciones);
-
-        return "promedio_proveedor.html";
-    }
+ 
 
 }

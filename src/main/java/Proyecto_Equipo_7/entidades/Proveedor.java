@@ -1,6 +1,5 @@
 package Proyecto_Equipo_7.entidades;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +21,7 @@ public class Proveedor extends Usuario {
 
     @OneToOne
     private Rubro rubro;
-    
 
+    @OneToOne
+    private Calificacion calificacion;
 }

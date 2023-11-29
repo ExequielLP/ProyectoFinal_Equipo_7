@@ -7,10 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CalificacionRepositorio extends JpaRepository<Calificacion, String>{
+public interface CalificacionRepositorio extends JpaRepository<Calificacion, String> {
+
+
+    @Query("SELECT avg(c.calificacion) FROM Calificacion c")
+    Double promedioCalificacionesTotales();
 
      @Query("SELECT avg(calificacion) FROM calificacion")
     public Integer promedioCalificacionesTotales();
     
-    
+  
 }
