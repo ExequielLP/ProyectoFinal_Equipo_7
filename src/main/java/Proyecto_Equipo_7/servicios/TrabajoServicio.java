@@ -24,19 +24,6 @@ public class TrabajoServicio {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public Trabajo darDeAltaTrabajo(Proveedor proveedor, Usuario usuario) {
-
-        Trabajo trabajo = new Trabajo();
-
-        trabajo.setProveedor(proveedor);
-        trabajo.setUsuario(usuario);
-
-        trabajo = trabajoRepositorio.save(trabajo);
-
-        return trabajo;
-    }
-
-    @Transactional
     public void crearTrabajo(HttpSession session, String id) {
 
         if (session != null) {
@@ -50,6 +37,8 @@ public class TrabajoServicio {
                     Trabajo trabajo = new Trabajo();
                     trabajo.setProveedor(proveedor);
                     trabajo.setUsuario(usuario);
+                    trabajo.setTerminado(false);
+                    trabajo.setAlta(true);
                     trabajoRepositorio.save(trabajo);
                 }
             }
@@ -57,11 +46,11 @@ public class TrabajoServicio {
     }
 
     @Transactional
-    public void eliminarTrabajo(String id) {
+    public void finalizarTrabajo(String id) {
         Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Trabajo trabajo = respuesta.get();
-            trabajo.setTerminado(false);
+            trabajo.setTerminado(true);
             trabajoRepositorio.save(trabajo);
         }
 
@@ -75,4 +64,14 @@ public class TrabajoServicio {
         return null;
     }
 
+    @Transactional
+    public void darDeBajaTrabajo(String id) {
+        Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Trabajo trabajo = respuesta.get();
+            trabajo.setAlta(false);
+            trabajoRepositorio.save(trabajo);
+        }
+
+    }
 }

@@ -54,6 +54,7 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
+        modelo.put("listaProveedor", proveedorServicio.listarProveedores());
 
 
          modelo.put("listaRubros", rubroServicio.listaRubros());
