@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 
