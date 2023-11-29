@@ -32,7 +32,7 @@ public class PortalControlador {
     @GetMapping("/")
     public String index(ModelMap modelo) {
         
-        modelo.put("listaRubro", rubroServicio.listarubros());
+        modelo.put("listaRubro", rubroServicio.listaRubros());
         modelo.put("cantidadUsuarios",usuarioServicio.cantidadUsuarios());
         modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
         modelo.put("promedioCalificacionesTotales",calificacionServicio.promedioCalificacionesTotales() );

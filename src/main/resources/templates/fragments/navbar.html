@@ -16,20 +16,24 @@
                 <li class="nav-item dropdown">
                 </li>
                 <!-- MENU REGISTRO/LOGIN/EDITAR USER -->
-                <li class="nav-item dropdown">
+                <li th:if="${session.usuarioSession == null}" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignin" th:if="${session.usuarioSession == null}">
+                        <li><button th:if="${session.usuarioSession == null}" type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignin">
                                 Ingresar</button></li>                        
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
-                        <li><button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalRegistro" th:if="${session.usuarioSession == null}">
+                        <li><button th:if="${session.usuarioSession == null}" type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalRegistro">
                                 Registrar</button></li>                     
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
+                </li>
+                <li th:if="${session.usuarioSession != null}" class="nav-item dropdown">
+                    <a sec:authorize="hasRole('ROLE_USER')" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario r</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Editar Perfil</a></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
-                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/index">Cerrar Secion</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>
                 </li>
                 <!-- MENU REGISTRO/LOGIN/EDITAR PROVEEDOR -->
