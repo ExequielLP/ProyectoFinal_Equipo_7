@@ -14,7 +14,7 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {
 
     public Usuario findByEmail(@Param("email") String email);
 
-    @Query("SELECT count(*) FROM  Usuario")
-    public Integer cantidadTotal();
+    @Query("SELECT count(*) FROM  Usuario u WHERE u.rol = 'USER'")
+    public Integer cantidadUsuariosTotal();
 
 }
