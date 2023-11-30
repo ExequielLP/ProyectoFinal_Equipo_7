@@ -20,11 +20,11 @@ public class TrabajoControlador {
 
     @Autowired
     private TrabajoServicio trabajoServicio;
-
+  
     @Autowired
-    private Proveedorservicio proveedorservicio;
-
-    @GetMapping("/crear_Trabajo")
+    private Proveedorservicio proveedorServicio;
+  
+    @GetMapping("/crearTrabajo")
     public String crearTrabajo() {
         return "contratoTrabajo.html";
     }
