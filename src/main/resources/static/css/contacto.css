@@ -1,6 +1,6 @@
 .contacto-fondo{
     margin: 0;
-    background-image: url(../img/contacto.jpg);
+    background-image: url(../img/1080p-hd-min.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -25,6 +25,7 @@ footer{
 .hijo{
     padding: 10px;
     height: 650px;
+    margin-top:10px;
     width: 500px;
     background-color: rgba(70, 61, 61, 0.75);
     border-radius: 5%;
