@@ -1,7 +1,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col" th:each="listaProveedor:${listaProveedor}">
     <div class="card h-100">
-      <img  th:src="@{/proveedor/perfil/__${listaProveedor.id}__}" class="card-img-top" alt="...">
+      <img  th:src="@{/proveedor/perfil/__${listaProveedor.id}__}" class="card-img-top" alt="Juan el carpintero loco" width="fit-content" height="100">
       <div class="card-body">
         <h5 class="card-title" th:text="${listaProveedor.nombre}">Card title</h5>        
         <p class="card-text">This is a longer card with supporting text below as a</p>

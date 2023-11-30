@@ -23,11 +23,11 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-
-    @GetMapping("/registrar")
-    public String registrar() {
-        return "registro.html";
-    }
+// loco para que esta este man
+//    @GetMapping("/registrar")
+//    public String registrar() {
+//        return "registro.html";
+//    }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio, @RequestParam String telefono,
@@ -38,7 +38,7 @@ public class UsuarioControlador {
 
             modelo.put("exito", "Usuario registrado correctamente!");
 
-            return "index.html";
+            return "redirect:/";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
@@ -47,7 +47,7 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "registro.html";
+            return "redirect:/";
         }
 
     }
