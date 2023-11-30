@@ -1,6 +1,7 @@
 package Proyecto_Equipo_7.controladores;
 
 import Proyecto_Equipo_7.entidades.Usuario;
+import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 import Proyecto_Equipo_7.servicios.CalificacionServicio;
 import Proyecto_Equipo_7.servicios.Proveedorservicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
@@ -29,14 +30,16 @@ public class PortalControlador {
     @Autowired
     private CalificacionServicio calificacionServicio;
 
+      @Autowired
+    private TrabajoRepositorio trabajoRepositorio;
+    
     @GetMapping("/")
     public String index(ModelMap modelo) {
         
         modelo.put("listaRubro", rubroServicio.listaRubros());
         modelo.put("cantidadUsuarios",usuarioServicio.cantidadUsuarios());
         modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
-        modelo.put("promedioCalificacionesTotales",calificacionServicio.promedioCalificacionesTotales() );
-        
+        modelo.put("cantidadTrabajosTotales", trabajoRepositorio.cantidadContratosTotales());
         
         return "index.html";
 

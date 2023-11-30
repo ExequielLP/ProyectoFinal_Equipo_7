@@ -26,7 +26,7 @@ public class TrabajoControlador {
   
     @GetMapping("/crearTrabajo")
     public String crearTrabajo() {
-        return "contratoTrabajo.html";
+        return "contratoContrato.html";
     }
 
     @PostMapping("/registro")
