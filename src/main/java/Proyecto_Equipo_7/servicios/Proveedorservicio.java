@@ -2,12 +2,16 @@ package Proyecto_Equipo_7.servicios;
 
 import Proyecto_Equipo_7.entidades.Imagen;
 import Proyecto_Equipo_7.entidades.Proveedor;
+
+
+
 import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.enumeradores.Servicio;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +28,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class Proveedorservicio implements UserDetailsService {
+public class ProveedorServicio implements UserDetailsService {
 
     @Autowired
     private ImagenServicio imagenServicio;
@@ -104,7 +108,7 @@ public class Proveedorservicio implements UserDetailsService {
 
             HttpSession session = attr.getRequest().getSession(true);
 
-            session.setAttribute("usuariosession", proveedor);
+            session.setAttribute("proveedorsession", proveedor);
 
             return new User(proveedor.getEmail(), proveedor.getPassword(), permisos);
         } else {
@@ -113,4 +117,39 @@ public class Proveedorservicio implements UserDetailsService {
 
     }
 
+    @Transactional
+    public void actualizar( String nombre,String domicilio, String Email,String telefono, String password,String password2,String id, Integer honorario, Imagen imagen,  Servicio servicio) throws MiException {
+
+        //validar(honorario,imagen,servicio);
+
+        Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+
+            Proveedor proveedor = respuesta.get();
+            proveedor.setHonorario(honorario);
+            proveedor.setImagen(imagen);
+            proveedor.setServicio(servicio);
+            proveedor.setNombre(nombre);
+            proveedor.setDomicilio(domicilio);
+            proveedor.setEmail(Email);
+            proveedor.setPassword(password);
+            proveedor.setPassword(password2);
+            
+            proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
+
+            proveedor.setRol(Rol.USER);
+
+            proveedorRepositorio.save(proveedor);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Proveedor> listarproveedores() {
+
+        List<Proveedor> proveedores = new ArrayList();
+
+        proveedores = proveedorRepositorio.findAll();
+
+        return proveedores;
+    }
 }

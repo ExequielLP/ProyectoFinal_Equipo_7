@@ -10,9 +10,12 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.GenericGenerator;
 //import javax.persistence.PrimaryKeyJoinColumn;
 //import org.hibernate.annotations.GenericGenerator;
 
@@ -22,6 +25,11 @@ import javax.persistence.OneToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Proveedor extends Usuario{
+    
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
       
 
