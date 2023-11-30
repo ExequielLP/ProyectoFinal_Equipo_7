@@ -26,13 +26,15 @@ public class ProveedorControlador {
 
     @Autowired
     private Proveedorservicio proveedorservicio;
-
-    @GetMapping("/registrar")
-    public String registrar() {
-
-        return "registroProv.html";
-
-    }
+ 
+    
+    // este no sabemos que funcion cumple aun
+//    @GetMapping("/registrar")
+//    public String registrar() {
+//
+//        return "registroProv.html";
+//
+//    }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
@@ -45,7 +47,7 @@ public class ProveedorControlador {
 
             modelo.put("exito", "Proveedor registrado correctamente!");
 
-            return "index.html";
+            return "redirect:/";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
@@ -56,7 +58,7 @@ public class ProveedorControlador {
             modelo.put("honorario", honorario);
             modelo.put("rubro", rubro);
             
-            return "registroProv.html";
+            return "redirect:/";
 
         }
     }
