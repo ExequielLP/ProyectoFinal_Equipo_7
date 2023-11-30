@@ -10,34 +10,28 @@
         </header>      
 
 
-        
-        <main>
+
+        <main class="container justify-content-center ">
             <!-- CARRUSEL -->
-            <div class="container">                
-                <div th:replace="/fragments/carousel :: section"></div>
+            <div th:replace="/fragments/carousel :: section"></div>
 
+            <!-- RUBROS SOLO USER-->           
+            <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardRubro :: div"></div>
 
+            <!-- CARD PROVEEDORES -->
+            <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardProveedor :: div"></div>
 
-            </div>
+            <!-- MODAL EXITO U ERROR -->
+            <div th:replace="/fragments/exitoError :: div"></div>
             
-            <!-- RUBROS -->
-            <div class="container" sec:authorize="hasRole('ROLE_USER')">
-                <div th:replace="/fragments/cardRubro :: div"></div>
-            </div>
-
-
-
             
-            <div class="container" sec:authorize="hasRole('ROLE_USER')">
-                <div th:replace="/fragments/cardProveedor :: div"></div>
-            </div>
-           
-                      
-                        
-               
-               
-           
-            
+
+
+
+
+
+
+
 
         </main>
 

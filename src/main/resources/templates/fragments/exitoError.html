@@ -1,13 +1,13 @@
-<div>
+<div class="modal-dialog modal-dialog-centered">
     <div th:if="${error != null}" class="card text-white bg-danger mb-3 messageError">
         <div class="card-body">
-            <h5 class="card-tittle">Error error otravez error!</h5>
+            <h5 class="card-tittle">Error!</h5>
             <p class="card-text" th:text="${error}"></p>
         </div>
     </div>
     <div th:if="${exito != null}" class="card text-white bg-success mb-3 messageError">
         <div class="card-body">
-            <h5 class="card-tittle">Exito !</h5>
+            <h5 class="card-tittle">Exito!</h5>
             <p class="card-text" th:text="${exito}"> </p>
         </div>
     </div>
