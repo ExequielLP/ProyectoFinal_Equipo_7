@@ -64,6 +64,7 @@ public class PortalControlador {
 //         modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         System.out.println(logueado.toString());
+        
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
         }
