@@ -89,6 +89,16 @@ text-align: center;
 }
 
 .card-query-number{
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.metricas{
+    align-items: center;
+}
+
+.market-title{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
