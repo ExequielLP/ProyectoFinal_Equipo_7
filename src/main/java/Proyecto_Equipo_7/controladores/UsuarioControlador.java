@@ -52,7 +52,6 @@ public class UsuarioControlador {
 
     }
 
-
     @PostMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
         try {
@@ -64,13 +63,12 @@ public class UsuarioControlador {
        return "redirec:/usuario/listarUsuario";
     }
 
-
     @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
         modelo.put("usuario", usuario);
-        return "usuario_modificar.html";
+        return "usuarioModificar.html";
     }
 
     @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
@@ -92,7 +90,7 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "usuario_modificar.html";
+            return "usuarioModificar.html";
         }
 
     }
