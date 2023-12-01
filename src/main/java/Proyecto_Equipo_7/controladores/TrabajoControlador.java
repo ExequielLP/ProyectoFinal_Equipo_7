@@ -26,7 +26,7 @@ public class TrabajoControlador {
   
     @GetMapping("/crearTrabajo")
     public String crearTrabajo() {
-        return "contratoContrato.html";
+        return "contratoTrabajo.html";
     }
 
     @PostMapping("/registro")
@@ -39,7 +39,7 @@ public class TrabajoControlador {
 
     }
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMINISTRADOR')")
+    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
     @GetMapping("/finalizar_Trabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id, ModelMap modelo) {
         trabajoServicio.finalizarTrabajo(id);
