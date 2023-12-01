@@ -146,7 +146,7 @@ public class UsuarioServicio implements UserDetailsService {
       public Integer cantidadUsuarios(){
         
         
-        return usuarioRepositorio.cantidadTotal();
+        return usuarioRepositorio.cantidadUsuariosTotal();
         
     }
 
