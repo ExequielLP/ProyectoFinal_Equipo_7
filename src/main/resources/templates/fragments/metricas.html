@@ -1,31 +1,31 @@
-<div class="conteiner justify-content-center mt-3 mb-2">
-    <div class="conteiner d-flex justify-content-center">
-        <img src="/img/metricas.jpg" class="img-fluid" alt="...">
-    </div>
-    <div class="card-group">
+<div class="conteiner d-flex justify-content-center mt-5 mb-2 p-2">
+    <div class="card-group metricas-section">
          
-        <div class="card " style="border: none">
+        <div class="card metricas" style="border: none">
 
-            <div class="card-body">
-                <h5 class="card-title metricasTitulo">Usuarios Registrados</h5>
+            <div class="card-body metricas-p">
+                <img class="img-fluid" src="/img/usuarios-registrados.png" alt="">
+                <h4 class="card-title metricasTitulo">Usuarios Registrados</h4>
                 <p class="card-text">Estamos orgullosos de contar con el apoyo de nuestros usuarios.</p>
-                <p class="card-text" th:text="${cantidadUsuarios}"></p>
+                <p class="card-query-number" th:text="${cantidadUsuarios}"></p>
             </div>
         </div>
-        <div class="card" style="border: none">
+        <div class="card metricas" style="border: none">
 
             <div class="card-body">
-                <h5 class="card-title">Proveedores Registrados</h5>
+                <img src="/img/proveedores-registrados.png" alt="">
+                <h4 class="card-title">Proveedores Registrados</h4>
                 <p class="card-text">Cada dia contamos con mas proveedores en linea.</p>
-                <p class="card-text" th:text="${cantidadProveedores}"></p>
+                <p class="card-query-number" th:text="${cantidadProveedores}"></p>
             </div>
         </div>
-        <div class="card" style="border: none">
+        <div class="card metricas" style="border: none">
 
             <div class="card-body">
-                <h5 class="card-title">Total Trabajos</h5>
+                <img src="/img/trabajos-registrados.png" alt="">
+                <h4 class="card-title">Total Trabajos</h4>
                 <p class="card-text">Trabajos en curso y finalizados totales</p>
-                <p class="card-text" th:text="${cantidadTrabajosTotales}"></p>
+                <p class="card-query-number" th:text="${cantidadTrabajosTotales}"></p>
             </div>
         </div>
     </div>
