@@ -41,18 +41,19 @@ public class PortalControlador {
         modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
         modelo.put("cantidadTrabajosTotales", trabajoRepositorio.cantidadContratosTotales());
         
+        
         return "index.html";
 
     }
 
-    @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-        if (error != null) {
-            modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
-        }
-
-        return "index.html";
-    }
+//    @GetMapping("/login")
+//    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+//        if (error != null) {
+//            modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
+//        }
+//
+//        return "index.html";
+//    }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
