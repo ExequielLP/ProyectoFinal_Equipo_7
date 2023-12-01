@@ -1,31 +1,43 @@
-<div class="conteiner justify-content-center mt-3 mb-2">
-    <div class="conteiner d-flex justify-content-center">
-        <img src="/img/metricas.jpg" class="img-fluid" alt="...">
-    </div>
-    <div class="card-group">
+<div class="conteiner d-flex justify-content-center align-items-center mt-5 mb-2 p-2">
+    <div class="card-group metricas-section">
          
-        <div class="card " style="border: none">
+        <div class="card metricas" style="border: none">
 
-            <div class="card-body">
-                <h5 class="card-title">Usuarios Registrados</h5>
-                <p class="card-text">Estamos orgullosos de contar con el apoyo de nuestros usuarios.</p>
-                <p class="card-text" th:text="${cantidadUsuarios}"></p>
+            <div class="card-body metricas-p">
+                <img class="img-fluid" src="/img/usuarios-registrados.png" alt="">
+                <h4 class="card-title metricasTitulo">Usuarios registrados</h4>
+                <div>
+                    <p class="card-text">Cada vez son más los usuarios que deciden elegirnos.</p>
+                </div>
+                <div>
+                    <p class="card-query-number" th:text="${cantidadUsuarios}"></p>
+                </div>
             </div>
         </div>
-        <div class="card" style="border: none">
+        <div class="card metricas" style="border: none">
 
             <div class="card-body">
-                <h5 class="card-title">Proveedores Registrados</h5>
-                <p class="card-text">Cada dia contamos con mas proveedores en linea.</p>
-                <p class="card-text" th:text="${cantidadProveedores}"></p>
+                <img src="/img/proveedores-registrados.png" alt="">
+                <h4 class="card-title">Proveedores registrados</h4>
+                <div>
+                    <p class="card-text">Cada dia contamos con mas proveedores en linea.</p>
+                </div>
+                <div>
+                    <p class="card-query-number" th:text="${cantidadProveedores}"></p>
+                </div>
             </div>
         </div>
-        <div class="card" style="border: none">
+        <div class="card metricas" style="border: none">
 
             <div class="card-body">
-                <h5 class="card-title">Promedio Calificacion</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text" th:text="${promedioCalificacionesTotales}"></p>
+                <img src="/img/trabajos-registrados.png" alt="">
+                <h4 class="card-title">Trabajos realizados</h4>
+                <div>
+                    <p class="card-text">Cantidad de trabajos en curso y finalizados.</p>
+                </div>
+                <div>
+                    <p class="card-query-number" th:text="${cantidadTrabajosTotales}"></p>
+                </div>
             </div>
         </div>
     </div>
