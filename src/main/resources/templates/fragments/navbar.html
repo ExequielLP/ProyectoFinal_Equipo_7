@@ -63,7 +63,7 @@
 
                 <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
                 <!-- USUARIO -->
-                <li class="nav-item dropdown">
+                <li  class="nav-item dropdown" th:if="${session.usuarioSession != null}">
                     <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+${session.usuarioSession.rol}" 
                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                     <ul sec:authorize="hasRole('ROLE_USER')" class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -74,7 +74,7 @@
                         <li><a class="dropdown-item" href="/trabajo/crear_Trabajo">Cargar un trabajo</a></li>                        
                     </ul>
                     <!-- PROVEEDOR -->    
-                    <ul sec:authorize="hasRole('ROLE_PROVEEDOR')" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul sec:authorize="hasRole('ROLE_PROVEEDOR')"  class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>

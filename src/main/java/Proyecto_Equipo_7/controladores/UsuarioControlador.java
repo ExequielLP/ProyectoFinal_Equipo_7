@@ -47,7 +47,7 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "redirect:/";
+            return "/";
         }
 
     }
