@@ -73,8 +73,12 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Queres contratar!</h3>
                         <p class="opacity-75">Selecciona el servicio que necesitas y listo!</p>
+
                         <p th:if="${session.usuarioSession == null}" ><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalRegistro">CONTRATA</a></p>
                         <p th:if="${session.usuarioSession != null}" sec:autorize="hasRole('USER')" ><a class="btn btn-outline-light" href="/trabajo/crearTrabajo">CONTRATA</a></p>
+
+                        
+
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -82,8 +86,12 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Mas de 100 proveedores</h3>
                         <p class="opacity-75">Podes verificar calificacion de otros usuario</p>
+
                         <p th:if="${session.usuarioSession == null}" ><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalRegistro">CONTRATA</a></p>
                         <p th:if="${session.usuarioSession != null}" sec:autorize="hasRole('USER')" ><a class="btn btn-outline-light" href="/trabajo/crearTrabajo">CONTRATA</a></p>
+
+                      
+
                     </div>
                 </div>  
                 <div class="carousel-item">
@@ -91,8 +99,12 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Soluciona Ya!!</h3>
                         <p class="opacity-75">Contacta a un proveedor, cotizacion gratis!!</p>
+
                         <p th:if="${session.usuarioSession == null}" ><a class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalRegistro">CONTRATA</a></p>
                         <p th:if="${session.usuarioSession != null}" sec:autorize="hasRole('USER')" ><a class="btn btn-outline-light" href="/trabajo/crearTrabajo">CONTRATA</a></p>
+
+                      
+
                     </div>
                 </div>
             </div>

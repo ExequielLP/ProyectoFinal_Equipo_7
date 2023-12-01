@@ -21,7 +21,10 @@
                                 así como recibir correos electrónicos ocasionales de nuestra parte.
                                 Lee nuestra Política de privacidad para saber cómo utilizamos tus datos personales.</small>
                         </form>
+                        <div th:if="${exito != null}" class="card text-white bg-success mb-3 messageError">
+                            <div th:if="${error != null}" class="card text-white bg-danger mb-3 messageError">
                     </div>
+                    
                 </div>
             </div>
         </div>
