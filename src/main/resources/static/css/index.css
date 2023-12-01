@@ -1,7 +1,3 @@
-body, .metricas{
-    background: #EEEEEE;
-}
-
 .navBar{
     background-color: #fff !important;
 }
@@ -83,13 +79,10 @@ body, .metricas{
     border-width: 1px 0;
     box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
 }
-
-.card-body{
-text-align: center;
+.metricasTitulo{
+    color: blue;
+    background-color: #66ccff;
 }
-
-.card-query-number{
-    font-size: 25px;
-    font-weight: 600;
+body{
+    background: #EEEEEE;
 }
-
