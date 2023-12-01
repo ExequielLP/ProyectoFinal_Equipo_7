@@ -78,4 +78,10 @@ public class TrabajoServicio {
         }
 
     }
+    
+         public Integer cantidadTrabajosTotales(){
+        
+        return trabajoRepositorio.cantidadContratosTotales();
+        
+    }
 }

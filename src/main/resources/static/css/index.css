@@ -1,0 +1,85 @@
+.navBar{
+    background-color: #fff !important;
+}
+
+.elementosNav{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    color: #37474f;
+    font-weight: 700;
+}
+
+.elementos{
+    margin-right: 50px;
+}
+
+.containerImg{
+    width: 20%;
+}
+
+.logo{
+    width:50px;
+    height: 50px ;
+    margin: auto;
+}
+
+
+.header{    
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: end;
+}
+
+
+.contenedorMain{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.containerFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boton{
+    background-color: #ffcb00;
+    box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
+    -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
+    -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
+}
+
+.boton:hover{
+    background-color: #ffcb00;
+}
+.boton:active{
+    box-shadow: none;
+}
+.navbar-brand{
+    font: small-caps normal 55px/1 sans-serif ;
+    font-variant-caps: small-caps;
+    font-style: italic;
+    color: #66ccff;
+}
+
+.mt-3{
+    margin-top: 10px !important; 
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+.metricasTitulo{
+    color: blue;
+    background-color: #66ccff;
+}
