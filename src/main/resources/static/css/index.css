@@ -102,3 +102,9 @@ text-align: center;
     align-items: center;
     text-align: center;
 }
+.messageError{
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    
+}
