@@ -72,7 +72,7 @@ body, .metricas{
 }
 
 .mt-3{
-    margin-top: 10px !important; 
+    margin-top: 10px; 
 }
 
 .b-example-divider {
@@ -103,6 +103,9 @@ text-align: center;
     text-align: center;
 }
 
-.formulario > input{
-width: 500px;
+.messageError{
+    width: 100px;
+    height: 50px;
+    background-color: red;
+
 }

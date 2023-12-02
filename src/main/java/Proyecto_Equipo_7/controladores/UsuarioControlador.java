@@ -47,7 +47,7 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "redirect:/";
+            return "/";
         }
 
     }
@@ -63,15 +63,19 @@ public class UsuarioControlador {
        return "redirec:/usuario/listarUsuario";
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
+
+
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
         modelo.put("usuario", usuario);
+
         return "modificarUsuario.html";
+
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN ')")
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String domicilio, @RequestParam String telefono, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
@@ -81,7 +85,7 @@ public class UsuarioControlador {
 
             modelo.put("exito", "Usuario actualizado correctamente!");
 
-            return "index.html";
+            return "panel.html";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
@@ -90,7 +94,10 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
+
             return "modificarUsuario.html";
+
+
         }
 
     }
