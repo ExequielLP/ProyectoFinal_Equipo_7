@@ -1,22 +1,15 @@
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-body">
-                    <div th:if="${error != null}" class="card text-white bg-danger mb-3 messageError">
-                        <div class="card-body">
-                            <h5 class="card-tittle">Error!</h5>
-                            <p class="card-text" th:text="${error}"></p>
-                        </div>
-                    </div>
-                    <div th:if="${exito != null}" class="card text-white bg-success mb-3 messageError">
-                        <div class="card-body">
-                            <h5 class="card-tittle">Exito!</h5>
-                            <p class="card-text" th:text="${exito}"> </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div>
+    <div th:if="${error != null}" class="card text-white bg-danger mb-3 messageError">
+        <div class="card-body">
+            <h5 class="card-tittle">Error!</h5>
+            <p class="card-text" th:text="${error}"></p>
+        </div>
+    </div>
+    <div th:if="${exito != null}" class="card text-white bg-success mb-3 messageError">
+        <div class="card-body">
+            <h5 class="card-tittle">Exito!</h5>
+            <p class="card-text" th:text="${exito}"> </p>
         </div>
     </div>
 </div>
+

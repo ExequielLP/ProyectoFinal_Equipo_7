@@ -32,13 +32,15 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Editar Perfil</a></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
-                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Mis Servicios</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificaciones</a></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>
                 </li>
                 <li sec:authorize="hasRole('ROLE_USER')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
-                    <a sec:authorize="hasRole('ROLE_USER')" class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contrato</a>                    
+                    <a sec:authorize="hasRole('ROLE_USER')" class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contratar</a>                    
                 </li>
 
                 <!-- MENU REGISTRO/LOGIN/EDITAR PROVEEDOR -->
@@ -63,15 +65,13 @@
 
                 <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
                 <!-- USUARIO -->
-                <li class="nav-item dropdown">
+                <li sec:authorize="hasAnyRole('ROLE_PROVEEDOR','ROLE_USER','ROLE_ADMIN')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+${session.usuarioSession.rol}" 
                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                     <ul sec:authorize="hasRole('ROLE_USER')" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>
+                        <li><a class="dropdown-item"  href="#">Mis Servicios en curso</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/trabajo/crear_Trabajo">Cargar un trabajo</a></li>                        
+                        <li><a class="dropdown-item"  href="#">Mis Servicios finalizados</a></li>                                               
                     </ul>
                     <!-- PROVEEDOR -->    
                     <ul sec:authorize="hasRole('ROLE_PROVEEDOR')" class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -80,7 +80,7 @@
                         <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
                         <li><hr class="dropdown-divider"></li>                        
                         <li><a class="dropdown-item" href="/trabajo/crearTrabajo">Finalizar trabajo</a></li>
-
+                        <li><hr class="dropdown-divider"></li>   
                         <li><a class="dropdown-item" href="#">Mis calificaciones</a></li>
 
                     </ul>

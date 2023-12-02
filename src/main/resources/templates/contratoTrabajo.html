@@ -20,28 +20,38 @@
 
             <input hidden th:value="${session.usuarioSession.id}" name="id" >
 
-            <div class="form-group my-3">            
-                <select name="servicio" id="" >
-                    <option selected th:if="${rubro.rubro == rubro}" 
-                            th:each="rubro : ${rubro}"
-                            th:value="${rubro}"
-                            th:text="${rubro}">
-                    </option>
-                    <option selected th:if="${proveedor.rubro == rubro}" 
-                            th:each="rubro : ${rubro}"
+            <div class="form-group my-3">
+                <label for="servicio">Servicios</label>
+                <select name="rubro" class="form-control">
+                    <option th:each="listaRubro : ${listaRubro}"
+                            th:value="${listaRubro.id}" 
+                            th:text="${listaRubro.rubro}">
+                    </option>   
+                    <option th:if="${proveedor.rubro == rubro}" 
+                            th:each="proveedor : ${rubro}"
                             th:value="${rubro}"
                             th:text="${rubro}">
                     </option>
                 </select>
-            </div> 
+            </div>
 
 
-            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Contratar</button>
-            <small class="text-body-secondary">Al unirte, aceptas los Términos de servicio de Servicio 7,
-                así como recibir correos electrónicos ocasionales de nuestra parte.
-                Lee nuestra Política de privacidad para saber cómo utilizamos tus datos personales.</small>
-        </form>
-    </div>
+        </option>
+        <option selected th:if="${proveedor.rubro == rubro}" 
+                th:each="rubro : ${rubro}"
+                th:value="${rubro}"
+                th:text="${rubro}">
+        </option>
+    </select>
+</div> 
+
+
+<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Contratar</button>
+<small class="text-body-secondary">Al unirte, aceptas los Términos de servicio de Servicio 7,
+    así como recibir correos electrónicos ocasionales de nuestra parte.
+    Lee nuestra Política de privacidad para saber cómo utilizamos tus datos personales.</small>
+</form>
+</div>
 
 
 
@@ -53,8 +63,8 @@
 
 
 
-    <div class="container"><footer th:replace="/fragments/footer :: footer" </footer> </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<div class="container"><footer th:replace="/fragments/footer :: footer" </footer> </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 </html>

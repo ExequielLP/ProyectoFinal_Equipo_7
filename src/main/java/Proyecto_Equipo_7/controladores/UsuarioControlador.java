@@ -73,7 +73,7 @@ public class UsuarioControlador {
         return "usuarioModificar.html";
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN ')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String domicilio, @RequestParam String telefono, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
