@@ -6,6 +6,8 @@ import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
@@ -28,22 +30,21 @@ public class TrabajoServicio {
         System.err.println("CREAR TRABAJO DATOS");
         System.out.println(session.getId());
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
-        System.out.println("__________________USUARIO________"+usuario);        
+        System.out.println("__________________USUARIO________" + usuario);
         if (session != null) {
             Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
 
             System.out.println("PROVEEDOR_____________________________________" + respuesta);
-            
+
             if (respuesta.isPresent()) {
                 Proveedor proveedor = respuesta.get();
-                                           
-                    Trabajo trabajo = new Trabajo();
-                    trabajo.setProveedor(proveedor);
-                    trabajo.setUsuario(usuario);
-                    trabajo.setTerminado(false);
-                    trabajo.setAlta(true);
-                    trabajoRepositorio.save(trabajo);
-               
+
+                Trabajo trabajo = new Trabajo();
+                trabajo.setProveedor(proveedor);
+                trabajo.setUsuario(usuario);
+                trabajo.setTerminado(false);
+                trabajo.setAlta(true);
+                trabajoRepositorio.save(trabajo);
 
             }
         }
@@ -60,12 +61,11 @@ public class TrabajoServicio {
 
     }
 
-    public List<Trabajo> listarTrabajo() {
-        List<Trabajo> listaTrabajos = trabajoRepositorio.findAll();
-        if (listaTrabajos != null) {
-            return listaTrabajos;
-        }
-        return null;
+    public List<Trabajo> listarTrabajos() {
+        List<Trabajo> listaTrabajos = new ArrayList<>();
+        listaTrabajos = trabajoRepositorio.findAll();
+
+        return listaTrabajos;
     }
 
     @Transactional
@@ -78,10 +78,10 @@ public class TrabajoServicio {
         }
 
     }
-    
-         public Integer cantidadTrabajosTotales(){
-        
+
+    public Integer cantidadTrabajosTotales() {
+
         return trabajoRepositorio.cantidadContratosTotales();
-        
+
     }
 }
