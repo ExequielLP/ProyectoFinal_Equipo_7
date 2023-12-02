@@ -4,7 +4,6 @@ import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -51,7 +50,7 @@ public class RubroControlador {
     
       @GetMapping("/lista")
     public String listar(ModelMap modelo) {
-        List<Rubro> rubros = rubroServicio.listarubros();
+        List<Rubro> rubros = rubroServicio.listaRubros();
         modelo.addAttribute("rubros", rubros);
         if (modelo.containsAttribute("exito")) {
             String exito = (String) modelo.getAttribute("exito");
@@ -71,7 +70,7 @@ public class RubroControlador {
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id, ModelMap modelo, @RequestParam String nombreRubro) {
+    public String modificar(@PathVariable String id, ModelMap modelo, @RequestParam String nombreRubro){
         try {
             rubroServicio.actualizar(id, nombreRubro);
             modelo.addAttribute("exito", "editorial modificada exitosamente");

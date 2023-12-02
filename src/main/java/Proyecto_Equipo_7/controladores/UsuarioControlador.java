@@ -6,6 +6,7 @@ import Proyecto_Equipo_7.servicios.UsuarioServicio;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,19 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
-
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-
-    @GetMapping("/registrar")
-    public String registrar() {
-        return "registro.html";
-    }
+// loco para que esta este man
+//    @GetMapping("/registrar")
+//    public String registrar() {
+//        return "registro.html";
+//    }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio, @RequestParam String telefono,
@@ -39,7 +38,7 @@ public class UsuarioControlador {
 
             modelo.put("exito", "Usuario registrado correctamente!");
 
-            return "index.html";
+            return "redirect:/";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
@@ -48,7 +47,7 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "registro.html";
+            return "redirect:/";
         }
 
     }
@@ -57,7 +56,7 @@ public class UsuarioControlador {
     @PostMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
         try {
-            usuarioServicio.Eliminar(id);
+            usuarioServicio.eliminar(id);
         } catch (MiException ex) {
           modelo.put("error",ex.getMessage() );
         }
@@ -103,13 +102,15 @@ public class UsuarioControlador {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
 
     @GetMapping("/lista_usuarioCompleta")
-    public String listarProfesionales(ModelMap modelo) {
+    public String listarUsuarios(ModelMap modelo) {
 
-        List<Usuario> usuarios = usuarioServicio.listarusuarios();
+        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
 
         modelo.addAttribute("usuarios", usuarios);
 
         return "usuario_listaCompleta.html";
     }
-
+   
+    
+  
 }

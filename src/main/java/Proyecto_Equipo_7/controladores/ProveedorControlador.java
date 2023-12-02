@@ -6,9 +6,12 @@ import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.Proveedorservicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +26,15 @@ public class ProveedorControlador {
 
     @Autowired
     private Proveedorservicio proveedorservicio;
-
-    @GetMapping("/registrar")
-    public String registrar() {
-
-        return "registroProv.html";
-
-    }
+ 
+    
+    // este no sabemos que funcion cumple aun
+//    @GetMapping("/registrar")
+//    public String registrar() {
+//
+//        return "registroProv.html";
+//
+//    }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
@@ -42,7 +47,7 @@ public class ProveedorControlador {
 
             modelo.put("exito", "Proveedor registrado correctamente!");
 
-            return "index.html";
+            return "redirect:/";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
@@ -53,10 +58,19 @@ public class ProveedorControlador {
             modelo.put("honorario", honorario);
             modelo.put("rubro", rubro);
             
-            return "registroProv.html";
+            return "redirect:/";
 
         }
+    }
 
+    @PostMapping("eliminarProveedor/{id}")
+    public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
+        try {
+            proveedorservicio.eliminar(id);
+        } catch (MiException ex){
+            modelo.put("error", ex.getMessage());
+        }
+        return "redirect:/proveedor/listarProveedor";
     }
 
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
@@ -94,14 +108,22 @@ public class ProveedorControlador {
 
     }
 
-    @GetMapping("/proveedor/{id}")
-    public String verPromedioDeProveedor(@PathVariable("id") String proveedorId, Model model) {
-        Double promedioCalificaciones = proveedorservicio.obtenerPromedioCalificacionesProveedor(proveedorId);
-
-        model.addAttribute("proveedorId", proveedorId);
-        model.addAttribute("promedioCalificaciones", promedioCalificaciones);
-
-        return "promedio_proveedor.html";
+    
+    @GetMapping("/perfil/{id}")
+    public ResponseEntity<byte[]> imagenProveedor (@PathVariable String id){
+        Proveedor proveedor = proveedorservicio.getone(id);
+        
+       byte[] imagen= proveedor.getImagen().getContenido();
+       
+       HttpHeaders headers = new HttpHeaders();
+       
+       headers.setContentType(MediaType.IMAGE_JPEG);
+       
+        
+        
+       return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
     }
+
+ 
 
 }

@@ -1,15 +1,12 @@
 package Proyecto_Equipo_7.servicios;
 
 import Proyecto_Equipo_7.entidades.Rubro;
-import Proyecto_Equipo_7.entidades.Usuario;
-import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.RubroRepositorio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,9 +39,9 @@ public class RubroServicio {
 
     @Transactional(readOnly = true)
 
-    public List<Rubro> listarubros() {
+    public List<Rubro> listaRubros() {
 
-        List<Rubro> rubros = new ArrayList();
+        List<Rubro> rubros = new ArrayList<>();
 
         rubros = rubroRepositorio.findAll();
 
@@ -72,4 +69,6 @@ public class RubroServicio {
         
         
     }
+      
+
 }
