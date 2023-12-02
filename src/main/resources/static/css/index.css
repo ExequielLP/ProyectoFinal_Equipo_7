@@ -102,3 +102,7 @@ text-align: center;
     align-items: center;
     text-align: center;
 }
+
+.formulario > input{
+width: 500px;
+}

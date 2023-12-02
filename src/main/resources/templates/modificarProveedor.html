@@ -12,8 +12,8 @@
     <header data-bs-theme="dark">
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
-    <main class="container justify-content-center ">
-        <form class="formulario" th:action="@{/proveedor/registro}" method="POST" enctype="multipart/form-data">
+    <main class="container justify-content-center">
+        <form class="formulario" th:action="@{/proveedor/perfil/{id}}" method="POST" enctype="multipart/form-data">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput"
                     placeholder="Ingrese nombre usuario">

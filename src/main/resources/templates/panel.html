@@ -21,7 +21,6 @@
             </div>
 
 
-
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -60,6 +59,64 @@
                                         </td>
                                         <td  >
                                             <a th:href="@{/perfil/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Modificar</a>
+                                        </td>
+                                    </tr>                    
+                                </tbody>
+                            </table>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            LISTAR PROVEEDORES
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            
+                            <table class="table table-secondary table-hover">                
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id Proveedor</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Domicilio</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Honorario</th>
+                                        <th scope="col">Calificación</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Rubro</th>
+                                        <th scope="col">Activo</th>
+                                        <th scope="col">Rol</th>
+                                        <th scope="col">Alta</th>
+                                        <th scope="col" sec:authorize="hasRole('ADMIN')" >Cambiar Rol</th>
+                                        <th scope="col" sec:authorize="hasRole('ADMIN')" >Modificar</th>
+                                    </tr>
+                                </thead>
+                                <tbody th:each="proveedor : ${proveedores}">
+                                    <tr>
+                                        <td th:text="${proveedor.id}"></td>
+                                        <td th:text="${proveedor.nombre}"></td>
+                                        <td th:text="${proveedor.email}" ></td>
+                                        <td th:text="${proveedor.domicilio}"></td>                        
+                                        <td th:text="${proveedor.telefono}" ></td>
+                                        <td th:text="${proveedor.honorario}" ></td>
+                                        <td th:text="${proveedor.Calificacion}" ></td>
+                                        <td th:text="${proveedor.imagen}" ></td>
+                                        <td th:text="${proveedor.rubro}" ></td>
+                                        <td th:text="${proveedor.activo}" ></td>
+                                        <td th:text="${proveedor.rol}" ></td>
+                                        <td th:text="${proveedor.alta}" ></td>
+                                        <td  >
+                                            <a th:href="@{/admin/modificarRol/__${proveedor.id}__}"><i class="fas fa-feather-alt"></i>Cambiar Rol</a>
+                                        </td>
+                                        <td >
+                                            <a th:href="@{/perfil/__${proveedor.id}__}"><i class="fas fa-feather-alt"></i>Modificar</a>
                                         </td>
                                     </tr>                    
                                 </tbody>

@@ -79,7 +79,7 @@ public class ProveedorControlador {
         Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
         modelo.put("proveedor", proveedor);
 
-        return "usuario_modificar.html";
+        return "modificarProveedor.html";
     }
 
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
@@ -103,7 +103,7 @@ public class ProveedorControlador {
             modelo.put("telefono", telefono);
             modelo.put("rubro", rubro);
 
-            return "proveedor_modificar.html";
+            return "modificarProveedor.html";
         }
 
     }

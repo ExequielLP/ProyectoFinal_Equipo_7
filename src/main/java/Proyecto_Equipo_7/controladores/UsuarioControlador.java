@@ -68,7 +68,7 @@ public class UsuarioControlador {
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
         modelo.put("usuario", usuario);
-        return "usuarioModificar.html";
+        return "modificarUsuario.html";
     }
 
     @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
@@ -90,7 +90,7 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "usuarioModificar.html";
+            return "modificarUsuario.html";
         }
 
     }
