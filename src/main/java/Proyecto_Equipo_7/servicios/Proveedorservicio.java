@@ -27,7 +27,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class Proveedorservicio implements UserDetailsService {
+public class ProveedorServicio implements UserDetailsService {
 
     @Autowired
     private ImagenServicio imagenServicio;
@@ -148,12 +148,13 @@ public class Proveedorservicio implements UserDetailsService {
         return proveedorRepositorio.getOne(id);
     }
 
-    
-    public List<Proveedor> listarProveedores(){
+    @Transactional(readOnly = true)
+    public List<Proveedor> listaProveedor(){
         List<Proveedor> proveedores = new ArrayList<>();
         proveedores = proveedorRepositorio.findAll();
         return proveedores;
     }
+    
 
     public void eliminar(String id) throws MiException {
         if (id.isEmpty() || id == null){

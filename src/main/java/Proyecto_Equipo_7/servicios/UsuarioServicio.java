@@ -44,7 +44,7 @@ public class UsuarioServicio implements UserDetailsService {
         usuarioRepositorio.save(usuario);
 
     }
- 
+
     @Transactional
     public void actualizar(String id, String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
 
@@ -67,31 +67,39 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
- 
-         public Usuario getone(String id) {
+
+    public Usuario getone(String id) {
         return usuarioRepositorio.getOne(id);
     }
 
-    public List<Usuario> listarUsuarios() {
+   /* public List<Usuario> listarUsuarios() {
 
         List<Usuario> usuarios = new ArrayList<>();
 
         usuarios = usuarioRepositorio.findAll();
 
         return usuarios;
+    }*/
+
+    public List<Usuario> listarUsuariosPorRol() {
+
+        List<Usuario> usuariosPorRol = new ArrayList<>();
+
+        usuariosPorRol = usuarioRepositorio.listarPorRol();
+
+        return usuariosPorRol;
     }
-    
-      public Integer cantidadUsuarios(){
-        
-        
+
+    public Integer cantidadUsuarios() {
+
         return usuarioRepositorio.cantidadUsuariosTotal();
-        
+
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+        Usuario usuario = usuarioRepositorio.findByEmail(email);
 
         if (usuario != null) {
 
@@ -106,7 +114,6 @@ public class UsuarioServicio implements UserDetailsService {
             HttpSession session = attr.getRequest().getSession(true);
 
             session.setAttribute("usuarioSession", usuario);
-            
 
             return new User(usuario.getEmail(), usuario.getPassword(), permisos);
         } else {
@@ -115,26 +122,24 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-         @Transactional
-    public void cambiarRol(String id){
+    @Transactional
+    public void cambiarRol(String id) {
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-    	
-    	if(respuesta.isPresent()) {
-    		
-    		Usuario usuario = respuesta.get();
-    		
-    		if(usuario.getRol().equals(Rol.USER)) {
-    			
-    		usuario.setRol(Rol.ADMIN);
-                
-                
-    		
-    		}else if(usuario.getRol().equals(Rol.ADMIN)) {
-    			usuario.setRol(Rol.USER);
-    		}
-    	}
+
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+
+            if (usuario.getRol().equals(Rol.USER)) {
+
+                usuario.setRol(Rol.ADMIN);
+
+            } else if (usuario.getRol().equals(Rol.ADMIN)) {
+                usuario.setRol(Rol.USER);
+            }
+        }
     }
-    
+
     public void eliminar(String id) throws MiException {
         if (id.isEmpty() || id == null) {
             new Exception("El id es null");
@@ -170,4 +175,3 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 }
-    

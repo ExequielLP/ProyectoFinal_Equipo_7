@@ -38,7 +38,6 @@ public class RubroServicio {
     }
 
     @Transactional(readOnly = true)
-
     public List<Rubro> listaRubros() {
 
         List<Rubro> rubros = new ArrayList<>();

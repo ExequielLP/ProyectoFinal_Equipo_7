@@ -4,7 +4,7 @@ import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
-import Proyecto_Equipo_7.servicios.Proveedorservicio;
+import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
 import javax.servlet.http.HttpSession;
@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class PortalControlador {
 
     @Autowired
-    private Proveedorservicio proveedorServicio;
+    private ProveedorServicio proveedorServicio;
     @Autowired
     private RubroServicio rubroServicio;
 
@@ -55,6 +55,7 @@ public class PortalControlador {
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
             modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
+            return "modalSignin.html";
         }
 
         return "modalSignin.html";
@@ -72,7 +73,7 @@ public class PortalControlador {
             return "redirect:/admin/dashboard";
         }
         
-        modelo.put("listaProveedor", proveedorServicio.listarProveedores());
+        modelo.put("listaProveedor", proveedorServicio.listaProveedor());
         modelo.put("listaRubros", rubroServicio.listaRubros());
         return "inicio.html";
     }
@@ -104,6 +105,8 @@ public class PortalControlador {
 
         }
     }
+    
+    
       @PostMapping("/registroUsuario")
     public String registroUsuario(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio, @RequestParam String telefono,
             @RequestParam String password, String password2, ModelMap modelo) {

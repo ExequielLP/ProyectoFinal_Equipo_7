@@ -3,7 +3,8 @@ package Proyecto_Equipo_7.controladores;
 import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.excepciones.MiException;
-import Proyecto_Equipo_7.servicios.Proveedorservicio;
+import Proyecto_Equipo_7.servicios.ProveedorServicio;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -25,30 +26,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProveedorControlador {
 
     @Autowired
-    private Proveedorservicio proveedorServicio;
+    private ProveedorServicio proveedorServicio;
  
     
-    // este no sabemos que funcion cumple aun
-//    @GetMapping("/registrar")
-//    public String registrar() {
-//
-//        return "registroProv.html";
-//
-//    }
-   
- 
-  @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("eliminarProveedor/{id}")
-    public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
-        try {
-            proveedorServicio.eliminar(id);
-        } catch (MiException ex){
-            modelo.put("error", ex.getMessage());
-        }
-        return "redirect:/proveedor/listarProveedor";
-    }
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+
+  
+
+  
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
@@ -57,7 +42,7 @@ public class ProveedorControlador {
         return "modificarProveedor.html";
     }
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+  
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
             @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
@@ -83,8 +68,17 @@ public class ProveedorControlador {
 
     }
 
+     
+    /*  @GetMapping("/listaProveedor")
+    public String listarProveedores(ModelMap modelo) {
+        List<Proveedor> proveedores = proveedorServicio.listaProveedores();
+        modelo.addAttribute("proveedores", proveedores);
+       
+        return "cardProveedor.html";
+
+    }
     
-    @GetMapping("/perfil/{id}")
+    @GetMapping("/imagen/{id}")
     public ResponseEntity<byte[]> imagenProveedor (@PathVariable String id){
         Proveedor proveedor = proveedorServicio.getone(id);
         
@@ -97,7 +91,7 @@ public class ProveedorControlador {
         
         
        return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
-    }
+    }*/
 
  
 

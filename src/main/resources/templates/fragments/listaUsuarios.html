@@ -24,7 +24,7 @@
                             <th scope="col" sec:authorize="hasRole('ADMIN')">Modificar</th>
                         </tr>
                     </thead>
-                    <tbody th:each="usuario : ${usuarios}">
+                    <tbody th:each="usuario : ${usuariosPorRol}">
                         <tr>
                             <td th:text="${usuario.id}"></td>
                             <td th:text="${usuario.nombre}"></td>

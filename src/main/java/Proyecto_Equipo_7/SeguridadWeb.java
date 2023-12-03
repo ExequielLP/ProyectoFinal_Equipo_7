@@ -28,24 +28,24 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/proveedor/**").hasRole("PROVEEDOR")
-                .antMatchers("/usuario/**").hasRole("USER")
-                .antMatchers("/**")
+                     .antMatchers("/admin/**").hasRole("ADMIN")
+                     .antMatchers("/proveedor/**").hasRole("PROVEEDOR")
+                     .antMatchers("/usuario/**").hasRole("USER")
+                     .antMatchers("/**")
                 .permitAll()
                 .and().formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/logincheck")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/inicio")
+                     .loginPage("/login")
+                     .loginProcessingUrl("/logincheck")
+                     .usernameParameter("email")
+                     .passwordParameter("password")
+                     .defaultSuccessUrl("/inicio")
                 .permitAll()
                 .and().logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
+                     .logoutUrl("/logout")
+                     .logoutSuccessUrl("/")
                 .permitAll()
-                .and().csrf()
-                .disable();
+                  .and().csrf()
+                    .disable();
 
     }
 

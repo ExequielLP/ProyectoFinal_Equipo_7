@@ -22,26 +22,10 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-   /* @GetMapping("/registrar")
-    public String registrar() {
 
-        return "registro.html";
-    }*/
+ 
 
-   
-
-    @PostMapping("/eliminarUsuario/{id}")
-    public String eliminarUsuario(@PathVariable String id, ModelMap modelo) {
-        try {
-            usuarioServicio.eliminar(id);
-        } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
-        }
-
-        return "redirec:/usuario/listarUsuario";
-    }
-
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+ 
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
@@ -51,7 +35,7 @@ public class UsuarioControlador {
 
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN ')")
+   
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String domicilio, @RequestParam String telefono, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
@@ -74,18 +58,6 @@ public class UsuarioControlador {
 
         }
 
-    }
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-
-    @GetMapping("/lista_usuarioCompleta")
-    public String listarUsuarios(ModelMap modelo) {
-
-        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
-
-        modelo.addAttribute("usuarios", usuarios);
-
-        return "usuario_listaCompleta.html";
     }
 
 }
