@@ -44,28 +44,48 @@ public class UsuarioServicio implements UserDetailsService {
         usuarioRepositorio.save(usuario);
 
     }
+ 
+    @Transactional
+    public void actualizar(String id, String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
 
-    private void validar(String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
+        validar(nombre, domicilio, telefono, email, password, password2);
 
-        if (nombre.isEmpty() || nombre == null) {
-            throw new MiException("el nombre no puede ser nulo o estar vacío");
-        }
-        if (email.isEmpty() || email == null) {
-            throw new MiException("el email no puede ser nulo o estar vacio");
-        }
-        if (domicilio.isEmpty() || domicilio == null) {
-            throw new MiException("el domicilio no puede ser nulo o estar vacio");
-        }
-        if (telefono.isEmpty() || telefono == null) {
-            throw new MiException("el telefono no puede ser nulo o estar vacio");
-        }
-        if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new MiException("La contraseña no puede estar vacía, y debe tener más de 5 dígitos");
-        }
-        if (!password.equals(password2)) {
-            throw new MiException("Las contraseñas ingresadas deben ser iguales");
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+            usuario.setDomicilio(domicilio);
+            usuario.setTelefono(telefono);
+            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+
+            usuario.setRol(Rol.USER);
+
+            usuarioRepositorio.save(usuario);
+
         }
 
+    }
+ 
+         public Usuario getone(String id) {
+        return usuarioRepositorio.getOne(id);
+    }
+
+    public List<Usuario> listarUsuarios() {
+
+        List<Usuario> usuarios = new ArrayList<>();
+
+        usuarios = usuarioRepositorio.findAll();
+
+        return usuarios;
+    }
+    
+      public Integer cantidadUsuarios(){
+        
+        
+        return usuarioRepositorio.cantidadUsuariosTotal();
+        
     }
 
     @Override
@@ -95,61 +115,6 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-
-    public void eliminar(String id) throws MiException {
-        if (id.isEmpty() || id == null) {
-            new Exception("El id es null");
-        }
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-            Usuario usuario = respuesta.get();
-            usuario.setAlta(true);
-            usuarioRepositorio.save(usuario);
-        }
-    }
-            
-    @Transactional
-    public void actualizar(String id, String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
-
-        validar(nombre, domicilio, telefono, email, password, password2);
-
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-
-            Usuario usuario = respuesta.get();
-            usuario.setNombre(nombre);
-            usuario.setEmail(email);
-            usuario.setDomicilio(domicilio);
-            usuario.setTelefono(telefono);
-            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
-
-            usuario.setRol(Rol.USER);
-
-            usuarioRepositorio.save(usuario);
-
-        }
-
-    }
-
- 
-    
-
-    public List<Usuario> listarUsuarios() {
-
-        List<Usuario> usuarios = new ArrayList<>();
-
-        usuarios = usuarioRepositorio.findAll();
-
-        return usuarios;
-    }
-    
-      public Integer cantidadUsuarios(){
-        
-        
-        return usuarioRepositorio.cantidadUsuariosTotal();
-        
-    }
-
          @Transactional
     public void cambiarRol(String id){
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
@@ -170,8 +135,39 @@ public class UsuarioServicio implements UserDetailsService {
     	}
     }
     
-     public Usuario getone(String id) {
-        return usuarioRepositorio.getOne(id);
+    public void eliminar(String id) throws MiException {
+        if (id.isEmpty() || id == null) {
+            new Exception("El id es null");
+        }
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setAlta(true);
+            usuarioRepositorio.save(usuario);
+        }
+    }
+
+    private void validar(String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
+
+        if (nombre.isEmpty() || nombre == null) {
+            throw new MiException("el nombre no puede ser nulo o estar vacío");
+        }
+        if (email.isEmpty() || email == null) {
+            throw new MiException("el email no puede ser nulo o estar vacio");
+        }
+        if (domicilio.isEmpty() || domicilio == null) {
+            throw new MiException("el domicilio no puede ser nulo o estar vacio");
+        }
+        if (telefono.isEmpty() || telefono == null) {
+            throw new MiException("el telefono no puede ser nulo o estar vacio");
+        }
+        if (password.isEmpty() || password == null || password.length() <= 5) {
+            throw new MiException("La contraseña no puede estar vacía, y debe tener más de 5 dígitos");
+        }
+        if (!password.equals(password2)) {
+            throw new MiException("Las contraseñas ingresadas deben ser iguales");
+        }
+
     }
 }
     

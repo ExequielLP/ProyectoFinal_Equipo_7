@@ -38,7 +38,7 @@ public class UsuarioControlador {
 
             modelo.put("exito", "Usuario registrado correctamente!");
 
-            return "redirect:/";
+            return "redirect:/index";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
@@ -47,11 +47,10 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "redirect:/";
+            return "/";
         }
 
     }
-
 
     @PostMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable String id,ModelMap modelo) {
@@ -65,15 +64,20 @@ public class UsuarioControlador {
     }
 
 
+
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
         modelo.put("usuario", usuario);
+
         return "usuarioModificar.html";
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+  
+
+    @PreAuthorize("hasAnyRole('USER','ADMIN ')")
+
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String domicilio, @RequestParam String telefono, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
@@ -92,7 +96,11 @@ public class UsuarioControlador {
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
 
-            return "usuarioModificar.html";
+
+
+            return "modificarUsuario.html";
+
+
         }
 
     }
