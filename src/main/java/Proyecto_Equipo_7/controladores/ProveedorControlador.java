@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProveedorControlador {
 
     @Autowired
-    private Proveedorservicio proveedorservicio;
+    private Proveedorservicio proveedorServicio;
  
     
     // este no sabemos que funcion cumple aun
@@ -35,38 +35,13 @@ public class ProveedorControlador {
 //        return "registroProv.html";
 //
 //    }
-
-    @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo) {
-
-        try {
-            proveedorservicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2,
-                    archivo, honorario, rubro);
-
-            modelo.put("exito", "Proveedor registrado correctamente!");
-
-            return "redirect:/";
-        } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
-            modelo.put("domicilio", domicilio);
-            modelo.put("telefono", telefono);
-            modelo.put("honorario", honorario);
-            modelo.put("rubro", rubro);
-            
-            return "redirect:/";
-
-        }
-    }
-
+   
+ 
+  @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("eliminarProveedor/{id}")
     public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
         try {
-            proveedorservicio.eliminar(id);
+            proveedorServicio.eliminar(id);
         } catch (MiException ex){
             modelo.put("error", ex.getMessage());
         }
@@ -89,11 +64,11 @@ public class ProveedorControlador {
             @RequestParam String password, String password2, ModelMap modelo) {
 
         try {
-            proveedorservicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo, honorario, rubro);
+            proveedorServicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo, honorario, rubro);
 
             modelo.put("exito", "Proveedor actualizado correctamente!");
 
-            return "index.html";
+            return "inicio.html";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
@@ -111,7 +86,7 @@ public class ProveedorControlador {
     
     @GetMapping("/perfil/{id}")
     public ResponseEntity<byte[]> imagenProveedor (@PathVariable String id){
-        Proveedor proveedor = proveedorservicio.getone(id);
+        Proveedor proveedor = proveedorServicio.getone(id);
         
        byte[] imagen= proveedor.getImagen().getContenido();
        

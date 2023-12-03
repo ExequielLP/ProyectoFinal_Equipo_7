@@ -28,7 +28,7 @@ public class UsuarioServicio implements UserDetailsService {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public void registrarusuario(String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
+    public void registrarUsuario(String nombre, String domicilio, String telefono, String email, String password, String password2) throws MiException {
 
         validar(nombre, domicilio, telefono, email, password, password2);
 

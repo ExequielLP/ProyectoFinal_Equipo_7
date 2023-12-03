@@ -10,11 +10,10 @@
         </header>      
 
         <main class="container justify-content-center ">
-            
-              <!-- MODAL EXITO U ERROR -->
-            <div th:replace="/fragments/exitoError :: div"></div>
-            
-            
+
+
+
+
             <!-- CARRUSEL -->
             <div th:replace="/fragments/carousel :: section"></div>
 
@@ -24,8 +23,9 @@
             <!-- CARD PROVEEDORES -->
             <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardProveedor :: div"></div>
 
-          
-            
+            <!-- MODAL EXITO U ERROR -->
+            <div th:replace="/fragments/exitoError :: div"></div>
+
         </main>
 
         <div class="container"><footer th:replace="/fragments/footer :: footer" </footer> </div>
