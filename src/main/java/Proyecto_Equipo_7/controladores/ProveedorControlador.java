@@ -36,32 +36,32 @@ public class ProveedorControlador {
 //
 //    }
 
-    @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo) {
-
-        try {
-            proveedorservicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2,
-                    archivo, honorario, rubro);
-
-            modelo.put("exito", "Proveedor registrado correctamente!");
-
-            return "redirect:/";
-        } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
-            modelo.put("domicilio", domicilio);
-            modelo.put("telefono", telefono);
-            modelo.put("honorario", honorario);
-            modelo.put("rubro", rubro);
-            
-            return "redirect:/";
-
-        }
-    }
+//    @PostMapping("/registro")
+//    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
+//            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
+//            @RequestParam String password, String password2, ModelMap modelo) {
+//
+//        try {
+//            proveedorservicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2,
+//                    archivo, honorario, rubro);
+//
+//            modelo.put("exito", "Proveedor registrado correctamente!");
+//
+//            return "redirect:/";
+//        } catch (MiException ex) {
+//
+//            modelo.put("error", ex.getMessage());
+//            modelo.put("nombre", nombre);
+//            modelo.put("email", email);
+//            modelo.put("domicilio", domicilio);
+//            modelo.put("telefono", telefono);
+//            modelo.put("honorario", honorario);
+//            modelo.put("rubro", rubro);
+//            
+//            return "redirect:/";
+//
+//        }
+//    }
 
     @PostMapping("eliminarProveedor/{id}")
     public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
