@@ -26,6 +26,7 @@ public class Imagen {
     
 
     private String mime;
+    private String imagen;
     
     private String nombre;
     
