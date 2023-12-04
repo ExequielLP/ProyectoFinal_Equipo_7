@@ -19,24 +19,19 @@
                                 <th scope="col">Id Proveedor</th>
                                 <th scope="col">Terminado</th>
                                 <th scope="col">Alta</th>
-                                <th scope="col" sec:authorize="hasRole('ADMIN')">Cambiar Rol</th>
-                                <th scope="col" sec:authorize="hasRole('ADMIN')">Modificar</th>
+                                <th scope="col" sec:authorize="hasRole('ADMIN')">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody th:each="trabajo : ${trabajos}">
                             <tr>
                                 <td th:text="${trabajo.id}"></td>
-                                <td th:text="${trabajo.usuario}"></td>
-                                <td th:text="${trabajo.proveedor}"></td>
+                                <td th:text="${trabajo.usuario.id}"></td>
+                                <td th:text="${trabajo.proveedor.id}"></td>
                                 <td th:text="${trabajo.terminado}"></td>
                                 <td th:text="${trabajo.alta}"></td>
                                 <td>
-                                    <a th:href="@{/admin/modificarRol/__${trabajo.id}__}"><i
-                                            class="fas fa-feather-alt"></i>Cambiar Rol</a>
-                                </td>
-                                <td>
                                     <a th:href="@{/perfil/__${trabajo.id}__}"><i
-                                            class="fas fa-feather-alt"></i>Modificar</a>
+                                            class="fas fa-feather-alt"></i>Eliminar</a>
                                 </td>
                             </tr>
                         </tbody>
