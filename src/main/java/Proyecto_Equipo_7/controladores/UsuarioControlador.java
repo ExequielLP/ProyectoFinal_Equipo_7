@@ -29,28 +29,28 @@ public class UsuarioControlador {
 //        return "registro.html";
 //    }
 
-    @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio, @RequestParam String telefono,
-            @RequestParam String password, String password2, ModelMap modelo) {
-
-        try {
-            usuarioServicio.registrarusuario(nombre, domicilio, telefono, email, password, password2);
-
-            modelo.put("exito", "Usuario registrado correctamente!");
-
-            return "redirect:/";
-        } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
-            modelo.put("domicilio", domicilio);
-            modelo.put("telefono", telefono);
-
-            return "redirect:/";
-        }
-
-    }
+//    @PostMapping("/registro")
+//    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio, @RequestParam String telefono,
+//            @RequestParam String password, String password2, ModelMap modelo) {
+//
+//        try {
+//            usuarioServicio.registrarusuario(nombre, domicilio, telefono, email, password, password2);
+//
+//            modelo.put("exito", "Usuario registrado correctamente!");
+//
+//            return "redirect:/";
+//        } catch (MiException ex) {
+//
+//            modelo.put("error", ex.getMessage());
+//            modelo.put("nombre", nombre);
+//            modelo.put("email", email);
+//            modelo.put("domicilio", domicilio);
+//            modelo.put("telefono", telefono);
+//
+//            return "redirect:/";
+//        }
+//
+//    }
 
 
     @PostMapping("/eliminarUsuario/{id}")
