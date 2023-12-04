@@ -3,6 +3,7 @@ package Proyecto_Equipo_7.servicios;
 import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.entidades.Usuario;
+import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
@@ -49,13 +50,13 @@ public class TrabajoServicio {
             }
         }
     }
-
+//metodo para que el admin ekimine un trabajo dando de baja
     @Transactional
-    public void finalizarTrabajo(String id) {
+    public void eliminarTrabajo(String id)throws MiException  {
         Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Trabajo trabajo = respuesta.get();
-            trabajo.setTerminado(true);
+            trabajo.setAlta(false);
             trabajoRepositorio.save(trabajo);
         }
 
@@ -69,11 +70,11 @@ public class TrabajoServicio {
     }
 
     @Transactional
-    public void darDeBajaTrabajo(String id) {
+    public void darTerminadoTrabajo(String id) {
         Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Trabajo trabajo = respuesta.get();
-            trabajo.setAlta(false);
+            trabajo.setTerminado(true);
             trabajoRepositorio.save(trabajo);
         }
 
@@ -83,5 +84,14 @@ public class TrabajoServicio {
 
         return trabajoRepositorio.cantidadContratosTotales();
 
+    }
+    
+    //metodo en proveedor donde muestra lista de trabajos propios 
+    //debe llevar el boton para finalizar trabajo
+     public List<Trabajo> listarTrabajosPorProveedor(String id) {
+        List<Trabajo> listaTrabajosPorProveedor = new ArrayList<>();
+        listaTrabajosPorProveedor = trabajoRepositorio.buscarTrabajosPorProveedor(id);
+
+        return listaTrabajosPorProveedor;
     }
 }

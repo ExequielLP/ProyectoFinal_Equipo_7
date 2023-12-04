@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Rubro</title>
+</head>
+<body>
+    <h1>Registro de Rubro</h1>
+    <form action="/rubro/registro" method="post" enctype="multipart/form-data">
+        <label for="rubro">Rubro:</label>
+        <input type="text" id="rubro" name="rubro" required><br><br>
+        
+        <label for="archivo">Imagen:</label>
+        <input type="file" id="archivo" name="archivo" required><br><br>
+        
+        <input type="submit" value="Registrar">
+    </form>
+    
+    <div th:if="${exito}">
+        <p th:text="${exito}"></p>
+    </div>
+    
+    <div th:if="${error}">
+        <p th:text="${error}"></p>
+    </div>
+</body>
+</html>

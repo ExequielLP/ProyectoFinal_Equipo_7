@@ -1,5 +1,6 @@
 package Proyecto_Equipo_7.servicios;
 
+import Proyecto_Equipo_7.entidades.Imagen;
 import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.RubroRepositorio;
@@ -9,6 +10,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class RubroServicio {
@@ -16,10 +18,18 @@ public class RubroServicio {
     @Autowired
     private RubroRepositorio rubroRepositorio;
 
+    @Autowired
+    private ImagenServicio imagenServicio;
+
     @Transactional
-    public void registrarRubro(String nombreRubro) throws MiException {
+    public void registrarRubro(String nombreRubro, MultipartFile archivo) throws MiException {
         Rubro rubro = new Rubro();
         rubro.setRubro(nombreRubro);
+
+        Imagen imagen = imagenServicio.guardar(archivo);
+
+        rubro.setImagen(imagen);
+
         rubroRepositorio.save(rubro);
     }
 
@@ -48,26 +58,28 @@ public class RubroServicio {
     }
 
     @Transactional
-    public void actualizar(String id, String nombreRubro) throws MiException {
+    public void actualizar(String id, String nombreRubro, MultipartFile archivo) throws MiException {
 
         Optional<Rubro> respuesta = rubroRepositorio.findById(id);
         if (respuesta.isPresent()) {
 
             Rubro rubro = new Rubro();
             rubro.setRubro(nombreRubro);
+
+            Imagen imagen = imagenServicio.guardar(archivo);
+
+            rubro.setImagen(imagen);
+
             rubroRepositorio.save(rubro);
 
         }
 
     }
-    
-      public Rubro getOne(String id){
-        
-        
+
+    public Rubro getOne(String id) {
+
         return rubroRepositorio.getOne(id);
-        
-        
+
     }
-      
 
 }

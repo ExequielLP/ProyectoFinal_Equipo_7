@@ -19,9 +19,12 @@
             <div class="container">
                 <div th:replace="/fragments/cardRubro :: div"></div>
             </div>
+
+
+
         </main>
         <section class="listas-app">
-              <div class="container">
+            <div class="container">
                 <div th:replace="/fragments/listaUsuarios :: div"></div>
             </div>
 
@@ -32,7 +35,11 @@
             <div class="container">
                 <div th:replace="/fragments/listaTrabajos :: div"></div>
             </div>
-        </section>
+        </section><br><!-- comment -->
+        
+        <div class="container">
+            <a href="/rubro/registrar" class="btn btn-primary">Registrar Rubro</a>
+        </div>
 
         <div class="container">
             <footer th:replace="/fragments/footer :: footer"></footer>

@@ -1,5 +1,6 @@
 package Proyecto_Equipo_7.servicios;
 
+import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
@@ -72,7 +73,7 @@ public class UsuarioServicio implements UserDetailsService {
         return usuarioRepositorio.getOne(id);
     }
 
-   /* public List<Usuario> listarUsuarios() {
+    /* public List<Usuario> listarUsuarios() {
 
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -80,7 +81,6 @@ public class UsuarioServicio implements UserDetailsService {
 
         return usuarios;
     }*/
-
     public List<Usuario> listarUsuariosPorRol() {
 
         List<Usuario> usuariosPorRol = new ArrayList<>();
@@ -101,7 +101,10 @@ public class UsuarioServicio implements UserDetailsService {
 
         Usuario usuario = usuarioRepositorio.findByEmail(email);
 
-        if (usuario != null) {
+        if (usuario == null) {
+            throw new UsernameNotFoundException("Usuario no encontrado con el correo electrónico: " + email);
+            
+        } else {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
 
@@ -116,8 +119,6 @@ public class UsuarioServicio implements UserDetailsService {
             session.setAttribute("usuarioSession", usuario);
 
             return new User(usuario.getEmail(), usuario.getPassword(), permisos);
-        } else {
-            return null;
         }
 
     }
@@ -173,5 +174,13 @@ public class UsuarioServicio implements UserDetailsService {
             throw new MiException("Las contraseñas ingresadas deben ser iguales");
         }
 
+    }
+    
+       public Usuario getOne(String id){
+        
+        
+        return usuarioRepositorio.getOne(id);
+        
+        
     }
 }

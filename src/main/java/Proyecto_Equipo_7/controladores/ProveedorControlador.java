@@ -2,16 +2,13 @@ package Proyecto_Equipo_7.controladores;
 
 import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Rubro;
+import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.ProveedorServicio;
+import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -27,13 +25,10 @@ public class ProveedorControlador {
 
     @Autowired
     private ProveedorServicio proveedorServicio;
- 
-    
 
+    @Autowired
+    private TrabajoServicio trabajoServicio;
 
-  
-
-  
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
@@ -42,7 +37,6 @@ public class ProveedorControlador {
         return "modificarProveedor.html";
     }
 
-  
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
             @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
@@ -68,17 +62,16 @@ public class ProveedorControlador {
 
     }
 
-     
-    /*  @GetMapping("/listaProveedor")
-    public String listarProveedores(ModelMap modelo) {
-        List<Proveedor> proveedores = proveedorServicio.listaProveedores();
-        modelo.addAttribute("proveedores", proveedores);
-       
-        return "cardProveedor.html";
+    @GetMapping("/listaTrabajo")
+    public String listarTrabajosPorProveedor(@SessionAttribute("proveedor") Proveedor proveedor, ModelMap modelo) {
+        String proveedorId = proveedor.getId();
+        List<Trabajo> trabajos = trabajoServicio.listarTrabajosPorProveedor(proveedorId);
+        modelo.addAttribute("trabajos", trabajos);
 
+        return "listaTrabajoPorProveedor.html";
     }
-    
-    @GetMapping("/imagen/{id}")
+
+    /* @GetMapping("/imagen/{id}")
     public ResponseEntity<byte[]> imagenProveedor (@PathVariable String id){
         Proveedor proveedor = proveedorServicio.getone(id);
         
@@ -87,12 +80,17 @@ public class ProveedorControlador {
        HttpHeaders headers = new HttpHeaders();
        
        headers.setContentType(MediaType.IMAGE_JPEG);
-       
-        
-        
+    
        return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
     }*/
+    //metodo para agregar a la lista de trabajo de cada proveedor, al lado de cada trabajo
+    @GetMapping("/finalizarTrabajo/{id}")
+    public String finalizarTrabajo(@PathVariable String id) {
 
- 
+        trabajoServicio.darTerminadoTrabajo(id);
+
+        return "redirect:/proveedor/";
+
+    }
 
 }

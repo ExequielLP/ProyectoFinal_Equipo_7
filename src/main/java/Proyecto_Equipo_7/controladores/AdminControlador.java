@@ -1,12 +1,10 @@
 package Proyecto_Equipo_7.controladores;
 
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Rubro;
+
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -46,6 +44,7 @@ public class AdminControlador {
         return "redirect:/admin/dashboard";
     }
 
+    //metodo para el admin al lado de cada proveedor en la lista para poder eliminarlo
     @PostMapping("eliminarProveedor/{id}")
     public String eliminarProveedor(@PathVariable String id, ModelMap modelo) {
         try {
@@ -53,9 +52,10 @@ public class AdminControlador {
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
         }
-        return "redirect:/proveedor/listarProveedor";
+        return "redirect:/admin/dashboard";
     }
     
+    //metodo para el admin al lado de cada usuario en la lista para poder eliminarlo
        @PostMapping("/eliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable String id, ModelMap modelo) {
         try {
@@ -64,7 +64,19 @@ public class AdminControlador {
             modelo.put("error", ex.getMessage());
         }
 
-        return "redirec:/usuario/listarUsuario";
+        return "redirec:/admin/dashboard";
     }
    
+       //metodo para el admin al lado de cada trabajo en la lista para poder eliminarlo
+       @PostMapping("/eliminarTrabajo/{id}")
+    public String eliminarTrabajo(@PathVariable String id, ModelMap modelo) {
+         try {
+           trabajoServicio.eliminarTrabajo(id);
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+        }
+        
+
+        return "redirec:/admin/dashboard";
+    }
 }

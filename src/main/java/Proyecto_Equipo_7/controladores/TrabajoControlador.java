@@ -1,12 +1,10 @@
 package Proyecto_Equipo_7.controladores;
 
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Usuario;
+
 import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +18,10 @@ public class TrabajoControlador {
 
     @Autowired
     private TrabajoServicio trabajoServicio;
-  
+
     @Autowired
     private ProveedorServicio proveedorServicio;
-  
+
     @GetMapping("/crearTrabajo")
     public String crearTrabajo() {
         return "contratoTrabajo.html";
@@ -39,28 +37,15 @@ public class TrabajoControlador {
 
     }
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
-    @GetMapping("/finalizar_Trabajo/{id}")
-    public String finalizarTrabajo(@PathVariable String id, ModelMap modelo) {
-        trabajoServicio.finalizarTrabajo(id);
-
-        // este metodo permite al proveedor dar por terminado un trabajo
-        return "list_trabajos.html";
-
-    }
-
     @GetMapping("/cargarTrabajo/{id}")
-    public String cargarTrabajo(@PathVariable String id,ModelMap modelo){
-       
-        
+    public String cargarTrabajo(@PathVariable String id, ModelMap modelo) {
+
 //aca va la vista para que aparesca el form
-    return  "contratoTrabajo.html" ;
+        return "contratoTrabajo.html";
     }
-    
-    
-    
+
     @GetMapping("/persistirTrabajo/{id}")
-    public String persistirTrabajo(@PathVariable String id,HttpSession session,ModelMap modelo){
+    public String persistirTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
         try {
 //            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
 //            usuario.getId();
@@ -74,27 +59,8 @@ public class TrabajoControlador {
             // aca retorna vista de error o index
             return null;
         }
-    //aca va la vista dps de envien datos del form
-    
-    }
-    
-    
-    @GetMapping("/eleminarTrabajo/{id}")
-    public String eliminarTrabajo(@PathVariable String id,ModelMap modelo){
-        trabajoServicio.finalizarTrabajo(id);
-        
-    // aca va un redirect:/ y la misma donde estaba
-        return null;
+        //aca va la vista dps de envien datos del form
 
     }
 
-    @PreAuthorize("AnyRole('ADMINISTRADOR')")
-    @GetMapping("/baja_Trabajo/{id}")
-    public String darDeBajaTrabajo(@PathVariable String id, ModelMap modelo) {
-        trabajoServicio.darDeBajaTrabajo(id);
-
-        // este metodo permite que solo un admin y nadie mas pueda dar la baja a un trabajo, puede ser al estar terminado o 
-        // porque por algun motivo se solicito
-        return "list_trabajos.html";
-    }
 }

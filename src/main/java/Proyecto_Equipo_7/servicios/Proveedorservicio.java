@@ -3,6 +3,7 @@ package Proyecto_Equipo_7.servicios;
 import Proyecto_Equipo_7.entidades.Imagen;
 import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Rubro;
+import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
@@ -51,7 +52,7 @@ public class ProveedorServicio implements UserDetailsService {
         proveedor.setHonorario(honorario);
         proveedor.setRubro(rubro);
         proveedor.setAlta(true);
-        
+
         proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
 
         Imagen imagen = imagenServicio.guardar(archivo);
@@ -132,6 +133,10 @@ public class ProveedorServicio implements UserDetailsService {
             proveedor.setDomicilio(domicilio);
             proveedor.setTelefono(telefono);
             proveedor.setRubro(rubro);
+            
+            Imagen imagen = imagenServicio.guardar(archivo);
+            proveedor.setImagen(imagen);
+            
             proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
 
             proveedor.setRol(Rol.PROVEEDOR);
@@ -142,54 +147,46 @@ public class ProveedorServicio implements UserDetailsService {
 
     }
 
-  
-
-    public Proveedor getone(String id) {
+    public Usuario getOne(String id){
+        
+        
         return proveedorRepositorio.getOne(id);
+        
+        
     }
 
     @Transactional(readOnly = true)
-    public List<Proveedor> listaProveedor(){
+    public List<Proveedor> listaProveedor() {
         List<Proveedor> proveedores = new ArrayList<>();
         proveedores = proveedorRepositorio.findAll();
         return proveedores;
     }
-    
 
+//este metodo en el admin para dar de baja proveedor
     public void eliminar(String id) throws MiException {
-        if (id.isEmpty() || id == null){
+        if (id.isEmpty() || id == null) {
             new Exception("El id es null");
         }
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
-        if (respuesta.isPresent()){
+        if (respuesta.isPresent()) {
             Proveedor proveedor = respuesta.get();
-            proveedor.setAlta(true);
+            proveedor.setAlta(false);
             proveedorRepositorio.save(proveedor);
         }
 
     }
 
-    
-     public Integer cantidadProveedores(){
-        
-        
+    public Integer cantidadProveedores() {
+
         return proveedorRepositorio.cantidadProveedores();
-        
+
     }
-     
 
-  @Transactional(readOnly = true)
-public List<Proveedor> seisMejoresProveedores() {
-    Pageable pageable = (Pageable) PageRequest.of(0, 6);
-    List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
-    return proveedores;
-}
-
-//     @Transactional(readOnly = true)
-//    public List<Proveedor> seisMejoresProveedores(){
-//        List<Proveedor> proveedores = new ArrayList<>();
-//        proveedores = proveedorRepositorio.seisMejoresProveedores();
-//        return proveedores;
-//    }
+    @Transactional(readOnly = true)
+    public List<Proveedor> seisMejoresProveedores() {
+        Pageable pageable = (Pageable) PageRequest.of(0, 6);
+        List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
+        return proveedores;
+    }
 
 }
