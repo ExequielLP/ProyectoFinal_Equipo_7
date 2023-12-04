@@ -21,7 +21,8 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+
+    @PreAuthorize("hasAnyRole('USER','ADMINISTRADOR')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");

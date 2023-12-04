@@ -26,17 +26,17 @@ public class ProveedorControlador {
 
     @Autowired
     private TrabajoServicio trabajoServicio;
-
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
-    @GetMapping("/perfil")
+  
+   @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+   @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
         modelo.put("proveedor", proveedor);
         return "modificarProveedor.html";
     }
-
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
-    @PostMapping("/perfil/{id}")
+  
+  @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+  @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,
             @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro,
@@ -58,7 +58,7 @@ public class ProveedorControlador {
             return "modificarProveedor.html";
         }
     }
-
+  
     @GetMapping("/finalizarTrabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id) {
 
@@ -67,4 +67,21 @@ public class ProveedorControlador {
         return "redirect:/proveedor/";
 
     }
+
+    @PostMapping("eliminarProveedor/{id}")
+    public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
+        try {
+            proveedorservicio.eliminar(id);
+        } catch (MiException ex){
+            modelo.put("error", ex.getMessage());
+        }
+        return "redirect:/proveedor/listarProveedor";
+    }
+
+
+   
+
+    
+
+  
 }
