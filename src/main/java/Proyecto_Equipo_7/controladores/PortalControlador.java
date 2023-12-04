@@ -45,6 +45,12 @@ public class PortalControlador {
 
     }
 
+   @GetMapping("/contacto")
+    public String contacto(){
+    
+        return"contacto.html";
+    }
+
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
