@@ -1,14 +1,9 @@
 package Proyecto_Equipo_7.controladores;
 
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Rubro;
-import Proyecto_Equipo_7.excepciones.MiException;
-import Proyecto_Equipo_7.servicios.Proveedorservicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,92 +11,66 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Rubro;
+import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.servicios.ProveedorServicio;
+import Proyecto_Equipo_7.servicios.RubroServicio;
+import Proyecto_Equipo_7.servicios.TrabajoServicio;
 
 @Controller
 @RequestMapping("/proveedor")
 public class ProveedorControlador {
 
     @Autowired
-    private Proveedorservicio proveedorservicio;
+    private ProveedorServicio proveedorServicio;
 
-    @GetMapping("/registrar")
-    public String registrar() {
+    @Autowired
+    private TrabajoServicio trabajoServicio;
 
-        return "registroProv.html";
-
-    }
-
-    @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo) {
-
-        try {
-            proveedorservicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2,
-                    archivo, honorario, rubro);
-
-            modelo.put("exito", "Proveedor registrado correctamente!");
-
-            return "index.html";
-        } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
-            modelo.put("domicilio", domicilio);
-            modelo.put("telefono", telefono);
-            modelo.put("honorario", honorario);
-            modelo.put("rubro", rubro);
-            
-            return "registroProv.html";
-
-        }
-
-    }
+    @Autowired
+    private RubroServicio rubroServicio;
 
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
+        modelo.put("listaRubro", rubroServicio.listaRubros());
         modelo.put("proveedor", proveedor);
-
-        return "usuario_modificar.html";
+        return "modificarProveedor.html";
     }
 
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo) {
+    public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
+            @RequestParam String domicilio,
+            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro,
+            MultipartFile archivo,
+            @RequestParam String password, String password2, ModelMap modelo, HttpSession session) {
 
         try {
-            proveedorservicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo, honorario, rubro);
-
+            Proveedor proveedorUpdated= proveedorServicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo,
+                    honorario, rubro);
             modelo.put("exito", "Proveedor actualizado correctamente!");
-
-            return "index.html";
+            session.setAttribute("usuarioSession", proveedorUpdated);
+            return "redirect:/inicio";
         } catch (MiException ex) {
-
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
             modelo.put("email", email);
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
             modelo.put("rubro", rubro);
-
-            return "proveedor_modificar.html";
+            return "modificarProveedor.html";
         }
-
     }
 
-    @GetMapping("/proveedor/{id}")
-    public String verPromedioDeProveedor(@PathVariable("id") String proveedorId, Model model) {
-        Double promedioCalificaciones = proveedorservicio.obtenerPromedioCalificacionesProveedor(proveedorId);
+    @GetMapping("/finalizarTrabajo/{id}")
+    public String finalizarTrabajo(@PathVariable String id) {
 
-        model.addAttribute("proveedorId", proveedorId);
-        model.addAttribute("promedioCalificaciones", promedioCalificaciones);
+        trabajoServicio.darPorTerminadoUnTrabajo(id);
 
-        return "promedio_proveedor.html";
+        return "redirect:/proveedor/";
+
     }
-
 }

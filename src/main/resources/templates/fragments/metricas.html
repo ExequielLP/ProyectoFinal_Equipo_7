@@ -1,0 +1,47 @@
+<div class="conteiner d-flex justify-content-center align-items-center mt-5 mb-2 p-2">
+    <div class="card-group metricas-section">
+         
+        <div class="card metricas" style="border: none">
+
+            <div class="card-body metricas-p">
+                <img class="img-fluid" src="/img/usuarios-registrados.png" alt="">
+                <h4 class="card-title metricasTitulo">Usuarios registrados</h4>
+                <div>
+                    <p class="card-text">Cada vez son más los usuarios que deciden elegirnos.</p>
+                </div>
+                <div>
+                    <p class="card-query-number" th:text="${cantidadUsuarios}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="card metricas" style="border: none">
+
+            <div class="card-body">
+                <img src="/img/proveedores-registrados.png" alt="">
+                <h4 class="card-title">Proveedores registrados</h4>
+                <div>
+                    <p class="card-text">Cada dia contamos con mas proveedores en linea.</p>
+                </div>
+                <div>
+                    <p class="card-query-number" th:text="${cantidadProveedores}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="card metricas" style="border: none">
+
+            <div class="card-body">
+                <img src="/img/trabajos-registrados.png" alt="">
+                <h4 class="card-title">Trabajos realizados</h4>
+                <div>
+                    <p class="card-text">Cantidad de trabajos en curso y finalizados.</p>
+                </div>
+                <div>
+                    <p class="card-query-number" th:text="${cantidadTrabajosTotales}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
