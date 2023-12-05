@@ -31,7 +31,6 @@ public class ProveedorControlador {
     @Autowired
     private RubroServicio rubroServicio;
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
@@ -40,7 +39,6 @@ public class ProveedorControlador {
         return "modificarProveedor.html";
     }
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,

@@ -13,8 +13,9 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <main class="container justify-content-center">
-        <form class="formulario" th:action="@{/proveedor/perfil/__${proveedor.id}__}" method="POST" enctype="multipart/form-data">
-            <input hidden th:value="${id}" name="id" > 
+        <form class="formulario" th:action="@{/proveedor/perfil/__${session.usuarioSession.id}__}" method="POST"
+        enctype="multipart/form-data">
+            <input hidden th:value="${id}" name="id">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput"
                     placeholder="Ingrese nombre usuario">
@@ -41,7 +42,8 @@
                 <label for="floatingInput" th:text="${proveedor.honorario}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="file" name="archivo" id="floatingInput" placeholder="Seleccione nueva imagen" th:value="${proveedor.imagen}">
+                <input type="file" name="archivo" id="floatingInput" placeholder="Seleccione nueva imagen"
+                    th:value="${proveedor.imagen}">
             </div>
             <br>
             <div class="form-group">

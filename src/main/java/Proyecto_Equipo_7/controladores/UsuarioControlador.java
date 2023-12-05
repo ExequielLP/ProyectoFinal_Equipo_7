@@ -21,7 +21,6 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
@@ -30,7 +29,6 @@ public class UsuarioControlador {
         return "modificarUsuario.html";
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN ')")
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String domicilio,
             @RequestParam String telefono, @RequestParam String email,
