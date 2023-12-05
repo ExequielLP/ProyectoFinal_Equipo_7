@@ -64,7 +64,7 @@ public class AdminControlador {
             modelo.put("error", ex.getMessage());
         }
 
-        return "redirec:/admin/dashboard";
+         return "redirect:/admin/dashboard";
     }
    
        //metodo para el admin al lado de cada trabajo en la lista para poder eliminarlo
@@ -77,6 +77,6 @@ public class AdminControlador {
         }
         
 
-        return "redirec:/admin/dashboard";
+         return "redirect:/admin/dashboard";
     }
 }

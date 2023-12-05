@@ -55,10 +55,10 @@ public class PortalControlador {
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
             modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
-            return "modalSignin.html";
+            return "redirect:/";
         }
 
-        return "modalSignin.html";
+        return "index.html";
     }
 
   

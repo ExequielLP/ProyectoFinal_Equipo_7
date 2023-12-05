@@ -16,7 +16,9 @@
                             <tr>
                                 <th scope="col">Id Trabajo</th>
                                 <th scope="col">Id Usuario</th>
+                                <th scope="col">Nombre Usuario</th>
                                 <th scope="col">Id Proveedor</th>
+                                <th scope="col">Nombre Proveedor</th>
                                 <th scope="col">Terminado</th>
                                 <th scope="col">Alta</th>
                                 <th scope="col" sec:authorize="hasRole('ADMIN')">Cambiar Rol</th>
@@ -26,8 +28,10 @@
                         <tbody th:each="trabajo : ${trabajos}">
                             <tr>
                                 <td th:text="${trabajo.id}"></td>
-                                <td th:text="${trabajo.usuario}"></td>
-                                <td th:text="${trabajo.proveedor}"></td>
+                                <td th:text="${trabajo.usuario.id}"></td>
+                                 <td th:text="${trabajo.usuario.nombre}"></td>
+                                <td th:text="${trabajo.proveedor.id}"></td>
+                                <td th:text="${trabajo.proveedor.nombre}"></td>
                                 <td th:text="${trabajo.terminado}"></td>
                                 <td th:text="${trabajo.alta}"></td>
                                 <td>

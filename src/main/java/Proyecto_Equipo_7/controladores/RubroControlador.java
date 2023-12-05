@@ -1,6 +1,5 @@
 package Proyecto_Equipo_7.controladores;
 
-
 import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.RubroServicio;
@@ -21,7 +20,6 @@ public class RubroControlador {
     @Autowired
     private RubroServicio rubroServicio;
 
-    
     @GetMapping("/registrar")
     public String registrar() {
 
@@ -34,19 +32,16 @@ public class RubroControlador {
 
         try {
             rubroServicio.registrarRubro(rubro, archivo);
-            modelo.put("exito", "El rubro se registro correctamente!");
-
+            modelo.put("exito", "El rubro se registró correctamente!");
+            return "redirect:/admin/dashboard";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
-
-            return "panel.html";
+            return "redirect:/admin/dashboard";
         }
-
-        return "panel.html";
     }
 
     @GetMapping("/modificar/{id}")
-    public String formularioModificarRubro(@PathVariable String id,MultipartFile archivo, ModelMap modelo) {
+    public String formularioModificarRubro(@PathVariable String id, MultipartFile archivo, ModelMap modelo) {
         Rubro rubro = rubroServicio.getOne(id);
         modelo.put("rubro", rubro);
         modelo.put("id", id);
@@ -55,7 +50,7 @@ public class RubroControlador {
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id, ModelMap modelo,@RequestParam MultipartFile archivo, @RequestParam String nombreRubro) {
+    public String modificar(@PathVariable String id, ModelMap modelo, @RequestParam MultipartFile archivo, @RequestParam String nombreRubro) {
         try {
             rubroServicio.actualizar(id, nombreRubro, archivo);
             modelo.addAttribute("exito", "editorial modificada exitosamente");

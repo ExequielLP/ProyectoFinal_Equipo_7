@@ -69,10 +69,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    public Usuario getone(String id) {
-        return usuarioRepositorio.getOne(id);
-    }
-
+    
     /* public List<Usuario> listarUsuarios() {
 
         List<Usuario> usuarios = new ArrayList<>();
