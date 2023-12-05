@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-5 pt-0">
-                <form class="formulario" th:action="@{/usuario/registro}" method="POST" >                   
+                <form class="formulario" th:action="@{/registroUsuario}" method="POST" >                   
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nombre usuario">
                         <label for="floatingInput">Nombre Completo</label>

@@ -13,6 +13,9 @@
             <!-- CARRUSEL -->
             <div th:replace="/fragments/carousel :: section"></div>
 
+            <!-- LISTA TRABAJOS SOLO PROVEEDOR-->   
+            <div sec:authorize="hasRole('ROLE_PROVEEDOR')" th:replace="/fragments/listaTrabajosPorProveedor :: div"></div>
+
             <!-- RUBROS SOLO USER-->           
             <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardRubro :: div"></div>
 
