@@ -11,7 +11,7 @@
                 aria-labelledby="panelsStayOpen-headingTwo">
                 <div class="accordion-body">
 
-                    <table class="table table-secondary table-hover">
+                    <table class="table-listas table table-secondary table-hover table-responsive">
                         <thead>
                             <tr>
                                 <th scope="col">Id Proveedor</th>
@@ -21,12 +21,10 @@
                                 <th scope="col">Telefono</th>
                                 <th scope="col">Honorario</th>
                                 <th scope="col">Calificación</th>
-                                <th scope="col">Imagen</th>
                                 <th scope="col">Rubro</th>
                                 <th scope="col">Rol</th>
                                 <th scope="col">Alta</th>
-                                <th scope="col" sec:authorize="hasRole('ADMIN')">Cambiar Rol</th>
-                                <th scope="col" sec:authorize="hasRole('ADMIN')">Modificar</th>
+                                <th scope="col" sec:authorize="hasRole('ADMIN')">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody th:each="proveedor : ${proveedores}">
@@ -38,17 +36,12 @@
                                 <td th:text="${proveedor.telefono}"></td>
                                 <td th:text="${proveedor.honorario}"></td>
                                 <td th:text="${proveedor.Calificacion}"></td>
-                                <td th:text="${proveedor.imagen}"></td>
-                                <td th:text="${proveedor.rubro}"></td>
+                                <td th:text="${proveedor.rubro.rubro}"></td>
                                 <td th:text="${proveedor.rol}"></td>
                                 <td th:text="${proveedor.alta}"></td>
                                 <td>
-                                    <a th:href="@{/admin/modificarRol/__${proveedor.id}__}"><i
-                                            class="fas fa-feather-alt"></i>Cambiar Rol</a>
-                                </td>
-                                <td>
                                     <a th:href="@{/perfil/__${proveedor.id}__}"><i
-                                            class="fas fa-feather-alt"></i>Modificar</a>
+                                            class="fas fa-feather-alt"></i>Eliminar</a>
                                 </td>
                             </tr>
                         </tbody>

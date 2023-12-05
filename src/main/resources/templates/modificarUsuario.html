@@ -13,22 +13,23 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <main class="container justify-content-center" width="500">
-        <form class="formulario" th:action="@{/usuario/perfil}" method="POST" >                   
+        <form class="formulario" th:action="@{/usuario/perfil/__${usuario.id}__}" method="POST" >  
+            <input hidden th:value="${id}" name="id" >                 
             <div class="form-floating mb-3">
                 <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nombre usuario">
-                <label for="floatingInput">Nombre Completo</label>
+                <label for="floatingInput" th:text="${usuario.nombre}"></label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio" id="floatingInput" placeholder="Domicilio">
-                <label for="floatingInput">Domicilio</label>
+                <label for="floatingInput" th:text="${usuario.domicilio}"></label>
             </div>
             <div class="form-floating mb-3">
                 <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono" id="floatingInput" placeholder="Telefono o celular">
-                <label for="floatingInput">Telefono o celular</label>
+                <label for="floatingInput" th:text="${usuario.telefono}"></label>
             </div>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput" placeholder="Email">
-                <label for="floatingInput">Email ejemplo@gmail.com</label>
+                <label for="floatingInput" th:text="${usuario.email}"></label>
             </div>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control rounded-3" name="password" id="floatingPassword" placeholder="Password">
@@ -38,7 +39,7 @@
                 <input type="password" class="form-control rounded-3" name="password2" id="floatingPassword2" placeholder="Confirme el Password">
                 <label for="floatingPassword">Debe ser idem al anterior</label>
             </div>
-            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Modificar</button>
         </form>
     </main>
     <div class="container">

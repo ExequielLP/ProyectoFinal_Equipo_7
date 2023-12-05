@@ -1,12 +1,5 @@
 package Proyecto_Equipo_7.servicios;
 
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Trabajo;
-import Proyecto_Equipo_7.entidades.Usuario;
-import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
-import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
-import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Trabajo;
+import Proyecto_Equipo_7.entidades.Usuario;
+import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
+import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 
 @Service
 public class TrabajoServicio {
@@ -22,19 +20,13 @@ public class TrabajoServicio {
     private TrabajoRepositorio trabajoRepositorio;
     @Autowired
     private ProveedorRepositorio proveedorRepositorio;
-    @Autowired
-    private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
     public void crearTrabajo(HttpSession session, String id) {
-        System.err.println("CREAR TRABAJO DATOS");
-        System.out.println(session.getId());
+
         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
-        System.out.println("__________________USUARIO________" + usuario);
         if (session != null) {
             Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
-
-            System.out.println("PROVEEDOR_____________________________________" + respuesta);
 
             if (respuesta.isPresent()) {
                 Proveedor proveedor = respuesta.get();
@@ -45,20 +37,8 @@ public class TrabajoServicio {
                 trabajo.setTerminado(false);
                 trabajo.setAlta(true);
                 trabajoRepositorio.save(trabajo);
-
             }
         }
-    }
-
-    @Transactional
-    public void finalizarTrabajo(String id) {
-        Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-            Trabajo trabajo = respuesta.get();
-            trabajo.setTerminado(true);
-            trabajoRepositorio.save(trabajo);
-        }
-
     }
 
     public List<Trabajo> listarTrabajos() {
@@ -66,6 +46,26 @@ public class TrabajoServicio {
         listaTrabajos = trabajoRepositorio.findAll();
 
         return listaTrabajos;
+    }
+
+    // metodo en proveedor donde muestra lista de trabajos propios
+    // debe llevar el boton para finalizar trabajo
+    public List<Trabajo> listarTrabajosPorProveedor(HttpSession session) {
+
+        Proveedor logueadoProveedor = (Proveedor) session.getAttribute("usuarioSession");
+        Optional<Proveedor> respuesta = proveedorRepositorio.findById(logueadoProveedor.getId());
+        if (respuesta.isPresent()) {
+            Proveedor proveedor = respuesta.get();
+            List<Trabajo> listaTrabajosPorProveedor = new ArrayList<>();
+            listaTrabajosPorProveedor = trabajoRepositorio.buscarTrabajosPorProveedor(proveedor.getId());
+            return listaTrabajosPorProveedor;
+        }
+        return null;
+
+    }
+
+    public Integer cantidadTrabajosTotales() {
+        return trabajoRepositorio.cantidadContratosTotales();
     }
 
     @Transactional
@@ -79,9 +79,14 @@ public class TrabajoServicio {
 
     }
 
-    public Integer cantidadTrabajosTotales() {
-
-        return trabajoRepositorio.cantidadContratosTotales();
+    @Transactional
+    public void darPorTerminadoUnTrabajo(String id) {
+        Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Trabajo trabajo = respuesta.get();
+            trabajo.setTerminado(true);
+            trabajoRepositorio.save(trabajo);
+        }
 
     }
 }

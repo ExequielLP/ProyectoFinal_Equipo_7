@@ -1,15 +1,7 @@
 package Proyecto_Equipo_7.controladores;
 
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Rubro;
-import Proyecto_Equipo_7.excepciones.MiException;
-import Proyecto_Equipo_7.servicios.Proveedorservicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,111 +11,66 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Rubro;
+import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.servicios.ProveedorServicio;
+import Proyecto_Equipo_7.servicios.RubroServicio;
+import Proyecto_Equipo_7.servicios.TrabajoServicio;
 
 @Controller
 @RequestMapping("/proveedor")
 public class ProveedorControlador {
 
     @Autowired
-    private Proveedorservicio proveedorservicio;
- 
-    
-    // este no sabemos que funcion cumple aun
-//    @GetMapping("/registrar")
-//    public String registrar() {
-//
-//        return "registroProv.html";
-//
-//    }
+    private ProveedorServicio proveedorServicio;
 
-    @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo) {
+    @Autowired
+    private TrabajoServicio trabajoServicio;
 
-        try {
-            proveedorservicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2,
-                    archivo, honorario, rubro);
-
-            modelo.put("exito", "Proveedor registrado correctamente!");
-
-            return "redirect:/";
-        } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
-            modelo.put("domicilio", domicilio);
-            modelo.put("telefono", telefono);
-            modelo.put("honorario", honorario);
-            modelo.put("rubro", rubro);
-            
-            return "redirect:/";
-
-        }
-    }
-
-    @PostMapping("eliminarProveedor/{id}")
-    public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
-        try {
-            proveedorservicio.eliminar(id);
-        } catch (MiException ex){
-            modelo.put("error", ex.getMessage());
-        }
-        return "redirect:/proveedor/listarProveedor";
-    }
+    @Autowired
+    private RubroServicio rubroServicio;
 
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
+        modelo.put("listaRubro", rubroServicio.listaRubros());
         modelo.put("proveedor", proveedor);
-
         return "modificarProveedor.html";
     }
 
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo) {
+    public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
+            @RequestParam String domicilio,
+            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro,
+            MultipartFile archivo,
+            @RequestParam String password, String password2, ModelMap modelo, HttpSession session) {
 
         try {
-            proveedorservicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo, honorario, rubro);
-
+            Proveedor proveedorUpdated= proveedorServicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo,
+                    honorario, rubro);
             modelo.put("exito", "Proveedor actualizado correctamente!");
-
-            return "index.html";
+            session.setAttribute("usuarioSession", proveedorUpdated);
+            return "redirect:/inicio";
         } catch (MiException ex) {
-
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
             modelo.put("email", email);
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
             modelo.put("rubro", rubro);
-
             return "modificarProveedor.html";
         }
-
     }
 
-    
-    @GetMapping("/perfil/{id}")
-    public ResponseEntity<byte[]> imagenProveedor (@PathVariable String id){
-        Proveedor proveedor = proveedorservicio.getone(id);
-        
-       byte[] imagen= proveedor.getImagen().getContenido();
-       
-       HttpHeaders headers = new HttpHeaders();
-       
-       headers.setContentType(MediaType.IMAGE_JPEG);
-       
-        
-        
-       return new ResponseEntity<>(imagen,headers, HttpStatus.OK); 
+    @GetMapping("/finalizarTrabajo/{id}")
+    public String finalizarTrabajo(@PathVariable String id) {
+
+        trabajoServicio.darPorTerminadoUnTrabajo(id);
+
+        return "redirect:/proveedor/";
+
     }
-
- 
-
 }
