@@ -19,15 +19,19 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 public class Imagen {
 
-  @Id
-  @GeneratedValue(generator = "uuid")
-  @GenericGenerator(name = "uuid", strategy = "uuid2")
-  private String id;
-  private String mime;
-  private String nombre;
+      @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    
 
-  @Lob
-  @Basic(fetch = FetchType.LAZY)
-  private byte[] contenido;
+    private String mime;
+    private String imagen;
+    
+    private String nombre;
+    
+    @Lob @Basic(fetch = FetchType.LAZY)
+    private byte[] contenido;
 
+    
 }
