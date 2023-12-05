@@ -1,7 +1,9 @@
 <div class="row row-cols-1 row-cols-md-5 g-3 mt-5">
   <div class="col d-flex justify-content-center" th:each="listaProveedor:${listaProveedor}">
     <div class="card d-flex align-items-center p-2" style="width: 18rem;">
-      <img  th:src="@{/proveedor/perfil/__${listaProveedor.id}__}" class="" alt="Juan el carpintero loco" width="250" height="250">
+      
+      <img  th:if="${listaProveedor.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${listaProveedor.id}__}" style="max-width: 150px; max-height: 150px;">
+
       <div class="card-body text-center">
         <h4 class="card-title fw-bold fs-2" th:text="${listaProveedor.nombre}">Card title</h4>        
         <p class="card-text">This is a longer card with supporting text below as a</p>
