@@ -113,3 +113,7 @@ text-align: center;
 .table-listas{
 table-layout: auto;
 }
+.bordeRegistroRubro{
+border: #37474f solid 4px;
+height: 400px;
+}
