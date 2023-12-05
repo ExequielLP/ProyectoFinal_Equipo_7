@@ -1,9 +1,6 @@
 package Proyecto_Equipo_7.controladores;
 
 
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Usuario;
-import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/trabajo")
