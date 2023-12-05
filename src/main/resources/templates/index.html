@@ -2,21 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
+
     <head th:replace="/fragments/head :: head"></head>
     <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
 </head>
-
 <body>
     <!-- NAVBAR -->
     <header data-bs-theme="dark">
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
 
-
-
     <main class="container justify-content-center ">
         <!-- CARRUSEL -->
         <div th:replace="/fragments/carousel :: section"></div>
+        
+         <!-- MODAL EXITO U ERROR -->
+        <div th:replace="/fragments/exitoError :: div"></div>
 
         <!-- METRICAS -->
         <div th:replace="/fragments/metricas :: div"></div>
@@ -24,11 +25,7 @@
         <!-- MARKET QUE HACEMOS? COMO? -->
         <div th:replace="/fragments/market :: div"></div>
 
-        <!-- MODAL EXITO U ERROR -->
-        <div th:replace="/fragments/exitoError :: div"></div>
-
-
-
+       
 
 
         <!-- MODALES REGISTRO -->
@@ -40,29 +37,14 @@
 
         <!-- proveedor -->
         <div th:replace="/fragments/modalReProveedor :: div"></div>
-
-
     </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="container">
-        <footer th:replace="/fragments/footer :: footer" </footer>
+        <footer th:replace="/fragments/footer :: footer"></footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
 </body>
-
 </html>

@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Nosotros</a>
+                    <a class="nav-link active" href="#market-sections">Nosotros</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Servicios</a>
@@ -33,7 +33,7 @@
                 <li sec:authorize="hasRole('ROLE_USER')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
                     <a sec:authorize="hasRole('ROLE_USER')" class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Editar Perfil</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/usuario/perfil">Editar Perfil</a></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
                         <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
@@ -58,7 +58,7 @@
                 <li sec:authorize="hasRole('ROLE_PROVEEDOR')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
                     <a class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Proveedor</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Editar Perfil</a></li>                       
+                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/proveedor/perfil">Editar Perfil</a></li>                       
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
                         <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>

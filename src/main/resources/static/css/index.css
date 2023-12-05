@@ -102,3 +102,18 @@ text-align: center;
     align-items: center;
     text-align: center;
 }
+
+.messageError{
+    width: 100px;
+    height: 50px;
+    background-color: red;
+
+}
+
+.table-listas{
+table-layout: auto;
+}
+.bordeRegistroRubro{
+border: #37474f solid 4px;
+height: 400px;
+}
