@@ -10,27 +10,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-
-
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import org.hibernate.annotations.GenericGenerator;
-
-
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "usuario_id")
-public class Administrador extends Usuario  {
+public class Administrador extends Usuario {
 
-    
-     @Id
+    @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-
 
 }

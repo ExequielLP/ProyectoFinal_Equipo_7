@@ -1,0 +1,61 @@
+<div class="modal fade " tabindex="-1" role="dialog" id="modalContrato">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">Contratar Servicio</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <form class="formulario" th:action="@{/trabajo/registro}" method="POST" >
+                    <input hidden th:value="${session.usuarioSession.id}" name="id" >
+                    <label for="floatingInput">Los Sig datos seran adjuntado:</label>
+                    <label for="floatingInput" th:text="${session.usuarioSession.nombre}"></label>
+                    <label for="floatingInput" th:text="${session.usuarioSession.domicilio}"></label>
+                    <label for="floatingInput" th:text="${session.usuarioSession.telefono}"></label>
+                    <div class="form-group my-3">
+                        <label for="servicio">Seleccione Servicio</label>
+                        <select name="servicio" class="form-control" >
+                            <option th:each="rubros : ${rubro}"
+                                    th:value="${rubros}" 
+                                    th:text="${rubros}"
+                                    th:selected="false"
+                            </option>                            
+                        </select>
+                        
+                    </div> 
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nombre usuario">
+                        <label for="floatingInput">Nombre Completo</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio" id="floatingInput" placeholder="Domicilio">
+                        <label for="floatingInput">Domicilio</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono" id="floatingInput" placeholder="Telefono o celular">
+                        <label for="floatingInput">Telefono o celular</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput" placeholder="Email">
+                        <label for="floatingInput">Email ejemplo@gmail.com</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control rounded-3" name="password" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control rounded-3" name="password2" id="floatingPassword2" placeholder="Confirme el Password">
+                        <label for="floatingPassword">Debe ser idem al anterior</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+                    <small class="text-body-secondary">Al unirte, aceptas los Términos de servicio de Servicio 7,
+                        así como recibir correos electrónicos ocasionales de nuestra parte.
+                        Lee nuestra Política de privacidad para saber cómo utilizamos tus datos personales.</small>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

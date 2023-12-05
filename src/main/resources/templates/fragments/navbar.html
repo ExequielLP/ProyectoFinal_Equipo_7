@@ -1,53 +1,109 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark  bg-dark mb-3" >
     <div class="container-fluid">
         <a class="navbar-brand" aria-current="page" href="#">
-            <img class="logo" width="60px" height="60px" src="/img/olicemModificado.png" alt="Img logo olicem"></a>
+            <img class="logo"  src="/img/olicemModificado.png" alt="Img logo olicem"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Nosotros</a>
+                    <a class="nav-link active" href="#market-sections">Nosotros</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Servicios</a>
                 </li>
                 <li class="nav-item dropdown">
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
+                <!-- MENU REGISTRO/LOGIN/EDITAR USER -->
+                <li th:if="${session.usuarioSession == null}" class="nav-item dropdown">
+                    <a class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/login">Ingresar</a></li>
+                        <li><button th:if="${session.usuarioSession == null}" type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignin">
+                                Ingresar</button></li>                        
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
-                        <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/usuario/registrar">Registrarse</a></li>
+                        <li><button th:if="${session.usuarioSession == null}" type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalRegistro">
+                                Registrar</button></li>                     
                         <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
-                        <li><a class="dropdown-item" th:if="${session.usuarioSession == null}" href="/proveedor/registrar">Registrar Proveedor</a></li>
-                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
-                        <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Editar Perfil</a></li>
-                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
-                        <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
-                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
-                        <li><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>
-                </li>   
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Tus Pendientes '+${session.usuarioSession.nombre}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
+                    <a sec:authorize="hasRole('ROLE_USER')" class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Servicios en curso</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/usuario/perfil">Editar Perfil</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="#">Calificacion</a></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
+                        <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
+                    </ul>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
+                    <a sec:authorize="hasRole('ROLE_USER')" class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contrato</a>                    
+                </li>
+
+                <!-- MENU REGISTRO/LOGIN/EDITAR PROVEEDOR -->
+                <li th:if="${session.usuarioSession == null}" class="nav-item dropdown">
+                    <a class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Proveedor</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><button th:if="${session.usuarioSession == null}" type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSignin">
+                                Ingresar</button></li>                        
+                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
+                        <li><button th:if="${session.usuarioSession == null}" type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#modalReProveedor">
+                                Registrar</button></li>                     
+                        <li><hr class="dropdown-divider" th:if="${session.usuarioSession == null}"></li>
+                    </ul>
+                <li sec:authorize="hasRole('ROLE_PROVEEDOR')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
+                    <a class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Proveedor</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/proveedor/perfil">Editar Perfil</a></li>                       
+                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><hr class="dropdown-divider" th:if="${session.usuarioSession != null}"></li>
+                        <li sec:authorize="hasRole('ROLE_PROVEEDOR')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
+                    </ul>
+                </li> 
+
+                <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
+                <!-- USUARIO -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+${session.usuarioSession.rol}" 
+                       id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                    <ul sec:authorize="hasRole('ROLE_USER')" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Servicios finalizados</a></li>
+                        <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">A designar</a></li>
+                        <li><a class="dropdown-item" href="/trabajo/crear_Trabajo">Cargar un trabajo</a></li>                        
+                    </ul>
+                    <!-- PROVEEDOR -->    
+                    <ul sec:authorize="hasRole('ROLE_PROVEEDOR')" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/trabajo/contratoTrabajo">Cargar un trabajo</a></li>
+                        <li><a class="dropdown-item"  href="#">Servicios finalizados</a></li>
+                        <li><hr class="dropdown-divider"></li>                        
+                        <li><a class="dropdown-item" href="/trabajo/crearTrabajo">Finalizar trabajo</a></li>
+
+                        <li><a class="dropdown-item" href="#">Mis calificaciones</a></li>
+
+                    </ul>
+                    <!-- ADMINISTRADOR -->
+                    <ul sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item"  href="#">Listar Usuarios</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item"  href="#">Listar Proveedores</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Listar Rubros</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Listar Trabajos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Cerrar</a></li>
                     </ul>
                 </li>                
             </ul>
-            <form class="d-flex" role="search">
+            </ul>     
+            <form class="d-flex justify-content-end" role="search">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>            
+            </form> 
+
         </div>
     </div>
 </nav>
