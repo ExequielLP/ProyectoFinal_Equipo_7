@@ -1,8 +1,12 @@
 .contacto-fondo{
     margin: 0;
-    background-image: url(../img/1080p-hd-min.jpg);
+    background-image: url(../img/1080p-hd.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.navbar{
+    margin-bottom: 0 !important;
 }
 
 footer{
@@ -22,9 +26,17 @@ footer{
     justify-content: space-around;
 }
 
+.asunto{
+    width:98%;
+    height:40px;
+    border: none;
+    border-radius:10px;
+    padding: 8px;
+}
+
 .hijo{
     padding: 10px;
-    height: 650px;
+    height: 730px;
     margin-top:10px;
     width: 500px;
     background-color: rgba(70, 61, 61, 0.75);

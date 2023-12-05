@@ -9,8 +9,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <!-- NAVBAR -->
         <header data-bs-theme="dark">
-            <nav style="margin-bottom: 0 !important;" th:replace="/fragments/navbar :: nav"></nav>
-            
+            <nav th:replace="/fragments/navbar :: nav"></nav>
+
         </header>    
 
         <main class="contacto-fondo">
@@ -27,33 +27,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <div class="hijo">
                     <h1 class="titulo" >Contactanos</h1>
-                    <form action="" class="form mt-4">
+                    <form action="https://formsubmit.co/JuanServiciosChacra@gmail.com" method="POST" class="form mt-4">
                         <div class="form-group">
-
-                            <input type="text" class="form-control prueba" placeholder="Ingrese su nombre"> 
+                            <input type="text" minlenght="1" maxlength="70" name="nombre" class="form-control prueba" placeholder="Ingrese su nombre" required> 
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control prueba" placeholder="Ingrese su apellido"> 
+                            <input type="text" minlenght="1" maxlength="40" name="apellido" class="form-control prueba" placeholder="Ingrese su apellido"> 
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control prueba" placeholder="Ingrese su correo"> 
+                            <input type="email" minlength="5" maxlength="50" name="correo" class="form-control prueba" placeholder="Ingrese su correo" required> 
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control prueba" placeholder="Ingrese su telefono"> 
-                        </div> <br> <br>
+                            <input type="number" name="telefono" class="form-control prueba" placeholder="Ingrese su telefono ( Ej: 3816788402 )" required> 
+                        </div> <br>
+                        
+                        <h5 class="titulo form-group">Eliga el motivo de su contacto</h5>
+                        <select name="asunto" class="asunto">
+                            <option>Sugerencias</option>
+                            <option>Problemas con el contrato</option>
+                            <option>Problemas con proveedores</option>
+                            <option>Problemas de inicio de sesion/registro</option>
+                            <option>Otros</option>
+                        </select>
+                        <br> <br>
 
                         <div class="form-group">
                             <h5 class="titulo">Comentenos su situacion</h5> <br>
-                            <textarea name="" id="" rows="6" class="form-control comentario"></textarea>
+                            <textarea name="comentario" id="" rows="6" class="form-control comentario" required></textarea>
                         </div> <br>
 
-                        <button class="btn-contacto  w-50" type="submit">
+                        <button class="btn-contacto w-50" type="submit">
                             Enviar
                         </button>
+                        
+                        <input type="hidden" name="_next" value="http://localhost:8080/contacto">
+                        
+                        <input type="hidden" name="_captcha" value="false">
+                        
                     </form>
 
                 </div>
-            </div>
+            </div>  
 
         </main>
 
