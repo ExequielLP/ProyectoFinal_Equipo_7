@@ -35,9 +35,8 @@ import org.springframework.web.multipart.MultipartFile;
  * @author Usuario
  */
 @Service
-public class ProveedorServicio implements UserDetailsService{
+public class ProveedorServicio implements UserDetailsService {
 
-    
     @Autowired
     private ImagenServicio imagenServicio;
 
@@ -66,8 +65,8 @@ public class ProveedorServicio implements UserDetailsService{
     }
 
     @Transactional
-    public Proveedor actualizar(String id, String nombre, String domicilio, String telefono, String email, String password,
-            String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
+    public Proveedor actualizar(String id, String nombre, String domicilio, String telefono, String email,
+            String password,String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
 
         validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
@@ -79,8 +78,8 @@ public class ProveedorServicio implements UserDetailsService{
             proveedor.setDomicilio(domicilio);
             proveedor.setTelefono(telefono);
             proveedor.setRubro(rubro);
-            // Imagen imagen = imagenServicio.actualizar(archivo, id);
-            // proveedor.setImagen(imagen);
+            Imagen img = imagenServicio.guardar(archivo);
+            proveedor.setImagen(img);
             proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
             proveedor.setRol(Rol.PROVEEDOR);
             return proveedorRepositorio.save(proveedor);
@@ -174,8 +173,5 @@ public class ProveedorServicio implements UserDetailsService{
     // return proveedores;
     // }
 
-}
-
-   
-    
+    // puede que este tenga que ir ===>    }
 
