@@ -41,6 +41,7 @@ public class AdminControlador {
         modelo.addAttribute("usuarios", usuarioServicio.listarUsuariosPorRol());
         modelo.addAttribute("proveedores", proveedorServicio.listarProveedores());
         modelo.addAttribute("trabajos", trabajoServicio.listarTrabajos());
+        modelo.addAttribute("rubros", rubroServicio.listaRubros());
         
         return "panel.html";
     }

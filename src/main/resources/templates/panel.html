@@ -18,24 +18,28 @@
             <div th:replace="/fragments/carousel :: section"></div>
         </div>
         <!-- METRICAS -->
-        <div class="container">
+        <!-- <div class="container">
             <div th:replace="/fragments/cardRubro :: div"></div>
-        </div>
+        </div> -->
     </main>
-    <section class="mt-2 p-2">
-        <div class="container">
+    <section class="p-2">
+        <div class="container my-3" id="listaUsuarios">
             <div th:replace="/fragments/listaUsuarios :: div"></div>
         </div>
 
-        <div class="container">
+        <div class="container my-3" id="listaProveedores">
             <div th:replace="/fragments/listaProveedores :: div"></div>
         </div>
 
-        <div class="container">
+        <div class="container my-3" id="listaTrabajos">
             <div th:replace="/fragments/listaTrabajos :: div"></div>
         </div>
+
+        <div class="container my-3" id="listaTrabajosRubros">
+            <div th:replace="/fragments/listaRubros :: div"></div>
+        </div>
     </section>
-    <section class="container">
+    <section class="container my-5">
         <div class="d-flex justify-content-center">
             <a href="/admin/registrarRubro" class="btn btn-primary">Registrar Rubro</a>
         </div>
