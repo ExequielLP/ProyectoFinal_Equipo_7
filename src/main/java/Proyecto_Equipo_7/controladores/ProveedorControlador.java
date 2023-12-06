@@ -2,7 +2,6 @@ package Proyecto_Equipo_7.controladores;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,16 +30,14 @@ public class ProveedorControlador {
     @Autowired
     private RubroServicio rubroServicio;
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+    
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
-        Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
         modelo.put("listaRubro", rubroServicio.listaRubros());
-        modelo.put("proveedor", proveedor);
         return "modificarProveedor.html";
     }
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+    
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,

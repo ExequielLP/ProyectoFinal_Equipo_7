@@ -103,7 +103,7 @@ public class AdminControlador {
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
         }
-        return "redirec:/usuario/listarUsuario";
+        return "redirect:/usuario/listarUsuario";
     }
 
     // metodo para el admin al lado de cada trabajo en la lista para poder
@@ -112,6 +112,6 @@ public class AdminControlador {
     public String eliminarTrabajo(@PathVariable String id, ModelMap modelo){
         trabajoServicio.darDeBajaTrabajo(id);
 
-        return "redirec:/admin/dashboard";
+        return "redirect:/admin/dashboard";
     }
 }

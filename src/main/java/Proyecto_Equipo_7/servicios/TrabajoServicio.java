@@ -2,11 +2,6 @@ package Proyecto_Equipo_7.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import javax.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.entidades.Usuario;
@@ -28,7 +23,8 @@ public class TrabajoServicio {
   
     @Autowired
     private UsuarioRepositorio usuarioRepositorio; 
-
+    
+    @Autowired
     private ProveedorRepositorio proveedorRepositorio;
 
     @Transactional
