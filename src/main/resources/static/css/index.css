@@ -126,15 +126,23 @@ body,
 
 }
 
-<<<<<<< HEAD
-.table-listas {
-    table-layout: auto;
-=======
 .table-listas{
 table-layout: auto;
 }
 .bordeRegistroRubro{
 border: #37474f solid 4px;
 height: 400px;
->>>>>>> 52eb3695519700ca72c2856f422d5a2b0561de44
+}
+.bordeRegistroRubro{
+border: #37474f solid 4px;
+height: 400px;
+}
+.bordeRegistroRubro{
+border: #37474f solid 4px;
+height: 400px;
+}
+
+.bordeRegistroRubro {
+    border: #37474f solid 4px;
+    height: 400px;
 }

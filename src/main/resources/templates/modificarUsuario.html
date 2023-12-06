@@ -13,39 +13,51 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <main class="container justify-content-center" width="500">
-<<<<<<< HEAD
-=======
-
->>>>>>> 52eb3695519700ca72c2856f422d5a2b0561de44
-        <form class="formulario" th:action="@{/usuario/perfil/__${session.usuarioSession.id}__}" method="POST" >  
-            <input hidden th:value="${id}" name="id" >                 
+        <form class="formulario" th:action="@{/usuario/perfil/__${session.usuarioSession.id}__}" method="POST">
+            <input hidden th:value="${id}" name="id">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nuevo nombre usuario">
+                <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput"
+                    placeholder="Ingrese nuevo nombre usuario">
+                <label class="fw-light" for="floatingInput" th:text="${usuario.nombre}"></label>
+                <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput"
+                    placeholder="Ingrese nuevo nombre usuario">
                 <label class="fw-light" for="floatingInput" th:text="${usuario.nombre}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio" id="floatingInput" placeholder="Ingrese nuevo Domicilio">
+                <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio"
+                    id="floatingInput" placeholder="Ingrese nuevo Domicilio">
+                <label class="fw-light" for="floatingInput" th:text="${usuario.domicilio}"></label>
+                <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio"
+                    id="floatingInput" placeholder="Ingrese nuevo Domicilio">
                 <label class="fw-light" for="floatingInput" th:text="${usuario.domicilio}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono" id="floatingInput" placeholder="Ingrese nuevo Telefono o celular">
+                <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono"
+                    id="floatingInput" placeholder="Ingrese nuevo Telefono o celular">
+                <label class="fw-light" for="floatingInput" th:text="${usuario.telefono}"></label>
+                <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono"
+                    id="floatingInput" placeholder="Ingrese nuevo Telefono o celular">
                 <label class="fw-light" for="floatingInput" th:text="${usuario.telefono}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput" placeholder="Ingrese nuevo Email">
+                <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput"
+                    placeholder="Ingrese nuevo Email">
+                <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput"
+                    placeholder="Ingrese nuevo Email">
                 <label for="floatingInput" th:text="${usuario.email}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control rounded-3" name="password" id="floatingPassword" placeholder="Ingrese nuevo Password">
+                <input type="password" class="form-control rounded-3" name="password" id="floatingPassword"
+                    placeholder="Ingrese nuevo Password">
+                <label class="fw-light" for="floatingPassword">Nuevo Password</label>
+                <input type="password" class="form-control rounded-3" name="password" id="floatingPassword"
+                    placeholder="Ingrese nuevo Password">
                 <label class="fw-light" for="floatingPassword">Nuevo Password</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control rounded-3" name="password2" id="floatingPassword2" placeholder="Confirme el nuevo Password">
+                <input type="password" class="form-control rounded-3" name="password2" id="floatingPassword2"
+                    placeholder="Confirme el nuevo Password">
                 <label class="fw-light" for="floatingPassword">Debe ser idem al anterior</label>
-<<<<<<< HEAD
-=======
-
->>>>>>> 52eb3695519700ca72c2856f422d5a2b0561de44
             </div>
             <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Modificar</button>
         </form>

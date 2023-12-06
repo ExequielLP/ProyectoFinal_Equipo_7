@@ -1,11 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark  bg-dark mb-3" >
     <div class="container-fluid">
-        <a class="navbar-brand" aria-current="page" href="/">
-<<<<<<< HEAD
-            <img class="logo"  src="/img/android-chrome-192x192.png" alt="Servi-Proff-Logo"></a>
-=======
-            <img class="logo"  src="/img/olicemModificado.png" alt="Img logo olicem"></a>
->>>>>>> 52eb3695519700ca72c2856f422d5a2b0561de44
+        <a class="navbar-brand" aria-current="page" href="#">
+            <img class="logo"  src="/img/android-chrome-192x192" alt="Img logo olicem"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,11 +67,7 @@
                 <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
                 <!-- USUARIO -->
                 <li class="nav-item dropdown">
-<<<<<<< HEAD
-                    <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+'('+${session.usuarioSession.rol}+')'" 
-=======
                      <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+'('+${session.usuarioSession.rol}+')'" 
->>>>>>> 52eb3695519700ca72c2856f422d5a2b0561de44
                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                     <ul sec:authorize="hasRole('ROLE_USER')" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>

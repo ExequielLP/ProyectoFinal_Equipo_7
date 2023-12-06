@@ -30,13 +30,16 @@ public class ProveedorControlador {
     @Autowired
     private RubroServicio rubroServicio;
 
+    
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
+
 
         modelo.put("listaRubro", rubroServicio.listaRubros());
         return "modificarProveedor.html";
     }
 
+    
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,
