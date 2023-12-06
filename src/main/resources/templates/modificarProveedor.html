@@ -13,6 +13,7 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <main class="container justify-content-center">
+
         <form class="formulario" th:action="@{/proveedor/perfil/__${session.usuarioSession.id}__}" method="POST"
         enctype="multipart/form-data">
             <input hidden th:value="${session.usuarioSession.id}" name="id">
@@ -44,6 +45,8 @@
             <div class="form-floating mb-3">
                 <input type="file" name="archivo" id="floatingInput" placeholder="Seleccione nueva imagen"
                     th:value="${session.usuarioSession.imagen}">
+
+
             </div>
             <br>
             <div class="form-group">

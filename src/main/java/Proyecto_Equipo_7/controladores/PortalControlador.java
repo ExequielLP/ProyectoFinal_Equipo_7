@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.entidades.Usuario;
@@ -41,19 +40,23 @@ public class PortalControlador {
             modelo.put("cantidadUsuarios", usuarioServicio.cantidadUsuarios());
             modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());
+
             if (error != null) {
             modelo.put("error", "usuario o contreaseña invalida intente nuevamente");}
+
             return "index.html";
         } catch (Exception e) {
             // modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
             return "index.html";
         }
+
     }
 
    @GetMapping("/contacto")
     public String contacto(){
     
         return"contacto.html";
+
     }
 
     @GetMapping("/login")
