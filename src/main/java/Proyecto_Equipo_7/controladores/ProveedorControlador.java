@@ -33,6 +33,7 @@ public class ProveedorControlador {
     
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
+
         modelo.put("listaRubro", rubroServicio.listaRubros());
         return "modificarProveedor.html";
     }

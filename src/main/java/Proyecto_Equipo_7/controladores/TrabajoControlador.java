@@ -45,7 +45,6 @@ public class TrabajoControlador {
         // aca va la vista para que aparesca el form
         return "contratoTrabajo.html";
     }
-
     
     @PostMapping("/eliminar")
     public String eliminarTrabajo(@RequestParam String id, ModelMap modelo) {
