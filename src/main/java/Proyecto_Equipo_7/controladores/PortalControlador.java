@@ -41,6 +41,8 @@ public class PortalControlador {
             modelo.put("cantidadUsuarios", usuarioServicio.cantidadUsuarios());
             modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());
+            if (error != null) {
+            modelo.put("error", "usuario o contreaseña invalida intente nuevamente");}
             return "index.html";
         } catch (Exception e) {
             // modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
@@ -51,10 +53,11 @@ public class PortalControlador {
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
-            modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
+            
+             return "redirect:/logout";
         }
-
         return "index.html";
+
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
