@@ -32,9 +32,9 @@ public class ProveedorControlador {
 
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
-        Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
+//        Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
         modelo.put("listaRubro", rubroServicio.listaRubros());
-        modelo.put("proveedor", proveedor);
+//        modelo.put("proveedor", proveedor);
         return "modificarProveedor.html";
     }
 
