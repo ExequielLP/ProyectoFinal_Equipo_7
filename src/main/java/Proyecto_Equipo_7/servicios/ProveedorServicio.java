@@ -80,6 +80,7 @@ public class ProveedorServicio implements UserDetailsService {
             proveedor.setRubro(rubro);
             Imagen img = imagenServicio.guardar(archivo);
             proveedor.setImagen(img);
+
             proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
             proveedor.setRol(Rol.PROVEEDOR);
             return proveedorRepositorio.save(proveedor);
@@ -166,12 +167,10 @@ public class ProveedorServicio implements UserDetailsService {
 
     }
 
-    // @Transactional(readOnly = true)
-    // public List<Proveedor> seisMejoresProveedores(){
-    // List<Proveedor> proveedores = new ArrayList<>();
-    // proveedores = proveedorRepositorio.seisMejoresProveedores();
-    // return proveedores;
-    // }
+    }
 
-    // puede que este tenga que ir ===>    }
+
+
+ 
+
 

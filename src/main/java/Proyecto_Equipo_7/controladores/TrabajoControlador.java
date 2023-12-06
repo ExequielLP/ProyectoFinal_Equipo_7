@@ -54,6 +54,7 @@ public class TrabajoControlador {
         return  "index.html";
     }
 
+
     @GetMapping("/persistirTrabajo/{id}")
     public String persistirTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
         try {
