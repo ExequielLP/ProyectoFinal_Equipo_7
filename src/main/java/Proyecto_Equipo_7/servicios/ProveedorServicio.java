@@ -69,9 +69,10 @@ public class ProveedorServicio implements UserDetailsService {
             proveedor.setEmail(email);
             proveedor.setDomicilio(domicilio);
             proveedor.setTelefono(telefono);
+            proveedor.setHonorario(honorario);
             proveedor.setRubro(rubro);
-            // Imagen imagen = imagenServicio.actualizar(archivo, id);
-            // proveedor.setImagen(imagen);
+            Imagen imagen = imagenServicio.guardar(archivo);
+            proveedor.setImagen(imagen);
             proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
             proveedor.setRol(Rol.PROVEEDOR);
             return proveedorRepositorio.save(proveedor);

@@ -1,17 +1,16 @@
 .contacto-fondo{
     margin: 0;
+    
+}
+
+.body-contacto{
     background-image: url(../img/1080p-hd.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-}
 
+}
 .navbar{
     margin-bottom: 0 !important;
-}
-
-footer{
-    background-color: white;
-
 }
 
 .titulo{
