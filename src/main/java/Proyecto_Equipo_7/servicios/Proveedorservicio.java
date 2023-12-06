@@ -1,5 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Proyecto_Equipo_7.servicios;
 
+import Proyecto_Equipo_7.entidades.Imagen;
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Rubro;
+import Proyecto_Equipo_7.enumeradores.Rol;
+import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +17,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,13 +29,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import Proyecto_Equipo_7.entidades.Imagen;
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Rubro;
-import Proyecto_Equipo_7.enumeradores.Rol;
-import Proyecto_Equipo_7.excepciones.MiException;
-import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 
+/**
+ *
+ * @author Usuario
+ */
 @Service
 public class ProveedorServicio implements UserDetailsService {
 
@@ -159,11 +167,10 @@ public class ProveedorServicio implements UserDetailsService {
 
     }
 
-    // @Transactional(readOnly = true)
-    // public List<Proveedor> seisMejoresProveedores(){
-    // List<Proveedor> proveedores = new ArrayList<>();
-    // proveedores = proveedorRepositorio.seisMejoresProveedores();
-    // return proveedores;
-    // }
+    }
 
-}
+
+
+ 
+
+

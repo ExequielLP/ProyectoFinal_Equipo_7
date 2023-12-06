@@ -6,9 +6,7 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -50,6 +48,7 @@ public class AdminControlador {
     public String registrar() {
         return "registroRubro.html";
     }
+
 
     @PostMapping("/registroRubro")
     public String registroRubro(@RequestParam String rubro, MultipartFile archivo, ModelMap modelo) {
