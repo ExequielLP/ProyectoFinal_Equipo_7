@@ -2,6 +2,12 @@ package Proyecto_Equipo_7.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Trabajo;
+import Proyecto_Equipo_7.entidades.Usuario;
+import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
+import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
+import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +19,16 @@ import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 
+
 @Service
 public class TrabajoServicio {
 
     @Autowired
     private TrabajoRepositorio trabajoRepositorio;
+  
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio; 
+    
     @Autowired
     private ProveedorRepositorio proveedorRepositorio;
 
@@ -45,13 +56,26 @@ public class TrabajoServicio {
         List<Trabajo> listaTrabajos = new ArrayList<>();
         listaTrabajos = trabajoRepositorio.findAll();
 
+
         return listaTrabajos;
     }
+    
+ 
+    @Transactional
+    public void eliminarTrabajo(String id) {
+        Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Trabajo trabajo = respuesta.get();
+            trabajo.setTerminado(true);
+            trabajoRepositorio.save(trabajo);
+
+        }
+   }
 
     // metodo en proveedor donde muestra lista de trabajos propios
     // debe llevar el boton para finalizar trabajo
     public List<Trabajo> listarTrabajosPorProveedor(HttpSession session) {
-
         Proveedor logueadoProveedor = (Proveedor) session.getAttribute("usuarioSession");
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(logueadoProveedor.getId());
         if (respuesta.isPresent()) {
@@ -89,4 +113,5 @@ public class TrabajoServicio {
         }
 
     }
+
 }

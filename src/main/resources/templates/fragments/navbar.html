@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark  bg-dark mb-3" >
     <div class="container-fluid">
-        <a class="navbar-brand" aria-current="page" href="#">
+        <a class="navbar-brand" aria-current="page" href="/">
             <img class="logo"  src="/img/olicemModificado.png" alt="Img logo olicem"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,6 +12,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/contacto}">Contactanos</a>
                 </li>
                 <li class="nav-item dropdown">
                 </li>
@@ -64,7 +67,7 @@
                 <!-- MENU SOLO ACTIVO USUARIOS EN SECION -->
                 <!-- USUARIO -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+${session.usuarioSession.rol}" 
+                     <a class="nav-link dropdown-toggle" th:if="${session.usuarioSession != null}" th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+'('+${session.usuarioSession.rol}+')'" 
                        id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                     <ul sec:authorize="hasRole('ROLE_USER')" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"  href="#">Servicios en curso</a></li>
