@@ -19,6 +19,7 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/")
@@ -40,6 +41,7 @@ public class PortalControlador {
             modelo.put("cantidadUsuarios", usuarioServicio.cantidadUsuarios());
             modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());
+            
 
             if (error != null) {
             modelo.put("error", "usuario o contreaseña invalida intente nuevamente");}
@@ -74,6 +76,7 @@ public class PortalControlador {
     public String inicio(HttpSession session, ModelMap modelo) {
         modelo.put("listaProveedor", proveedorServicio.listarProveedores());
         modelo.put("listaRubros", rubroServicio.listaRubros());
+        
         // modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         if (logueado.getRol().toString().equals("ADMIN")) {
@@ -131,4 +134,11 @@ public class PortalControlador {
             return "redirect:/";
         }
     }
+    
+    @PostMapping("/filtroProveedores/{id}")
+    public String devovlerProveedores(@PathVariable String id,ModelMap modelo){
+    modelo.put("proFiltrado", proveedorServicio.listaProveedorPorRubro(id));
+
+    return  "redirect:/inicio;";
+}
 }
