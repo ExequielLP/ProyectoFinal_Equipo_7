@@ -21,6 +21,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
 
@@ -29,6 +30,9 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
+    
+    @Autowired
+    private ProveedorRepositorio proveedorRepositorio;
 
     @Autowired
     private TrabajoRepositorio trabajoRepositorio;
@@ -164,15 +168,20 @@ public class UsuarioServicio implements UserDetailsService {
 
  
     
-     public void calificarProveedor(Proveedor proveedor,Double calificacion) {
-       if(calificacion != 0){
-           double suma = 0;
-          suma = proveedor.getCalificacion() + calificacion ;
-          proveedor.setCalificacion(suma);
-       }
-       
-        proveedor.setCalificacion(calificacion);
-         
+    public Proveedor calificarProveedor(String id, Double calificacion) {
+        Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
+        Proveedor proveedor = new Proveedor();
+        if (respuesta.isPresent()) {
+            proveedor = respuesta.get();
+            if (calificacion != 0) {
+
+                double suma = 0;
+                suma = proveedor.getCalificacion() + calificacion;
+                proveedor.setCalificacion(suma);
+                return proveedorRepositorio.save(proveedor);
+            }
+        }
+        return proveedorRepositorio.save(proveedor);
     }
      
          public List<Trabajo> listarTrabajosPorCalificar() {

@@ -72,6 +72,8 @@ public class TrabajoControlador {
         }
         // aca va la vista dps de envien datos del form
     }
+    
+    
 
     @PreAuthorize("AnyRole('ADMINISTRADOR')")
     @GetMapping("/baja_Trabajo/{id}")

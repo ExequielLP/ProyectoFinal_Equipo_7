@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
+import Proyecto_Equipo_7.entidades.Proveedor;
 
 @Controller
 @RequestMapping("/usuario")
@@ -19,6 +21,9 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    
+    @Autowired
+    private ProveedorServicio proveedorServicio;
 
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
@@ -49,5 +54,20 @@ public class UsuarioControlador {
         }
     }
     
+        @GetMapping("/calificacion")
+    public String calificacionProveedor( ModelMap modelo, HttpSession session) {
+       Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
+        modelo.put("usuario", usuario);
+        
+        return "listaCalificar.html";
+
+    }
+    
+        @PostMapping("/calificacion")
+    public String calificar(@PathVariable String id, ModelMap modelo, HttpSession session, Double calificacion) {
+        Proveedor proveedor = usuarioServicio.calificarProveedor(id, calificacion);
+      //  modelo.put("calificacion", proveedorServicio.calificacionProveedores(id));
+        return "redirect:/inicio";
+    }
     
 }

@@ -72,12 +72,5 @@ public class ProveedorControlador {
 
     }
     
-     @GetMapping("/calificacion/{id}")
-    public Double calificacionProveedor(@PathVariable String id) {
-
-        Double calificacion = proveedorServicio.calificacionProveedores(id);
-        
-        return calificacion ;
-
-    }
+ 
 }
