@@ -13,35 +13,40 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <main class="container justify-content-center">
-        <form class="formulario" th:action="@{/proveedor/perfil/__${proveedor.id}__}" method="POST" enctype="multipart/form-data">
-            <input hidden th:value="${id}" name="id" > 
+
+        <form class="formulario" th:action="@{/proveedor/perfil/__${session.usuarioSession.id}__}" method="POST"
+        enctype="multipart/form-data">
+            <input hidden th:value="${session.usuarioSession.id}" name="id">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput"
+                <input type="text" class="form-control rounded-3" th:value="${session.usuarioSessionnombre}" name="nombre" id="floatingInput"
                     placeholder="Ingrese nombre usuario">
-                <label for="floatingInput" th:text="${proveedor.nombre}"></label>
+                <label for="floatingInput" th:text="${session.usuarioSession.nombre}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio"
+                <input type="text" class="form-control rounded-3" th:value="${session.usuarioSession.domicilio}" name="domicilio"
                     id="floatingInput" placeholder="Domicilio">
-                <label for="floatingInput" th:text="${proveedor.domicilio}"></label>
+                <label for="floatingInput" th:text="${session.usuarioSession.domicilio}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono"
+                <input type="number" class="form-control rounded-3" th:value="${session.usuarioSession.telefono}" name="telefono"
                     id="floatingInput" placeholder="Telefono o celular">
-                <label for="floatingInput" th:text="${proveedor.telefono}"></label>
+                <label for="floatingInput" th:text="${session.usuarioSession.telefono}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput"
+                <input type="email" class="form-control rounded-3" th:value="${session.usuarioSession.email}" name="email" id="floatingInput"
                     placeholder="Email">
-                <label for="floatingInput" th:text="${proveedor.email}"></label>
+                <label for="floatingInput" th:text="${session.usuarioSession.email}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control rounded-3" th:value="${honorario}" name="honorario"
+                <input type="number" class="form-control rounded-3" th:value="${session.usuarioSession.honorario}" name="honorario"
                     id="floatingInput" placeholder="Ingrese un valor de referencia x hora">
-                <label for="floatingInput" th:text="${proveedor.honorario}"></label>
+                <label for="floatingInput" th:text="${session.usuarioSession.honorario}"></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="file" name="archivo" id="floatingInput" placeholder="Seleccione nueva imagen" th:value="${proveedor.imagen}">
+                <input type="file" name="archivo" id="floatingInput" placeholder="Seleccione nueva imagen"
+                    th:value="${session.usuarioSession.imagen}">
+
+
             </div>
             <br>
             <div class="form-group">

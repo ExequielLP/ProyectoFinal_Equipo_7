@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 @RequestMapping("/trabajo")
 public class TrabajoControlador {
@@ -45,7 +46,7 @@ public class TrabajoControlador {
         // aca va la vista para que aparesca el form
         return "contratoTrabajo.html";
     }
-        
+
     
     @PostMapping("/eliminar")
     public String eliminarTrabajo(@RequestParam String id, ModelMap modelo) {
@@ -54,6 +55,7 @@ public class TrabajoControlador {
         
         return  "index.html";
     }
+
 
     @GetMapping("/persistirTrabajo/{id}")
     public String persistirTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
