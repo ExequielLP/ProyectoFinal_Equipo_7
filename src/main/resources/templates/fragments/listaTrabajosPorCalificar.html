@@ -1,0 +1,44 @@
+<div class="accordion " id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseThree">
+                LISTA TRABAJOS POR CALIFICAR
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+
+                <table class="table table-secondary table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id Trabajo</th>
+                            <th scope="col">Nombre proveedor</th>
+                            <th scope="col">Email proveedor</th>
+                          
+                            <th scope="col">Terminado</th>
+                            <th scope="col">Alta</th>
+                            <th scope="col" sec:authorize="hasRole('USER')">Calificar trabajo</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="porCalificar : ${listarTrabajosPorCalificar}">
+                        <tr>
+                            <td th:text="${porCalificar.id}"></td>
+                            <td th:text="${porCalificar.proveedor.nombre}"></td>
+                            <td th:text="${porCalificar.proveedor.email}"></td>
+                          
+                            <td th:text="${porCalificar.terminado}"></td>
+                            <td th:text="${porCalificar.alta}"></td>
+                            <td><!-- cambiar por metodo calificar -->
+                                <a th:href="@{/listaCalificar}"><i
+                                        class="fas fa-feather-alt"></i>CALIFICAR</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
