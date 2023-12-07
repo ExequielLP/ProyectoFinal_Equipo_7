@@ -74,8 +74,9 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
-        modelo.put("listaProveedor", proveedorServicio.listarProveedores());
+       
         modelo.put("listaRubros", rubroServicio.listaRubros());
+        modelo.put("proFiltrado", proveedorServicio.listarProveedores());
         
         // modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
@@ -135,10 +136,11 @@ public class PortalControlador {
         }
     }
     
-    @PostMapping("/filtroProveedores/{id}")
+    @PostMapping("/filtroProveedores/{Rubro}")
     public String devovlerProveedores(@PathVariable String id,ModelMap modelo){
     modelo.put("proFiltrado", proveedorServicio.listaProveedorPorRubro(id));
 
-    return  "redirect:/inicio;";
+    return  "redirect:/inicio";
 }
 }
+

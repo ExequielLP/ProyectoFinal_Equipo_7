@@ -167,9 +167,14 @@ public class ProveedorServicio implements UserDetailsService {
 
     }
 
-    public List<Proveedor> listaProveedorPorRubro(String rubro) {
-        List<Proveedor> listarProveedores = proveedorRepositorio.buscarPorRubro(rubro);
-        
+    public List<Proveedor> listaProveedorPorRubro(String id) {
+         List<Proveedor> listarProveedores =new ArrayList<>();
+        if (!id.equalsIgnoreCase("")) {
+             listarProveedores = proveedorRepositorio.buscarPorRubroId(id);
+        }else {
+        listarProveedores=proveedorRepositorio.findAll();
+        }
+           
 
         return listarProveedores;
     }
