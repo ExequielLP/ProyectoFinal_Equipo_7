@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Proyecto_Equipo_7.servicios;
 
 import Proyecto_Equipo_7.entidades.Imagen;
@@ -10,13 +7,12 @@ import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
-import java.awt.print.Pageable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -30,10 +26,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- *
- * @author Usuario
- */
+
 @Service
 public class ProveedorServicio implements UserDetailsService {
 
@@ -102,12 +95,7 @@ public class ProveedorServicio implements UserDetailsService {
         return proveedorRepositorio.cantidadProveedores();
     }
 
-    @Transactional(readOnly = true)
-    public List<Proveedor> seisMejoresProveedores() {
-        Pageable pageable = (Pageable) PageRequest.of(0, 6);
-        List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
-        return proveedores;
-    }
+  
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -166,6 +154,12 @@ public class ProveedorServicio implements UserDetailsService {
         }
 
     }
+    
+    public Double calificacionProveedores(String id) {
+        
+        return proveedorRepositorio.calificacionPorProveedor(id);
+    }
+
 
     }
 

@@ -19,6 +19,7 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/")
@@ -41,9 +42,10 @@ public class PortalControlador {
             modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());
 
-            if (error != null) {
-            modelo.put("error", "usuario o contreaseña invalida intente nuevamente");}
 
+            if (error != null) {
+                modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
+            }
             return "index.html";
         } catch (Exception e) {
             // modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
@@ -52,10 +54,10 @@ public class PortalControlador {
 
     }
 
-   @GetMapping("/contacto")
-    public String contacto(){
-    
-        return"contacto.html";
+    @GetMapping("/contacto")
+    public String contacto() {
+
+        return "contacto.html";
 
     }
 
@@ -64,6 +66,7 @@ public class PortalControlador {
         if (error != null) {
             
              return "redirect:/logout";
+
         }
         return "index.html";
 
@@ -74,7 +77,8 @@ public class PortalControlador {
     public String inicio(HttpSession session, ModelMap modelo) {
         modelo.put("listaProveedor", proveedorServicio.listarProveedores());
         modelo.put("listaRubros", rubroServicio.listaRubros());
-        // modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
+        modelo.put("listarTrabajosPorCalificar", usuarioServicio.listarTrabajosPorCalificar());
+        
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
@@ -83,7 +87,9 @@ public class PortalControlador {
         if (logueado.getRol().toString().equals("PROVEEDOR")) {
             List<Trabajo> listaTrabajosPorProveedor = trabajoServicio.listarTrabajosPorProveedor(session);
             modelo.put("listaTrabajosPorProveedor", listaTrabajosPorProveedor);
+            
         }
+        
         return "inicio.html";
     }
 
@@ -131,4 +137,19 @@ public class PortalControlador {
             return "redirect:/";
         }
     }
+    
+   /* @PostMapping(/"listaCalificar")
+    public String puntajeProveedor(@PathVariable String id,Double calificacion){
+        
+        
+        
+    }*/
+ 
+    @GetMapping("/listaCalificar")
+    public String puntaje() {
+
+        return "listaCalificar.html";
+
+    }
+
 }

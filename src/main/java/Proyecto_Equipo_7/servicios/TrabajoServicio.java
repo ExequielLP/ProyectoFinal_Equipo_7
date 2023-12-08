@@ -18,6 +18,13 @@ import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
+import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
+import java.util.Optional;
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 
 @Service
@@ -28,8 +35,7 @@ public class TrabajoServicio {
   
     @Autowired
     private UsuarioRepositorio usuarioRepositorio; 
-    
-    @Autowired
+
     private ProveedorRepositorio proveedorRepositorio;
 
     @Transactional

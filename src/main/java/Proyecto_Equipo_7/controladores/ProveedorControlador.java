@@ -71,4 +71,13 @@ public class ProveedorControlador {
         return "redirect:/proveedor/";
 
     }
+    
+     @GetMapping("/calificacion/{id}")
+    public Double calificacionProveedor(@PathVariable String id) {
+
+        Double calificacion = proveedorServicio.calificacionProveedores(id);
+        
+        return calificacion ;
+
+    }
 }

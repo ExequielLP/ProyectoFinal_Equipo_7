@@ -1,5 +1,6 @@
 package Proyecto_Equipo_7.controladores;
 
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -45,6 +46,7 @@ public class TrabajoControlador {
         // aca va la vista para que aparesca el form
         return "contratoTrabajo.html";
     }
+
     
     @PostMapping("/eliminar")
     public String eliminarTrabajo(@RequestParam String id, ModelMap modelo) {
