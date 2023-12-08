@@ -1,0 +1,62 @@
+<div class="modal fade " tabindex="-1" role="dialog" id="modalReProveedor">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">Registrese para continuar</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <form class="formulario" th:action="@{/registroProveedor}" method="POST" enctype="multipart/form-data">                   
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nombre usuario">
+                        <label for="floatingInput">Nombre Completo</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-3" th:value="${domicilio}" name="domicilio" id="floatingInput" placeholder="Domicilio">
+                        <label for="floatingInput">Domicilio</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control rounded-3" th:value="${telefono}" name="telefono" id="floatingInput" placeholder="Telefono o celular">
+                        <label for="floatingInput">Telefono o celular</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control rounded-3" th:value="${email}" name="email" id="floatingInput" placeholder="Email">
+                        <label for="floatingInput">Email ejemplo@gmail.com</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control rounded-3" th:value="${honorario}" name="honorario" id="floatingInput" placeholder="Ingrese un valor de referencia x hora">
+                        <label for="floatingInput">Honorarios a facturar</label>
+                    </div>
+                    <div class="form-floating mb-3">                    
+                        <input type="file" name="archivo" id="floatingInput" placeholder="Seleccione nueva imagen">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="servicio">Servicios</label>
+                        <select name="rubro" class="form-control">
+                            <option th:each="listaRubro : ${listaRubro}"
+                                    th:value="${listaRubro.id}" 
+                                    th:text="${listaRubro.rubro}"
+
+                                    />
+                        </select>
+                    </div>
+                    <br>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control rounded-3" name="password" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control rounded-3" name="password2" id="floatingPassword2" placeholder="Confirme el Password">
+                        <label for="floatingPassword">Debe ser idem al anterior</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+                    <small class="text-body-secondary">Al unirte, aceptas los Términos de servicio de SevenPROF,
+                        así como recibir correos electrónicos ocasionales de nuestra parte.
+                        Lee nuestra Política de privacidad para saber cómo utilizamos tus datos personales.</small>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

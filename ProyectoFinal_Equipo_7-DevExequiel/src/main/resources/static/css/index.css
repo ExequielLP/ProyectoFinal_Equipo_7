@@ -1,0 +1,148 @@
+body,
+.metricas {
+    background: rgb(231, 231, 231)
+}
+
+.navbar {
+    font-size: large;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.navbar a:hover {
+    background-color: rgb(51, 51, 51);
+    border-radius: 8px;
+}
+
+.elementosNav {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    color: #37474f;
+    font-weight: 700;
+}
+
+.elementos {
+    margin-right: 50px;
+}
+
+.containerImg {
+    width: 20%;
+}
+
+
+
+.logo {
+    width: 65px;
+    height: 65px;
+    margin: auto;
+}
+
+
+.header {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: end;
+}
+.contenedorMain {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.containerFooter {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boton {
+    background-color: #ffcb00;
+    box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.36);
+    -webkit-box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.36);
+}
+
+.boton:hover {
+    background-color: #ffcb00;
+}
+
+.boton:active {
+    box-shadow: none;
+}
+
+.navbar-brand {
+    font: small-caps normal 55px/1 sans-serif;
+    font-variant-caps: small-caps;
+    font-style: italic;
+    color: #66ccff;
+}
+
+.mt-3 {
+    margin-top: 10px;
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-query-number {
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.metricas {
+    align-items: center;
+}
+
+.market-title {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.messageError {
+    width: 100px;
+    height: 50px;
+    background-color: red;
+
+}
+
+.table-listas{
+table-layout: auto;
+}
+.bordeRegistroRubro{
+border: #37474f solid 4px;
+height: 400px;
+}
+.bordeRegistroRubro{
+border: #37474f solid 4px;
+height: 400px;
+}
+.bordeRegistroRubro{
+border: #37474f solid 4px;
+height: 400px;
+}
+
+.bordeRegistroRubro {
+    border: #37474f solid 4px;
+    height: 400px;
+}
+
+.errorimg{
+    background-image: url(../img/error.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,16 @@
+
+<div th:if="${error != null}" class="container d-flex justify-content-center ">
+    <div  class="card text-white messageError">
+        <div class="card-body">
+            <h5 class="card-tittle">Error!</h5>
+            <p class="card-text" th:text="${error}"></p>
+        </div>
+    </div>
+    <div th:if="${exito != null}" class="container d-flex justify-content-center ">
+        <div class="card text-white messageError" >
+            <h5 class="card-tittle">Exito!</h5>
+            <p class="card-text" th:text="${exito}"> </p>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-5 g-3 mt-5"  >
+  <div class="col d-flex justify-content-center"   th:each="proFiltrado:${proFiltrado}">
+    <div class="card d-flex align-items-center p-2" style="width: 18rem;">
+      
+      <img  th:if="${proFiltrado.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${proFiltrado.id}__}" style="width:200px; height:200px;">
+
+      <div class="card-body text-center">
+        <h4 class="card-title fw-bold fs-2" th:text="${proFiltrado.nombre}">Card title</h4>
+        <h5 th:text="${proFiltrado.rubro.rubro}"></h5>        
+        <p class="card-text">This is a longer card with supporting text</p>
+        <p class="card-text fw-bold fs-4">$2000</p>
+        <a class="btn btn-primary" th:href="@{/trabajo/persistirTrabajo/__${proFiltrado.id}__}">Contratar</a>
+      </div>
+    </div>
+  </div>
+</div>
