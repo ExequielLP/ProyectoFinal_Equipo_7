@@ -8,7 +8,6 @@ import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +39,7 @@ public class AdminControlador {
         modelo.addAttribute("proveedores", proveedorServicio.listarProveedores());
         modelo.addAttribute("trabajos", trabajoServicio.listarTrabajos());
         modelo.addAttribute("rubros", rubroServicio.listaRubros());
-        
+
         return "panel.html";
     }
 
@@ -49,21 +48,19 @@ public class AdminControlador {
         return "registroRubro.html";
     }
 
-
     @PostMapping("/registroRubro")
     public String registroRubro(@RequestParam String rubro, MultipartFile archivo, ModelMap modelo) {
-        if (rubro == null || rubro.trim().isEmpty()) {
-            modelo.put("error", "Debe incluir el rubro");
-            return "registroRubro.html";
-        }
         try {
+            if (rubro == null || rubro.trim().isEmpty()) {
+                modelo.put("error", "Debe incluir el rubro");
+            }
             rubroServicio.registrarRubro(rubro, archivo);
-            modelo.put("exito", "La Editorial fue cargada correctamente!");
+            modelo.put("exito", "El rubro fue cargado correctamente!");
+            return "redirect:/admin/dashboard";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
-            return "panel.html";
+            return "registroRubro.html";
         }
-        return "panel.html";
     }
 
     @GetMapping("/usuarios")
@@ -77,8 +74,7 @@ public class AdminControlador {
 
         return "redirect:/admin/usuarios";
     }
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    
     @GetMapping("/lista_usuarioCompleta")
     public String listarUsuarios(ModelMap modelo) {
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
@@ -109,7 +105,7 @@ public class AdminControlador {
     // metodo para el admin al lado de cada trabajo en la lista para poder
     // eliminarlo
     @PostMapping("/eliminarTrabajo/{id}")
-    public String eliminarTrabajo(@PathVariable String id, ModelMap modelo){
+    public String eliminarTrabajo(@PathVariable String id, ModelMap modelo) {
         trabajoServicio.darDeBajaTrabajo(id);
 
         return "redirect:/admin/dashboard";

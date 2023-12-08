@@ -28,7 +28,7 @@ public class Calificacion {
     @OneToOne
     private Proveedor proveedor;
 
-    private Integer calificacion;
+    private Double calificacion;
 
     private String comentario;
 

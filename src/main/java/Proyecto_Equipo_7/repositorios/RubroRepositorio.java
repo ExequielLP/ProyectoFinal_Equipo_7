@@ -12,4 +12,5 @@ public interface RubroRepositorio extends JpaRepository<Rubro, String> {
     @Query("SELECT rubro FROM Rubro")
     public List<Rubro> listaRubros();
 
+    List<Rubro> findAllByOrderByRubroAsc();
 }

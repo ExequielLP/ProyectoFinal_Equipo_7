@@ -34,9 +34,13 @@
 }
 
 .hijo{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
     padding: 10px;
     height: 730px;
-    margin-top:10px;
+    margin-top:50px;
     width: 500px;
     background-color: rgba(70, 61, 61, 0.75);
     border-radius: 5%;

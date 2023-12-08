@@ -29,7 +29,7 @@ import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 @Service
 public class ProveedorServicio implements UserDetailsService {
 
-    @Autowired
+        @Autowired
     private ImagenServicio imagenServicio;
 
     @Autowired
@@ -57,8 +57,8 @@ public class ProveedorServicio implements UserDetailsService {
     }
 
     @Transactional
-    public Proveedor actualizar(String id, String nombre, String domicilio, String telefono, String email, String password,
-            String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
+    public Proveedor actualizar(String id, String nombre, String domicilio, String telefono, String email,
+            String password, String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
 
         validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
@@ -69,10 +69,10 @@ public class ProveedorServicio implements UserDetailsService {
             proveedor.setEmail(email);
             proveedor.setDomicilio(domicilio);
             proveedor.setTelefono(telefono);
-            proveedor.setHonorario(honorario);
             proveedor.setRubro(rubro);
-            Imagen imagen = imagenServicio.guardar(archivo);
-            proveedor.setImagen(imagen);
+            Imagen img = imagenServicio.guardar(archivo);
+            proveedor.setImagen(img);
+
             proveedor.setPassword(new BCryptPasswordEncoder().encode(password));
             proveedor.setRol(Rol.PROVEEDOR);
             return proveedorRepositorio.save(proveedor);
@@ -157,6 +157,18 @@ public class ProveedorServicio implements UserDetailsService {
             throw new MiException("Las contraseñas ingresadas deben ser iguales");
         }
 
+    }
+
+    public List<Proveedor> listaProveedorPorRubro(String id) {
+         List<Proveedor> listarProveedores =new ArrayList<>();
+        if (!id.equalsIgnoreCase("")) {
+             listarProveedores = proveedorRepositorio.buscarPorRubroId(id);
+        }else {
+        listarProveedores=proveedorRepositorio.findAll();
+        }
+           
+
+        return listarProveedores;
     }
 
 }

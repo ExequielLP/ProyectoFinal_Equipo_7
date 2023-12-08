@@ -7,14 +7,18 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.servicios.CalificacionServicio;
 import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
@@ -32,6 +36,8 @@ public class PortalControlador {
     private UsuarioServicio usuarioServicio;
     @Autowired
     private TrabajoServicio trabajoServicio;
+    @Autowired
+    private CalificacionServicio calificacionServicio;
 
     @GetMapping("/")
     public String index(@RequestParam(required = false) String error, ModelMap modelo) throws Exception {
@@ -42,7 +48,8 @@ public class PortalControlador {
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());
 
             if (error != null) {
-            modelo.put("error", "usuario o contreaseña invalida intente nuevamente");}
+                modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
+            }
 
             return "index.html";
         } catch (Exception e) {
@@ -52,18 +59,17 @@ public class PortalControlador {
 
     }
 
-   @GetMapping("/contacto")
-    public String contacto(){
-    
-        return"contacto.html";
+    @GetMapping("/contacto")
+    public String contacto() {
+        return "contacto.html";
 
     }
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
-            
-             return "redirect:/logout";
+
+            return "redirect:/logout";
         }
         return "index.html";
 
@@ -130,5 +136,18 @@ public class PortalControlador {
             modelo.put("rubro", rubro);
             return "redirect:/";
         }
+    }
+
+    @RequestMapping(value = "/filtroProveedores/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+    public String devovlerProveedores(@PathVariable String id, ModelMap modelo) {
+        List<Proveedor> proFiltradoList = proveedorServicio.listaProveedorPorRubro(id);
+        System.out.println("..................................");
+        System.out.println(proFiltradoList);
+        System.out.println("..................................");
+        modelo.put("proFiltrados", proFiltradoList);
+        System.out.println("..................................");
+        System.out.println(proFiltradoList);
+        System.out.println("..................................");
+        return "listarProveedoresPorCards.html";
     }
 }
