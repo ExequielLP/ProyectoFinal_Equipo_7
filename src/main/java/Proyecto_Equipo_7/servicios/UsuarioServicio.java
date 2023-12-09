@@ -138,11 +138,13 @@ public class UsuarioServicio implements UserDetailsService {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacío");
         }
-        if (email.isEmpty() || email == null) {
-            throw new MiException("el email no puede ser nulo o estar vacio");
-        }
+       
         if (domicilio.isEmpty() || domicilio == null) {
             throw new MiException("el domicilio no puede ser nulo o estar vacio");
+            
+        }
+         if (email.isEmpty() || email == null) {
+            throw new MiException("el email no puede ser nulo o estar vacio");
         }
         if (telefono.isEmpty() || telefono == null) {
             throw new MiException("el telefono no puede ser nulo o estar vacio");
