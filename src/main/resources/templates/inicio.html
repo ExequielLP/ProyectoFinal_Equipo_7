@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
+    <head>
 
     <head th:replace="/fragments/head :: head"> </head>
     <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
@@ -15,12 +15,14 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <main class="container justify-content-center ">
+
+        <div th:replace="/fragments/exitoError :: div"></div>
         <!-- CARRUSEL -->
         <div th:replace="/fragments/carousel :: section"></div>
     </main>
     <!--SECTION SOLO PARA USUARIO-->
     <section sec:authorize="hasRole('ROLE_USER')"
-        class="sectionCardsInicio container-fluid justify-content-center align-items-center text-center">
+             class="sectionCardsInicio container-fluid justify-content-center align-items-center text-center">
         <h1 class="titleInicio mt-5" sec:authorize="hasRole('ROLE_USER')">Conoce nuestras categorías</h1>
         <!-- RUBROS SOLO USER-->
         <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardRubro :: div"></div>
@@ -38,14 +40,14 @@
         <div sec:authorize="hasRole('ROLE_PROVEEDOR')" th:replace="/fragments/listaTrabajosPorProveedor :: div"></div>
     </section>
     <!-- MODAL EXITO U ERROR -->
-    <div th:replace="/fragments/exitoError :: div"></div>
+
     <div class="container">
         <footer th:replace="/fragments/footer :: footer" </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
 </body>
 

@@ -110,9 +110,7 @@ body,
     color: #66ccff;
 }
 
-.mt-3 {
-    margin-top: 10px;
-}
+
 
 .b-example-divider {
     width: 100%;
@@ -127,12 +125,7 @@ body,
     text-align: center;
 }
 
-.messageError {
-    width: 100px;
-    height: 50px;
-    background-color: red;
 
-}
 
 .table-listas {
     table-layout: auto;
@@ -307,3 +300,13 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 /*---VISTA SOLO PROVEEDOR------*/
+
+.exitoMassaje{
+    background-color: green;
+ 
+}
+.messageError {
+    background-color: red;
+    border-radius: 8px
+
+}
