@@ -1,4 +1,3 @@
-
 package Proyecto_Equipo_7.servicios;
 
 import Proyecto_Equipo_7.entidades.Imagen;
@@ -25,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
 
 @Service
 public class ProveedorServicio implements UserDetailsService {
@@ -59,7 +57,7 @@ public class ProveedorServicio implements UserDetailsService {
 
     @Transactional
     public Proveedor actualizar(String id, String nombre, String domicilio, String telefono, String email,
-            String password,String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
+            String password, String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
 
         validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
@@ -94,8 +92,6 @@ public class ProveedorServicio implements UserDetailsService {
     public Integer cantidadProveedores() {
         return proveedorRepositorio.cantidadProveedores();
     }
-
-  
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -154,17 +150,5 @@ public class ProveedorServicio implements UserDetailsService {
         }
 
     }
-    
-    public Double calificacionProveedores(String id) {
-        
-        return proveedorRepositorio.calificacionPorProveedor(id);
-    }
 
-
-    }
-
-
-
- 
-
-
+}

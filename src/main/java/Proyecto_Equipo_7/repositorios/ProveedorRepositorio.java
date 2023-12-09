@@ -22,6 +22,6 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
     public Integer cantidadProveedores();
 
      @Query("SELECT p.calificacion FROM  Proveedor p WHERE  p.id = :id")
-    public Double calificacionPorProveedor(@Param("id") String id);
+    public Integer calificacionPorProveedor(@Param("id") String id);
     
 }

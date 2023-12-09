@@ -32,13 +32,13 @@ public class TrabajoControlador {
         return "inicio.html";
     }
 
-    @PreAuthorize("hasAnyRole('PROVEEDOR','ADMINISTRADOR')")
+    /*@PreAuthorize("hasAnyRole('PROVEEDOR','ADMINISTRADOR')")
     @GetMapping("/finalizar_Trabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id, ModelMap modelo) {
-        trabajoServicio.darPorTerminadoUnTrabajo(id);
+        trabajoServicio.finalizarTrabajo(id);
         // este metodo permite al proveedor dar por terminado un trabajo
-        return "list_trabajos.html";
-    }
+        return "listaTrabajosPorProveedor.html";
+    }*/
 
     @GetMapping("/cargarTrabajo/{id}")
     public String cargarTrabajo(@PathVariable String id, ModelMap modelo) {
@@ -46,6 +46,7 @@ public class TrabajoControlador {
         return "contratoTrabajo.html";
     }
     
+     @PreAuthorize("AnyRole('ADMINISTRADOR')")
     @PostMapping("/eliminar")
     public String eliminarTrabajo(@RequestParam String id, ModelMap modelo) {
         trabajoServicio.eliminarTrabajo(id);
@@ -71,7 +72,7 @@ public class TrabajoControlador {
         // aca va la vista dps de envien datos del form
     }
 
-    @PreAuthorize("AnyRole('ADMINISTRADOR')")
+   /* @PreAuthorize("AnyRole('ADMINISTRADOR')")
     @GetMapping("/baja_Trabajo/{id}")
     public String darDeBajaTrabajo(@PathVariable String id, ModelMap modelo) {
         trabajoServicio.darDeBajaTrabajo(id);
@@ -79,5 +80,5 @@ public class TrabajoControlador {
         // trabajo, puede ser al estar terminado o
         // porque por algun motivo se solicito
         return "listTrabajos.html";
-    }
+    }*/
 }

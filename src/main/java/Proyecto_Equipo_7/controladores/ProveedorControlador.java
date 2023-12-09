@@ -17,6 +17,7 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 
+
 @Controller
 @RequestMapping("/proveedor")
 public class ProveedorControlador {
@@ -30,7 +31,6 @@ public class ProveedorControlador {
     @Autowired
     private RubroServicio rubroServicio;
 
-    
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
 
@@ -38,7 +38,6 @@ public class ProveedorControlador {
         return "modificarProveedor.html";
     }
 
-    
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,
@@ -47,7 +46,7 @@ public class ProveedorControlador {
             @RequestParam String password, String password2, ModelMap modelo, HttpSession session) {
 
         try {
-            Proveedor proveedorUpdated= proveedorServicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo,
+            Proveedor proveedorUpdated = proveedorServicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo,
                     honorario, rubro);
             modelo.put("exito", "Proveedor actualizado correctamente!");
             session.setAttribute("usuarioSession", proveedorUpdated);
@@ -66,18 +65,11 @@ public class ProveedorControlador {
     @GetMapping("/finalizarTrabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id) {
 
-        trabajoServicio.darPorTerminadoUnTrabajo(id);
+        trabajoServicio.finalizarTrabajo(id);
 
-        return "redirect:/proveedor/";
-
-    }
-    
-     @GetMapping("/calificacion/{id}")
-    public Double calificacionProveedor(@PathVariable String id) {
-
-        Double calificacion = proveedorServicio.calificacionProveedores(id);
-        
-        return calificacion ;
+        return "redirect:/inicio";
 
     }
+
+
 }

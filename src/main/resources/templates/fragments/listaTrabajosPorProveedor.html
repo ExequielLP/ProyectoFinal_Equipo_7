@@ -22,16 +22,16 @@
                             <th scope="col" sec:authorize="hasRole('PROVEEDOR')">Finalizar trabajo</th>
                         </tr>
                     </thead>
-                    <tbody th:each="listaTrabajosPorProveedor : ${listaTrabajosPorProveedor}">
+                    <tbody th:each="listaTrabajoPorProveedor : ${listaTrabajoPorProveedor}">
                         <tr>
-                            <td th:text="${listaTrabajosPorProveedor.id}"></td>
-                            <td th:text="${listaTrabajosPorProveedor.usuario.nombre}"></td>
-                            <td th:text="${listaTrabajosPorProveedor.usuario.email}"></td>
-                            <td th:text="${listaTrabajosPorProveedor.terminado}"></td>
-                            <td th:text="${listaTrabajosPorProveedor.alta}"></td>
+                            <td th:text="${listaTrabajoPorProveedor.id}"></td>
+                            <td th:text="${listaTrabajoPorProveedor.usuario.nombre}"></td>
+                            <td th:text="${listaTrabajoPorProveedor.usuario.email}"></td>
+                            <td th:text="${listaTrabajoPorProveedor.terminado}"></td>
+                            <td th:text="${listaTrabajoPorProveedor.alta}"></td>
                             <td>
-                                <a th:href="@{/perfil/__${listaTrabajosPorProveedor.id}__}"><i
-                                        class="fas fa-feather-alt"></i>Finalizado</a>
+                                <a th:href="@{/proveedor/finalizarTrabajo/__${listaTrabajoPorProveedor.id}__}"><i
+                                        class="fas fa-feather-alt"></i>Dar Por Finalizado</a>
                             </td>
                         </tr>
                     </tbody>

@@ -162,20 +162,16 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
- 
-    
-     public void calificarProveedor(Proveedor proveedor,Double calificacion) {
-       if(calificacion != 0){
-           double suma = 0;
-          suma = proveedor.getCalificacion() + calificacion ;
-          proveedor.setCalificacion(suma);
-       }
-       
-        proveedor.setCalificacion(calificacion);
-         
+    @Transactional
+    public void calificarProveedor(Proveedor proveedor, Integer calificacion) {
+        if (calificacion != null) {
+            Integer suma = proveedor.getCalificacion() + calificacion;
+            proveedor.setCalificacion(suma);
+
+        }
     }
-     
-         public List<Trabajo> listarTrabajosPorCalificar() {
+
+    public List<Trabajo> listarTrabajosPorCalificar() {
 
         List<Trabajo> porCalificar = new ArrayList<>();
 
@@ -184,5 +180,3 @@ public class UsuarioServicio implements UserDetailsService {
         return porCalificar;
     }
 }
-      
-

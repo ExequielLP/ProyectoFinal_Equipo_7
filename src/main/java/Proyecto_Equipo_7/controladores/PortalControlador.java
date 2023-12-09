@@ -19,7 +19,7 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 @Controller
 @RequestMapping("/")
@@ -77,18 +77,18 @@ public class PortalControlador {
         modelo.put("listaProveedor", proveedorServicio.listarProveedores());
         modelo.put("listaRubros", rubroServicio.listaRubros());
         modelo.put("listarTrabajosPorCalificar", usuarioServicio.listarTrabajosPorCalificar());
-        
+
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
         }
         // MUESTRA EL INICIO PROVEEDOR
         if (logueado.getRol().toString().equals("PROVEEDOR")) {
-            List<Trabajo> listaTrabajosPorProveedor = trabajoServicio.listarTrabajosPorProveedor(session);
-            modelo.put("listaTrabajosPorProveedor", listaTrabajosPorProveedor);
-            
+            List<Trabajo> listaTrabajoPorProveedor = trabajoServicio.listarTrabajoPorProveedor(session);
+            modelo.put("listaTrabajoPorProveedor", listaTrabajoPorProveedor);
+
         }
-        
+
         return "inicio.html";
     }
 
@@ -135,20 +135,6 @@ public class PortalControlador {
             modelo.put("rubro", rubro);
             return "redirect:/";
         }
-    }
-    
-   /* @PostMapping(/"listaCalificar")
-    public String puntajeProveedor(@PathVariable String id,Double calificacion){
-        
-        
-        
-    }*/
- 
-    @GetMapping("/listaCalificar")
-    public String puntaje() {
-
-        return "listaCalificar.html";
-
     }
 
 }

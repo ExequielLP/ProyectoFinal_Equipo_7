@@ -17,7 +17,7 @@
                             <th scope="col">Id Trabajo</th>
                             <th scope="col">Nombre proveedor</th>
                             <th scope="col">Email proveedor</th>
-                          
+                            <th scope="col">Id proveedor</th>
                             <th scope="col">Terminado</th>
                             <th scope="col">Alta</th>
                             <th scope="col" sec:authorize="hasRole('USER')">Calificar trabajo</th>
@@ -28,12 +28,13 @@
                             <td th:text="${porCalificar.id}"></td>
                             <td th:text="${porCalificar.proveedor.nombre}"></td>
                             <td th:text="${porCalificar.proveedor.email}"></td>
-                          
+                            <td th:text="${porCalificar.proveedor.id}"></td>
                             <td th:text="${porCalificar.terminado}"></td>
                             <td th:text="${porCalificar.alta}"></td>
-                            <td><!-- cambiar por metodo calificar -->
-                                <a th:href="@{/listaCalificar}"><i
-                                        class="fas fa-feather-alt"></i>CALIFICAR</a>
+                            <td><
+                               <a th:href="@{/usuario/calificar/__${porCalificar.proveedor.id}__/__${porCalificar.id}__}">
+                                    <i class="fas fa-feather-alt">CALIFICAR</i> 
+                                </a>
                             </td>
                         </tr>
                     </tbody>

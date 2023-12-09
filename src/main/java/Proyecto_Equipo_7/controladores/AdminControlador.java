@@ -110,8 +110,8 @@ public class AdminControlador {
     // metodo para el admin al lado de cada trabajo en la lista para poder
     // eliminarlo
     @PostMapping("/eliminarTrabajo/{id}")
-    public String eliminarTrabajo(@PathVariable String id, ModelMap modelo){
-        trabajoServicio.darDeBajaTrabajo(id);
+    public String eliminarTrabajo(@PathVariable String id){
+        trabajoServicio.eliminarTrabajo(id);
 
 
         return "redirect:/admin/dashboard";

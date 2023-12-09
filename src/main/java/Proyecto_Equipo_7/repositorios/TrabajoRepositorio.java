@@ -13,10 +13,11 @@ public interface TrabajoRepositorio extends JpaRepository<Trabajo, String> {
     @Query("SELECT count(*) FROM Trabajo ")
     public Integer cantidadContratosTotales();
 
-    @Query("SELECT t FROM Trabajo t WHERE t.proveedor.id = :id")
-    public List<Trabajo> buscarTrabajosPorProveedor(@Param("id") String proveedorId);
-    
-      @Query("SELECT t FROM Trabajo t WHERE t.terminado = 0")
+ 
+    @Query("SELECT t FROM Trabajo t WHERE t.terminado = 1 AND t.alta = 1")
     public List<Trabajo> listarTrabajosPorCalificar();
 
+    
+    @Query("SELECT t FROM Trabajo t WHERE t.proveedor.id = :id AND t.terminado = 0 AND t.alta = 1")
+public List<Trabajo> buscarTrabajoPorProveedor(@Param("id") String proveedorId);
 }
