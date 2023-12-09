@@ -1,0 +1,43 @@
+<div class="accordion " id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseFour">
+                LISTA RUBROS
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingFour">
+            <div class="accordion-body">
+
+                <table class="table table-secondary table-hover table-responsive align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id Rubro</th>
+                            <th scope="col">Nombre Rubro</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col" sec:authorize="hasRole('ADMIN')">Eliminar Rubro</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="rubros : ${rubros}">
+                        <tr>
+                            <td th:text="${rubros.id}"></td>
+                            <td th:text="${rubros.rubro}"></td>
+                            <td <a>
+                                <img th:if="${rubros.imagen != null}" class="logo"
+                                    th:src="@{/imagen/imagen/__${rubros.id}__}"
+                                    style="max-width: 50px; max-height: 50px;" />
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="@{/listaRubros/__${rubros.id}__}"><i class="fas fa-feather-alt"></i>Eliminar
+                                    Rubro</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

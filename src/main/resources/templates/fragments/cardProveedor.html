@@ -1,12 +1,17 @@
-<div class="row row-cols-1 row-cols-md-5 g-3 mt-5">
-  <div class="col d-flex justify-content-center" th:each="listaProveedor:${listaProveedor}">
-    <div class="card d-flex align-items-center p-2" style="width: 18rem;">
-      <img  th:src="@{/proveedor/perfil/__${listaProveedor.id}__}" class="" alt="Juan el carpintero loco" width="250" height="250">
-      <div class="card-body text-center">
-        <h4 class="card-title fw-bold fs-2" th:text="${listaProveedor.nombre}">Card title</h4>        
-        <p class="card-text">This is a longer card with supporting text below as a</p>
-        <p class="card-text fw-bold fs-4">$2000</p>
-        <a class="btn btn-primary" th:href="@{/trabajo/persistirTrabajo/__${listaProveedor.id}__}">Contratar</a>
+<div class="container" style="margin-top:50px;">
+  <div class="row">
+    <div class="col-md-3 py-3" th:each="listaProveedor:${listaProveedor}">
+      <div class="card-sl">
+        <div class="card-image">
+          <img th:if="${listaProveedor.imagen != null}" class="card-image"
+            th:src="@{/imagen/perfil/__${listaProveedor.id}__}" width="auto" height="180">
+        </div>
+        <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+        <div class="card-heading" th:text="${listaProveedor.nombre}">Card title</div>
+        <div class="card-text" th:text="${listaProveedor.rubro.rubro}"></div>
+        <div class="card-text">This is a longer card with supporting text</div>
+        <div class="card-text" th:text="'$ '+${listaProveedor.honorario}"></div>
+        <a class="card-button" th:href="@{/trabajo/persistirTrabajo/__${listaProveedor.id}__}">Contratar</a>
       </div>
     </div>
   </div>
