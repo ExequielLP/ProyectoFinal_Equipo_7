@@ -302,11 +302,11 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 /*---VISTA SOLO PROVEEDOR------*/
 
 .exitoMassaje{
-    background-color: green;
+    background-color: rgba(0, 128, 0, 0.603);
  
 }
 .messageError {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.637);
     border-radius: 8px
 
 }

@@ -39,8 +39,6 @@ public class ProveedorServicio implements UserDetailsService {
     public void registrarProveedor(String nombre, String domicilio, String telefono, String email, String password,
             String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
         
-        
-
         validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
         Proveedor proveedor = new Proveedor();
@@ -147,7 +145,7 @@ public class ProveedorServicio implements UserDetailsService {
         if (telefono.isEmpty() || telefono == null) {
             throw new MiException("el telefono no puede ser nulo o estar vacio");
         }
-        if (honorario==null) {
+        if (honorario == null || honorario <= 0) {
             throw new MiException("el campo honorario no puede ser nulo o estar vacio");
         }
         if (rubro == null) {

@@ -47,13 +47,8 @@ public class PortalControlador {
             modelo.put("cantidadUsuarios", usuarioServicio.cantidadUsuarios());
             modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());
-   
-
-
-
             return "index.html";
         } catch (Exception e) {
-            // modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
             return "index.html";
         }
 
@@ -67,11 +62,10 @@ public class PortalControlador {
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-        if (error != null) {
-
-            return "redirect:/logout";
-        }
-        return "index.html";
+            if (error != null) {
+                return "redirect:/logout";
+            }
+            return "index.html";
 
     }
 
@@ -97,7 +91,8 @@ public class PortalControlador {
     public String registroUsuario(@RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,
             @RequestParam String telefono,
-            @RequestParam String password,@RequestParam String password2, ModelMap modelo,RedirectAttributes redirectAttrs) {
+            @RequestParam String password, @RequestParam String password2, ModelMap modelo,
+            RedirectAttributes redirectAttrs) {
 
         try {
             usuarioServicio.registrarusuario(nombre, domicilio, telefono, email, password, password2);
@@ -117,27 +112,31 @@ public class PortalControlador {
 
     @PostMapping("/registroProveedor")
     public String registroProveedor(@RequestParam String nombre, @RequestParam String email,
-            @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro,
-            MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo,RedirectAttributes redirectAttrs) {
-         System.out.println("---------------------ANTES  DE REGISTRARPROVEDOR-------");
+            @RequestParam String domicilio, @RequestParam String telefono,
+            @RequestParam(required = false) Integer honorario,
+            @RequestParam Rubro rubro, MultipartFile archivo, @RequestParam String password, String password2,
+            ModelMap modelo,
+            RedirectAttributes redirectAttrs) {
         try {
+            if (honorario == null) {
+                // Puedes manejar la situación de honorario nulo aquí
+                throw new MiException("El 'honorario' es requerido.");
+            }
+
             proveedorServicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2, archivo,
                     honorario, rubro);
-            System.out.println("---------------------ANTES  DE FLASH-------");
-           redirectAttrs.addFlashAttribute("exito", "Proveedor registrado correctamente!");
+            redirectAttrs.addFlashAttribute("exito", "Proveedor registrado correctamente!");
             return "redirect:/";
         } catch (MiException ex) {
             redirectAttrs.addFlashAttribute("error", ex.getMessage());
             System.out.println(ex.getMessage());
             System.out.println("---------------------ERRRORRRR-------");
-//            modelo.put("nombre", nombre);
-//            modelo.put("email", email);
-//            modelo.put("domicilio", domicilio);
-//            modelo.put("telefono", telefono);
-//            modelo.put("honorario", honorario);
-//            modelo.put("rubro", rubro);
+            // modelo.put("nombre", nombre);
+            // modelo.put("email", email);
+            // modelo.put("domicilio", domicilio);
+            // modelo.put("telefono", telefono);
+            // modelo.put("honorario", honorario);
+            // modelo.put("rubro", rubro);
             return "redirect:/";
         }
     }
