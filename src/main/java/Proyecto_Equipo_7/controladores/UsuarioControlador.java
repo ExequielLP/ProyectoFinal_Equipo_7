@@ -1,6 +1,5 @@
 package Proyecto_Equipo_7.controladores;
 
-
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,7 @@ import Proyecto_Equipo_7.servicios.UsuarioServicio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/usuario")
@@ -64,27 +64,41 @@ public class UsuarioControlador {
     }
 
     @GetMapping("/calificar/{idProveedor}/{idTrabajo}")
-    public String puntaje(ModelMap model,@PathVariable String idProveedor,@PathVariable String idTrabajo) {
+    public String puntaje(ModelMap model, @PathVariable String idProveedor, @PathVariable String idTrabajo) {
         List<Trabajo> porCalificar = usuarioServicio.listarTrabajosPorCalificar();
         model.put("porCalificar", porCalificar);
         return "calificar.html";
     }
 
-    @PostMapping("/calificar/{idProveedor}/{idTrabajo}")
-    @Transactional 
-    public String calificar(@PathVariable String idProveedor,@PathVariable String idTrabajo,@RequestParam Integer calificacion) {
+    @PostMapping("/calificar")
+    @Transactional
+    public String calificar(@RequestParam("idProveedor") String idProveedor, @RequestParam("idTrabajo") String idTrabajo,
+            @RequestParam("calificacion") Integer calificacion, RedirectAttributes redirectAttributes) {
+
         Optional<Proveedor> proveedorOptional = proveedorRepositorio.findById(idProveedor);
         if (proveedorOptional.isPresent()) {
             Proveedor proveedor = proveedorOptional.get();
             usuarioServicio.calificarProveedor(proveedor, calificacion);
-           
+            System.out.println(idProveedor);
+            System.out.println("------------------------------------------------------------------");
         }
-            Optional<Trabajo> respuesta1 = trabajoRepositorio.findById(idTrabajo);
-            if (respuesta1.isPresent()) {
-                Trabajo trabajo = respuesta1.get();
-                trabajo.setAlta(false);
-                trabajoRepositorio.save(trabajo);
-         
+   
+        redirectAttributes.addAttribute("idTrabajo", idTrabajo);
+
+        return "redirect:/usuario/darBaja/{idTrabajo}";
+    }
+
+    @GetMapping("/darBaja/{idTrabajo}")
+    @Transactional
+    public String baja(@PathVariable("idTrabajo") String idTrabajo) {
+
+        Optional<Trabajo> respuesta1 = trabajoRepositorio.findById(idTrabajo);
+        if (respuesta1.isPresent()) {
+            Trabajo trabajo = respuesta1.get();
+            trabajo.setAlta(false);
+            trabajoRepositorio.save(trabajo);
+            System.out.println(idTrabajo);
+            System.out.println("------------------------------------------------------------------");
         }
         return "redirect:/inicio";
     }
