@@ -19,7 +19,6 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/")

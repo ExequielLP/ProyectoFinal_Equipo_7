@@ -1,78 +1,78 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+
 <html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace= "/fragments/head :: head"> </head>
-    <body>
+    <head>
 
-        <!-- NAVBAR -->
-        <header data-bs-theme="dark">
-            <nav th:replace="/fragments/navbar :: nav"></nav>
+    <head th:replace="/fragments/head :: head"></head>
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
+</head>
+<body>
 
-        </header>    
+    <!-- NAVBAR -->
+    <header data-bs-theme="dark">
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+    </header>    
 
-        <main class="contacto-fondo">
-            <div class="padre">
-                <div class="hijo">
-                    <div class="mapa"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.8662193822997!2d-68.88124902483077!3d-32.980931173620014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e0af3bd53dfd5%3A0x6a376e58e7db3a8!2sBesares%201209%2C%20M5500%20Chacras%20de%20Coria%2C%20Mendoza!5e0!3m2!1ses-419!2sar!4v1701251598310!5m2!1ses-419!2sar" height="350" style="border-radius: 5px; margin-top: 10px; border:0;" width="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-                    <hr> <br>
-                    <h4><i class="fa-solid fa-map-location-dot"></i></h4>
-                    <p>Besares 1209, M5500 Chacras de Coria, Mendoza</p> <hr>
-                    <h4><i class="fa-solid fa-phone"></i></h4>
-                    <p>0261 565-9234</p>
+    <main class="contacto-fondo">
+        <div class="padre">
+            <div class="hijo">
+                <div class="mapa"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.8662193822997!2d-68.88124902483077!3d-32.980931173620014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e0af3bd53dfd5%3A0x6a376e58e7db3a8!2sBesares%201209%2C%20M5500%20Chacras%20de%20Coria%2C%20Mendoza!5e0!3m2!1ses-419!2sar!4v1701251598310!5m2!1ses-419!2sar" height="350" style="border-radius: 5px; margin-top: 10px; border:0;" width="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                <hr> <br>
+                <h4><i class="fa-solid fa-map-location-dot"></i></h4>
+                <p>Besares 1209, M5500 Chacras de Coria, Mendoza</p> <hr>
+                <h4><i class="fa-solid fa-phone"></i></h4>
+                <p>0261 565-9234</p>
 
-                </div>
+            </div>
 
-                <div class="hijo">
-                    <h1 class="titulo" >Contactanos</h1>
-                    <form action="https://formsubmit.co/JuanServiciosChacra@gmail.com" method="POST" class="form mt-4">
-                        <div class="form-group">
-                            <input type="text" minlenght="1" maxlength="70" name="nombre" class="form-control prueba" placeholder="Ingrese su nombre" required> 
-                        </div>
-                        <div class="form-group">
-                            <input type="text" minlenght="1" maxlength="40" name="apellido" class="form-control prueba" placeholder="Ingrese su apellido"> 
-                        </div>
-                        <div class="form-group">
-                            <input type="email" minlength="5" maxlength="50" name="correo" class="form-control prueba" placeholder="Ingrese su correo" required> 
-                        </div>
-                        <div class="form-group">
-                            <input type="number" name="telefono" class="form-control prueba" placeholder="Ingrese su telefono ( Ej: 3816788402 )" required> 
-                        </div> <br>
-                        
-                        <h5 class="titulo form-group">Eliga el motivo de su contacto</h5>
-                        <select name="asunto" class="asunto">
-                            <option>Sugerencias</option>
-                            <option>Problemas con el contrato</option>
-                            <option>Problemas con proveedores</option>
-                            <option>Problemas de inicio de sesion/registro</option>
-                            <option>Otros</option>
-                        </select>
-                        <br> <br>
+            <div class="hijo">
+                <h1 class="titulo" >Contactanos</h1>
+                <form action="https://formsubmit.co/JuanServiciosChacra@gmail.com" method="POST" class="form mt-4">
+                    <div class="form-group">
+                        <input type="text" minlenght="1" maxlength="70" name="nombre" class="form-control prueba" placeholder="Ingrese su nombre" required> 
+                    </div>
+                    <div class="form-group">
+                        <input type="text" minlenght="1" maxlength="40" name="apellido" class="form-control prueba" placeholder="Ingrese su apellido"> 
+                    </div>
+                    <div class="form-group">
+                        <input type="email" minlength="5" maxlength="50" name="correo" class="form-control prueba" placeholder="Ingrese su correo" required> 
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="telefono" class="form-control prueba" placeholder="Ingrese su telefono ( Ej: 3816788402 )" required> 
+                    </div> <br>
 
-                        <div class="form-group">
-                            <h5 class="titulo">Comentenos su situacion</h5> <br>
-                            <textarea name="comentario" id="" rows="6" class="form-control comentario" required></textarea>
-                        </div> <br>
+                    <h5 class="titulo form-group">Eliga el motivo de su contacto</h5>
+                    <select name="asunto" class="asunto">
+                        <option>Sugerencias</option>
+                        <option>Problemas con el contrato</option>
+                        <option>Problemas con proveedores</option>
+                        <option>Problemas de inicio de sesion/registro</option>
+                        <option>Otros</option>
+                    </select>
+                    <br> <br>
 
-                        <button class="btn-contacto w-50" type="submit">
-                            Enviar
-                        </button>
-                        
-                        <input type="hidden" name="_next" value="http://localhost:8080/contacto">
-                        
-                        <input type="hidden" name="_captcha" value="false">
-                        
-                    </form>
+                    <div class="form-group">
+                        <h5 class="titulo">Comentenos su situacion</h5> <br>
+                        <textarea name="comentario" id="" rows="6" class="form-control comentario" required></textarea>
+                    </div> <br>
 
-                </div>
-            </div>  
+                    <button class="btn-contacto w-50" type="submit">
+                        Enviar
+                    </button>
 
-        </main>
+                    <input type="hidden" name="_next" value="http://localhost:8080/contacto">
+
+                    <input type="hidden" name="_captcha" value="false">
+
+                </form>
+
+            </div>
+        </div>  
+
+    </main>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/4d7920e24b.js" crossorigin="anonymous"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4d7920e24b.js" crossorigin="anonymous"></script>
+</body>
 </html>
