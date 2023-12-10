@@ -8,10 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#market-sections">Nosotros</a>
+                    <a th:if="${session.usuarioSession!=null}" class="nav-link active" href="/inicio">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Servicios</a>
+                    <a th:if="${session.usuarioSession==null}" href="/inicio/#NosotrosId" class="nav-link active">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a th:if="${session.usuarioSession!=null}" href="/inicio/#ServiciosId" class="nav-link active">Servicios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" th:href="@{/contacto}">Contactanos</a>
@@ -40,9 +43,7 @@
                         <li sec:authorize="hasRole('ROLE_USER')"><a class="dropdown-item" th:if="${session.usuarioSession != null}" href="/logout">Cerrar Secion</a></li>
                     </ul>
                 </li>
-                <li sec:authorize="hasRole('ROLE_USER')" th:if="${session.usuarioSession != null}" class="nav-item dropdown">
-                    <a sec:authorize="hasRole('ROLE_USER')" class="nav-link active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contrato</a>                    
-                </li>
+
 
                 <!-- MENU REGISTRO/LOGIN/EDITAR PROVEEDOR -->
                 <li th:if="${session.usuarioSession == null}" class="nav-item dropdown">
