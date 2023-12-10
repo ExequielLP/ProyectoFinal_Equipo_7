@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
+    <head>
     <head th:replace="/fragments/head :: head"></head>
     <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
 </head>
@@ -36,19 +36,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <form action="https://formsubmit.co/JuanServiciosChacra@gmail.com" method="POST" class="form mt-4">
                     <div class="form-group">
                         <input type="text" minlenght="1" maxlength="70" name="nombre" class="form-control prueba"
-                            placeholder="Ingrese su nombre" required>
+                               placeholder="Ingrese su nombre" required>
                     </div>
                     <div class="form-group">
                         <input type="text" minlenght="1" maxlength="40" name="apellido" class="form-control prueba"
-                            placeholder="Ingrese su apellido">
+                               placeholder="Ingrese su apellido">
                     </div>
                     <div class="form-group">
                         <input type="email" minlength="5" maxlength="50" name="correo" class="form-control prueba"
-                            placeholder="Ingrese su correo" required>
+                               placeholder="Ingrese su correo" required>
                     </div>
                     <div class="form-group">
                         <input type="number" name="telefono" class="form-control prueba"
-                            placeholder="Ingrese su telefono ( Ej: 3816788402 )" required>
+                               placeholder="Ingrese su telefono ( Ej: 3816788402 )" required>
                     </div> <br>
                     <h5 class="titulo form-group">Eliga el motivo de su contacto</h5>
                     <select name="asunto" class="asunto">
@@ -71,14 +71,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </form>
             </div>
         </div>
+
+        <!-- MODALES REGISTRO -->
+        <!-- user -->
+        <div th:replace="/fragments/modalRegistro :: div"></div>
+
+        <!-- login -->
+        <div th:replace="/fragments/modalSignin :: div"></div>
     </main>
     <div class="container">
         <footer th:replace="/fragments/footer :: footer" </footer>
     </div>
+    <div th:replace="/fragments/modalReProveedor :: div"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/4d7920e24b.js" crossorigin="anonymous"></script>
 </body>
 

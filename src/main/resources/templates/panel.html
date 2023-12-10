@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
+    <head>
     <head th:replace="/fragments/head :: head"></head>
     <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
 </head>
@@ -40,16 +40,21 @@
     </section>
     <section class="container my-5">
         <div class="d-flex justify-content-center">
-            <a href="/admin/registrarRubro" class="btn btn-primary">Registrar Rubro</a>
+            <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#modalCargaRubro">CARGAR NUEVO RUBRO</button>
         </div>
+        <div th:replace="/fragments/modalCargaRubro :: div"></div>
     </section>
-        <div class="container">
-            <footer th:replace="/fragments/footer :: footer"></footer>
-        </div>
+    
+    
+    
+    <div class="container">
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </div>
+    
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 
 </body>
 

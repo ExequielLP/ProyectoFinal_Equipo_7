@@ -3,7 +3,7 @@
     <div class="cardRubros col-lg-2 d-flex flex-column justify-content-center align-items-center m-2"
       th:each="listaRubros : ${listaRubros}">
       <div>
-        <img th:if="${listaRubros.imagen != null}" class="img-thumbnail bd-placeholder-img"
+        <img th:if="${listaRubros.imagen != null}" class="fondoCard"
         th:src="@{/imagen/imagen/__${listaRubros.id}__}" width="80" height="80" aria-label="Placeholder" />
         <div class="card-details">
           <h3 class="text-body pt-2" th:text="${listaRubros.rubro}"></h3>

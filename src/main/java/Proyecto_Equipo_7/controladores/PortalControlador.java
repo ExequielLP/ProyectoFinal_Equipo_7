@@ -43,7 +43,7 @@ public class PortalControlador {
     @GetMapping("/")
     public String index(ModelMap modelo) throws Exception {
         try {
-            modelo.put("listaRubro", rubroServicio.listaRubros());
+            modelo.put("listaRubros", rubroServicio.listaRubros());
             modelo.put("cantidadUsuarios", usuarioServicio.cantidadUsuarios());
             modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());

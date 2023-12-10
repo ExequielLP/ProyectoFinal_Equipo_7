@@ -23,7 +23,7 @@
     <!--SECTION SOLO PARA USUARIO-->
     <section sec:authorize="hasRole('ROLE_USER')"
              class="sectionCardsInicio container-fluid justify-content-center align-items-center text-center">
-        <h1 class="titleInicio mt-5" sec:authorize="hasRole('ROLE_USER')">Conoce nuestras categorías</h1>
+        <h1 class="titleInicio mt-5" sec:authorize="hasRole('ROLE_USER')">Nuestras categorías</h1>
         <!-- RUBROS SOLO USER-->
         <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardRubro :: div"></div>
     </section>
