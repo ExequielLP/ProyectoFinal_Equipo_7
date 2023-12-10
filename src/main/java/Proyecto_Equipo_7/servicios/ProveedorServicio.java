@@ -38,6 +38,8 @@ public class ProveedorServicio implements UserDetailsService {
     @Transactional
     public void registrarProveedor(String nombre, String domicilio, String telefono, String email, String password,
             String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
+        
+        
 
         validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
@@ -66,6 +68,7 @@ public class ProveedorServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
             Proveedor proveedor = respuesta.get();
             proveedor.setNombre(nombre);
+            proveedor.setHonorario(honorario);
             proveedor.setEmail(email);
             proveedor.setDomicilio(domicilio);
             proveedor.setTelefono(telefono);
@@ -129,7 +132,7 @@ public class ProveedorServicio implements UserDetailsService {
         }
     }
 
-    private void validar(String nombre, String domicilio, String telefono, String email, Integer honorario, Rubro rubro,
+    public void validar(String nombre, String domicilio, String telefono, String email, Integer honorario, Rubro rubro,
             String password, String password2) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
@@ -144,7 +147,7 @@ public class ProveedorServicio implements UserDetailsService {
         if (telefono.isEmpty() || telefono == null) {
             throw new MiException("el telefono no puede ser nulo o estar vacio");
         }
-        if (honorario == null || honorario == 0) {
+        if (honorario==null) {
             throw new MiException("el campo honorario no puede ser nulo o estar vacio");
         }
         if (rubro == null) {
