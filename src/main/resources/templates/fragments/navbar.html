@@ -11,6 +11,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Servicios</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/contacto}">Contactanos</a>
+                </li>
 
                 <!-- MENU REGISTRO/LOGIN/EDITAR USER -->
                 <li th:if="${session.usuarioSession == null}" class="nav-item dropdown">

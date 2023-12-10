@@ -26,7 +26,7 @@ public class ImagenControlador {
 
     @GetMapping("/perfil/{id}")
     public ResponseEntity<byte[]> imagenProveedor(@PathVariable String id) {
-        Proveedor proveedor = (Proveedor) proveedorServicio.getOne(id);
+        Proveedor proveedor = (Proveedor) proveedorServicio.getone(id);
         byte[] imagen = proveedor.getImagen().getContenido();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);

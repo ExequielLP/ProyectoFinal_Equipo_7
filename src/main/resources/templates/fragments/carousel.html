@@ -10,7 +10,7 @@
                         <h3>Registrate!!</h3>
                         <p class="opacity-75"></p>
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal"
-                              data-bs-target="#modalRegistro">USUARIO</a></p>
+                              data-bs-target="#modalRegistro">USUARIO</a> </p>
                     </div>
                     <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" class="carousel-caption d-none d-md-block">
                         <h3>MODIFICAR USUARIO</h3>

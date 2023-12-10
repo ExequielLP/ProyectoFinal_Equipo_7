@@ -19,7 +19,6 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -42,22 +41,34 @@ public class PortalControlador {
             modelo.put("cantidadProveedores", proveedorServicio.cantidadProveedores());
             modelo.put("cantidadTrabajosTotales", trabajoServicio.cantidadTrabajosTotales());
 
+
+            if (error != null) {
+                modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
+            }
             return "index.html";
         } catch (Exception e) {
-//             modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
+            // modelo.put("error", "usuario o contreaseña invalida intente nuevamente");
             return "index.html";
         }
+
+    }
+
+    @GetMapping("/contacto")
+    public String contacto() {
+
+        return "contacto.html";
+
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap modelo, RedirectAttributes redirectAttributes) {
+    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
-            redirectAttributes.addFlashAttribute("error", "MENSAJE DE ERROR");
-            return "redirect:/logout";
+            
+             return "redirect:/logout";
 
         }
-
         return "index.html";
+
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
@@ -65,7 +76,8 @@ public class PortalControlador {
     public String inicio(HttpSession session, ModelMap modelo) {
         modelo.put("listaProveedor", proveedorServicio.listarProveedores());
         modelo.put("listaRubros", rubroServicio.listaRubros());
-        // modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());
+        modelo.put("listarTrabajosPorCalificar", usuarioServicio.listarTrabajosPorCalificar());
+        
         Usuario logueado = (Usuario) session.getAttribute("usuarioSession");
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
@@ -74,16 +86,21 @@ public class PortalControlador {
         if (logueado.getRol().toString().equals("PROVEEDOR")) {
             List<Trabajo> listaTrabajosPorProveedor = trabajoServicio.listarTrabajosPorProveedor(session);
             modelo.put("listaTrabajosPorProveedor", listaTrabajosPorProveedor);
+            
         }
+        
         return "inicio.html";
     }
 
     @PostMapping("/registroUsuario")
     public String registroUsuario(@RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam String password, String password2, ModelMap modelo) {
+            @RequestParam String telefono,
+            @RequestParam String password, String password2, ModelMap modelo) {
+
         try {
             usuarioServicio.registrarusuario(nombre, domicilio, telefono, email, password, password2);
+
             modelo.put("exito", "Usuario registrado correctamente!");
 
             return "redirect:/";
@@ -93,21 +110,20 @@ public class PortalControlador {
             modelo.put("email", email);
             modelo.put("domicilio", domicilio);
             modelo.put("telefono", telefono);
-            return "redirect:/";
+            return "/";
         }
     }
 
     @PostMapping("/registroProveedor")
-    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String domicilio,
-            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro, MultipartFile archivo,
+    public String registroProveedor(@RequestParam String nombre, @RequestParam String email,
+            @RequestParam String domicilio,
+            @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro,
+            MultipartFile archivo,
             @RequestParam String password, String password2, ModelMap modelo) {
-
         try {
-            proveedorServicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2,
-                    archivo, honorario, rubro);
-
+            proveedorServicio.registrarProveedor(nombre, domicilio, telefono, email, password, password2, archivo,
+                    honorario, rubro);
             modelo.put("exito", "Proveedor registrado correctamente!");
-
             return "redirect:/";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
@@ -117,8 +133,22 @@ public class PortalControlador {
             modelo.put("telefono", telefono);
             modelo.put("honorario", honorario);
             modelo.put("rubro", rubro);
-
             return "redirect:/";
         }
     }
+    
+   /* @PostMapping(/"listaCalificar")
+    public String puntajeProveedor(@PathVariable String id,Double calificacion){
+        
+        
+        
+    }*/
+ 
+    @GetMapping("/listaCalificar")
+    public String puntaje() {
+
+        return "listaCalificar.html";
+
+    }
+
 }
