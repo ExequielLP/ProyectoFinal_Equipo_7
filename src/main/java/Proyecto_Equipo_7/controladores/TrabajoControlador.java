@@ -1,6 +1,10 @@
 package Proyecto_Equipo_7.controladores;
 
-
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Rubro;
+import Proyecto_Equipo_7.entidades.Usuario;
+import Proyecto_Equipo_7.servicios.ProveedorServicio;
+import Proyecto_Equipo_7.servicios.RubroServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,22 +15,33 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import java.util.List;
 
 @Controller
 @RequestMapping("/trabajo")
 public class TrabajoControlador {
 
+    @Autowired    
+    private ProveedorServicio proveedorServicio;
+    
+    @Autowired
+    private RubroServicio rubroServicio;
+    
     @Autowired
     private TrabajoServicio trabajoServicio;
 
     @GetMapping("/crearTrabajo")
-    public String crearTrabajo() {
-        return "contratoContrato.html";
+    public String crearTrabajo(ModelMap modelo, HttpSession session) {
+        List<Rubro> rubros = rubroServicio.listaRubros();
+        modelo.addAttribute("rubros", rubros);
+        List<Proveedor> proveedores = proveedorServicio.listarProveedores();
+        modelo.addAttribute("proveedores", proveedores);
+         Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
+        modelo.put("usuario", usuario);
+        return "inicio.html";
     }
 
-    @PostMapping("/registro")
+    @PostMapping("/registro/{id}")
     public String registroTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
         trabajoServicio.crearTrabajo(session, id);
         modelo.put("exito", "Trabajo registrado correctamente!");
@@ -46,16 +61,6 @@ public class TrabajoControlador {
         // aca va la vista para que aparesca el form
         return "contratoTrabajo.html";
     }
-
-    
-    @PostMapping("/eliminar")
-    public String eliminarTrabajo(@RequestParam String id, ModelMap modelo) {
-        trabajoServicio.eliminarTrabajo(id);
-        modelo.put("exito", "Trabajo fue dado de baja!");
-        
-        return  "index.html";
-    }
-
 
     @GetMapping("/persistirTrabajo/{id}")
     public String persistirTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {

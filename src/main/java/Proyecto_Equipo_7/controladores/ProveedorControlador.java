@@ -2,6 +2,7 @@ package Proyecto_Equipo_7.controladores;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,6 @@ import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.servicios.ProveedorServicio;
-import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 
 @Controller
@@ -26,32 +26,28 @@ public class ProveedorControlador {
 
     @Autowired
     private TrabajoServicio trabajoServicio;
-
-    @Autowired
-    private RubroServicio rubroServicio;
-
-    
-    @GetMapping("/perfil")
+  
+   @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+   @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
-
-        modelo.put("listaRubro", rubroServicio.listaRubros());
+        Proveedor proveedor = (Proveedor) session.getAttribute("usuarioSession");
+        modelo.put("proveedor", proveedor);
         return "modificarProveedor.html";
     }
-
-    
-    @PostMapping("/perfil/{id}")
+  
+  @PreAuthorize("hasAnyRole('PROVEEDOR','ADMIN')")
+  @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String domicilio,
             @RequestParam String telefono, @RequestParam Integer honorario, @RequestParam Rubro rubro,
             MultipartFile archivo,
-            @RequestParam String password, String password2, ModelMap modelo, HttpSession session) {
+            @RequestParam String password, String password2, ModelMap modelo) {
 
         try {
-            Proveedor proveedorUpdated= proveedorServicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo,
+            proveedorServicio.actualizar(id, nombre, domicilio, telefono, email, password, password2, archivo,
                     honorario, rubro);
             modelo.put("exito", "Proveedor actualizado correctamente!");
-            session.setAttribute("usuarioSession", proveedorUpdated);
-            return "redirect:/inicio";
+            return "index.html";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
@@ -62,7 +58,7 @@ public class ProveedorControlador {
             return "modificarProveedor.html";
         }
     }
-
+  
     @GetMapping("/finalizarTrabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id) {
 
@@ -71,13 +67,21 @@ public class ProveedorControlador {
         return "redirect:/proveedor/";
 
     }
-    
-     @GetMapping("/calificacion/{id}")
-    public Double calificacionProveedor(@PathVariable String id) {
 
-        Double calificacion = proveedorServicio.calificacionProveedores(id);
-        
-        return calificacion ;
-
+    @PostMapping("eliminarProveedor/{id}")
+    public String eliminarProveedor(@PathVariable String id, ModelMap modelo){
+        try {
+            proveedorServicio.eliminar(id);
+        } catch (MiException ex){
+            modelo.put("error", ex.getMessage());
+        }
+        return "redirect:/proveedor/listarProveedor";
     }
+
+
+   
+
+    
+
+  
 }

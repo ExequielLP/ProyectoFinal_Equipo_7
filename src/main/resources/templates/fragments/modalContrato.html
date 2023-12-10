@@ -6,8 +6,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-5 pt-0">
-                <form class="formulario" th:action="@{/trabajo/registro}" method="POST" >
-                    <input hidden th:value="${session.usuarioSession.id}" name="id" >
+                <form class="formulario" th:action="@{/trabajo/crearTrabajo/__${session.usuarioSession.id}__}" method="POST" >
+                    <input hidden th:value="${id}" name="id" >
                     <label for="floatingInput">Los Sig datos seran adjuntado:</label>
                     <label for="floatingInput" th:text="${session.usuarioSession.nombre}"></label>
                     <label for="floatingInput" th:text="${session.usuarioSession.domicilio}"></label>
@@ -15,14 +15,25 @@
                     <div class="form-group my-3">
                         <label for="servicio">Seleccione Servicio</label>
                         <select name="servicio" class="form-control" >
-                            <option th:each="rubros : ${rubro}"
-                                    th:value="${rubros}" 
-                                    th:text="${rubros}"
-                                    th:selected="false"
-                            </option>                            
+                            <option th:each="rubro : ${listaRubros}"
+                                    th:value="${rubro.rubro}" 
+                                    th:text="${rubro.rubro}">                                   
+                            </option>
                         </select>
-                        
                     </div> 
+                    <div class="form-group my-3">
+                        <label for="servicio">Seleccione Servicio</label>
+                        <select name="servicio" class="form-control" >
+                            <option th:if="${proveedor.rubro == rubro}"
+                                    th:each="proveedor : ${proveedores}"
+                                    th:value="${proveedor.nombre}"
+                                    th:text="${proveedor.nombre}">
+                            </option>
+                        </select>
+                    </div> 
+
+
+
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-3" th:value="${nombre}" name="nombre" id="floatingInput" placeholder="Ingrese nombre usuario">

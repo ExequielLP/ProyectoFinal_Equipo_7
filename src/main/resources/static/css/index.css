@@ -8,10 +8,10 @@ body, .metricas{
 
 .elementosNav{
     display: flex;
-    width: 25%;
+    width: 30%;
     justify-content: space-around;
     color: #37474f;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .elementos{
@@ -112,8 +112,4 @@ text-align: center;
 
 .table-listas{
 table-layout: auto;
-}
-.bordeRegistroRubro{
-border: #37474f solid 4px;
-height: 400px;
 }

@@ -6,7 +6,9 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import Proyecto_Equipo_7.servicios.UsuarioServicio;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -48,12 +50,11 @@ public class AdminControlador {
         return "registroRubro.html";
     }
 
-
     @PostMapping("/registroRubro")
     public String registroRubro(@RequestParam String rubro, MultipartFile archivo, ModelMap modelo) {
         if (rubro == null || rubro.trim().isEmpty()) {
             modelo.put("error", "Debe incluir el rubro");
-            return "registroRubro.html";
+            return "redirect:/admin";
         }
         try {
             rubroServicio.registrarRubro(rubro, archivo);
@@ -102,9 +103,7 @@ public class AdminControlador {
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
         }
-
-        return "redirect:/usuario/listarUsuario";
-
+        return "redirec:/usuario/listarUsuario";
     }
 
     // metodo para el admin al lado de cada trabajo en la lista para poder
@@ -113,8 +112,6 @@ public class AdminControlador {
     public String eliminarTrabajo(@PathVariable String id, ModelMap modelo){
         trabajoServicio.darDeBajaTrabajo(id);
 
-
-        return "redirect:/admin/dashboard";
-
+        return "redirec:/admin/dashboard";
     }
 }

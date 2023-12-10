@@ -23,21 +23,24 @@
 
                         <div class="modal-body p-5 pt-0">
 
-                            <form class="formulario" th:action="@{/trabajo/registro}" method="POST" >
+                            <form class="formulario" th:action="@{/trabajo/crearTrabajo}" method="POST" >
 
                                 <input hidden th:value="${session.usuarioSession.id}" name="id" >
-                                
+
                                 <div class="form-group my-3">            
-                                    <select name="servicio" id="" >
-                                        <option selected th:if="${proveedor.servicio == servicio}" 
-                                                th:each="servicios : ${servicio}"
-                                                th:value="${servicio}"
-                                                th:text="${servicio}">
+                                    <select class="form-control" name="rubro" id="rubro" >
+                                        <option th:each="rubro : ${rubros}"
+                                                th:value="${rubro}"
+                                                th:text="${rubro}">
                                         </option>
-                                        <option selected th:if="${proveedor.servicio != servicio}" 
-                                                th:each="servicios : ${servicio}"
-                                                th:value="${servicio}"
-                                                th:text="${servicio}">
+                                    </select>
+                                </div> 
+
+                                <div class="form-group my-3">            
+                                    <select class="form-control" name="proveedor" id="proveedor" >
+                                        <option th:each="rubro : ${rubros}"
+                                                th:value="${rubro}"
+                                                th:text="${rubro}">
                                         </option>
                                     </select>
                                 </div> 

@@ -1,11 +1,9 @@
 package Proyecto_Equipo_7.entidades;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,17 +15,21 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Imagen {
+public class Calificacion {
 
-  @Id
-  @GeneratedValue(generator = "uuid")
-  @GenericGenerator(name = "uuid", strategy = "uuid2")
-  private String id;
-  private String mime;
-  private String nombre;
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    
+    @OneToOne
+    private Trabajo trabajo;
 
-  @Lob
-  @Basic(fetch = FetchType.LAZY)
-  private byte[] contenido;
+    @OneToOne
+    private Proveedor proveedor;
+
+    private Integer calificacion;
+
+    private String comentario;
 
 }

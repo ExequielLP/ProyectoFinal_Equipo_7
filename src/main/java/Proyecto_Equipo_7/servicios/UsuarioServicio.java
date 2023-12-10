@@ -1,7 +1,5 @@
 package Proyecto_Equipo_7.servicios;
 
-import Proyecto_Equipo_7.entidades.Proveedor;
-import Proyecto_Equipo_7.entidades.Trabajo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +19,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
-import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
 
 @Service
@@ -29,9 +26,6 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
-
-    @Autowired
-    private TrabajoRepositorio trabajoRepositorio;
 
     @Transactional
     public void registrarusuario(String nombre, String domicilio, String telefono, String email, String password,
@@ -50,8 +44,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public Usuario actualizar(String id, String nombre, String domicilio, String telefono, String email,
-            String password,
+    public void actualizar(String id, String nombre, String domicilio, String telefono, String email, String password,
             String password2) throws MiException {
 
         validar(nombre, domicilio, telefono, email, password, password2);
@@ -65,9 +58,8 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setTelefono(telefono);
             usuario.setPassword(new BCryptPasswordEncoder().encode(password));
             usuario.setRol(Rol.USER);
-            return usuarioRepositorio.save(usuario);
+            usuarioRepositorio.save(usuario);
         }
-        return null;
 
     }
 
@@ -161,28 +153,4 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
-
- 
-    
-     public void calificarProveedor(Proveedor proveedor,Double calificacion) {
-       if(calificacion != 0){
-           double suma = 0;
-          suma = proveedor.getCalificacion() + calificacion ;
-          proveedor.setCalificacion(suma);
-       }
-       
-        proveedor.setCalificacion(calificacion);
-         
-    }
-     
-         public List<Trabajo> listarTrabajosPorCalificar() {
-
-        List<Trabajo> porCalificar = new ArrayList<>();
-
-        porCalificar = trabajoRepositorio.listarTrabajosPorCalificar();
-
-        return porCalificar;
-    }
 }
-      
-
