@@ -12,7 +12,9 @@
     <header data-bs-theme="dark">
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
-    <main class="container justify-content-center">
+    <main class="container justify-content-center mt-5">
+        <h1 class="titleInicio my-5 py-2 text-center">Complete los campos a modificar!</h1>
+
         <form class="formulario" th:action="@{/proveedor/perfil/__${session.usuarioSession.id}__}" method="POST"
             enctype="multipart/form-data">
             <input hidden th:value="${id}" name="id">

@@ -13,6 +13,7 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <main class="container justify-content-center" width="500">
+        <h1 class="titleInicio my-5 py-2 text-center">Complete los campos a modificar!</h1>
         <form class="formulario" th:action="@{/usuario/perfil/__${session.usuarioSession.id}__}" method="POST">
             <input hidden th:value="${id}" name="id">
             <div class="form-floating mb-3">
