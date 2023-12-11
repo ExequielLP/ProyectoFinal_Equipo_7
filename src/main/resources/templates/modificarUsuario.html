@@ -33,33 +33,33 @@
                         <form th:action="@{/usuario/perfil/__${session.usuarioSession.id}__}" method="POST">  
                             <input hidden th:value="${id}" name="id" >
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername" th:text="${session.usuarioSession.email}"></label>
+                                <label class="small mb-1" for="inputUsername">MODIFIQUE SU EMAIL / USUARIO</label>
                                 <input class="form-control" id="inputUsername" type="email" name="email" th:value="${session.usuarioSession.email}" placeholder="Usuario ingrese nuevo correo electronico">
                             </div>
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName" th:text="${session.usuarioSession.nombre}">Nombre</label>
+                                    <label class="small mb-1" for="inputFirstName" >NOMBRE COMPLETO</label>
                                     <input class="form-control" id="inputFirstName" type="text" name="nombre" th:value="${session.usuarioSession.nombre}" placeholder="Ingrese nuevo nombre">
                                 </div>
                             </div>
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLocation" th:text="${session.usuarioSession.domicilio}">Domicilio</label>
+                                   <label class="small mb-1" for="inputLocation" >DOMICILIO</label>
                                     <input class="form-control" id="inputLocation" type="text" name="domicilio" th:value="${session.usuarioSession.domicilio}" placeholder="Ingrese un nuevo domicilio">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPhone" th:text="${session.usuarioSession.telefono}">Telefono</label>
+                                    <label class="small mb-1" for="inputPhone" >TELEFONO</label>
                                     <input class="form-control" id="inputPhone" type="tel" name="telefono" th:value="${session.usuarioSession.telefono}" placeholder="Ingrese un nuevo numero de contacto">
                                 </div>
                             </div>                           
                             <div class="row gx-3 mb-3">                                
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPassword">Password</label>
-                                    <input class="form-control" id="inputPassword" type="password" name="password" th:value="${session.usuarioSession.password}" placeholder="New password">
+                                    <label class="small mb-1" for="inputPassword">MODIFIQUE PASSWORD</label>
+                                    <input class="form-control" id="inputPassword" type="password" name="password" placeholder="New password">
                                 </div>                               
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPassword2">Password check</label>
-                                    <input class="form-control" id="inputPassword2" type="password" name="password2" th:value="${password2}" placeholder="Repita password">
+                                    <label class="small mb-1" for="inputPassword2">PASSWORD CHECK</label>
+                                    <input class="form-control" id="inputPassword2" type="password" name="password2"  placeholder="Repita password">
                                 </div>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">

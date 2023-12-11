@@ -6,22 +6,34 @@
                 <div class="carousel-item active ">
                     <img th:if="${session.usuarioSession == null}" src="/img/user-img1.webp" class="d-block w-100 " alt="..."/>
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-user.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/user-perfil.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Registrate!!</h3>
                         <p class="opacity-75"></p>
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal"
-                              data-bs-target="#modalRegistro">USUARIO</a> </p>
+                              data-bs-target="#modalRegistro">USUARIO</a></p>
                     </div>
                     <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" class="carousel-caption d-none d-md-block">
                         <h3>MODIFICAR USUARIO</h3>
                         <p class="opacity-75">Ingrese para modificar el perfil de un USUARIO</p>
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal"
                               data-bs-target="#modalRegistro">MODIFICAR</a></p>
+                    </div>              
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_USER')" class="carousel-caption d-none d-md-block">
+                        <h3>MI PERFIL</h3>
+                        <p class="opacity-75">Ingrese para modificar datos del perfil de Usuario</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/usuario/perfil" >PERFIL</a></p>
+                    </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>MI PERFIL</h3>
+                        <p class="opacity-75">Ingrese para modificar datos del perfil de Usuario</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/proveedor/perfil" >PERFIL</a></p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img th:if="${session.usuarioSession == null}" src="/img/user-img2.webp" class="d-block w-100 " alt="..."/>
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-user1.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/user-perfil1.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Free User</h3>
                         <p class="opacity-75">Simple, Facil, Comodo, Probalo....</p>
@@ -34,10 +46,21 @@
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal"
                               data-bs-target="#modalRegistro">MODIFICAR</a></p>
                     </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_USER')" class="carousel-caption d-none d-md-block">
+                        <h3>MI PERFIL</h3>
+                        <p class="opacity-75">Ingrese para modificar datos del perfil de Usuario</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/usuario/perfil" >PERFIL</a></p>
+                    </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>MI PERFIL</h3>
+                        <p class="opacity-75">Ingrese para modificar datos del perfil de Usuario</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/proveedor/perfil" >PERFIL</a></p>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img th:if="${session.usuarioSession == null}" src="/img/user-img3.webp" class="d-block w-100 " alt="..."/>
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-user2.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/user-perfil2.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Registrate!!</h3>
                         <p class="opacity-75">Solo te tomara unos minutos!</p>
@@ -50,6 +73,16 @@
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal"
                               data-bs-target="#modalRegistro">MODIFICAR</a></p>
                     </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_USER')" class="carousel-caption d-none d-md-block">
+                        <h3>MI PERFIL</h3>
+                        <p class="opacity-75">Ingrese para modificar datos del perfil de Usuario</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/usuario/perfil" >PERFIL</a></p>
+                    </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>MI PERFIL</h3>
+                        <p class="opacity-75">Ingrese para modificar datos del perfil de Usuario</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/proveedor/perfil" >PERFIL</a></p>
+                    </div>
                 </div>
             </div>                        
         </div>   
@@ -59,6 +92,7 @@
                 <div class="carousel-item active ">
                     <img th:if="${session.usuarioSession == null}" src="/img/prov-img1.webp" class="d-block w-100 " alt="..."/>
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-prov.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/prov.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Proveedor!</h3>
                         <p class="opacity-75">Queres ofrecer tus servicios, dale registrate</p>
@@ -71,10 +105,16 @@
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
                               data-bs-target="#modalReProveedor">MODIFICAR</a></p>
                     </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>MIS SERVICIOS</h3>
+                        <p class="opacity-75">Ingrese para consultar todos los Servicios</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/usuario/perfil" >SERVICIOS</a></p>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img th:if="${session.usuarioSession == null}" src="/img/prov-img2.webp" class="d-block w-100" alt="..."/>
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-prov1.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/user-perfil.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Ofrece tus servicios!</h3>
                         <p class="opacity-75">Busca tu oficio, tenemos mas de 100 servicios </p>
@@ -87,10 +127,16 @@
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
                               data-bs-target="#modalReProveedor">MODIFICAR</a></p>
                     </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>MIS SERVICIOS</h3>
+                        <p class="opacity-75">Ingrese para consultar todos los Servicios</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/usuario/perfil" >SERVICIOS</a></p>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img th:if="${session.usuarioSession == null}" src="/img/prov-img3.webp" class="d-block w-100" alt="..."/>
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-prov2.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/prov1.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>No esperes mas!!</h3>
                         <p class="opacity-75">Amplia cobertura, gran cartera de usuarios</p>                        
@@ -103,6 +149,11 @@
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
                               data-bs-target="#modalReProveedor">MODIFICAR</a></p>
                     </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>MIS SERVICIOS</h3>
+                        <p class="opacity-75">Ingrese para consultar todos los Servicios</p>
+                        <p><a class="btn btn-outline-light" role="button" href="/usuario/perfil" >SERVICIOS</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,11 +163,10 @@
                 <div class="carousel-item active">
                     <img th:if="${session.usuarioSession == null}" src="/img/contrato-img1.webp" class="d-block w-100" alt="..."/>
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-carousel.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/contrato-img3.webp" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Queres contratar!</h3>
-                        <p class="opacity-75">Selecciona el servicio que necesitas y listo!</p>
-                        <p><a class="btn btn-outline-light" th:if="${session.usuarioSession != null}" data-bs-toggle="modal" 
-                              data-bs-target="#modalContrato">CONTRATAR</a></p>
+                        <p class="opacity-75">Selecciona el servicio que necesitas y listo!</p>                        
                         <p><a class="btn btn-outline-light" th:if="${session.usuarioSession == null}" data-bs-toggle="modal" 
                               data-bs-target="#modalRegistro">CONTRATAR</a></p>
                     </div>
@@ -126,15 +176,26 @@
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
                               data-bs-target="#modalCargaRubro">CARGAR</a></p>
                     </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_USER')" class="carousel-caption d-none d-md-block">
+                        <h3>CONTRATAR SERVICIO</h3>
+                        <p class="opacity-75">Ingrese para contratar el Servicio que necesita</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
+                              data-bs-target="#modalContrato">CONTRATAR</a></p>
+                    </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>FINALIZAR TRABAJO</h3>
+                        <p class="opacity-75">Ingrese para finalizar algun trabajo en curso</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
+                              data-bs-target="#modalContrato">FINALIZAR</a></p>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img th:if="${session.usuarioSession == null}" src="/img/contrato-img2.webp" class="d-block w-100" alt="..."/> 
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-carousel.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/user-contrato 1.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Mas de 100 proveedores</h3>
-                        <p class="opacity-75">Podes verificar calificacion de otros usuario</p>
-                        <p><a class="btn btn-outline-light" th:if="${session.usuarioSession != null}" data-bs-toggle="modal" 
-                              data-bs-target="#modalContrato">CONTRATAR</a></p>
+                        <p class="opacity-75">Podes verificar calificacion de otros usuario</p>                        
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
                               data-bs-target="#modalRegistro">CONTRATAR</a></p>
                     </div>
@@ -144,15 +205,26 @@
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
                               data-bs-target="#modalCargaRubro">CARGAR</a></p>
                     </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_USER')" class="carousel-caption d-none d-md-block">
+                        <h3>CONTRATAR SERVICIO</h3>
+                        <p class="opacity-75">Ingrese para contratar el Servicio que necesita</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
+                              data-bs-target="#modalContrato">CONTRATAR</a></p>
+                    </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>FINALIZAR TRABAJO</h3>
+                        <p class="opacity-75">Ingrese para finalizar algun trabajo en curso</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
+                              data-bs-target="#modalContrato">FINALIZAR</a></p>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img th:if="${session.usuarioSession == null}" src="/img/contrato-img3.webp" class="d-block w-100" alt="..."/> 
                     <img th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_ADMIN')" src="/img/admin-carousel.jpg" class="d-block w-100 " alt="..."/>
+                    <img th:if="${session.usuarioSession != null}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_PROVEEDOR')" src="/img/user-contrato.jpg" class="d-block w-100 " alt="..."/>
                     <div th:if="${session.usuarioSession == null}" class="carousel-caption d-none d-md-block">
                         <h3>Soluciona Ya!!</h3>
                         <p class="opacity-75">Contacta a un proveedor, cotizacion gratis!!</p>
-                        <p ><a class="btn btn-outline-light" th:if="${session.usuarioSession != null}" data-bs-toggle="modal" 
-                               data-bs-target="#modalContrato">CONTRATAR</a></p>
                         <p><a class="btn btn-outline-light" th:if="${session.usuarioSession == null}" data-bs-toggle="modal" 
                               data-bs-target="#modalRegistro">CONTRATAR</a></p>                        
                     </div>
@@ -161,6 +233,18 @@
                         <p class="opacity-75">Agregue RUBROS/ OFICIOS/ PROFESIONES</p>
                         <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
                               data-bs-target="#modalCargaRubro">CARGAR</a></p>
+                    </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_USER')" class="carousel-caption d-none d-md-block">
+                        <h3>CONTRATAR SERVICIO</h3>
+                        <p class="opacity-75">Ingrese para contratar el Servicio que necesita</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
+                              data-bs-target="#modalContrato">CONTRATAR</a></p>
+                    </div>
+                    <div th:if="${session.usuarioSession != null}" sec:authorize="hasRole('ROLE_PROVEEDOR')" class="carousel-caption d-none d-md-block">
+                        <h3>FINALIZAR TRABAJO</h3>
+                        <p class="opacity-75">Ingrese para finalizar algun trabajo en curso</p>
+                        <p><a class="btn btn-outline-light" data-bs-toggle="modal" 
+                              data-bs-target="#modalContrato">FINALIZAR</a></p>
                     </div>
                 </div>            
             </div>

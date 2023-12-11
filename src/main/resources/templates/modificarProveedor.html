@@ -33,56 +33,57 @@
                         <form th:action="@{/proveedor/perfil/__${session.usuarioSession.id}__}" method="POST">  
                             <input hidden th:value="${id}" name="id" >
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername" th:text="${session.usuarioSession.email}"></label>
+                                <label class="small mb-1" for="inputUsername">MODIFIQUE SU EMAIL / USUARIO</label>
                                 <input class="form-control" id="inputUsername" type="email" name="email" th:value="${session.usuarioSession.email}" placeholder="Usuario ingrese nuevo correo electronico">
                             </div>
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName" th:text="${session.usuarioSession.nombre}">Nombre</label>
+                                    <label class="small mb-1" for="inputFirstName" >NOMBRE COMPLETO</label>
                                     <input class="form-control" id="inputFirstName" type="text" name="nombre" th:value="${session.usuarioSession.nombre}" placeholder="Ingrese nuevo nombre">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLocation" th:text="${session.usuarioSession.domicilio}">Domicilio</label>
+                                    <label class="small mb-1" for="inputLocation" >DOMICILIO</label>
                                     <input class="form-control" id="inputLocation" type="text" name="domicilio" th:value="${session.usuarioSession.domicilio}" placeholder="Ingrese un nuevo domicilio">
                                 </div>
                             </div>
                             <div class="row gx-3 mb-3">                                
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPhone" th:text="${session.usuarioSession.telefono}">Telefono</label>
+                                    <label class="small mb-1" for="inputPhone" >TELEFONO</label>
                                     <input class="form-control" id="inputPhone" type="tel" name="telefono" th:value="${session.usuarioSession.telefono}" placeholder="Ingrese un nuevo numero de contacto">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputHonor" th:text="${session.usuarioSession.honorario}">Honorarios</label>
+                                    <label class="small mb-1" for="inputHonor" >HONORARIOS</label>
                                     <input class="form-control" id="inputHonor" type="number" name="honorario" th:value="${session.usuarioSession.honorario}" placeholder="Ingrese un valor a cobrar por hora">
                                 </div>
                             </div> 
                             <div class="row gx-3 mb-3">                                
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputImage" >Imagen / Proveedor</label>
+                                    <label class="small mb-1" for="inputImage" >IMAGEN / PROVEEDOR</label>
                                     <input class="form-control" id="inputImage" type="file" name="archivo" th:value="${session.usuarioSession.imagen}" placeholder="Seleccione nueva Imagen">
                                 </div>
                                 <div class="col-md-6">                                  
-                                    <label class="small mb-1" for="servicio">Servicios / Rubros</label>
-                                    <select name="rubro" class="form-control">
-                                        <option th:each="listaRubro : ${listaRubro}" th:value="${listaRubro.id}"
+                                    <label class="small mb-1" for="servicio">SERVICIOS / RUBROS</label>
+                                    <select name="listaRubros" class="form-control">
+                                        <option th:each="listaRubro : ${listaRubros}"
+                                                th:value="${listaRubro.id}"
                                                 th:text="${listaRubro.rubro}" />
                                     </select>
                                 </div>
                             </div>                           
                             <div class="row gx-3 mb-3">                                
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPassword">Password</label>
-                                    <input class="form-control" id="inputPassword" type="password" name="password" th:value="${session.usuarioSession.password}" placeholder="New password">
+                                    <label class="small mb-1" for="inputPassword">MODIFIQUE PASSWORD</label>
+                                    <input class="form-control" id="inputPassword" type="password" name="password" placeholder="New password">
                                 </div>                               
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPassword2">Password check</label>
-                                    <input class="form-control" id="inputPassword2" type="password" name="password2" th:value="${password2}" placeholder="Repita password">
+                                    <label class="small mb-1" for="inputPassword2">PASSWORD CHECK</label>
+                                    <input class="form-control" id="inputPassword2" type="password" name="password2" placeholder="Repita password">
                                 </div>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button class="btn btn-outline-success" type="submit">GUARDAR CAMBIOS</button>
-                                <a class="btn btn-outline-success" href="/inicio" role="button">REGRESAR</a>
-                            </div>
+                                <a class="btn btn-outline-success" href="/inicio" role="button">REGRESAR</a>                                
+                            </div>                            
                         </form>
                     </div>
                 </div>

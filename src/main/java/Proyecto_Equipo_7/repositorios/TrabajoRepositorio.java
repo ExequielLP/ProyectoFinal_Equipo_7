@@ -23,7 +23,7 @@ public interface TrabajoRepositorio extends JpaRepository<Trabajo, String> {
      @Query("SELECT t.proveedor FROM Trabajo t WHERE t.id = :id")
     public Proveedor buscarProveedorPorIdDeTrabajo(@Param("id") String id);
     
-    @Query(nativeQuery = true, value = "SELECT * FROM trabajo t LEFT JOIN proveedor p ON p.id = t.proveedor_id WHERE t.id = :id")
+    @Query(nativeQuery = true, value = "SELECT * FROM trabajo t LEFT JOIN proveedor p ON p.id = t.proveedor.id WHERE t.id = :id")
     public Trabajo findByIdWithProveedores(@Param("id") String id);
 
 }
