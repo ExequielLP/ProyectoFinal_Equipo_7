@@ -71,15 +71,15 @@ public class UsuarioControlador {
     
     @PostMapping("/calificar")
     @Transactional
-    public String calificar(@RequestParam String idProveedor, @RequestParam String idTrabajo,
-            @RequestParam Integer calificacion, RedirectAttributes redirectAttributes) {
-
+    public String calificar(@RequestParam("idProveedor") String idProveedor, @RequestParam("idTrabajo") String idTrabajo,
+            @RequestParam("calificacion") Integer calificacion, RedirectAttributes redirectAttributes) {
+        System.out.println("error antes de entrar a optional____________________________");
         Optional<Proveedor> proveedorOptional = proveedorRepositorio.findById(idProveedor);
         if (proveedorOptional.isPresent()) {
             Proveedor proveedor = proveedorOptional.get();
             usuarioServicio.calificarProveedor(proveedor, calificacion);
             System.out.println(idProveedor);
-            System.out.println("------------------------------------------------------------------");
+            System.out.println("----------------------error DESPUES DE OPTINAL ANTES DE REDIRECT---------------------------------");
         }
    
         redirectAttributes.addAttribute("idTrabajo", idTrabajo);

@@ -23,5 +23,5 @@ public class Proveedor extends Usuario {
     private Rubro rubro;
 
     
-    private Integer calificacion;
+    private Integer calificacion=0;
 }

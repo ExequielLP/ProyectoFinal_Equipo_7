@@ -54,6 +54,7 @@ public class ProveedorServicio implements UserDetailsService {
         Imagen imagen = imagenServicio.guardar(archivo);
         proveedor.setImagen(imagen);
         proveedorRepositorio.save(proveedor);
+        
     }
 
     @Transactional
@@ -128,6 +129,7 @@ public class ProveedorServicio implements UserDetailsService {
             proveedor.setAlta(true);
             proveedorRepositorio.save(proveedor);
         }
+       
     }
 
     public void validar(String nombre, String domicilio, String telefono, String email, Integer honorario, Rubro rubro,

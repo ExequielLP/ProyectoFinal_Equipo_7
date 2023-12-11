@@ -9,8 +9,8 @@
         <form class="formulario p-5" th:action="@{/usuario/calificar}" method="POST" enctype="multipart/form-data">
             <h1>CALIFICACION</h1>
             <h3>Considera el 1 como puntaje más bajo y el 5 como el mejor trabajo</h3>
-            
-            
+
+
             <label for="numero">Selecciona un puntaje para el trabajo realizado</label>
             <select id="numero" name="calificacion">
                 <option value="1">1</option>
@@ -19,11 +19,12 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            
+
             <input type="hidden" name="idTrabajo" th:value="${idTrabajo}" />
             <input type="hidden" name="idProveedor" th:value="${idProveedor}" />
-            
+
             <button type="submit">Calificar y Dar de Baja Trabajo</button>
         </form>
     </body>
 </html>
+
