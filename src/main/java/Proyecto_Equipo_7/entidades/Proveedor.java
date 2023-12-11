@@ -24,4 +24,4 @@ public class Proveedor extends Usuario {
 
     @OneToOne
     private Calificacion calificacion;
-}
+    }

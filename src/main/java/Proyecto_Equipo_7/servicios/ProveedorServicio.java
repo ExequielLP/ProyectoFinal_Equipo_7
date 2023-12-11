@@ -66,7 +66,7 @@ public class ProveedorServicio implements UserDetailsService {
 
     @Transactional
     public Proveedor actualizar(String id, String nombre, String domicilio, String telefono, String email,
-            String password,String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
+            String password, String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
 
         validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
@@ -172,6 +172,4 @@ public class ProveedorServicio implements UserDetailsService {
     // proveedores = proveedorRepositorio.seisMejoresProveedores();
     // return proveedores;
     // }
-
-    // puede que este tenga que ir ===>    }
-
+}
