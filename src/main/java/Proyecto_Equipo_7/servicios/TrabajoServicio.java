@@ -59,7 +59,7 @@ public class TrabajoServicio {
 
         if (respuesta.isPresent()) {
             Trabajo trabajo = respuesta.get();
-            trabajo.setTerminado(true);
+            trabajo.setAlta(false);
             trabajoRepositorio.save(trabajo);
 
         }
@@ -84,25 +84,29 @@ public class TrabajoServicio {
         return trabajoRepositorio.cantidadContratosTotales();
     }
 
-    @Transactional
-    public void darDeBajaTrabajo(String id) {
-        Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-            Trabajo trabajo = respuesta.get();
-            trabajo.setAlta(false);
-            trabajoRepositorio.save(trabajo);
-        }
-
-    }
-
-    @Transactional
-    public void darPorTerminadoUnTrabajo(String id) {
+   @Transactional
+    public void finalizarTrabajo(String id) {
         Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Trabajo trabajo = respuesta.get();
             trabajo.setTerminado(true);
             trabajoRepositorio.save(trabajo);
         }
+
+    }
+
+    // metodo en proveedor donde muestra lista de trabajos propios
+    // debe llevar el boton para finalizar trabajo
+    public List<Trabajo> listarTrabajoPorProveedor(HttpSession session) {
+        Proveedor logueadoProveedor = (Proveedor) session.getAttribute("usuarioSession");
+        Optional<Proveedor> respuesta = proveedorRepositorio.findById(logueadoProveedor.getId());
+        if (respuesta.isPresent()) {
+            Proveedor proveedor = respuesta.get();
+            List<Trabajo> listaTrabajoPorProveedor = new ArrayList<>();
+            listaTrabajoPorProveedor = trabajoRepositorio.buscarTrabajoPorProveedor(proveedor.getId());
+            return listaTrabajoPorProveedor;
+        }
+        return null;
 
     }
 

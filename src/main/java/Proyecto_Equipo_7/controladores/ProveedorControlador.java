@@ -64,12 +64,13 @@ public class ProveedorControlador {
         }
     }
 
+    
     @GetMapping("/finalizarTrabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id) {
 
-        trabajoServicio.darPorTerminadoUnTrabajo(id);
+        trabajoServicio.finalizarTrabajo(id);
 
-        return "redirect:/proveedor/";
+        return "redirect:/inicio";
 
     }
 }

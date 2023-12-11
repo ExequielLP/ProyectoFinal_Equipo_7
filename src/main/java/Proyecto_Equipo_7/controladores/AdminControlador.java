@@ -106,7 +106,7 @@ public class AdminControlador {
     // eliminarlo
     @PostMapping("/eliminarTrabajo/{id}")
     public String eliminarTrabajo(@PathVariable String id, ModelMap modelo) {
-        trabajoServicio.darDeBajaTrabajo(id);
+        trabajoServicio.eliminarTrabajo(id);
 
         return "redirect:/admin/dashboard";
     }

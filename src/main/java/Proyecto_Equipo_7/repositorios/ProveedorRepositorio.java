@@ -18,17 +18,17 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
     @Query("SELECT p FROM Proveedor p WHERE p.rubro = :rubro")
     List<Proveedor> buscarPorRubro(@Param("rubro") Rubro rubro);
 
-    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id WHERE c.calificacion = :calificacion")
-    public List<Proveedor> buscarPorCalificacionEspecifica(@Param("calificacion") int calificacion);
+//    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id WHERE c.calificacion = :calificacion")
+//    public List<Proveedor> buscarPorCalificacionEspecifica(@Param("calificacion") int calificacion);
 
-    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id ORDER BY c.calificacion DESC")
-    public List<Proveedor> buscarPorCalificacionGeneral();
+//    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id ORDER BY c.calificacion DESC")
+//    public List<Proveedor> buscarPorCalificacionGeneral();
 
     @Query("SELECT count(*) FROM Proveedor")
     public Integer cantidadProveedores();
 
-    @Query("SELECT p.nombre, c.calificacion FROM Calificacion c JOIN c.proveedor p ORDER BY c.calificacion DESC")
-    List<Proveedor> seisMejoresProveedores(Pageable pageable);
+//    @Query("SELECT p.nombre, c.calificacion FROM Calificacion c JOIN c.proveedor p ORDER BY c.calificacion DESC")
+//    List<Proveedor> seisMejoresProveedores(Pageable pageable);
 
     @Query("SELECT p FROM Proveedor p WHERE p.rubro.id = :id")
     public List<Proveedor> buscarPorRubroId(@Param("id") String id);

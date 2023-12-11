@@ -95,12 +95,12 @@ public class ProveedorServicio implements UserDetailsService {
         return proveedorRepositorio.cantidadProveedores();
     }
 
-    @Transactional(readOnly = true)
-    public List<Proveedor> seisMejoresProveedores() {
-        Pageable pageable = (Pageable) PageRequest.of(0, 6);
-        List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
-        return proveedores;
-    }
+//    @Transactional(readOnly = true)
+//    public List<Proveedor> seisMejoresProveedores() {
+//        Pageable pageable = (Pageable) PageRequest.of(0, 6);
+//        List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
+//        return proveedores;
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

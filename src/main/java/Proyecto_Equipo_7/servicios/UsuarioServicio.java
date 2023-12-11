@@ -1,5 +1,7 @@
 package Proyecto_Equipo_7.servicios;
 
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Trabajo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.repositorios.TrabajoRepositorio;
 import Proyecto_Equipo_7.repositorios.UsuarioRepositorio;
 
 @Service
@@ -26,6 +29,9 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
+    
+    @Autowired
+    private TrabajoRepositorio trabajoRepositorio;
 
     @Transactional
     public void registrarusuario(String nombre, String domicilio, String telefono, String email, String password,
@@ -157,4 +163,23 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
+    @Transactional
+    public void calificarProveedor(Proveedor proveedor, Integer calificacion) {
+        if (calificacion != null) {
+            Integer suma = proveedor.getCalificacion() + calificacion;
+            proveedor.setCalificacion(suma);
+
+        }
+    }
+
+    public List<Trabajo> listarTrabajosPorCalificar() {
+
+        List<Trabajo> porCalificar = new ArrayList<>();
+
+        porCalificar = trabajoRepositorio.listarTrabajosPorCalificar();
+
+        return porCalificar;
+    }
+    
+    
 }

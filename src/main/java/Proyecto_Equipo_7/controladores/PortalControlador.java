@@ -18,7 +18,6 @@ import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
-import Proyecto_Equipo_7.servicios.CalificacionServicio;
 import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
@@ -37,9 +36,7 @@ public class PortalControlador {
     private UsuarioServicio usuarioServicio;
     @Autowired
     private TrabajoServicio trabajoServicio;
-    @Autowired
-    private CalificacionServicio calificacionServicio;
-
+    
     @GetMapping("/")
     public String index(ModelMap modelo) throws Exception {
         try {
@@ -61,17 +58,20 @@ public class PortalControlador {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+    public String login(@RequestParam(required = false) String error, ModelMap modelo,RedirectAttributes redirectAttrs) {
             if (error != null) {
+                redirectAttrs.addFlashAttribute("error", "intenta nuevamente");
                 return "redirect:/logout";
             }
             return "index.html";
 
     }
+    
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
+        modelo.put("listarTrabajosPorCalificar", usuarioServicio.listarTrabajosPorCalificar());
         modelo.put("listaProveedor", proveedorServicio.listarProveedores());
         modelo.put("listaRubros", rubroServicio.listaRubros());
         // modelo.put("seisMejores", proveedorServicio.seisMejoresProveedores());

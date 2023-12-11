@@ -43,7 +43,7 @@ public class TrabajoControlador {
     @PreAuthorize("hasAnyRole('PROVEEDOR','ADMINISTRADOR')")
     @GetMapping("/finalizar_Trabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id, ModelMap modelo) {
-        trabajoServicio.darPorTerminadoUnTrabajo(id);
+        trabajoServicio.finalizarTrabajo(id);
         // este metodo permite al proveedor dar por terminado un trabajo
         return "list_trabajos.html";
     }
@@ -84,10 +84,8 @@ public class TrabajoControlador {
     @PreAuthorize("AnyRole('ADMINISTRADOR')")
     @GetMapping("/baja_Trabajo/{id}")
     public String darDeBajaTrabajo(@PathVariable String id, ModelMap modelo) {
-        trabajoServicio.darDeBajaTrabajo(id);
-        // este metodo permite que solo un admin y nadie mas pueda dar la baja a un
-        // trabajo, puede ser al estar terminado o
-        // porque por algun motivo se solicito
+        trabajoServicio.eliminarTrabajo(id);
+       
         return "listTrabajos.html";
     }
 
