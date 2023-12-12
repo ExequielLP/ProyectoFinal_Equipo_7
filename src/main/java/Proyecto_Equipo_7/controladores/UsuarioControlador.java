@@ -66,7 +66,7 @@ public class UsuarioControlador {
     public String puntaje(ModelMap model, @PathVariable String idProveedor, @PathVariable String idTrabajo) {
         List<Trabajo> porCalificar = usuarioServicio.listarTrabajosPorCalificar();
         model.put("porCalificar", porCalificar);
-        return "calificar.html";
+        return "redirect:/usuario/calificar";
     }
     
     @PostMapping("/calificar")
@@ -96,6 +96,6 @@ public class UsuarioControlador {
             trabajo.setComentario(comentario);
             trabajoRepositorio.save(trabajo);
         }
-        return "redirect:/inicio";
+        return "inicio.html";
     }
 }
