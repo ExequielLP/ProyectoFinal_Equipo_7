@@ -1,17 +1,21 @@
-.contacto-fondo{
+/* .contacto-fondo{
     margin: 0;
-    
-}
-
-.body-contacto{
-    background-image: url(../img/1080p-hd.jpg);
+    background-image: url(../img/contactenos.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+} */
 
+.body-contacto{
+    margin: 0;
+    background-image: url(../img/Image20231212173533.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .navbar{
     margin-bottom: 0 !important;
 }
+
+
 
 .titulo{
     color: white;
@@ -34,17 +38,14 @@
 }
 
 .hijo{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: stretch;
     padding: 10px;
     height: 730px;
-    margin-top:50px;
+    margin-top:10px;
     width: 500px;
     background-color: rgba(70, 61, 61, 0.75);
     border-radius: 5%;
     text-align: center;
+    color: white;
     margin-bottom: 10px;
 }
 

@@ -11,22 +11,22 @@
             <div class="accordion-body">
 
                 <table class="table table-secondary table-hover align-middle">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
-                            <th scope="col">Id Usuario</th>
+                            <th scope="col" style="visibility:collapse; display:none;">Id Usuario</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Domicilio</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Email</th>
                             <th scope="col">Activo</th>
                             <th scope="col">Rol</th>
-                            <th scope="col" sec:authorize="hasRole('ADMIN')">Cambiar Rol</th>
-                            <th scope="col" sec:authorize="hasRole('ADMIN')">Modificar</th>
+                            <th scope="col">Cambiar Rol</th>
+                            <th scope="col">Modificar</th>
                         </tr>
                     </thead>
-                    <tbody th:each="usuario : ${usuarios}">
+                    <tbody th:each="usuario : ${usuarios}" class="text-center">
                         <tr>
-                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.id}" style="visibility:collapse; display:none;"></td>
                             <td th:text="${usuario.nombre}"></td>
                             <td th:text="${usuario.domicilio}"></td>
                             <td th:text="${usuario.telefono}"></td>
@@ -34,13 +34,13 @@
                             <td th:text="${usuario.alta}"></td>
                             <td th:text="${usuario.rol}"></td>
                             <td>
-                                <a th:href="@{/admin/modificarRol/__${usuario.id}__}"><i
-                                        class="fas fa-feather-alt"></i>Cambiar Rol</a>
+                                <a th:href="@{/admin/modificarRol/__${usuario.id}__}" class="btn btn-outline-warning"
+                                    type="button">Cambiar Rol</a>
                             </td>
+
                             <td>
                                 <form th:action="@{/admin/eliminarUsuario/__${usuario.id}__}" method="post">
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fas fa-feather-alt"></i> Eliminar
+                                    <button class="btn btn-outline-danger" type="submit">Eliminar
                                     </button>
                                 </form>
                             </td>

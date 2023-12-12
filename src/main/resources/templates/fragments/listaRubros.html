@@ -12,17 +12,17 @@
             <div class="accordion-body">
 
                 <table class="table table-secondary table-hover table-responsive align-middle">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
-                            <th scope="col">Id Rubro</th>
+                            <th scope="col" style="visibility:collapse; display:none;">Id Rubro</th>
                             <th scope="col">Nombre Rubro</th>
                             <th scope="col">Imagen</th>
                             <th scope="col" sec:authorize="hasRole('ADMIN')">Eliminar Rubro</th>
                         </tr>
                     </thead>
-                    <tbody th:each="rubros : ${rubros}">
+                    <tbody th:each="rubros : ${rubros}" class="text-center">
                         <tr>
-                            <td th:text="${rubros.id}"></td>
+                            <td th:text="${rubros.id}" style="visibility:collapse; display:none;"></td>
                             <td th:text="${rubros.rubro}"></td>
                             <td <a>
                                 <img th:if="${rubros.imagen != null}" class="logo"
@@ -31,7 +31,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/listaRubros/__${rubros.id}__}"><i class="fas fa-feather-alt"></i>Eliminar
+                                <a th:href="@{/listaRubros/__${rubros.id}__}" class="btn btn-outline-danger" type="button">Eliminar
                                     Rubro</a>
                             </td>
                         </tr>
