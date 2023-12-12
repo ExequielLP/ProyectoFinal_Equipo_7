@@ -72,32 +72,29 @@ public class UsuarioControlador {
     @PostMapping("/calificar")
     @Transactional
     public String calificar(@RequestParam("idProveedor") String idProveedor, @RequestParam("idTrabajo") String idTrabajo,
-            @RequestParam("calificacion") Integer calificacion, RedirectAttributes redirectAttributes) {
-        System.out.println("error antes de entrar a optional____________________________");
+            @RequestParam("calificacion") Integer calificacion,@RequestParam("comentario") String comentario, RedirectAttributes redirectAttributes) {
         Optional<Proveedor> proveedorOptional = proveedorRepositorio.findById(idProveedor);
         if (proveedorOptional.isPresent()) {
             Proveedor proveedor = proveedorOptional.get();
             usuarioServicio.calificarProveedor(proveedor, calificacion);
-            System.out.println(idProveedor);
-            System.out.println("----------------------error DESPUES DE OPTINAL ANTES DE REDIRECT---------------------------------");
         }
    
         redirectAttributes.addAttribute("idTrabajo", idTrabajo);
+        redirectAttributes.addAttribute("comentario", comentario);
 
         return "redirect:/usuario/darBaja/{idTrabajo}";
     }
     
     @GetMapping("/darBaja/{idTrabajo}")
     @Transactional
-    public String baja(@PathVariable("idTrabajo") String idTrabajo) {
+    public String baja(@PathVariable("idTrabajo") String idTrabajo, String comentario) {
 
         Optional<Trabajo> respuesta1 = trabajoRepositorio.findById(idTrabajo);
         if (respuesta1.isPresent()) {
             Trabajo trabajo = respuesta1.get();
             trabajo.setAlta(false);
+            trabajo.setComentario(comentario);
             trabajoRepositorio.save(trabajo);
-            System.out.println(idTrabajo);
-            System.out.println("------------------------------------------------------------------");
         }
         return "redirect:/inicio";
     }

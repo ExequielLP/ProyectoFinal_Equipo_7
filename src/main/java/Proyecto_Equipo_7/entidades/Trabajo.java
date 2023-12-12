@@ -32,5 +32,6 @@ public class Trabajo {
     private Proveedor proveedor;
     private boolean alta;
     private boolean terminado;
+    private String comentario;
    
 }
