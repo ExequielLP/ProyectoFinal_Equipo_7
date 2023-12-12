@@ -153,4 +153,11 @@ public class PortalControlador {
         System.out.println("..................................");
         return "listarProveedoresPorCards.html";
     }
+    
+    @PostMapping("/buscador")
+    public String buscarProveedorPorNombre(@RequestParam String palabra,RedirectAttributes redirectAttrs){
+     List<Proveedor>listaProoverParaBuscar= proveedorServicio.listaProveedorPorRubro(palabra);
+     redirectAttrs.addFlashAttribute("listaProveedor", listaProoverParaBuscar);
+        return "listarProveedoresPorCards.html";
+    }
 }
