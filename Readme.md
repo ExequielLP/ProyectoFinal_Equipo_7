@@ -40,6 +40,7 @@ En desarrollo. Actualmente nos enfocamos en mejorar la interfaz de usuario y opt
 
 ## ✔️ Tecnologías Utilizadas
 
+- Bootstrap
 - HTML
 - Java
 - MySQL
@@ -47,7 +48,7 @@ En desarrollo. Actualmente nos enfocamos en mejorar la interfaz de usuario y opt
 - Spring Security
 - Thymeleaf
 
-## Personas Desarrolladoras del Proyecto
+## 💻 Personas Desarrolladoras del Proyecto
 
 * **Arce Ezequiel** - *ADM - Desarrollador Backend* - [Arce Ezequiel](https://github.com/EzeArc)
 * **Benegas Mariano** - *Scrum Master - Desarrollador Frontend* - [Benegas Mariano](https://github.com/m4ri4no33)
@@ -57,8 +58,6 @@ En desarrollo. Actualmente nos enfocamos en mejorar la interfaz de usuario y opt
 * **Otero Norberto** - *Desarrollador Frontend* - [Otero Norberto](https://github.com/0Grow)
 * **Rey Martin** - *Desarrollador Frontend* - [Rey Martin](https://github.com/Blue210)
 * **Taborda Christian** - *Desarrollador Backend* - [Taborda Christian](https://github.com/christian2711)
-
-## Contribuciones Recientes
 
 ### Cambios Importantes
 
