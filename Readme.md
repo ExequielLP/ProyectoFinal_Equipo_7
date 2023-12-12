@@ -40,6 +40,7 @@ En desarrollo. Actualmente nos enfocamos en mejorar la interfaz de usuario y opt
 
 ## ✔️ Tecnologías Utilizadas
 
+- Bootstrap
 - HTML
 - Java
 - MySQL
