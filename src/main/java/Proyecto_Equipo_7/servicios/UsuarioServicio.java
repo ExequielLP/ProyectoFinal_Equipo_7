@@ -127,14 +127,16 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     public void eliminar(String id) throws MiException {
-        if (id.isEmpty() || id == null) {
-            new Exception("El id es null");
-        }
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
-            usuario.setAlta(true);
-            usuarioRepositorio.save(usuario);
+            if (usuario.isAlta() == true) {
+                usuario.setAlta(false);
+                usuarioRepositorio.save(usuario);
+            }else if (usuario.isAlta() == false){
+                usuario.setAlta(true);
+                usuarioRepositorio.save(usuario);
+            }
         }
     }
 

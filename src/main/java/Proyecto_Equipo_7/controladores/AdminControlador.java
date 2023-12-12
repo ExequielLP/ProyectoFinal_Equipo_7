@@ -85,11 +85,11 @@ public class AdminControlador {
     @PostMapping("eliminarProveedor/{id}")
     public String eliminarProveedor(@PathVariable String id, ModelMap modelo) {
         try {
-            proveedorServicio.eliminar(id);
+            proveedorServicio.eliminarProveedor(id);
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
         }
-        return "redirect:/proveedor/listarProveedor";
+        return "redirect:/admin/dashboard#listaProveedores";
     }
 
     @PostMapping("/eliminarUsuario/{id}")
@@ -99,7 +99,7 @@ public class AdminControlador {
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
         }
-        return "redirect:/usuario/listarUsuario";
+        return "redirect:/admin/dashboard#listaUsuarios";
     }
 
     // metodo para el admin al lado de cada trabajo en la lista para poder

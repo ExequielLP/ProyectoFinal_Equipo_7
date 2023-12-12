@@ -38,8 +38,11 @@
                                         class="fas fa-feather-alt"></i>Cambiar Rol</a>
                             </td>
                             <td>
-                                <a th:href="@{/perfil/__${usuario.id}__}"><i
-                                        class="fas fa-feather-alt"></i>Modificar</a>
+                                <form th:action="@{/admin/eliminarUsuario/__${usuario.id}__}" method="post">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-feather-alt"></i> Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>

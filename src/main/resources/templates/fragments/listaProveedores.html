@@ -47,8 +47,11 @@
                             <td th:text="${proveedor.rol}"></td>
                             <td th:text="${proveedor.alta}"></td>
                             <td>
-                                <a th:href="@{/perfil/__${proveedor.id}__}"><i
-                                        class="fas fa-feather-alt"></i>Eliminar</a>
+                                <form th:action="@{/admin/eliminarProveedor/__${proveedor.id}__}" method="post">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-feather-alt"></i> Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>

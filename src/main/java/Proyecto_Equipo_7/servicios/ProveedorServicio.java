@@ -119,17 +119,19 @@ public class ProveedorServicio implements UserDetailsService {
         }
     }
 
-    public void eliminar(String id) throws MiException {
-        if (id.isEmpty() || id == null) {
-            new Exception("El id es null");
-        }
+    @Transactional
+    public void eliminarProveedor(String id) throws MiException {
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Proveedor proveedor = respuesta.get();
-            proveedor.setAlta(true);
-            proveedorRepositorio.save(proveedor);
+            if (proveedor.isAlta() == true) {
+                proveedor.setAlta(false);
+                proveedorRepositorio.save(proveedor);
+            }else if (proveedor.isAlta() == false){
+                proveedor.setAlta(true);
+                proveedorRepositorio.save(proveedor);
+            }
         }
-       
     }
 
     public void validar(String nombre, String domicilio, String telefono, String email, Integer honorario, Rubro rubro,
