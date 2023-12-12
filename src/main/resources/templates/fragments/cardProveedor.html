@@ -7,7 +7,7 @@
             th:src="@{/imagen/perfil/__${listaProveedor.id}__}" width="auto" height="180">
         </div>
         <a class="card-action" href="#"><i class="fa fa-heart"  th:text="${listaProveedor.calificacion}"></i></a>
-        <div class="card-heading" th:text="${listaProveedor.nombre}">Card title</div>
+        <div class="card-heading" th:text="${listaProveedor.nombre}">Car title</div>
         <div class="card-text" th:text="${listaProveedor.rubro.rubro}"></div>
         <div class="card-text" >This is a longer card with supporting text</div>
         <div class="card-text" th:text="'$ '+${listaProveedor.honorario}"></div>
