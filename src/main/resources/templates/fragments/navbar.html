@@ -6,13 +6,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse " id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
                     <a th:if="${session.usuarioSession!=null}" class="nav-link active" href="/inicio">INICIO</a>
                 </li>
                 <li class="nav-item">
-                    <a th:if="${session.usuarioSession==null}" href="/inicio/#NosotrosId" class="nav-link active">NOSOTROS</a>
+                    <a th:if="${session.usuarioSession==null}" th:href="@{/sobreNosotros}" class="nav-link active">NOSOTROS</a>
                 </li>
                 <li class="nav-item">
                     <a sec:authorize="hasRole('ROLE_ADMIN')"  href="/admin/dashboard" class="nav-link active">PANEL ADMIN</a>
@@ -80,11 +80,14 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/logout">CERRAR SESIÓN</a></li>
                     </ul>
-               </ul>                              
+               </ul>
+            <p th:if="${session.usuarioSession==null}" class="my-auto" >BIENVENIDO&#x1F525&#x1F525</p>
+            
+            
 
-                <form class="d-flex justify-content-end" role="search" th:action="@{/busqueda}"  method="GET">
+                <form th:if="${session.usuarioSession != null}" class="d-flex justify-content-end" role="search" th:action="@{/busqueda}"  method="GET">
 
-                    <input id="buscador" class="form-control me-2"  placeholder="Buscar" aria-label="Search" name="palabra" type="text" >
+                    <input  id="buscador" class="form-control me-2"  placeholder="Buscar" aria-label="Search" name="palabra" type="text" >
                     <button id="buscador" class="btn btn-outline-success" type="submit">BUSCAR</button>
                 </form> 
 

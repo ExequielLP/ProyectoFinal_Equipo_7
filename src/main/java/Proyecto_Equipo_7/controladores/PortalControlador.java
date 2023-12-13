@@ -40,7 +40,7 @@ public class PortalControlador {
     private UsuarioServicio usuarioServicio;
     @Autowired
     private TrabajoServicio trabajoServicio;
-    
+
     @GetMapping("/")
     public String index(ModelMap modelo) throws Exception {
         try {
@@ -62,15 +62,14 @@ public class PortalControlador {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap modelo,RedirectAttributes redirectAttrs) {
-            if (error != null) {
-                redirectAttrs.addFlashAttribute("error", "intenta nuevamente");
-                return "redirect:/logout";
-            }
-            return "index.html";
+    public String login(@RequestParam(required = false) String error, ModelMap modelo, RedirectAttributes redirectAttrs) {
+        if (error != null) {
+            redirectAttrs.addFlashAttribute("error", "intenta nuevamente");
+            return "redirect:/logout";
+        }
+        return "index.html";
 
     }
-    
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PROVEEDOR')")
     @GetMapping("/inicio")
@@ -145,7 +144,7 @@ public class PortalControlador {
         }
     }
 
-    @RequestMapping(value = "/filtroProveedores/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/filtroProveedores/{id}", method = {RequestMethod.GET, RequestMethod.POST})
     public String devovlerProveedores(@PathVariable String id, ModelMap modelo) {
         List<Proveedor> proFiltradoList = proveedorServicio.listaProveedorPorRubro(id);
         System.out.println("..................................");
@@ -158,23 +157,25 @@ public class PortalControlador {
         return "listarProveedoresPorCards.html";
     }
 
-
-   
-@GetMapping("/busqueda")
-public String buscarProveedorPorNombre(@RequestParam String palabra, Model model) {
-    List<Proveedor> listaProveedoresPorRubro = proveedorRepositorio.buscarProveedorPorPalabraRubro(palabra);
-    List<Proveedor> listaProveedoresPorNombre = proveedorRepositorio.buscarProveedorPorNombre(palabra);
+    @GetMapping("/busqueda")
+    public String buscarProveedorPorNombre(@RequestParam String palabra, Model model) {
+        List<Proveedor> listaProveedoresPorRubro = proveedorRepositorio.buscarProveedorPorPalabraRubro(palabra);
+        List<Proveedor> listaProveedoresPorNombre = proveedorRepositorio.buscarProveedorPorNombre(palabra);
 
 //    if (!listaProveedoresPorRubro.isEmpty()) {
         model.addAttribute("proFiltrados", listaProveedoresPorRubro);
         model.addAttribute("proMensaje", "Selecciona nuestros Proveedores por su rubro");
-        
+
 //    } else if (!listaProveedoresPorNombre.isEmpty()) {
         model.addAttribute("proFiltrados1", listaProveedoresPorNombre);
-          model.addAttribute("proMensaje1", "Selecciona nuestros Proveedores por su nombre");
+        model.addAttribute("proMensaje1", "Selecciona nuestros Proveedores por su nombre");
         return "listarProveedoresPorCards.html";
 //    }
 
-   
-}
+    }
+
+    @GetMapping("/sobreNosotros")
+    public String sobreNosotros() {
+        return "sobreNosotros.html";
+    }
 }
