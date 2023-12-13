@@ -29,7 +29,7 @@ import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 @Service
 public class ProveedorServicio implements UserDetailsService {
 
-        @Autowired
+    @Autowired
     private ImagenServicio imagenServicio;
 
     @Autowired
@@ -38,7 +38,7 @@ public class ProveedorServicio implements UserDetailsService {
     @Transactional
     public void registrarProveedor(String nombre, String domicilio, String telefono, String email, String password,
             String password2, MultipartFile archivo, Integer honorario, Rubro rubro) throws MiException {
-        
+
         validar(nombre, domicilio, telefono, email, honorario, rubro, password, password2);
 
         Proveedor proveedor = new Proveedor();
@@ -54,7 +54,7 @@ public class ProveedorServicio implements UserDetailsService {
         Imagen imagen = imagenServicio.guardar(archivo);
         proveedor.setImagen(imagen);
         proveedorRepositorio.save(proveedor);
-        
+
     }
 
     @Transactional
@@ -102,7 +102,6 @@ public class ProveedorServicio implements UserDetailsService {
 //        List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
 //        return proveedores;
 //    }
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Proveedor proveedor = proveedorRepositorio.buscarPorEmail(email);
@@ -132,6 +131,7 @@ public class ProveedorServicio implements UserDetailsService {
                 proveedorRepositorio.save(proveedor);
             }
         }
+
     }
 
     public void validar(String nombre, String domicilio, String telefono, String email, Integer honorario, Rubro rubro,
@@ -165,14 +165,16 @@ public class ProveedorServicio implements UserDetailsService {
     }
 
     public List<Proveedor> listaProveedorPorRubro(String id) {
-         List<Proveedor> listarProveedores =new ArrayList<>();
+        List<Proveedor> listarProveedores = new ArrayList<>();
         if (!id.equalsIgnoreCase("")) {
-             listarProveedores = proveedorRepositorio.buscarPorRubroId(id);
-        }else {
-        listarProveedores=proveedorRepositorio.findAll();
+            listarProveedores = proveedorRepositorio.buscarPorRubroId(id);
+        } else {
+            listarProveedores = proveedorRepositorio.findAll();
         }
-           
 
         return listarProveedores;
     }
+
+
+
 }

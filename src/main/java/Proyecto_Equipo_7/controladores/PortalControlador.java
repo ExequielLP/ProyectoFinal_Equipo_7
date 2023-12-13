@@ -158,10 +158,12 @@ public class PortalControlador {
         return "listarProveedoresPorCards.html";
     }
 
+
     @GetMapping("/busqueda")
     public String buscarProveedorPorNombre(@RequestParam String palabra,Model model){
      List<Proveedor>listaProoverParaBuscar= proveedorRepositorio.buscarProveedorPorPalabraRubro(palabra);
      model.addAttribute("Proveedores", listaProoverParaBuscar);
         return "listarProveedoresPorBusqueda.html";
+
     }
 }
