@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import Proyecto_Equipo_7.servicios.ProveedorServicio;
+import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 @RequestMapping("/trabajo")
@@ -19,6 +21,12 @@ public class TrabajoControlador {
 
     @Autowired
     private TrabajoServicio trabajoServicio;
+
+    @Autowired
+    private RubroServicio rubroServicio;
+
+    @Autowired
+    private ProveedorServicio proveedorServicio;
 
     @GetMapping("/crearTrabajo")
     public String crearTrabajo() {
@@ -40,21 +48,27 @@ public class TrabajoControlador {
         return "listaTrabajosPorProveedor.html";
     }*/
 
-    @GetMapping("/cargarTrabajo/{id}")
-    public String cargarTrabajo(@PathVariable String id, ModelMap modelo) {
+    @GetMapping("/cargarTrabajo")
+    public String cargarTrabajo(ModelMap modelo) {
+        modelo.addAttribute("listaRubros", rubroServicio.listaRubros());
+        modelo.addAttribute("proveedores", proveedorServicio.listarProveedores());
         // aca va la vista para que aparesca el form
+
         return "contratoTrabajo.html";
     }
+<<<<<<< HEAD
     
      @PreAuthorize("AnyRole('ADMINISTRADOR')")
+=======
+
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
     @PostMapping("/eliminar")
     public String eliminarTrabajo(@RequestParam String id, ModelMap modelo) {
         trabajoServicio.eliminarTrabajo(id);
         modelo.put("exito", "Trabajo fue dado de baja!");
-        
-        return  "index.html";
-    }
 
+        return "index.html";
+    }
 
     @GetMapping("/persistirTrabajo/{id}")
     public String persistirTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
@@ -75,10 +89,27 @@ public class TrabajoControlador {
    /* @PreAuthorize("AnyRole('ADMINISTRADOR')")
     @GetMapping("/baja_Trabajo/{id}")
     public String darDeBajaTrabajo(@PathVariable String id, ModelMap modelo) {
-        trabajoServicio.darDeBajaTrabajo(id);
-        // este metodo permite que solo un admin y nadie mas pueda dar la baja a un
-        // trabajo, puede ser al estar terminado o
-        // porque por algun motivo se solicito
+        trabajoServicio.eliminarTrabajo(id);
+       
         return "listTrabajos.html";
+<<<<<<< HEAD
     }*/
+=======
+    }
+
+    @PostMapping("/persistirTrabajoContratoTrabajo")
+    public String persistirTrabajoContratoTrabajo(@PathVariable String idProveedor,HttpSession session, ModelMap modelo) {
+        try {
+            
+            trabajoServicio.crearTrabajo(session, idProveedor);
+            modelo.put("exito", "Servicio contratado exitosamente");
+            return "redirect:/inicio";
+        } catch (Exception e) {
+            modelo.put("error", "Error al contratar servicio");
+            // aca retorna vista de error o index
+            return null;
+        }
+
+    }
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 }

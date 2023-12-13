@@ -18,10 +18,35 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String> {
     @Query("SELECT p FROM Proveedor p WHERE p.rubro = :rubro")
     List<Proveedor> buscarPorRubro(@Param("rubro") Rubro rubro);
 
+<<<<<<< HEAD
     @Query("SELECT count(*) FROM Proveedor")
     public Integer cantidadProveedores();
 
      @Query("SELECT p.calificacion FROM  Proveedor p WHERE  p.id = :id")
     public Integer calificacionPorProveedor(@Param("id") String id);
     
+=======
+//    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id WHERE c.calificacion = :calificacion")
+//    public List<Proveedor> buscarPorCalificacionEspecifica(@Param("calificacion") int calificacion);
+
+//    @Query("SELECT p FROM Proveedor p INNER JOIN Calificacion c ON p.id = c.proveedor.id ORDER BY c.calificacion DESC")
+//    public List<Proveedor> buscarPorCalificacionGeneral();
+
+    @Query("SELECT count(*) FROM Proveedor")
+    public Integer cantidadProveedores();
+
+//    @Query("SELECT p.nombre, c.calificacion FROM Calificacion c JOIN c.proveedor p ORDER BY c.calificacion DESC")
+//    List<Proveedor> seisMejoresProveedores(Pageable pageable);
+
+    @Query("SELECT p FROM Proveedor p WHERE p.rubro.id = :id")
+    public List<Proveedor> buscarPorRubroId(@Param("id") String id);
+
+
+    @Query(value = "SELECT * FROM proveedor p WHERE p.rubro_id IN (SELECT r.id FROM rubro r WHERE r.rubro LIKE %:palabra%)", nativeQuery = true)
+    List<Proveedor> buscarProveedorPorPalabraRubro(@Param("palabra") String palabra);
+    
+    @Query(value = "SELECT * FROM proveedor p WHERE p.nombre LIKE %:palabra%", nativeQuery = true)
+    List<Proveedor> buscarProveedorPorNombre(@Param("palabra") String palabra);
+
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 }

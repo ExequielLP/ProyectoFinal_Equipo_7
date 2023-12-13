@@ -2,13 +2,22 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+<<<<<<< HEAD
                     data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                     aria-controls="panelsStayOpen-collapseThree">
+=======
+                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseThree">
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
                 LISTA TRABAJOS POR CALIFICAR
             </button>
         </h2>
         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+<<<<<<< HEAD
              aria-labelledby="panelsStayOpen-headingThree">
+=======
+            aria-labelledby="panelsStayOpen-headingThree">
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
             <div class="accordion-body">
 
                 <table class="table table-secondary table-hover">
@@ -31,9 +40,17 @@
                             <td th:text="${porCalificar.proveedor.id}"></td>
                             <td th:text="${porCalificar.terminado}"></td>
                             <td th:text="${porCalificar.alta}"></td>
+<<<<<<< HEAD
                             <td><
                                <a th:href="@{/usuario/calificar/__${porCalificar.proveedor.id}__/__${porCalificar.id}__}">
                                     <i class="fas fa-feather-alt">CALIFICAR</i> 
+=======
+                            <td>
+                                <a th:href="@{/usuario/calificar/__${porCalificar.proveedor.id}__/__${porCalificar.id}__}"
+                                    class="btn btn-outline-success" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#modalCalificar">
+                                    CALIFICAR
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
                                 </a>
                             </td>
                         </tr>
@@ -42,4 +59,8 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f

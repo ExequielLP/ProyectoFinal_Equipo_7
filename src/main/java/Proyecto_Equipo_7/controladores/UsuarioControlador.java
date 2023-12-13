@@ -1,5 +1,7 @@
 package Proyecto_Equipo_7.controladores;
 
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Trabajo;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,12 @@ public class UsuarioControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    
+    @Autowired
+    private ProveedorRepositorio proveedorRepositorio;
+    
+    @Autowired
+    private TrabajoRepositorio trabajoRepositorio;
 
     @Autowired
     private ProveedorRepositorio proveedorRepositorio;
@@ -62,11 +70,15 @@ public class UsuarioControlador {
             return "modificarUsuario.html";
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
     @GetMapping("/calificar/{idProveedor}/{idTrabajo}")
     public String puntaje(ModelMap model, @PathVariable String idProveedor, @PathVariable String idTrabajo) {
         List<Trabajo> porCalificar = usuarioServicio.listarTrabajosPorCalificar();
         model.put("porCalificar", porCalificar);
+<<<<<<< HEAD
         return "calificar.html";
     }
 
@@ -75,10 +87,20 @@ public class UsuarioControlador {
     public String calificar(@RequestParam("idProveedor") String idProveedor, @RequestParam("idTrabajo") String idTrabajo,
             @RequestParam("calificacion") Integer calificacion, RedirectAttributes redirectAttributes) {
 
+=======
+        return "redirect:/usuario/calificar";
+    }
+    
+    @PostMapping("/calificar")
+    @Transactional
+    public String calificar(@RequestParam("idProveedor") String idProveedor, @RequestParam("idTrabajo") String idTrabajo,
+            @RequestParam("calificacion") Integer calificacion,@RequestParam("comentario") String comentario, RedirectAttributes redirectAttributes) {
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
         Optional<Proveedor> proveedorOptional = proveedorRepositorio.findById(idProveedor);
         if (proveedorOptional.isPresent()) {
             Proveedor proveedor = proveedorOptional.get();
             usuarioServicio.calificarProveedor(proveedor, calificacion);
+<<<<<<< HEAD
             System.out.println(idProveedor);
             System.out.println("------------------------------------------------------------------");
         }
@@ -91,11 +113,25 @@ public class UsuarioControlador {
     @GetMapping("/darBaja/{idTrabajo}")
     @Transactional
     public String baja(@PathVariable("idTrabajo") String idTrabajo) {
+=======
+        }
+   
+        redirectAttributes.addAttribute("idTrabajo", idTrabajo);
+        redirectAttributes.addAttribute("comentario", comentario);
+
+        return "redirect:/usuario/darBaja/{idTrabajo}";
+    }
+    
+    @GetMapping("/darBaja/{idTrabajo}")
+    @Transactional
+    public String baja(@PathVariable("idTrabajo") String idTrabajo, String comentario) {
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 
         Optional<Trabajo> respuesta1 = trabajoRepositorio.findById(idTrabajo);
         if (respuesta1.isPresent()) {
             Trabajo trabajo = respuesta1.get();
             trabajo.setAlta(false);
+<<<<<<< HEAD
             trabajoRepositorio.save(trabajo);
             System.out.println(idTrabajo);
             System.out.println("------------------------------------------------------------------");
@@ -104,3 +140,11 @@ public class UsuarioControlador {
     }
 
 }
+=======
+            trabajo.setComentario(comentario);
+            trabajoRepositorio.save(trabajo);
+        }
+        return "inicio.html";
+    }
+}
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f

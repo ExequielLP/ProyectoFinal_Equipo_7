@@ -29,6 +29,9 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
+    
+    @Autowired
+    private TrabajoRepositorio trabajoRepositorio;
 
     @Autowired
     private TrabajoRepositorio trabajoRepositorio;
@@ -127,14 +130,16 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     public void eliminar(String id) throws MiException {
-        if (id.isEmpty() || id == null) {
-            new Exception("El id es null");
-        }
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
-            usuario.setAlta(true);
-            usuarioRepositorio.save(usuario);
+            if (usuario.isAlta() == true) {
+                usuario.setAlta(false);
+                usuarioRepositorio.save(usuario);
+            }else if (usuario.isAlta() == false){
+                usuario.setAlta(true);
+                usuarioRepositorio.save(usuario);
+            }
         }
     }
 
@@ -144,11 +149,13 @@ public class UsuarioServicio implements UserDetailsService {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacío");
         }
-        if (email.isEmpty() || email == null) {
-            throw new MiException("el email no puede ser nulo o estar vacio");
-        }
+       
         if (domicilio.isEmpty() || domicilio == null) {
             throw new MiException("el domicilio no puede ser nulo o estar vacio");
+            
+        }
+         if (email.isEmpty() || email == null) {
+            throw new MiException("el email no puede ser nulo o estar vacio");
         }
         if (telefono.isEmpty() || telefono == null) {
             throw new MiException("el telefono no puede ser nulo o estar vacio");
@@ -161,7 +168,10 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
     @Transactional
     public void calificarProveedor(Proveedor proveedor, Integer calificacion) {
         if (calificacion != null) {
@@ -179,4 +189,9 @@ public class UsuarioServicio implements UserDetailsService {
 
         return porCalificar;
     }
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 }

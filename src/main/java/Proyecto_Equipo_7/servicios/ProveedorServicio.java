@@ -1,5 +1,6 @@
 package Proyecto_Equipo_7.servicios;
 
+<<<<<<< HEAD
 import Proyecto_Equipo_7.entidades.Imagen;
 import Proyecto_Equipo_7.entidades.Proveedor;
 import Proyecto_Equipo_7.entidades.Rubro;
@@ -7,13 +8,21 @@ import Proyecto_Equipo_7.enumeradores.Rol;
 import Proyecto_Equipo_7.excepciones.MiException;
 import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 
+=======
+import java.awt.print.Pageable;
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.security.core.GrantedAuthority;
+=======
+import org.springframework.data.domain.PageRequest;
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,6 +33,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import Proyecto_Equipo_7.entidades.Imagen;
+import Proyecto_Equipo_7.entidades.Proveedor;
+import Proyecto_Equipo_7.entidades.Rubro;
+import Proyecto_Equipo_7.enumeradores.Rol;
+import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 
 @Service
 public class ProveedorServicio implements UserDetailsService {
@@ -53,6 +68,7 @@ public class ProveedorServicio implements UserDetailsService {
         Imagen imagen = imagenServicio.guardar(archivo);
         proveedor.setImagen(imagen);
         proveedorRepositorio.save(proveedor);
+
     }
 
     @Transactional
@@ -65,6 +81,7 @@ public class ProveedorServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
             Proveedor proveedor = respuesta.get();
             proveedor.setNombre(nombre);
+            proveedor.setHonorario(honorario);
             proveedor.setEmail(email);
             proveedor.setDomicilio(domicilio);
             proveedor.setTelefono(telefono);
@@ -93,6 +110,15 @@ public class ProveedorServicio implements UserDetailsService {
         return proveedorRepositorio.cantidadProveedores();
     }
 
+<<<<<<< HEAD
+=======
+//    @Transactional(readOnly = true)
+//    public List<Proveedor> seisMejoresProveedores() {
+//        Pageable pageable = (Pageable) PageRequest.of(0, 6);
+//        List<Proveedor> proveedores = proveedorRepositorio.seisMejoresProveedores(pageable);
+//        return proveedores;
+//    }
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Proveedor proveedor = proveedorRepositorio.buscarPorEmail(email);
@@ -109,19 +135,23 @@ public class ProveedorServicio implements UserDetailsService {
         }
     }
 
-    public void eliminar(String id) throws MiException {
-        if (id.isEmpty() || id == null) {
-            new Exception("El id es null");
-        }
+    @Transactional
+    public void eliminarProveedor(String id) throws MiException {
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Proveedor proveedor = respuesta.get();
-            proveedor.setAlta(true);
-            proveedorRepositorio.save(proveedor);
+            if (proveedor.isAlta() == true) {
+                proveedor.setAlta(false);
+                proveedorRepositorio.save(proveedor);
+            }else if (proveedor.isAlta() == false){
+                proveedor.setAlta(true);
+                proveedorRepositorio.save(proveedor);
+            }
         }
+
     }
 
-    private void validar(String nombre, String domicilio, String telefono, String email, Integer honorario, Rubro rubro,
+    public void validar(String nombre, String domicilio, String telefono, String email, Integer honorario, Rubro rubro,
             String password, String password2) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
@@ -136,7 +166,7 @@ public class ProveedorServicio implements UserDetailsService {
         if (telefono.isEmpty() || telefono == null) {
             throw new MiException("el telefono no puede ser nulo o estar vacio");
         }
-        if (honorario == null || honorario == 0) {
+        if (honorario == null || honorario <= 0) {
             throw new MiException("el campo honorario no puede ser nulo o estar vacio");
         }
         if (rubro == null) {
@@ -151,4 +181,20 @@ public class ProveedorServicio implements UserDetailsService {
 
     }
 
+<<<<<<< HEAD
+=======
+    public List<Proveedor> listaProveedorPorRubro(String id) {
+        List<Proveedor> listarProveedores = new ArrayList<>();
+        if (!id.equalsIgnoreCase("")) {
+            listarProveedores = proveedorRepositorio.buscarPorRubroId(id);
+        } else {
+            listarProveedores = proveedorRepositorio.findAll();
+        }
+
+        return listarProveedores;
+    }
+
+
+
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 }

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import Proyecto_Equipo_7.entidades.Imagen;
 import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.excepciones.MiException;
@@ -20,7 +19,7 @@ public class RubroServicio {
     private RubroRepositorio rubroRepositorio;
     @Autowired
     private ImagenServicio imagenServicio;
-
+    
     @Transactional
     public void registrarRubro(String nombreRubro, MultipartFile archivo) throws MiException {
         Rubro rubro = new Rubro();
@@ -45,6 +44,15 @@ public class RubroServicio {
 
     public Rubro getOne(String id) {
         return rubroRepositorio.getOne(id);
+    }
+
+    public Rubro obtenerRubroPorId(String id) {
+        Optional<Rubro> rubro = rubroRepositorio.findById(id);
+        return rubro.orElse(null); // Puedes manejar de otra manera si lo prefieres
+    }
+
+    public List<Rubro> obtenerTodosLosRubrosPorNombre() {
+        return rubroRepositorio.findAllByOrderByRubroAsc();
     }
 
     @Transactional(readOnly = true)

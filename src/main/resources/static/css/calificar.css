@@ -1,0 +1,45 @@
+.contenedor-calificacion{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.modal-content{
+    height: 650px;
+    border-radius: 1.5rem !important;
+}
+
+.modal-dialog{
+    --bs-modal-width: 700px !important;
+}
+
+.boton-calificacion{
+    width: 50%;
+    height:40px;
+    border-radius: 15px;
+    border: grey 0.5px solid;
+    background-color: white;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.boton-calificacion:hover{
+    background-color: rgb(19, 117, 245);
+    color: white;
+}
+
+.comentario-calificacion{
+    border-radius: 1rem;
+    border: black solid 2px;
+    padding:10px;
+}
+
+#numero{
+    margin-top: 5px;
+    width: 50px;
+    border-radius: 10px;
+    outline: none;
+    text-align: center;
+}
+

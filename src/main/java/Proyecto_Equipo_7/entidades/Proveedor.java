@@ -22,5 +22,10 @@ public class Proveedor extends Usuario {
     @OneToOne
     private Rubro rubro;
 
+<<<<<<< HEAD
     private Integer calificacion;
+=======
+    
+    private Integer calificacion=0;
+>>>>>>> f467002748451e58c36d8984adfad7414a7df90f
 }

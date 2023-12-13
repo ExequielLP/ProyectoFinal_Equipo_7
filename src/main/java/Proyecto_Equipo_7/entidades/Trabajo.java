@@ -33,5 +33,6 @@ public class Trabajo {
     
     private boolean alta;
     private boolean terminado;
+    private String comentario;
    
 }

@@ -34,6 +34,7 @@ public class ProveedorControlador {
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
 
+
         modelo.put("listaRubro", rubroServicio.listaRubros());
         return "modificarProveedor.html";
     }
@@ -62,6 +63,7 @@ public class ProveedorControlador {
         }
     }
 
+    
     @GetMapping("/finalizarTrabajo/{id}")
     public String finalizarTrabajo(@PathVariable String id) {
 
