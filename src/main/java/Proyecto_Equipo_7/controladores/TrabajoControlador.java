@@ -14,6 +14,7 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/trabajo")
@@ -37,6 +38,7 @@ public class TrabajoControlador {
     public String registroTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
         trabajoServicio.crearTrabajo(session, id);
         modelo.put("exito", "Trabajo registrado correctamente!");
+     
         return "inicio.html";
     }
 
@@ -66,12 +68,13 @@ public class TrabajoControlador {
     }
 
     @GetMapping("/persistirTrabajo/{id}")
-    public String persistirTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
+    public String persistirTrabajo(@PathVariable String id, HttpSession session,RedirectAttributes  redirectAttrs,  ModelMap modelo) {
         try {
             // Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
             // usuario.getId();
             trabajoServicio.crearTrabajo(session, id);
-            modelo.put("exito", "Servicio contratado exitosamente");
+            redirectAttrs.addFlashAttribute("exito", "Servicio contratado exitosamente");
+          
             return "redirect:/inicio";
         } catch (Exception e) {
             modelo.put("error", "Error al contratar servicio");

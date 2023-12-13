@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/cardProveedor.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/calificar.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/modal.css" />
 </head>
 
 
@@ -40,12 +41,13 @@
         <!-- LISTA TRABAJOS SOLO PROVEEDOR-->
         <div sec:authorize="hasRole('ROLE_PROVEEDOR')" th:replace="/fragments/listaTrabajosPorProveedor :: div"></div>
     </section>
-    
-    <!-- MODAL EXITO U ERROR -->
-   <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/listaTrabajosPorCalificar :: div"></div>
-   <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/modalCalificar :: div"></div>
 
-    <div class="container">
+    <!-- MODAL EXITO U ERROR -->
+    <div  class="container">
+        <div  sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/listaTrabajosPorCalificar :: div"></div>
+        <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/modalCalificar :: div"></div>
+
+
         <footer th:replace="/fragments/footer :: footer" </footer>
     </div>
 
