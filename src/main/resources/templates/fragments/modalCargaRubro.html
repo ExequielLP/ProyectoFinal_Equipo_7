@@ -1,22 +1,20 @@
-<div class="modal fade " tabindex="-1" role="dialog" id="modalCargaRubro">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" tabindex="-1" role="dialog" id="modalCargaRubro">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content rounded-4 shadow">
             <div class="modal-header p-5 pb-4 border-bottom-0">
-                <h2 class="fw-bold mb-0 fs-2">Cargar Rubro</h2>
+                <h4 class="fw-bold mb-0 fs-2">CARGAR RUBRO</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body p-5 pt-0">
                 <form th:action="@{/admin/registroRubro}" method="POST" enctype="multipart/form-data">
                     <div class="form-floating mb-3">
                         <input type="text" name="rubro" class="form-control rounded-3" placeholder="Cargue un oficio u profecion" required>
-                        <label for="floatingInput">Rubro</label>
+                        <label for="floatingInput">RUBRO</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="file" name="archivo" class="form-control rounded-3" placeholder="Seleccione una imagen" required>
-                        <label for="floatingPassword">Imagen</label>
-                    </div>
-                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Guardar</button>
+                     <div class="file-select d-flex justify-content-center" id="src-file">
+                        <input type="file" name="archivo" aria-label="Archivo" th:value="${imagen}">
+                    </div>  
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-success" type="submit">GUARDAR</button>
 
                 </form>
             </div>
