@@ -107,8 +107,8 @@
                 </li>                
             </ul>
             </ul>     
-            <form class="d-flex justify-content-end" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <form class="d-flex justify-content-end" role="search" th:action="@{/busqueda}"  method="GET">
+                <input  class="form-control me-2"  placeholder="Buscar" aria-label="Search" name="palabra" type="text" >
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form> 
 

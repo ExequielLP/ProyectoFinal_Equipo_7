@@ -175,5 +175,4 @@ public class ProveedorServicio implements UserDetailsService {
 
         return listarProveedores;
     }
-
 }

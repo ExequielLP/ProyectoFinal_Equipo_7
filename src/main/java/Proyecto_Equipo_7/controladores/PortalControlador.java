@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import Proyecto_Equipo_7.entidades.Rubro;
 import Proyecto_Equipo_7.entidades.Trabajo;
 import Proyecto_Equipo_7.entidades.Usuario;
 import Proyecto_Equipo_7.excepciones.MiException;
+import Proyecto_Equipo_7.repositorios.ProveedorRepositorio;
 import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
@@ -30,6 +32,8 @@ public class PortalControlador {
 
     @Autowired
     private ProveedorServicio proveedorServicio;
+    @Autowired
+    private ProveedorRepositorio proveedorRepositorio;
     @Autowired
     private RubroServicio rubroServicio;
     @Autowired
@@ -152,5 +156,12 @@ public class PortalControlador {
         System.out.println(proFiltradoList);
         System.out.println("..................................");
         return "listarProveedoresPorCards.html";
+    }
+
+    @GetMapping("/busqueda")
+    public String buscarProveedorPorNombre(@RequestParam String palabra,Model model){
+     List<Proveedor>listaProoverParaBuscar= proveedorRepositorio.buscarProveedorPorPalabraRubro(palabra);
+     model.addAttribute("Proveedores", listaProoverParaBuscar);
+        return "listarProveedoresPorBusqueda.html";
     }
 }
