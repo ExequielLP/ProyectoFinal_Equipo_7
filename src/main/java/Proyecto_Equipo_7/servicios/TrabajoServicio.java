@@ -73,7 +73,7 @@ public class TrabajoServicio {
         if (respuesta.isPresent()) {
             Proveedor proveedor = respuesta.get();
             List<Trabajo> listaTrabajosPorProveedor = new ArrayList<>();
-            listaTrabajosPorProveedor = trabajoRepositorio.buscarTrabajosPorProveedor(proveedor.getId());
+            listaTrabajosPorProveedor = trabajoRepositorio.buscarTrabajoPorProveedor(proveedor.getId());
             return listaTrabajosPorProveedor;
         }
         return null;

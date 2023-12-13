@@ -12,9 +12,9 @@
             <div class="accordion-body">
 
                 <table class="table-listas table table-secondary table-hover table-responsive align-middle">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
-                            <th scope="col">Id Proveedor</th>
+                            <th scope="col" style="visibility:collapse; display:none;">Id Proveedor</th>
                             <th scope="col">Imagen</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Email</th>
@@ -25,12 +25,12 @@
                             <th scope="col">Rubro</th>
                             <th scope="col">Rol</th>
                             <th scope="col">Alta</th>
-                            <th scope="col" sec:authorize="hasRole('ADMIN')">Eliminar</th>
+                            <th scope="col">Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody th:each="proveedor : ${proveedores}">
+                    <tbody th:each="proveedor : ${proveedores}" class="text-center">
                         <tr>
-                            <td th:text="${proveedor.id}"></td>
+                            <td th:text="${proveedor.id}" style="visibility:collapse; display:none;"></td>
                             <td <a>
                                 <img th:if="${proveedor.imagen != null}" class="logo"
                                     th:src="@{/imagen/perfil/__${proveedor.id}__}"
@@ -47,8 +47,10 @@
                             <td th:text="${proveedor.rol}"></td>
                             <td th:text="${proveedor.alta}"></td>
                             <td>
-                                <a th:href="@{/perfil/__${proveedor.id}__}"><i
-                                        class="fas fa-feather-alt"></i>Eliminar</a>
+                                <form th:action="@{/admin/eliminarProveedor/__${proveedor.id}__}" method="post">
+                                    <button class="btn btn-outline-danger" type="submit">Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
