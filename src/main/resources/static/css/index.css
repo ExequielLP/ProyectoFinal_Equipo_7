@@ -8,10 +8,10 @@ body, .metricas{
 
 .elementosNav{
     display: flex;
-    width: 30%;
+    width: 25%;
     justify-content: space-around;
     color: #37474f;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .elementos{

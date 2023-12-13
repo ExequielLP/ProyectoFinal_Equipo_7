@@ -15,7 +15,7 @@
                     <div class="form-group my-3">
                         <label for="servicio">Seleccione Servicio</label>
                         <select name="servicio" class="form-control" >
-                            <option th:each="rubros : ${rubro}"
+                            <option th:each="rubros : ${listaRubro}"
                                     th:value="${rubros}" 
                                     th:text="${rubros}"
                                     th:selected="false"

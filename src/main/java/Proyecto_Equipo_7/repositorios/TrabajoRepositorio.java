@@ -1,5 +1,6 @@
 package Proyecto_Equipo_7.repositorios;
 
+import Proyecto_Equipo_7.entidades.Proveedor;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +19,11 @@ public interface TrabajoRepositorio extends JpaRepository<Trabajo, String> {
     
       @Query("SELECT t FROM Trabajo t WHERE t.terminado = 0")
     public List<Trabajo> listarTrabajosPorCalificar();
+    
+     @Query("SELECT t.proveedor FROM Trabajo t WHERE t.id = :id")
+    public Proveedor buscarProveedorPorIdDeTrabajo(@Param("id") String id);
+    
+    @Query(nativeQuery = true, value = "SELECT * FROM trabajo t LEFT JOIN proveedor p ON p.id = t.proveedor.id WHERE t.id = :id")
+    public Trabajo findByIdWithProveedores(@Param("id") String id);
 
 }
