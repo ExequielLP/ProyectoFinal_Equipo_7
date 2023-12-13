@@ -1,44 +1,55 @@
-    <div class="accordion " id="accordionPanelsStayOpenExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                    aria-controls="panelsStayOpen-collapseThree">
-                    LISTA TRABAJOS
-                </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen-headingThree">
-                <div class="accordion-body">
+<div class="accordion " id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseThree">
+                LISTA TRABAJOS
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
 
-                    <table class="table table-secondary table-hover table-responsive align-middle">
-                        <thead class="text-center">
-                            <tr>
-                                <th scope="col" style="visibility:collapse; display:none;">Id Trabajo</th>
-                                <th scope="col">Usuario Contratante</th>
-                                <th scope="col">Proveedor</th>
-                                <th scope="col">Terminado</th>
-                                <th scope="col">Alta</th>
-                                <th scope="col">Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody th:each="trabajo : ${trabajos}" class="text-center">
-                            <tr>
-                                <td th:text="${trabajo.id}" style="visibility:collapse; display:none;"></td>
-                                <td th:text="${trabajo.usuario.email}"></td>
-                                <td th:text="${trabajo.proveedor.email}"></td>
-                                <td th:text="${trabajo.terminado}"></td>
-                                <td th:text="${trabajo.alta}"></td>
-                                <td>
-                                    <form th:action="@{/admin/eliminarTrabajo/__${trabajo.id}__}" method="post">
-                                        <button class="btn btn-outline-danger" type="submit">Eliminar
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table class="table table-secondary table-hover table-responsive align-middle">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col" style="visibility:collapse; display:none;">Id Trabajo</th>
+                            <th scope="col">Usuario Contratante</th>
+                            <th scope="col">Proveedor</th>
+                            <th scope="col">Terminado</th>
+                            <th scope="col">Alta</th>
+                            <th scope="col">Puntaje del Proveedor</th>
+                             <th scope="col">Comentario del Usuario</th>
+                            <th scope="col">Dar de baja </th>
+                            <th scope="col">Eliminar Comentario </th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="trabajo : ${trabajos}" class="text-center">
+<tr>
+                            <td th:text="${trabajo.id}" style="visibility:collapse; display:none;"></td>
+                            <td th:text="${trabajo.usuario.email}"></td>
+                            <td th:text="${trabajo.proveedor.email}"></td>
+                            <td th:text="${trabajo.terminado}"></td>
+                            <td th:text="${trabajo.alta}"></td>
+                            <td th:text="${trabajo.proveedor.calificacion}"></td>
+                             <td th:text="${trabajo.comentario}"></td>
+                            <td>
+                                <form th:action="@{/admin/eliminarTrabajo/__${trabajo.id}__}" method="post">
+                                    <button class="btn btn-outline-danger" type="submit">Dar de baja
+                                    </button>
+                                </form>
+                            </td>
+                             <td>
+                                <form th:action="@{/admin/eliminarComentario/__${trabajo.id}__}" method="post">
+                                    <button class="btn btn-outline-danger" type="submit">Eliminar Comentario
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>

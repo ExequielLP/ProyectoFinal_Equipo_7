@@ -1,10 +1,10 @@
-  <div class="modal fade" id="modalCalificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" th:if="eze!= null" id="modalCalificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body contenedor-calificacion">
           <div class="modal-header">
           <h2>CALIFICACION</h2></div>
-          <form class="formulario p-2" th:action="@{/usuario/calificar}" method="POST">
+          <form class="formulario p-2" th:action="@{/usuario/calificar}" method="POST" enctype="multipart/form-data">
             <h5>
               Considera el 1 como puntaje más bajo y el 5 como el mejor
               trabajo
@@ -21,10 +21,8 @@
             <br><br>
             <label for="comentario">Comentanos mas acerca de tu experiencia con este proveedor</label>
             <textarea class="comentario-calificacion" name="comentario" id="comentario" cols="60" rows="10"></textarea> <br>
-
-            <input type="hidden" name="idTrabajo" th:value="${idTrabajo}" />
-            <input type="hidden" name="idProveedor" th:value="${idProveedor}" />
-
+            <input name="idTrabajo" th:value="${porCalificar.id}" />
+            <input name="idProveedor" th:value="${porCalificar.proveedor.id}" />
             <button class="boton-calificacion" type="submit">Confirmar calificacion</button>
             <hr style="border-top: dotted 4px;">
           </form>

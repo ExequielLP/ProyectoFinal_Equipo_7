@@ -110,4 +110,11 @@ public class AdminControlador {
 
         return "redirect:/admin/dashboard";
     }
+
+    @PostMapping("/eliminarComentario/{id}")
+    public String eliminarComentario(@PathVariable String id, ModelMap modelo) {
+        trabajoServicio.eliminarComentario(id);
+
+        return "redirect:/admin/dashboard";
+    }
 }

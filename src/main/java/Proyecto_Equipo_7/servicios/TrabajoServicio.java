@@ -110,5 +110,16 @@ public class TrabajoServicio {
 
     }
 
+    @Transactional
+    public void eliminarComentario(String id) {
+        Optional<Trabajo> respuesta = trabajoRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Trabajo trabajo = respuesta.get();
+            trabajo.setComentario(" ");
+            trabajoRepositorio.save(trabajo);
+        }
+
+    }
+
 }
 

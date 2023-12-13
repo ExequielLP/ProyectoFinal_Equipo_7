@@ -32,13 +32,13 @@
                             <td th:text="${porCalificar.terminado}"></td>
                             <td th:text="${porCalificar.alta}"></td>
                             <td>
-                                <a th:href="@{/usuario/calificar/__${porCalificar.proveedor.id}__/__${porCalificar.id}__}"
-                                    class="btn btn-outline-success" type="button" data-bs-toggle="modal"
+                                <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal"
                                     data-bs-target="#modalCalificar">
                                     CALIFICAR
-                                </a>
+                                </button>
                             </td>
                         </tr>
+                        <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/modalCalificar :: div"></div>
                     </tbody>
                 </table>
             </div>
