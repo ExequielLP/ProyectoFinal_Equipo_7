@@ -177,4 +177,8 @@ public String buscarProveedorPorNombre(@RequestParam String palabra, Model model
 
    
 }
+ @GetMapping("/sobreNosotros")
+    public String sobreNosotros(){
+        return "sobreNosotros.html";
+    }
 }

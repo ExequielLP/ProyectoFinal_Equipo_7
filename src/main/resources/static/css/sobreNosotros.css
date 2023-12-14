@@ -1,0 +1,124 @@
+body{
+    background:linear-gradient(160deg,white,45%,#D3D3D3,grey,black);
+}
+
+section{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-cabecera{
+    margin-top: 10px;
+    width: 95%;
+    height:fit-content;
+    border-radius: 1rem;
+    background-image: url(../img/chacrasDeCoria.jpeg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    border: 1px black solid;
+}
+
+.contenido-cabecera{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.726);
+    text-align: center;
+    border-radius: inherit;
+}
+
+.texto-general{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.contenedor-apartados{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 35px;
+    width: 95%;
+    height: 350px;
+    background-color: rgba(255, 255, 255, 0.712);
+    border-radius: 1rem;
+    border: 1px black solid;
+}
+
+.contenedor-apartados-b{
+    margin-top: 35px;
+    width: 95%;
+    text-align: center;
+    height: fit-content;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.712);
+    border-radius: 1rem;
+    border: 1px black solid;
+}
+
+.icono{
+    font-size: 70px;
+}
+
+.icono-link{
+    margin:10px;
+}
+
+.integrantes{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px; 
+    justify-content: space-around;
+}
+
+.card-body{
+    border: 1px black solid;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.card{
+    margin-top: 15px;
+    border: 1px black solid !important;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.contenedor-integrantes{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: inherit;
+    height: inherit;
+}
+
+
+.contenedor-texto{
+    width: 60%;
+    height: 100%;
+    padding: 20px;
+}
+
+.contenedor-imagen{
+    width: 40%;
+    height: 100%;
+}
+
+.imagen{
+    width: 100%;
+    height: 100%;
+}
+
+.scroll{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.radius-derecha{
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.radius-izquierda{
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}

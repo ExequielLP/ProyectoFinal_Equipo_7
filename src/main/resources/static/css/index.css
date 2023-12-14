@@ -4,9 +4,30 @@ body,
 }
 
 .navbar {
-    font-size: large;
-    font-weight: bold;
+    font-family: "Segoe UI";
+    font-size: small;
+    font-weight: 500;
     color: whitesmoke;
+    letter-spacing: 0.25em;
+    word-spacing: 0.35em;
+}
+
+.dropdown-item{
+    font-family: "Segoe UI";
+    font-size: small;
+    font-weight: 500;
+    color: whitesmoke;
+    letter-spacing: 0.25em;
+    word-spacing: 0.35em;
+}
+
+#buscador{
+    font-family: "Segoe UI";
+    font-size: small;
+    font-weight: 500;
+    color: whitesmoke;
+    letter-spacing: 0.25em;
+    word-spacing: 0.35em;
 }
 
 .navbar a:hover {
@@ -19,7 +40,9 @@ body,
     width: 30%;
     justify-content: space-around;
     color: #37474f;
-    font-weight: 700;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    word-spacing: 0.35em;
 }
 
 .elementos {
@@ -42,9 +65,12 @@ body,
 }
 
 .footer li a{
-    font-size: large;
-    font-weight: bold;
-    color: rgb(233, 230, 230);
+    font-family: "Segoe UI";
+    font-size: small;
+    font-weight: 500;
+    color: whitesmoke;
+    letter-spacing: 0.25em;
+    word-spacing: 0.35em;
 }
 
 .footer a:hover {
@@ -296,14 +322,14 @@ body,
 
 /*---Formulario CARGAR RUBRO ------*/
 .seleccionarArchivo .inputArchivo:hover{
-border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 /*---VISTA SOLO PROVEEDOR------*/
 
 .exitoMassaje{
     background-color: rgba(0, 128, 0, 0.603);
- 
+
 }
 .messageError {
     background-color: rgba(255, 0, 0, 0.637);
@@ -311,7 +337,47 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 
 }
 
- .fondoCard {
-   background-color: transparent;
+.fondoCard {
+    background-color: transparent;
     mix-blend-mode: multiply;
- }
+}
+/*-----FORMULARIOS Y MODALES------*/
+#form{
+    font-family: "Segoe UI";
+    font-size: small;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    letter-spacing: 0.25em;
+    word-spacing: 0.35em;    
+}
+
+.file-select {
+  position: relative;
+  display: inline-block;
+}
+
+.file-select::before {
+  background-color: #198754;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'SELECCIONAR'; /* testo por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;
+}
+
+#src-file1::before {
+  content: 'SELECCIONAR';
+}

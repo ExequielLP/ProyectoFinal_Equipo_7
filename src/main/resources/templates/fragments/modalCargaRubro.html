@@ -12,11 +12,10 @@
                         <input type="text" name="rubro" class="form-control rounded-3" placeholder="Cargue un oficio u profecion" required>
                         <label for="floatingInput">Rubro</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="file" name="archivo" class="form-control rounded-3" placeholder="Seleccione una imagen" required>
-                        <label for="floatingPassword">Imagen</label>
-                    </div>
-                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Guardar</button>
+                     <div class="file-select d-flex justify-content-center" id="src-file">
+                        <input type="file" name="archivo" aria-label="Archivo" th:value="${imagen}">
+                    </div>  
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-success" type="submit">Guardar</button>
 
                 </form>
             </div>

@@ -12,9 +12,8 @@
             <div class="accordion-body">
 
                 <table class="table table-secondary table-hover align-middle">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
-                            <th scope="col">Id Trabajo</th>
                             <th scope="col">Nombre Usuario</th>
                             <th scope="col">Email Usuario</th>
                             <th scope="col">Terminado</th>
@@ -22,16 +21,15 @@
                             <th scope="col" sec:authorize="hasRole('PROVEEDOR')">Finalizar trabajo</th>
                         </tr>
                     </thead>
-                    <tbody th:each="listaTrabajosPorProveedor : ${listaTrabajosPorProveedor}">
+                    <tbody class="text-center" th:each="listaTrabajosPorProveedor : ${listaTrabajosPorProveedor}">
                         <tr>
-                            <td th:text="${listaTrabajosPorProveedor.id}"></td>
                             <td th:text="${listaTrabajosPorProveedor.usuario.nombre}"></td>
                             <td th:text="${listaTrabajosPorProveedor.usuario.email}"></td>
                             <td th:text="${listaTrabajosPorProveedor.terminado}"></td>
                             <td th:text="${listaTrabajosPorProveedor.alta}"></td>
                             <td>
                                 <a th:href="@{/proveedor/finalizarTrabajo/__${listaTrabajosPorProveedor.id}__}"><i
-                                        class="fas fa-feather-alt"></i>Finalizado</a>
+                                        class="fas fa-feather-alt  btn btn-outline-success"></i>Finalizado</a>
                             </td>
                         </tr>
                     </tbody>

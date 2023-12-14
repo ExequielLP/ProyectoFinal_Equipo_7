@@ -14,6 +14,7 @@ import Proyecto_Equipo_7.servicios.ProveedorServicio;
 import Proyecto_Equipo_7.servicios.RubroServicio;
 import Proyecto_Equipo_7.servicios.TrabajoServicio;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/trabajo")
@@ -66,12 +67,12 @@ public class TrabajoControlador {
     }
 
     @GetMapping("/persistirTrabajo/{id}")
-    public String persistirTrabajo(@PathVariable String id, HttpSession session, ModelMap modelo) {
+    public String persistirTrabajo(@PathVariable String id, HttpSession session,RedirectAttributes attributes, ModelMap modelo) {
         try {
             // Usuario usuario = (Usuario) session.getAttribute("usuarioSession");
             // usuario.getId();
             trabajoServicio.crearTrabajo(session, id);
-            modelo.put("exito", "Servicio contratado exitosamente");
+           attributes.addFlashAttribute("exito", "Servicio contratado exitosamente");
             return "redirect:/inicio";
         } catch (Exception e) {
             modelo.put("error", "Error al contratar servicio");
@@ -90,11 +91,11 @@ public class TrabajoControlador {
     }
 
     @PostMapping("/persistirTrabajoContratoTrabajo")
-    public String persistirTrabajoContratoTrabajo(@PathVariable String idProveedor,HttpSession session, ModelMap modelo) {
+    public String persistirTrabajoContratoTrabajo(@PathVariable String idProveedor,HttpSession session,RedirectAttributes attributes, ModelMap modelo) {
         try {
             
             trabajoServicio.crearTrabajo(session, idProveedor);
-            modelo.put("exito", "Servicio contratado exitosamente");
+            attributes.addFlashAttribute("exito", "Servicio contratado exitosamente");
             return "redirect:/inicio";
         } catch (Exception e) {
             modelo.put("error", "Error al contratar servicio");

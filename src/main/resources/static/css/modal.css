@@ -1,0 +1,39 @@
+.modal-content{
+    font-family: "Segoe UI";
+    font-size: small;
+    font-weight: 300;
+    color: rgb(51, 51, 51);
+    letter-spacing: 0.25em;
+    word-spacing: 0.35em;
+}
+.file-select {
+  position: relative;
+  display: inline-block;
+}
+
+.file-select::before {
+  background-color: #198754;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'CARGAR FOTO AQUI'; /* testo por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-bottom: 8px;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;
+}
+
+#src-file1::before {
+  content: 'SELECCIONAR';
+}

@@ -84,6 +84,7 @@ public class UsuarioControlador {
             proveedor.setCalificacion(calificacion);
             proveedorRepositorio.save(proveedor);
         }
+        redirectAttributes.addFlashAttribute("exito", "GRACIAS POR CALIFICAR!");
         return "redirect:/inicio";
     }
 }

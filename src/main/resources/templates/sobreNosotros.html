@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <head th:replace="/fragments/head :: head"> </head>
+  <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/sobreNosotros.css">
+</head>
+<body>
+  <header data-bs-theme="dark">
+    <nav th:replace="/fragments/navbar :: nav"></nav>
+     <link rel="stylesheet" type="text/css" href="../../static/css/sobreNosotros.css" />
+</header>
+
+<section>
+  <div class="contenedor-cabecera">
+    <div class="contenido-cabecera">
+      <h1>¡Bienvenidos!</h1> <hr style="border: black solid 2px;">
+      <h5 class="mt-4">
+¡Bienvenido a nuestra aplicación de servicios para Chacras de Coria! <br> <br>
+
+En este rincón digital, encontrarás mucho más que una simple plataforma de búsqueda de carpinteros, plomeros y otros profesionales. Aquí, te invitamos a descubrir un mundo de soluciones a medida para todas tus necesidades en el hogar.
+
+Imagina un espacio donde tus ideas cobran vida gracias a la destreza de artesanos locales, donde cada problema se convierte en un desafío emocionante para nuestros especialistas en reparaciones y mejoras del hogar. <br> <br>
+
+En Chacras de Coria, la calidad se encuentra con la calidez humana. Nuestra comunidad de expertos está lista para brindarte un servicio excepcional, con la dedicación y el cuidado que mereces. ¿Necesitas renovar tu espacio vital? ¿Reparar algún desperfecto? ¡Estás en el lugar indicado!
+
+Explora, busca y encuentra al profesional perfecto para cada proyecto. ¡Bienvenido a un mundo de soluciones a tu medida en cada rincón de tu hogar en Chacras de Coria!
+      </h5> 
+      <hr style="border-top: rgb(16, 0, 240) dotted 10px; margin-top: 35px;">
+    </div>
+  </div>
+</section>
+
+<section class="texto-general">
+
+  <div class="contenedor-apartados-b">
+    <h2>Nuestros integrantes</h2> <hr>
+    <div class="integrantes">
+    <div class="card" style="width: 18rem;">
+      <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Exequiel Camporesi</h4>
+        <p class="card-text">Lider Tecnico</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Ezequiel Arce</h4>
+        <p class="card-text">Agile Delivery Manager</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Mariano Benegas</h4>
+        <p class="card-text">Scrum Master</p>
+      </div>
+    </div>
+  </div> <br>
+  <div class="integrantes">
+    <div class="card" style="width: 18rem;">
+      <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Christian Taborda</h4>
+        <p class="card-text">Desarrollador Back End</p>
+      </div>
+    </div>
+
+
+<div class="card" style="width: 18rem;">
+  <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4 class="card-title">Francisco Niklison</h4>
+    <p class="card-text">Desarrollador Back End</p>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4 class="card-title">Luc-henry Nestor</h4>
+    <p class="card-text">Desarrollador Back End</p>
+  </div>
+</div>
+</div> <br>
+<div class="integrantes">
+<div class="card" style="width: 18rem;">
+  <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4 class="card-title">Martin Rey</h4>
+    <p class="card-text">Desarrollador Front End</p>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img src="../static/img/avatar.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4 class="card-title">Norberto Otero</h4>
+    <p class="card-text">Desarrollador Front End</p>
+  </div>
+</div>
+</div> <br> <hr>
+  </div>
+
+  <div class="contenedor-apartados-b">
+    <h2>Nuestras plataformas de contacto</h2> <hr>
+    <div class="contenedor-contactos">
+      <h4 class="mb-4">¿Queres contactarte con nosotros? Proba en nuestro formulario de <a th:href="@{/contacto}">contacto</a></h4>
+      <a class="icono-link" href="https://www.instagram.com/"><i class="fa-brands fa-instagram icono"></i></a>
+      <a class="icono-link" href="https://www.facebook.com/"><i class="fa-brands fa-facebook icono"></i></a>
+      <a class="icono-link" href="https://twitter.com/"><i class="fa-brands fa-x-twitter icono"></i></a>
+      <a class="icono-link" href="https://www.youtube.com/"><i class="fa-brands fa-youtube icono"></i></a>
+    </div>
+  </div>
+
+  <div class="contenedor-apartados">
+    <div class="contenedor-texto scroll radius-izquierda" >
+      <h2>¿Como surgio esta idea?</h2> <hr>
+      En el corazón de Chacras de Coria, nació una idea que buscaba unir la maestría artesanal de la región con la necesidad moderna de encontrar servicios confiables para el hogar. Inspirados por la rica tradición de habilidades locales y la comunidad vibrante que caracteriza a esta zona, nuestra aplicación de servicios emergió como un puente entre la excelencia artesanal y las demandas contemporáneas. <br><br>
+
+La belleza de las chacras, la hospitalidad de su gente y la riqueza de talentos fueron la chispa que encendió esta plataforma. Con la intención de preservar y celebrar la destreza local, nos propusimos conectar a los talentosos carpinteros, plomeros, electricistas y más, con aquellos que buscan soluciones expertas para sus hogares. <br><br>
+
+Desde la restauración de muebles con historia hasta la reparación de problemas urgentes en el hogar, nuestra app se ha convertido en un faro de confianza y calidad. Nos enorgullece ser el vínculo que une a aquellos que necesitan asistencia con aquellos cuyas manos hábiles transforman sueños en realidad. <br><br>
+
+Esta aplicación nació del amor por Chacras de Coria y la pasión por mantener viva su esencia artesanal. Únete a nosotros para descubrir un mundo de servicios personalizados, donde la dedicación y el talento local se encuentran para embellecer y solucionar cada rincón de tus espacios. ¡Bienvenido a nuestra comunidad de habilidades y confianza en Chacras de Coria!
+    </div>
+    <div class="contenedor-imagen">
+      <img class="imagen radius-derecha"  src="../static/img/2895242.jpg" alt="">
+    </div>
+  </div> 
+
+  <div class="contenedor-apartados">
+    <div class="contenedor-imagen">
+      <img src="../static/img/3657674.jpg"  alt="" class="imagen radius-izquierda">
+    </div>
+    <div class="contenedor-texto scroll radius-derecha">
+      <h2>¿Cuales son nuestros objetivos?</h2> <hr>
+      En nuestra búsqueda constante por mejorar y crecer, nos proyectamos hacia un futuro emocionante para nuestra app de servicios en Chacras de Coria. Nuestros objetivos se alinean con el compromiso de seguir siendo un faro de calidad, confianza y comunidad en el mundo de las soluciones para el hogar. <br> <br>
+
+<strong>Expansión de Servicios:</strong> Buscamos ampliar nuestra red de profesionales para ofrecer una gama más amplia de servicios que abarquen todas las necesidades del hogar, desde jardinería hasta diseño de interiores, manteniendo siempre nuestra premisa de calidad y habilidad artesanal.<br> <br>
+
+<strong>Experiencia del Usuario Mejorada:</strong> Nos esforzamos por ofrecer una experiencia intuitiva y satisfactoria a nuestros usuarios. Estamos constantemente actualizando y mejorando la aplicación para garantizar una navegación sencilla, opciones de búsqueda más precisas y una interacción más fluida con nuestros profesionales.<br> <br>
+
+<strong>Inclusión Comunitaria:</strong> Queremos fortalecer los lazos con la comunidad de Chacras de Coria. Estamos comprometidos con iniciativas que apoyen a los artesanos locales, fomenten la sostenibilidad y promuevan un impacto positivo en nuestra comunidad.<br> <br>
+
+<strong>Innovación Tecnológica:</strong> Buscamos integrar nuevas tecnologías que mejoren la eficiencia de nuestros servicios, como herramientas de programación y comunicación avanzadas para una interacción más rápida y efectiva entre usuarios y profesionales.<br> <br>
+
+<strong>Sostenibilidad Ambiental:</strong> Nos comprometemos a promover prácticas sostenibles dentro de nuestros servicios, incentivando el uso de materiales ecológicos y la implementación de técnicas que reduzcan el impacto ambiental en cada proyecto.<br> <br>
+
+<strong>Calidad y Transparencia:</strong> Seguiremos priorizando la calidad en cada servicio brindado y la transparencia en todas nuestras operaciones, garantizando la satisfacción del cliente y la confianza en cada interacción.<br> <br>
+
+Estos objetivos representan nuestro compromiso continuo de evolucionar y adaptarnos a las necesidades cambiantes, manteniendo siempre nuestra esencia arraigada en la excelencia, la comunidad y el cuidado por el hogar en Chacras de Coria.
+    </div>
+  </div>
+
+  <div class="contenedor-apartados">
+    <div class="contenedor-texto scroll radius-izquierda">
+      <h2>Preguntas Frecuentes</h2> <hr>
+      <strong>1. ¿Cómo funciona la app para encontrar un servicio en Chacras de Coria?</strong> <br>
+Nuestra app es fácil de usar. Simplemente selecciona el tipo de servicio que necesitas, describe tu solicitud y podrás ver una lista de profesionales disponibles en Chacras de Coria. Puedes elegir al que mejor se adapte a tus necesidades.<br> <br>
+
+<strong>2. ¿Los profesionales están certificados y son confiables?</strong> <br>
+Sí, todos los profesionales que forman parte de nuestra plataforma pasan por un proceso de selección riguroso. Verificamos sus habilidades, experiencia y antecedentes para asegurar la calidad y confiabilidad del servicio.<br> <br>
+
+<strong>4. ¿Qué sucede si no estoy satisfecho con el servicio?</strong> <br>
+La satisfacción del cliente es nuestra prioridad. Si no estás satisfecho con el servicio recibido, contáctanos de inmediato. Estamos comprometidos a resolver cualquier problema y garantizar tu satisfacción.<br> <br>
+
+<strong>5. ¿Los precios de los servicios son fijos o pueden variar?</strong> <br>
+Los precios pueden variar según la complejidad del trabajo y otros factores. Los profesionales suelen proporcionar estimaciones basadas en la descripción que proveas.<br> <br>
+
+<strong>6. ¿Ofrecen garantía en los servicios prestados?</strong> <br>
+Sí, muchos de nuestros profesionales ofrecen garantía en sus servicios. La duración de la garantía puede variar según el tipo de trabajo realizado. Te recomendamos discutir los detalles con el profesional antes de comenzar.<br> <br>
+
+<strong>7. ¿Puedo programar servicios para un horario específico?</strong> <br>
+¡Por supuesto! Puedes acordar un horario conveniente con el profesional una vez que hayas seleccionado el servicio.<br> <br>
+
+<strong>8. ¿Cómo puedo contactar al profesional una vez que haya aceptado mi solicitud?</strong> <br>
+Una vez que hayas seleccionado al profesional, podrás comunicarte con él a través de la app. Allí encontrarás un chat o información de contacto para coordinar detalles adicionales.<br> <br>
+
+<strong>9. ¿Qué tipos de servicios ofrecen además de carpintería y plomería?</strong> <br>
+Ofrecemos una amplia gama de servicios para el hogar, que incluyen electricidad, pintura, reparaciones generales, diseño de interiores, jardinería, entre otros. Si necesitas algo específico, ¡pregúntanos!<br> <br>
+
+<strong>10. ¿Cómo puedo dejar una reseña sobre el servicio recibido?</strong> <br>
+Una vez completado el servicio, podrás dejar una reseña y calificación en la app. Tu opinión es importante para nosotros y para la comunidad, así que no dudes en compartir tu experiencia.<br> <br>
+    </div>
+    <div class="contenedor-imagen">
+      <img class="imagen radius-derecha"  src="../static/img/preguntas.png" alt="">
+    </div>
+  </div>
+
+</section>
+
+<div class="container">
+  <footer th:replace="/fragments/footer :: footer" </footer>
+</div>
+
+<script src="https://kit.fontawesome.com/4d7920e24b.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+crossorigin="anonymous"></script>
+
+</body>
+</html>
