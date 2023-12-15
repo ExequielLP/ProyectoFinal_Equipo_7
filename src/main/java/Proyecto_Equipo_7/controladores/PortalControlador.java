@@ -148,13 +148,8 @@ public class PortalControlador {
     @RequestMapping(value = "/filtroProveedores/{id}", method = { RequestMethod.GET, RequestMethod.POST })
     public String devovlerProveedores(@PathVariable String id, ModelMap modelo) {
         List<Proveedor> proFiltradoList = proveedorServicio.listaProveedorPorRubro(id);
-        System.out.println("..................................");
-        System.out.println(proFiltradoList);
-        System.out.println("..................................");
-        modelo.put("proFiltrados", proFiltradoList);
-        System.out.println("..................................");
-        System.out.println(proFiltradoList);
-        System.out.println("..................................");
+          
+        modelo.put("proFiltrados3", proFiltradoList);
         return "listarProveedoresPorCards.html";
     }
 
