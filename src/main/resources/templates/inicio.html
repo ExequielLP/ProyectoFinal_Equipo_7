@@ -66,12 +66,13 @@
 
                 let  elementos = document.getElementById("resultadoo")
 
-                elementos.innerText = "COSTO DE SERVICIO TOTAL\n $$" + resultad;
-                if (resultado.innerText.trim() != "") {
-                    resultado.style.display = "block"; // Ocultar si está vacío
-                } else if(resultado.innerText.trim() === "") {
-                    resultado.style.display = "none"; // Mostrar si tiene contenido
-                }
+               
+                if (elementos.innerText.trim() === '') {
+                    elementos.innerText = " \n TOTAL $" + resultad;
+                     elementos.style.display = 'inline-block';
+                     elementos.classList.add('d-flex', 'justify-content-center', 'align-items-center');
+                }else  elementos.innerText = "\n TOTAL $" + resultad;
+
 
             }
         </script>

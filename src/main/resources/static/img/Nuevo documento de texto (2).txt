@@ -1,0 +1,74 @@
+ <main class="container justify-content-center">
+        <div class="row mt-3">
+            <div class="col-xl-4">               
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header" id="form">MI PERFIL</div>
+                    <div class="card-body text-center">                    
+                        <img class="img-account-profile rounded-circle mb-2" th:src="@{/imagen/perfil/__${session.usuarioSession.id}__}" alt="">
+                        <h4 th:text="${session.usuarioSession.nombre}"></h4>
+                        <div class="small font-italic text-muted mb-4" id="form">JPG o PNG maximo 5 MB</div>
+                        <div class="file-select" id="src-file">
+                            <input type="file" name="archivo" aria-label="Archivo" th:value="${session.usuarioSession.imagen}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card mb-4">
+                    <div class="card-header" id="form">MIS DATOS / MODIFICAR</div>
+                    <div class="card-body">
+                        <form th:action="@{/proveedor/perfil/__${session.usuarioSession.id}__}" method="POST">  
+                            <input hidden th:value="${id}" name="id" >
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername" id="form">USER / EMAIL</label>
+                                <input class="form-control" id="inputUsername" type="email" name="email" th:value="${session.usuarioSession.email}" placeholder="Usuario ingrese nuevo correo electronico">
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputFirstName" id="form">NOMBRE</label>
+                                    <input class="form-control" id="inputFirstName" type="text" name="nombre" th:value="${session.usuarioSession.nombre}" placeholder="Ingrese nuevo nombre">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation" id="form">DOMICILIO</label>
+                                    <input class="form-control" id="inputLocation" type="text" name="domicilio" th:value="${session.usuarioSession.domicilio}" placeholder="Ingrese un nuevo domicilio">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">                                
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPhone" id="form">TELEFONO</label>
+                                    <input class="form-control" id="inputPhone" type="tel" name="telefono" th:value="${session.usuarioSession.telefono}" placeholder="Ingrese un nuevo numero de contacto">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputHonor" id="form">HONORARIOS</label>
+                                    <input class="form-control" id="inputHonor" type="number" name="honorario" th:value="${session.usuarioSession.honorario}" placeholder="Ingrese un valor a cobrar por hora">
+                                </div>
+                            </div>                             
+                            <div class="mb-3">                                  
+                                <label class="small mb-1" for="servicio" id="form">SERVICIO / RUBRO / PROFESION</label>
+                                <select name="rubro" class="form-control">
+                                    <option th:each="listaRubro : ${listaRubro}" th:value="${listaRubro.id}"
+                                            th:text="${listaRubro.rubro}" />
+                                </select>
+                            </div>
+                            <div class="row gx-3 mb-3">                                
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPassword" id="form">PASSWORD</label>
+                                    <input class="form-control" id="inputPassword" type="password" name="password"  placeholder="New password">
+                                </div>                               
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPassword2" id="form">REPITA PASSWORD</label>
+                                    <input class="form-control" id="inputPassword2" type="password" name="password2" placeholder="Repita password">
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-outline-success" type="submit" id="form">GUARDAR CAMBIOS</button>
+                                <a class="btn btn-outline-success" href="/inicio" role="button" id="form">REGRESAR</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
