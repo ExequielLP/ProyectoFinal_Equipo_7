@@ -199,16 +199,20 @@ body,
 
 
 .contenidoDiv{
-   position: fixed;
-            bottom:  50px; /* Ajusta la posición vertical según tu preferencia */
-            right: 20px; /* Ajusta la posición horizontal según tu preferencia */
-            width: 250px;
-            height: 80px;
-            border: 2px solid #000;
-            border-radius: 8px;
-            word-wrap: break-word;
-            
-             background-repeat: no-repeat; /* Para evitar la repetición de la imagen */
-    background-size: cover;
+  position: fixed;
+    bottom: 40px;
+    right: 15px;
+    width: 240px;
+    height: 170px;
+    font-size: 9px
     
+    border-radius: 8px;
+    word-wrap: break-word;
+    background-image: url('../img/bolsa2.png'); /* Reemplaza con la ruta de tu imagen */
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: black; /* Ajusta el color del texto para que sea visible sobre la imagen */
+    background-position: center;
+  
+     
 }
