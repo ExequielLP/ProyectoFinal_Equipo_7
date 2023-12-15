@@ -29,9 +29,9 @@
     <div class="container-fluid justify-content-center text-center">
         <!-- CARD PROVEEDORES -->
         <h2 sec:authorize="hasRole('ROLE_USER')">Nuestros proveedores te estan esperando!</h2>
-        <div class="contenedorRubros">
+        
             <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardProveedor :: div"></div>
-        </div>
+        
     </div>
     <!--SECTION SOLO PARA PROVEEDORES-->
     <section sec:authorize="hasRole('ROLE_PROVEEDOR')" class="container">

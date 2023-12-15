@@ -164,7 +164,7 @@ public class PortalControlador {
 public String buscarProveedorPorNombre(@RequestParam String palabra, Model model) {
     List<Proveedor> listaProveedoresPorRubro = proveedorRepositorio.buscarProveedorPorPalabraRubro(palabra);
     List<Proveedor> listaProveedoresPorNombre = proveedorRepositorio.buscarProveedorPorNombre(palabra);
-
+    System.out.println("");
 //    if (!listaProveedoresPorRubro.isEmpty()) {
         model.addAttribute("proFiltrados", listaProveedoresPorRubro);
         model.addAttribute("proMensaje", "Selecciona nuestros Proveedores por su rubro");
@@ -172,11 +172,16 @@ public String buscarProveedorPorNombre(@RequestParam String palabra, Model model
 //    } else if (!listaProveedoresPorNombre.isEmpty()) {
         model.addAttribute("proFiltrados1", listaProveedoresPorNombre);
           model.addAttribute("proMensaje1", "Selecciona nuestros Proveedores por su nombre");
+          
+           System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+           System.out.println(listaProveedoresPorRubro);
         return "listarProveedoresPorCards.html";
 //    }
 
-   
+    
 }
+
+
  @GetMapping("/sobreNosotros")
     public String sobreNosotros(){
         return "sobreNosotros.html";

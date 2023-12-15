@@ -15,9 +15,18 @@
         <nav th:replace="/fragments/navbar :: nav"></nav>
     </header>
     <div class="bodyCardsProveedoresPorRubro">
-        <section class="container-fluid justify-content-center text-center text-white my-5">
+        <section class="container-fluid justify-content-center text-center text-black my-5">
             <!-- CARD PROVEEDORES x RUBROO -->
-            <h1 class="titleCardProveedores my-5">Contrata un proveedor</h1>
+            <h1 class="titleInicio mb-5">CONTRATA UN PROVEEDOR! 🔥🔥</h1>
+            
+            <div class="d-flex justify-content-center w-100">
+                <form th:if="${session.usuarioSession != null}" class="d-flex align-items-center w-50" role="search" th:action="@{/busqueda}    "  method="GET">
+
+                <input  id="buscador" class="form-control me-2 text-black"  placeholder="Buscar" aria-label="Search" name="palabra" type="text" >
+                <button id="buscador" class="btn btn-success" type="submit">BUSCAR</button>
+            </form> 
+            </div>
+
             <div sec:authorize="hasRole('ROLE_USER')" th:replace="/fragments/cardProveedorPorRubro :: div"></div>
         </section>
 

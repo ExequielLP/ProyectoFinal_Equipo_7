@@ -1,18 +1,18 @@
-<div class="container" style="margin-top:50px; " id="cardProveedor">
-  <div class="row">
-    <div class="col-md-3 py-3" th:each="listaProveedor:${listaProveedor}">
-      <div class="card-sl">
-        <div class="card-image">
-          <img th:if="${listaProveedor.imagen != null}" class="card-image"
-            th:src="@{/imagen/perfil/__${listaProveedor.id}__}" width="auto" height="180">
+<div   class="container" style="margin-top:50px;" id="cardProveedor">
+        <div class="row g-3 justify-content-center p-3">
+         
+            <div class="col-md-4 text-truncate" th:each="listaProveedor:${listaProveedor}">
+                <div class="card-sl rounded" style="width: 18rem;">
+                    <div class="card">
+                        <img th:if="${listaProveedor.imagen != null}" th:src="@{/imagen/perfil/__${listaProveedor.id}__}"  />
+                    </div>
+                    <!--Agregar puntaje a la etiqueta i th:text="${proFiltrado.calificacion}"-->
+                     <a class="card-action" href="#"><i class="fa fa-heart"  th:text="${listaProveedor.calificacion}"></i></a>
+                    <div class="card-title text-truncate text-dark text-center" style="max-width: 100%;" th:text="${listaProveedor.nombre}"></div>
+                    <div class="card-text" th:text="${listaProveedor.rubro.rubro}"></div>
+                    <div class="card-text" th:text="'$ '+${listaProveedor.honorario}"></div>
+                    <a th:href="@{/trabajo/persistirTrabajo/__${listaProveedor.id}__}" class="card-button">Contratar</a>
+                </div>
+            </div>
         </div>
-        <a class="card-action" href="#"><i class="fa fa-heart"  th:text="${listaProveedor.calificacion}"></i></a>
-        <div class="card-heading" th:text="${listaProveedor.nombre}">Car title</div>
-        <div class="card-text" th:text="${listaProveedor.rubro.rubro}"></div>
-        <div class="card-text" th:text="'$ '+${listaProveedor.honorario}"></div>
-        <a class="card-button" th:href="@{/trabajo/persistirTrabajo/__${listaProveedor.id}__}">Contratar</a>
-      </div>
     </div>
-  </div>
-</div>
-

@@ -1,15 +1,19 @@
 <div class="container-fluid d-flex justify-content-center">
-    <div th:if="${proFiltrados!=null}" class="container" style="margin-top:50px;">
+         
+       
+   
+<div  th:if="${proFiltrados!=null}" class="container" style="margin-top:50px;">
         <div class="row g-3 justify-content-center p-3">
             <h4  th:text="${proMensaje}" class="text-dark fw-bolder"></h4>
+             <img th:if="${proFiltrados.isEmpty()}" src="../../static/img/NoPorRubrooo.webp" class="card-img-top fondoCard w-50 h-auto" alt="..."/>
             <div class="col-md-4 text-truncate" th:each="proFiltrado : ${proFiltrados}">
                 <div class="card-sl">
                     <div class="card-image">
-                        <img th:src="@{/imagen/perfil/__${proFiltrado.id}__}" />
+                        <img class="img-fluid w-100" th:src="@{/imagen/perfil/__${proFiltrado.id}__}"/>
                     </div>
                     <!--Agregar puntaje a la etiqueta i th:text="${proFiltrado.calificacion}"-->
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading" th:text="${proFiltrado.nombre}"></div>
+                     <a class="card-action" href="#"><i class="fa fa-heart"  th:text="${proFiltrado.calificacion}"></i></a>
+                    <div class="card-title text-truncate text-dark text-center" style="max-width: 100%;" th:text="${proFiltrado.nombre}"></div>
                     <div class="card-text" th:text="${proFiltrado.rubro.rubro}"></div>
                     <div class="card-text" th:text=" '$ '+${proFiltrado.honorario}"></div>
                     <a th:href="@{/trabajo/persistirTrabajo/__${proFiltrado.id}__}" class="card-button">Contratar</a>
@@ -17,18 +21,19 @@
             </div>
         </div>
     </div>
-
+    
     <div  th:if="${proFiltrados1!=null}" class="container" style="margin-top:50px;">
         <div class="row g-3 justify-content-center p-3">
             <h4  th:text="${proMensaje1}" class="text-dark fw-bolder"></h4>
+            <img th:if="${proFiltrados1.isEmpty()}" src="../../static/img/NoPorNombre.webp" class="card-img-top fondoCard w-50 h-auto" alt="..."/>
             <div class="col-md-4 text-truncate" th:each="proFiltrado : ${proFiltrados1}">
                 <div class="card-sl">
                     <div class="card-image">
-                        <img th:src="@{/imagen/perfil/__${proFiltrado.id}__}"/>
+                        <img class="img-fluid w-100" th:src="@{/imagen/perfil/__${proFiltrado.id}__}"/>
                     </div>
                     <!--Agregar puntaje a la etiqueta i th:text="${proFiltrado.calificacion}"-->
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading" th:text="${proFiltrado.nombre}"></div>
+                     <a class="card-action" href="#"><i class="fa fa-heart"  th:text="${proFiltrado.calificacion}"></i></a>
+                    <div class="card-title text-truncate text-dark text-center" style="max-width: 100%;" th:text="${proFiltrado.nombre}"></div>
                     <div class="card-text" th:text="${proFiltrado.rubro.rubro}"></div>
                     <div class="card-text" th:text=" '$ '+${proFiltrado.honorario}"></div>
                     <a th:href="@{/trabajo/persistirTrabajo/__${proFiltrado.id}__}" class="card-button">Contratar</a>
@@ -38,4 +43,3 @@
     </div>
 
 </div>
-<!--th:text=" 'Bienvenido '+${session.usuarioSession.nombre}+' '+'('+${session.usuarioSession.rol}+')'" -->
