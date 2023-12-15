@@ -81,7 +81,7 @@ public class UsuarioControlador {
         Optional<Proveedor> proveedorOptional = proveedorRepositorio.findById(idProveedor);
         if (proveedorOptional.isPresent()) {
             Proveedor proveedor = proveedorOptional.get();
-            proveedor.setCalificacion(calificacion);
+            usuarioServicio.calificarProveedor(proveedor, calificacion);
             proveedorRepositorio.save(proveedor);
         }
         redirectAttributes.addFlashAttribute("exito", "GRACIAS POR CALIFICAR!");
